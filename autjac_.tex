@@ -162,7 +162,7 @@ The first author would like to thank Matthias Weber for his guidance at the begi
 
 %A classical question in algebraic geometry is the Schottky problem that asks which principally polarized abelian varieties arise as Jacobian varieties of Riemann surfaces. Given Riemann surfaces of genus $g,$ let $\mathcal{M}_g$ be the moduli space of genus $g$ curves and let $\mathcal{A}_g$ be the moduli space of abelian varieties of dimension $g,$ which are principally polarized. Then there is a mapping $\mathcal{M}_g \rightarrow \mathcal{A}_g.$ Torelli's theorem tells us that this map is injective and the Schottky problem is to determine the image of the mapping. 
 
-We are interested in the interaction between the automorphism groups of Riemann surfaces and the automorphism groups of their Jacobian varieties. Hurwitz's theorem gives us a bound of the order of the automorphism group of a compact Riemann surface of genus greater than one. However, computing the automorphism group of a Riemann surface is in general extremely difficult. We exposit and improve two complementary methods to calculate the automorphism group of a given Riemann surface.
+We are interested in the interaction between the automorphism groups of Riemann surfaces and the automorphism groups of their Jacobian varieties. Hurwitz's theorem gives us a bound of the order of the automorphism group of a compact Riemann surface of genus greater than one. However, computing the automorphism group of a Riemann surface is in general difficult. We exposit and improve two complementary methods to calculate the automorphism group of a given Riemann surface.
 
 One method is from computational arithmetic geometry. This program is based on the work of Bruin-Sijsling-Zotine introduced in \cite{jeroen}. The program takes an explicit plane curve and provides the automorphism group of its Jacobian with respect to the curve's canonical principal polarization. Then we use Torelli's theorem tells us about an abstract isomorphism between these automorphism groups if the curve is hyperelliptic. If the curve is not hyperelliptic, then we get an extra $\Z/2$ factor. % discussed in section ~\ref{sec:torelli}.
 
@@ -177,7 +177,7 @@ From the endomorphism ring of a Jacobian, we can directly understand the splitti
 
 %\ti{this sentence either needs to be expanded or removed: The exterior derivative of a holomorphic map from a Riemann surface to a 1-torus is a 1-form with periods in a lattice in $\C.$.}
 
-There are two main approaches to calculate automorphism groups of Jacobian varieties over $\C$. One approach is to study maps from a Riemann surface to 1-dimensional tori that are not quotient maps. Instead, we use the aforementioned program based on the work of Bruin-Sijsling-Zotine. This program finds principal polarizations of any given Jacobian\footnote{This program also works for all abelian varieties for which we know the period matrix.} from scratch, and calculates the automorphism group of the Jacobian with respect to each of these found principal polarizations. It is in general difficult to see if two polarizations are equivalent by base change, so this has the side effect of identifying different principal polarizations when their corresponding automorphism groups are different. 
+There are two main approaches to calculate automorphism groups of Jacobian varieties over $\C$. One approach is to study maps from a Riemann surface to 1-dimensional tori that are not quotient maps. Instead, we use the aforementioned program based on the work of Bruin-Sijsling-Zotine. This program finds principal polarizations of any given Jacobian\footnote{This program also works for all abelian varieties for which we know the period matrix.} from scratch, and calculates the automorphism group of the Jacobian with respect to each of these found principal polarizations. This has the side effect of identifying different principal polarizations when their corresponding automorphism groups are different. 
     
 Understanding of the number of principal polarizations for a given Jacobian variety remains an unsolved problem, called ``explicit Narasimhan-Nori" \cite{nn}. Only the simple case is understood (by Lange in \cite{several}), this is discussed in section ~\ref{sec:accident}. Finding examples which are non-simple is therefore desirable. We do this for several Jacobians, including the Jacobian of Schoen's I-WP Surface.  
 
@@ -235,7 +235,7 @@ We define a covering over an $n$-punctured sphere in the following way. Let $Y :
 
 %%%lookd: is this a correct definition?
 
-\begin{defn} A \textbf{cyclically branched covering of an $n$-punctured sphere} is a surface $S$ such that $S/H$ is an $n$-punctured sphere, where $H$ is a finite subgroup of its automorphism group $H \subseteq \Aut(S)$.   \end{defn}
+\begin{defn} A \textbf{cyclically branched covering of an $n$-punctured sphere} is a surface $S$ such that $S/H$ is an $n$-punctured sphere, where $H$ is a cyclic finite subgroup of its automorphism group $H \subseteq \Aut(S)$.   \end{defn}
 
 
 
@@ -409,13 +409,13 @@ We calculate the Weierstrass points of a surface by finding the zeros of the Wro
 
 \section{The Precise Torelli Theorem}
 \label{sec:torelli}
-\begin{remark} The first portion of this section is an English translation of the Appendice \cite{Torelli}, with slight modifications for the reader's convenience.\end{remark}
+
+
+\begin{remark} The first portion of this section is an English translation of the first two paragraphs of the Appendice \cite{Torelli}, with slight modifications for the reader's convenience.\end{remark}
 
 Let $k$ be a field, and let $X_{/k}$ be a nice (smooth, projective and geometrically integral) curve over $k$ of genus $g > 1$.  Let $(\operatorname{Jac}(X),a)$ denote the Jacobian of $X$ together with the Jacobian's canonical principal polarization $a$, which is of degree 1.  Let $X'_{/k}$ be another nice curve. Any isomorphism $f: X \to X'$ defines by functoriality an isomorphism $f_J: (J, a) \to (J', a')$. 
 
 \begin{remark} The isomorphism $f: X \to X'$ induces an isomorphism between $\text{Div}^i(X)$ and $\text{Div}^i(X')$ for every $i$. This is because $Div$ is defined as formal combinations of codimension 1 subvarieties, and we can pull the inclusions of subvarieties of $X'$ into $X$ back via the isomorphism $f$. Note that the image of $\text{Div}^{g-1}(X)$ under the Abel-Jacobi map determines the canonical principal polarization of $\Jac(X)$ with respect to $X$. \end{remark}
-
-
 
 %\begin{remark} This functoriality can more easily be seen when we consider that $Pic^0(X)$ is dual to $Jac(X)$, then the induced map from $f: X \to X'$ is just the pullback of line bundles $f^*: Pic^0(X') \to Pic^0(X)$, and further, considering the principal    \end{remark}
  
@@ -439,9 +439,7 @@ $$\Aut(\Jac(X), a) \simeq \begin{cases} \Aut(X) & \text{if } X \text{ is hyperel
 %page 203 Jacobian Varieties Cornell-Silverman: Arithmetic Geometry
 
 %Serre states this as a ``precise" form of the Torrelli theorem, and further, that no proof of it is in its entirety is in the literature as far as he knows.  
-
-
-This precise form of Torelli's theorem is proved for algebraically closed fields by Weil \cite{oe}. A modern proof by Martens \cite{finn} proves Torelli's theorem as a combinatorial consequence of the Riemann-Roch theorem and Abel's theorem. Let $\phi$ be the Abel-Jacobi map $\phi: X \to \Jac(X)$ (this map is determined up to translation by the torus $\Jac(X)$). Let $\Div^i(X)$ denote the degree $\leq i$ effective divisors on $X$, and $W^i$ denote their image $\phi(\Div^i(X))$. 
+(Here we end quoting the Appendice). This precise form of Torelli's theorem is proved for algebraically closed fields by Weil \cite{oe}. A modern proof by Martens \cite{finn} proves Torelli's theorem as a combinatorial consequence of the Riemann-Roch theorem and Abel's theorem. Let $\phi$ be the Abel-Jacobi map $\phi: X \to \Jac(X)$ (this map is determined up to translation by the torus $\Jac(X)$). Let $\Div^i(X)$ denote the degree $\leq i$ effective divisors on $X$, and $W^i$ denote their image $\phi(\Div^i(X))$. 
 
 
 %\ti{clean up the following or take it out, how does this move the tessellation of the embedded X into Jac(X)  (Visualizing the induced tessellation on the Jacobian)}
@@ -553,7 +551,7 @@ We work in the category of varieties equipped with principal polarizations, whic
 
 $$f: (X, c_1(\mc{L})) \to (Y, c_1(\mc{M}))$$
 
-such that $f^*(Y, c_1(\mc{M})) = (X, c_1(\mc{L}))$.  We may represent polarizations as integral valued alternating forms. 
+such that $f^*(Y, c_1(\mc{M})) = (X, c_1(\mc{L}))$ (for isomorphisms).  We may represent polarizations as integral valued alternating forms. 
 
 % tktk 
 % define polarization here before using it in the next definition
@@ -666,7 +664,7 @@ We can understand this embedding $j$ as a map $$p \mapsto [a_1(p) : \cdots : a_{
 \begin{defn} A line bundle $\mc{L}$ is defined to be \textbf{very ample} on $X$ if it defines a closed embedding into $\P^N$ for large enough $N$. %if it has finitely many global sections, such that for every $x \in X$, there is at least one section not vanishing at this point. 
 \end{defn}
 
-\begin{defn} A line bundle is \textbf{ample} if a tensor power of the line bundle is very ample. Since the chern class is additive, $c_1(\mc{L}^{\otimes k}) = kc_1(\mc{L})$, the ample bundle and its tensor power are equivalent datum. \end{defn} 
+\begin{defn} A line bundle is \textbf{ample} if a tensor power of the line bundle is very ample. Since the Chern class is additive, $c_1(\mc{L}^{\otimes k}) = kc_1(\mc{L})$, the ample bundle and its tensor power are equivalent datum. \end{defn} 
 
 \begin{remark} In other words, $\mc{L}$ is defined to be ample if it (or a tensor power of it) specifies an embedding of $X$ into projective space.\end{remark}
 
@@ -677,7 +675,7 @@ We can understand this embedding $j$ as a map $$p \mapsto [a_1(p) : \cdots : a_{
 
 \begin{defn} Line bundles $\mc{L}_1$ and $\mc{L}_2$  on $X$ are \textbf{analytically equivalent} if there is a connected complex analytic space $T$, a line bundle $\mc{L}$ on $X \times T$, and points $t_1, t_2 \in T$ such that $$\mc{L} |_{X\times \{t_i\}} \simeq \mc{L}_i$$ for $i = 1, 2$. \end{defn}
 
-A line bundle $\mc{L}$ over $X$ is specified up to analytic equivalence by its first chern class $c_1(\mc{L}) \in H^2(X; \Z)$. More precisely,
+A line bundle $\mc{L}$ over $X$ is specified up to analytic equivalence by its first Chern class $c_1(\mc{L}) \in H^2(X; \Z)$. More precisely,
 
 \begin{thm*} 
 [2.5.3 BL] Let $X$ be an abelian variety. For line bundles $\mc{L}_1$ and $\mc{L}_2$ over $X$, the following statements are equivalent: 
@@ -696,7 +694,7 @@ A line bundle $\mc{L}$ over $X$ is specified up to analytic equivalence by its f
 %and a semi-character $\chi$.  \ti{add more on semicharacter, is it needed to fully specify polarization}
 
 
-\begin{defn} The \textbf{first chern class} of a line bundle $\mc{L}$ is the image of $\mc{L} \in \Pic(X) = H^1(\mc{O}_X^*)$ under the map $c_1$ on cohomology which arises as follows. Consider the exact sequence $$0 \to \Z \to \mc{O}_X \to \mc{O}_X^* \to 0$$ and its long cohomology sequence:
+\begin{defn} The \textbf{first Chern class} of a line bundle $\mc{L}$ is the image of $\mc{L} \in \Pic(X) = H^1(\mc{O}_X^*)$ under the map $c_1$ on cohomology which arises as follows. Consider the exact sequence $$0 \to \Z \to \mc{O}_X \to \mc{O}_X^* \to 0$$ and its long cohomology sequence:
 %\to H^1(X, \Z) \to H^1(\mc{O}_X) \to 
 $$\cdots \to H^1(\mc{O}_X^*) \xrightarrow{c_1} H^2(X, \Z) \to \cdots$$ \end{defn} 
 
@@ -709,7 +707,7 @@ $$\cdots \to H^1(\mc{O}_X^*) \xrightarrow{c_1} H^2(X, \Z) \to \cdots$$ \end{defn
 
 %By definition, every (chern class of a holomorphic) line bundle on $X$ \in H^2(X, \Z)
 
-We associate to every first chern class an alternating form.
+We associate to every first Chern class an alternating form.
 
 \begin{thm*} [BL 1.3.2 \& 2.1.2] $$\psi: H^2(X; \Z) \simeq \Alt^2(\Lambda, \Z)$$ 
 \end{thm*} 
@@ -740,7 +738,7 @@ Let $S$ be the set of $c_1(\mc{L})$ where $\mc{L}$ ranges over all holomorphic l
  
 \begin{remark} Note that from each element $\Alt^2(\Lambda, \Z)$ we obtain via $\R$-linear extension an alternating form $\Alt^2(V, \R)$ (as in rational versus analytic representation, see [BL 1.2.1]). We also have an isomorphism between real valued forms satisfying 2.1.6(2) and Hermitian forms. \end{remark}
 
-It is important to emphasize that not all forms satisfying 2.1.6(2) correspond to chern classes of ample line bundles. Ampleness is stronger than holomorphicity, hence we need a stronger condition. 
+It is important to emphasize that not all forms satisfying 2.1.6(2) correspond to Chern classes of ample line bundles. Ampleness is stronger than holomorphicity, hence we need a stronger condition. 
 
 \begin{defn} 
 A line bundle $\mc{L}$ on $X$ is called \textbf{positive} if $c_1(\mc{L})$ is represented by a positive-definite Hermitian form.
@@ -780,7 +778,7 @@ A curve gives a principal polarization on its Jacobian as follows. We are given 
 
 We may construct a form $H: H^{1, 0}(C, \C) \times H^{1, 0}(C, \C) \to \Z$ by precomposing $\cap$ with a dualizing map. That is, $H$ takes a pair of forms, returns the dual of each form as a cycle, and computes the intersection of these cycles using $\cap$. By the earlier discussed [BL 2.1.6], this Hermitian form gives a polarization. 
 
-\begin{remark} It is difficult to recover the line bundle corresponding $\mc{L}$ to this polarization $c_1(\mc{L})$ as the inverse to the first chern class map is very difficult to construct.\end{remark}
+\begin{remark} It is difficult to recover the line bundle corresponding $\mc{L}$ to this polarization $c_1(\mc{L})$ as the inverse to the first Chern class map is very difficult to construct.\end{remark}
 
 \end{comment}
 
@@ -948,10 +946,8 @@ I-WP & 4 & 10 & $C_2^{\text{ }4}$ & 16 & [16, 14] \\
 
 & & & $C_3 \times (((C_6 \times C_2) : C_2) \times D_8)$ & 576 & [576, 7780] \\ 
 
-% $D_4 \times C_6^{\text{ }2}\times C_2$ (?)
 & & & $C_6 \times (S_3 \times ((C_6 \times C_2) : C_2))$ & 864 & [864, 4523] \\ \hline
 
-%$(C_6^{\text{ }2}) \times (C_3 \rtimes D_4)$ (?)
 $X_0(63)$ & 5 & 2 & $C_2^{\text{ }5}$ & 32 & [32,51] \\
 & & & $C_2 ^{\text{ }2} \times S_4$ &  96 & [96, 226] \\ \hline
 \end{tabular}
@@ -1294,8 +1290,9 @@ We are most interested in quotients of the upper half plane $\mathfrak{h}^{+}$ b
 % The automorphism groups of $X(N)$ were found in \cite{bwx} to be $PSL_2(\Z/N\Z)$ (when the genus is greater than 2). The case of all $X_1(N)$ was reportedly found in general in a print, but the second author cannot locate the answer nor a copy of this manuscript. 
 The automorphism groups of $X_0(N) := \mathfrak{h}^{+} / \Gamma_0(N)$ were calculated in \cite{km} except for $N=63$. The case of $X_0(63)$ was resolved 2 years later by Noam Elkies \cite{elkies} by two different proofs: a conceptual one that uses enumerative geometry and the modular structure, and an explicit one that exhibits the modular equations. 
 
-\begin{conjecture} \label{63conj}  All principal polarizations on a Jacobian $J$ coming from curves are found by the method discussed in section ~\ref{sec:find}.  In other words: if there are exactly $n$ curves such that $J \simeq \Jac(C_1) \simeq \Jac(C_n)$, where $C_i \nsimeq C_j$ when $i \neq j$, then the algorithm will find at least the canonical principal polarizations on $J$ associated to $C_1, ..., C_n$.
-\end{conjecture} 
+%\begin{conjecture} \label{63conj}  All principal polarizations on a Jacobian $J$ coming from curves are found by the method discussed in section ~\ref{sec:find}.  In other words: if there are exactly $n$ curves such that $J \simeq \Jac(C_1) \simeq \Jac(C_n)$, where $C_i \nsimeq C_j$ when $i \neq j$, then the algorithm will find at least the canonical principal polarizations on $J$ associated to $C_1, ..., C_n$.\end{conjecture} 
+
+\begin{conjecture} The program \texttt{CullPB.m} finds all principal polarizations on the curves we consider. \end{conjecture}
 
 If this conjecture is true, it would be a radically different proof than that of Elkies, since we go through computing the automorphism group of the Jacobian of $X_0(63)$. Assuming this conjecture, we go through the proof.
 
