@@ -235,8 +235,12 @@ We define a covering over an $n$-punctured sphere in the following way. Let $Y :
 
 %%%lookd: is this a correct definition?
 
+
 \begin{defn} A \textbf{cyclically branched covering of an $n$-punctured sphere} is a surface $S$ such that $S/H$ is an $n$-punctured sphere, where $H$ is a cyclic finite subgroup of its automorphism group $H \subseteq \Aut(S)$.   \end{defn}
 
+
+
+\begin{defn} We say that a surface $S$ is a \textbf{$d$-fold cyclically branched covering over an $n$-punctured sphere} if $S/(\mathbb{Z}/ d \mathbb{Z})$ is a sphere.  \end{defn}
 
 
 The following theorem shows when such a covering is closed. 
@@ -256,11 +260,11 @@ Now that we have the topological data of the covering we move on to its geometry
 Given a compact Riemann surface of genus $g$ with a cone metric, let $p_1, \ldots , p_n$ be distinguished points with respective cone angles $\theta_i.$ Then, $\sum \theta_i = 2 \pi (2 g - 2 + n).$
 \end{proposition}
 
-For example, a doubled euclidean triangle with angles $(\theta_1, \theta_2, \theta_3)$ is topologically a sphere. 
+For example, a euclidean triangular pillowcase with angles $(\theta_1, \theta_2, \theta_3)$ is topologically a sphere. 
 
 As we are interested in cyclic coverings, let $X \rightarrow Y$ be such a covering. We say a cone metric on $Y$ is \textit{admissible} if its pullback yields a translational structure on $X.$ Given a cone metric on $Y,$ the following definition gives us a natural way of finding admissible cone metrics. 
 
-\begin{defn} Given branching indices $(d_1, \ldots , d_n),$ we say $a \in \{1, \ldots, d - 1\}$ is a \textit{multiplier} if $a (d_1, \ldots , d_n) := (a \cdot d_1 \pmod d, \ldots , a \cdot d_n \pmod d)$ is admissible. For simplicity, we denote $a (d_1,\ldots , d_3)$ as $(a_1, \ldots , a_3)$ where $a_i \in \{0, \ldots , d - 1\}.$ 
+\begin{defn} Given branching indices $(d_1, \ldots , d_n),$ we say $a \in \{1, \ldots, d - 1\}$ is a \textit{multiplier} if the cone metric given by cone angles $\frac{2 \pi}{d} a (d_1, \ldots , d_n) := \frac{2 \pi}{d} (a \cdot d_1 \pmod d, \ldots , a \cdot d_n \pmod d)$ is admissible. For simplicity, we denote $a (d_1,\ldots , d_3)$ as $(a_1, \ldots , a_3)$ where $a_i \in \{0, \ldots , d - 1\}.$ 
 \end{defn}
 
 \begin{remark} Given branching indices $(d_1, \ldots , d_n)$ and $(a_1, \ldots , a_n)$ where $a_i \equiv a \cdot d_i \pmod d$ for some $a \in \mathbb{Z},$ if $a_i > 0$ for all $i$ and $\sum a_i = d (n - 2),$ then the cone metric given by cone angles $\frac{2 \pi}{d} (a_i, \ldots , a_n)$ is admissible. This notion is particularly helpful when $n = 3.$\end{remark}
@@ -273,11 +277,10 @@ In \cite{kw}, the authors identify Klein's quartic as a sevenfold cyclic cover o
 
 Lastly, we will locate Weierstrass points on the coverings. This information will be used in subsection~\ref{sec:flagflag}. These are points where the dimension-count of the Riemann-Roch theorem is not generic. On a compact Riemann surface of genus $> 1,$ there are finitely many such points and we will find all of them using the Wronski metric. For example, Klein's quartic has three holomorphic 1-forms with the following divisors $$(\omega_1) = \widetilde{p_2} + 3 \widetilde{p_3}, \qquad (\omega_2) = \widetilde{p_1} + 3 \widetilde{p_2}, \qquad (\omega_3) = 3 \widetilde{p_1} + \widetilde{p_3}.$$ We define the weight of a point which measures how far the point is from being generic. A generic point is where the order of zeros form the sequence $0, 1, \ldots , g - 1$ given a basis. For Klein's quartic, at $\widetilde{p_i},$ this sequence is $0, 1, 3.$ The weight at each $\widetilde{p_i}$ is computed as $(0 - 0) + (1 - 1) + (3 - 2) = 1.$ 
 
-\begin{defn}\label{def: wronski} Given a basis of holomorphic functions $\{f_1, \ldots , f_g\}$ on a Riemann surface $X$ of genus $g$, the Wronskian defined by $$\mathcal{W}(z) := \textrm{det} \left( \frac{d^j f_k(z)}{d z^j} \right)_{j = 0, \ldots , g - 1, \, k = 1, \ldots , g}$$ is a non-trivial holomorphic function on $X$ that induces a metric which we call the \textit{Wronski metric.} 
+\begin{defn}\label{def: wronski} Given a basis of holomorphic differentials $\omega_i = f_i d z$ on a Riemann surface $X$ of genus $g$, the Wronskian defined by $$\mathcal{W}(z) := \textrm{det} \left( \frac{d^j f_k(z)}{d z^j} \right)_{j = 0, \ldots , g - 1, \, k = 1, \ldots , g}$$ is a non-trivial holomorphic function on $X$ that induces a metric which we call the \textit{Wronski metric.} 
 \end{defn}
 
-In our case, the zeros of the Wronskian are located at the preimages of the midpoint of two $p_i.$
-
+A zero of the Wronskian is a Weierstrass point on $X$ and the order of a zero at a point equals its weight. In our case, the zeros of the Wronskian are located at the preimages of the midpoint of two $p_i$ as simple zeros.
 
 \subsection{Computing the Period Matrix on Cyclic Covers}
 \label{sec:cyclicperiod}
@@ -326,6 +329,8 @@ This notation is partially justified by defining $\Aut(\Delta)$ to be the group 
 
 \begin{defn} \label{defn: base tess} Let $S$ be a $d$-fold cyclic cover over an $n$-punctured sphere. We define the \textbf{base tessellation} of $S$ as a tessellation tiled by $n$-gons with valency $d$ at every vertex. \end{defn}
 
+For $n \geq 3$ and $d > \frac{n}{2},$ there exists a unique base tessellation on a surface of genus $g > 1.$ This follows from the Gauss-Bonnet formula. The base tessellation is tiled by $N$-polygons where $2 \pi (2 - 2 g) = -N (\pi - n \cdot \frac{2 \pi}{d}).$
+
 %\begin{defn} An \textbf{all-seeing tessellation} on a surface $S$ is such that $$\Aut(\DD) \simeq \Aut(S) $$ \end{defn}
 
 %We wish to construct an all-seeing tessellation for any given cyclically branched cover $S$ of a sphere. Our first step is the base tessellation.
@@ -338,7 +343,7 @@ This notation is partially justified by defining $\Aut(\Delta)$ to be the group 
 \textit{Input:} A surface $S$ which is a cyclically branched cover of a sphere. \n
 $\text{}$ $\hspace{2mm}$\textit{Output:} A particular tessellation $\Delta_T$. 
 \begin{enumerate}
-\item  Construct a base-tessellation $\Delta$ of $S$.
+\item  Construct a base tessellation $\Delta$ of $S$.
 \item Separately, find the Weierstrass points of $S$ using Definition~\ref{def: wronski}. 
 \item Refine $\Delta$ until all tiles are similar and all Weierstrass points of $S$ occur as vertices. Call this new tessellation $\widetilde{\Delta}$. 
 
@@ -364,7 +369,7 @@ By checking against the automorphism groups obtained via the \texttt{autplane} p
 %\ti{lookd: is it true? CHECK THIS! Can we prove this for surfaces which are quotients of polyhedral surfaces? Fermat's, I-WP, and Bring's are still cyclic covers over spheres. I don't know all triply periodic polyhedral surfaces. I have three more examples of tpps that are also cyclic branched covers and I also have examples of tpps that are not cyclic covers over spheres. The latter, I have no info about.}
 
 \begin{example}
-We perform an example of this algorithm for Klein's quartic. We begin with the base tessellation Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:124}. Both $d$ and $n$ play a role as we already know the existence of the $d$-fold map and the order-$n$ map that permutes the branched values. The base tessellation is unique due to the Gauss-Bonnet formula. For example, the base tessellation of Klein's quartic is tiled by hyperbolic $\frac{2 \pi}{7}$-triangles (Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:124}). Since the genus is three, we have $2 \pi (2 - 2 \cdot 3) = -56 (\pi - 3 \cdot \frac{2 \pi}{7})$ hence we need 56 triangles. Next, we locate all Weierstrass points. On Klein's quartic, all vertices of the base tessellation correspond to Weierstrass points, that is $\Delta = \widetilde{\Delta}$. We move to the last step. Since each tile $T$ of $\widetilde{\Delta}$ is a regular triangle with all vertices the same weight, we get $G_T = \Z/3$. Thus, we add lines to each tile $T$ such that each tile $T'$ is now a fundamental domain for the action of $G_T$ on $T$. (Figure~\crefformat{figure}{~#2#1{(b)}#3} \cref{fig:124}).
+We perform an example of this algorithm for Klein's quartic. We begin with the base tessellation Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:124}. Both $d$ and $n$ play a role as we already know the existence of the $d$-fold map and the order-$n$ map that permutes the branched values. Due to the Gauss-Bonnet formula, the base tessellation of Klein's quartic is tiled by hyperbolic $\frac{2 \pi}{7}$-triangles (Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:124}). Since the genus is three, we have $2 \pi (2 - 2 \cdot 3) = -56 (\pi - 3 \cdot \frac{2 \pi}{7})$ hence we need 56 triangles. Next, we locate all Weierstrass points. On Klein's quartic, all vertices of the base tessellation correspond to Weierstrass points, that is $\Delta = \widetilde{\Delta}$. We move to the last step. Since each tile $T$ of $\widetilde{\Delta}$ is a regular triangle with all vertices the same weight, we get $G_T = \Z/3$. Thus, we add lines to each tile $T$ such that each tile $T'$ is now a fundamental domain for the action of $G_T$ on $T$. (Figure~\crefformat{figure}{~#2#1{(b)}#3} \cref{fig:124}).
 
 %%%lookd: if this is Z/3, why are there 6 tiles in T'
 % this includes orientation-reversing ones. If it makes more sense, I will remove these lines.
