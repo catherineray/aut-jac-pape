@@ -318,9 +318,7 @@ Furthermore, we can produce flat structures that arise from $\omega_2$ and $\ome
 
 In \cite{dami}, the first author computes the automorphism group of an eightfold cyclic cover over a thrice punctured sphere via a tessellation on the surface where the vertices correspond to the Weierstrass points of uniform weight. In this paper, we conjecturally generalize this algorithm to surfaces that have Weierstrass points of different weights. %We will use Weierstrass points, computed using the Wronski metric, as our markings on the surface.
 
-In this section, we wish to find a tessellation $\Delta$ on a surface $S$ which exhibits the automorphism group of $S$. Formally, we wish for $\Aut(S)$ to act freely and transitively on the tiles of $\Delta$; we denote this with a slight abuse of notation:
-\vspace{-3pt}
-$$\Aut(\Delta) \simeq \Aut(S)$$
+In this section, we wish to find a tessellation $\Delta$ on a surface $S$ which exhibits the automorphism group of $S$. Formally, we wish for $\Aut(S)$ to act freely and transitively on the tiles of $\Delta$; we denote this with a slight abuse of notation: $$\Aut(\Delta) \simeq \Aut(S)$$
 
 This notation is partially justified by defining $\Aut(\Delta)$ to be the group of automorphisms which are orientation-preserving, send vertices to vertices, edges to edges, and faces to faces. 
 
@@ -409,20 +407,20 @@ We perform this algorithm for Klein's quartic. We begin with the base tessellati
 
 \begin{remark} The first portion of this section is an English translation of the first two paragraphs of the Appendice \cite{Torelli}, with slight modifications for the reader's convenience.\end{remark}
 
-Let $k$ be a field, and let $X_{/k}$ be a nice (smooth, projective and geometrically integral) curve over $k$ of genus $g > 1$.  Let $(\operatorname{Jac}(X),a)$ denote the Jacobian of $X$ together with the Jacobian's canonical principal polarization $a$, which is of degree 1.  Let $X'_{/k}$ be another nice curve. Any isomorphism $f: X \to X'$ defines by functoriality an isomorphism $f_J: (J, a) \to (J', a')$. 
+Let $k$ be a field, and let $X$ be a nice (smooth, projective and geometrically integral) curve over $k$ of genus $g > 1$.  Let $(\operatorname{Jac}(X),a)$ denote the Jacobian of $X$ together with the Jacobian's canonical principal polarization $a$, which is of degree 1.  Let $X'$ be another nice curve over $k.$ Any isomorphism $f: X \to X'$ defines by functoriality an isomorphism $f_J: (\Jac(X), a) \to (\Jac(X'), a')$. 
 
-\begin{remark} The isomorphism $f: X \to X'$ induces an isomorphism between $\text{Div}^i(X)$ and $\text{Div}^i(X')$ for every $i$. This is because $Div$ is defined as formal combinations of codimension 1 subvarieties, and we can pull the inclusions of subvarieties of $X'$ into $X$ back via the isomorphism $f$. Note that the image of $\text{Div}^{g-1}(X)$ under the Abel-Jacobi map determines the canonical principal polarization of $\Jac(X)$ with respect to $X$. \end{remark}
+\begin{remark} The isomorphism $f: X \to X'$ induces an isomorphism between the divisor groups $\text{Div}^i(X)$ and $\text{Div}^i(X')$ for every $i$. This is because these groups are defined as formal combinations of codimension 1 subvarieties, and we can pull the inclusions of subvarieties of $X'$ into $X$ back via the isomorphism $f$. Note that the image of $\text{Div}^{g-1}(X)$ under the Abel-Jacobi map determines the canonical principal polarization of $\Jac(X)$ with respect to $X$. \end{remark}
 
 %\begin{remark} This functoriality can more easily be seen when we consider that $Pic^0(X)$ is dual to $Jac(X)$, then the induced map from $f: X \to X'$ is just the pullback of line bundles $f^*: Pic^0(X') \to Pic^0(X)$, and further, considering the principal    \end{remark}
  
 
 %defines by structure transport an isomorphism $f_J: (J, a) \to (J', a')$. 
 
-Torelli's theorem says that we get almost all of the isomorphisms: $(J, a) \to (J', a')$. More precisely:
+Torelli's theorem says that we get almost all of the isomorphisms $(\Jac(X), a) \to (\Jac(X'), a')$. More precisely:
 
-\begin{thm*} Suppose $X$ is hyperelliptic.  Then for every isomorphism of polarized abelian varieties $F: (\operatorname{Jac}(X),a) \stackrel{\sim}{\rightarrow} (\operatorname{Jac}(X'),a')$, there exists a unique isomorphism $f: X \stackrel{\sim}{\rightarrow} X'$ such that $F = \operatorname{Jac} f$.  \end{thm*}
+\begin{thm*} Suppose $X$ is hyperelliptic.  Then for every isomorphism of polarized abelian varieties $F: (\operatorname{Jac}(X),a) \stackrel{\sim}{\rightarrow} (\operatorname{Jac}(X'),a')$, there exists a unique isomorphism $f: X \stackrel{\sim}{\rightarrow} X'$ such that $F = f_J$.  \end{thm*}
 
-\begin{thm*} Suppose $X$ is not hyperelliptic.  Then, for every isomorphism of polarized varieties $F: (\operatorname{Jac}(X),a) \stackrel{\sim}{\rightarrow} (\operatorname{Jac}(X'),a'),$ there exists an isomorphism $f: X \stackrel{\sim}{\rightarrow} X'$ and $e \in \{ \pm 1\}$ such that $F = e \cdot  \operatorname{Jac} f$.  Moreover, the pair $(f,e)$ is uniquely determined by $F$. \end{thm*}
+\begin{thm*} Suppose $X$ is not hyperelliptic.  Then, for every isomorphism of polarized varieties $F: (\operatorname{Jac}(X),a) \stackrel{\sim}{\rightarrow} (\operatorname{Jac}(X'),a'),$ there exists an isomorphism $f: X \stackrel{\sim}{\rightarrow} X'$ and $e \in \{ \pm 1\}$ such that $F = e \cdot  J_f$.  Moreover, the pair $(f,e)$ is uniquely determined by $F$. \end{thm*}
 
 So, we conclude: 
 
@@ -435,7 +433,8 @@ $$\Aut(\Jac(X), a) \simeq \begin{cases} \Aut(X) & \text{if } X \text{ is hyperel
 %page 203 Jacobian Varieties Cornell-Silverman: Arithmetic Geometry
 
 %Serre states this as a ``precise" form of the Torrelli theorem, and further, that no proof of it is in its entirety is in the literature as far as he knows.  
-(Here we end quoting the Appendice). This precise form of Torelli's theorem is proved for algebraically closed fields by Weil \cite{oe}. A modern proof by Martens \cite{finn} proves Torelli's theorem as a combinatorial consequence of the Riemann-Roch theorem and Abel's theorem. Let $\phi$ be the Abel-Jacobi map $\phi: X \to \Jac(X)$ (this map is determined up to translation by the torus $\Jac(X)$). Let $\Div^i(X)$ denote the degree $\leq i$ effective divisors on $X$, and $W^i$ denote their image $\phi(\Div^i(X))$. 
+%(Here we end quoting the Appendice). is this comment necessary?
+This precise form of Torelli's theorem is proved for algebraically closed fields by Weil \cite{oe}. A modern proof by Martens \cite{finn} proves Torelli's theorem as a combinatorial consequence of the Riemann-Roch theorem and Abel's theorem. Let $\phi$ be the Abel-Jacobi map $\phi: X \to \Jac(X)$ (this map is determined up to translation by the torus $\Jac(X)$). Let $\Div^i(X)$ denote the degree $\leq i$ effective divisors on $X$, and $W^i$ denote their image $\phi(\Div^i(X))$. 
 
 
 %\ti{clean up the following or take it out, how does this move the tessellation of the embedded X into Jac(X)  (Visualizing the induced tessellation on the Jacobian)}
@@ -461,7 +460,7 @@ Let $X$ and $Y$ have the same Jacobian, and $V^{k}$ denote $\phi(\Div^k(Y))$. We
 
 %Taking into account the tessellation-flag method of computation of the automorphism groups of Riemann surfaces (which are cyclic covers of the sphere), we may visualize this as inducing a tessellation on the Jacobian via the tessellation on the embedded variety.\ti{clarify this}
 
- In the case of hyperelliptic curves, $W^1 = \text{flip}(W^1)$, that is, they coincide as sets in $\Jac(X)$. For non-hyperelliptic curves, $W^1 \neq \text{flip}(W^1)$, hence the $\Z/2$ factor. 
+ In the case of hyperelliptic curves, $W^1 = \text{flip}(W^1)$, that is, they coincide as sets in $\Jac(X)$. For non-hyperelliptic curves, $W^1 \neq \text{flip}(W^1)$, hence we have the $\Z/2$ factor. 
 
 
 
@@ -509,7 +508,7 @@ First, it will be shown that the collection $\{\Theta_a\}$ of manifolds resultin
 
 \section{Programmatic Computation of the Automorphism Group}
 \label{sec:chap4}
-\begin{remark} This section is copied with from section 4 of Bruin-Sijsling-Zotine \cite{jeroen} with exposition and examples added for the reader's convenience.\end{remark}
+\begin{remark} This section is copied with from section 4 of \cite{jeroen} with exposition and examples added for the reader's convenience.\end{remark}
 
 Let us examine abelian varieties represented as analytic groups $X := V/\Lambda$ and $X' := V'/\Lambda'$. They need not be Jacobians.
 
@@ -543,7 +542,7 @@ f &\mapsto F|_{\Lambda}
 
 We will namely use the representation $\rho|_{\Lambda}$ and find the basis of our set of maps in terms of this representation. 
 
-We work in the category of varieties equipped with principal polarizations, which we discuss in section~\ref{sec:intropol}. In this category, morphisms are morphisms of pairs. That is,
+We work in the category of varieties equipped with principal polarizations, which we discuss in section~\ref{sec:intropol}. In this category, we consider morphisms of pairs. That is,
 
 $$f: (X, c_1(\mc{L})) \to (Y, c_1(\mc{M}))$$
 
@@ -567,7 +566,7 @@ Let $E_1$ and $E_2$ be forms representing $c_1(\mc{L}_1)$ and $c_1(\mc{L}_2)$, r
 
 \begin{remark} This section is on the algorithm used in \texttt{autplane.sage}. \end{remark}
 
-In the case that our abelian variety is of the form $\Jac(C_i) =: J_i$, and we know the curve $C_i$, there is a special principal polarization $E_i$ with respect to that curve $C_i$. This is programmatically found using Lemma 2.6 from \cite{jeroen}. 
+In the case that our abelian variety $J_i$ is of the form $J_i = \Jac(C_i)$, and we know $C_i$ as a plane curve, then there is a special principal polarization $E_i$ with respect to $C_i$. This is programmatically found using Lemma 2.6 from \cite{jeroen}. 
 \vspace{+10pt} 
 %The following psuedocode is copied from section 4.2 ``Computing symplectic isomorphisms" \cite{jeroen}  for the readers convienience. Note that steps 4-7 coicide with steps (???) in the previous algorithm, however, since the canonical principal polarizations are known, we use only one iteration of steps 5-7. We write it out to avoid unneccessary confusion.
 
@@ -585,15 +584,15 @@ $\text{}$ $\hspace{2mm}$\textit{Output:} The set of isomorphisms $C_1 \to C_2$, 
 \item Determine the period matrices $P_1, P_2$ of $C_1, C_2$ to the given precision.
 \item Determine a $\Z$-basis of $\Hom(J_1, J_2) \subset M_{2g \times 2g}(\Z)$ represented by integral matrices $R \in  M_{2g \times 2g}(\Z)$. [Lemma 4.3 \cite{jeroen}]
 \item Using Fincke-Pohst\footnote{This is an algorithm for finding vectors of small norm. We use it here to solve for the finite set of solutions $R = \sum_{i = 1}^{2g} \lambda_i B_i$, where $B$ is the basis from step (4).}, determine the finite set [from 5.1.9 \cite{bl}] $$S = \{ R \in \Hom(J_1, J_2) \text{ } | \text{ } \text{tr}((E_1^{-1}R^tE_2)R) = 2g\}$$
-\item Return the subset\footnote{The condition $R^tE_2R = E_1$ (i.e., $E_1^{-1}R^tE_2R = \text{Id}$) implies that $\text{tr}((E_1^{-1}R^tE_2)R) = 2g$. So we first solve for the latter to thin the results, then solve for the former from that set.}  of $R \in S$ which further satisfies $R^tE_2R = E_1$. (These are the symplectic endomorphisms.)
-\item Look at the subset of $R$ such that $\det(R) = \pm 1$. These are the symplectic automorphisms.
+\item Return the subset\footnote{The condition $R^tE_2R = E_1$ (i.e., $E_1^{-1}R^tE_2R = \text{Id}$) implies that $\text{tr}((E_1^{-1}R^tE_2)R) = 2g$. So we first solve for the latter to thin the results, then solve for the former from that set.}  of $S$ where $R^tE_2R = E_1$. (These are the symplectic endomorphisms.)
+\item The subset in which $\det(R) = \pm 1$ is the set of symplectic automorphisms.
 \item If $J_1 = J_2$, find the group structure of the subset from step (7).
 %Using the canonical morphisms with respect to the chosen basis of differentials, return the subset of elements of $S$ that indeed induce an isomorphism $J_1 \to J_2$.
 \end{enumerate}
 
 \vspace{+10pt} 
 
-Note that if the curves $C_1$ and $C_2$ are non-hyperelliptic, by the precise Torelli theorem, we get $\Hom((J_1, E_1), (J_2, E_2)) \simeq \Hom(C_1, C_2) \sqcup \{ \pm 1 \}$ from this algorithm. So, we must remove the direct summand $\{ \pm 1 \}$.
+Note that if the curves $C_1$ and $C_2$ are non-hyperelliptic, we get $\Hom((J_1, E_1), (J_2, E_2)) \simeq \Hom(C_1, C_2) \sqcup \{ \pm 1 \}$ from this algorithm. By the precise Torelli theorem, we must remove the direct summand $\{ \pm 1 \}$.
 
 \begin{remark} Step 8 of the above algorithm was added by the second author to tame these unwieldy matrix groups, and is achieved as follows.\end{remark}
 
@@ -630,7 +629,7 @@ $\text{}$ $\hspace{2mm}$\textit{Output:} For each combination of principal polar
 \item Determine a $\Z$-basis of $\Hom(J_1, J_2) \subset M_{2g \times 2g}(\Z)$ represented by integral matrices $R \in  M_{2g \times 2g}(\Z)$.
 \item Find many principal polarizations $\{a_i\}$ and $\{b_j\}$ for $J_1$ and $J_2$ respectively using \texttt{CullPB} (exposited in the next section).
 \item Apply steps (5)-(8) of the previous section substituting each pair $(a_i, b_j)$ for $(E_1, E_2)$. For each pair, this will produce the set of isomorphisms between $(J_1, a_i)$ and $(J_2, b_j)$.
-\item If $(J_1, a_i) = (J_2, b_i)$, find the group structure of each set $\Aut(J_1, a_i)$ (using the algorithm in the previous section).
+\item If $(J_1, a_i) = (J_2, b_j)$, find the group structure of each set $\Aut(J_1, a_i)$ (using the algorithm in the previous section).
 \end{enumerate}
 
 %what makes these automorphisms symplectic? 
@@ -705,7 +704,7 @@ $$\cdots \to H^1(\mc{O}_X^*) \xrightarrow{c_1} H^2(X, \Z) \to \cdots$$ \end{defn
 
 We associate to every first Chern class an alternating form.
 
-\begin{thm*} [\cite{bl} 1.3.2 \& 2.1.2] $$\psi: H^2(X; \Z) \simeq \Alt^2(\Lambda, \Z)$$ 
+\begin{thm*} [\cite{bl} 1.3.2, 2.1.2] $$\psi: H^2(X; \Z) \simeq \Alt^2(\Lambda, \Z)$$ 
 \end{thm*} 
 
 
@@ -723,7 +722,7 @@ Let $S$ be the set of $c_1(\mc{L})$ where $\mc{L}$ ranges over all holomorphic l
 
 %It is specifically the Hermitian forms which come from line bundles represented as maps $X \to \hat{X}$ (this representation is explained in section???).
 
-\begin{thm*} [\cite{BL} 2.1.6] Let $X:= V/\Lambda$ be an abelian variety. For an alternating form $E: V \times V \to \R$, the following conditions are equivalent: 
+\begin{thm*} [\cite{bl} 2.1.6] Let $X:= V/\Lambda$ be an abelian variety. For an alternating form $E: V \times V \to \R$, the following conditions are equivalent: 
 
 \begin{enumerate} 
 \item There is a holomorphic line bundle $\mc{L}$ on $X$ such that $\psi(c_1(\mc{L}))= E$. 
@@ -748,17 +747,17 @@ Let $X$ be a smooth complex projective variety. A line bundle $\mc{L}$ on $X$ is
 
 %\begin{remark} By [BL 2.1.7], the alternating forms over $\R$ of 2.1.6 are the imaginary parts of hermitian forms over $\C$. That is, there is a bijection between the set of Hermitian forms on $V$ and the set of real valued alternating forms on $V$ satisfying $E(iv, iw) = E(v, w)$. \end{remark} 
 
-This is how we ask the computer to find polarizations of an abelian variety $X$, which are steps 1 and 2 of the following section.
+This is how we ask the computer to find polarizations of an abelian variety $X$, which are steps 1 and 2 of the algorithm in the following section.
 
 However, there may be infinitely many polarizations. We are interested in a particular kind of polarization.
 
-\begin{defn}  A polarization $c_1(\mc{L})$ of $X$ is called \textbf{principal} if $\mc{L}$ has only one section up to constants, i.e. $\dim H^0(X, \mc{L}) = 1$.  \end{defn} 
+\begin{defn}  A polarization $c_1(\mc{L})$ of $X$ is called \textbf{principal} if $\mc{L}$ has only one section up to constants, i.e., $\dim H^0(X, \mc{L}) = 1$.  \end{defn} 
 
 As a motivational theorem:
 
 \begin{thm*} [\cite{bl} 4.1.2] Every polarization is induced by a principal polarization via an isogeny. \end{thm*}
 
-By Narasimhan-Nori \cite{nn}, there are only finitely many principal polarizations on an irreducible and smooth variety $X.$. As a corollary, only finitely many curves may have the same Jacobian since each non-isomorphic curve gives a non-isomorphic principal polarization on its Jacobian.
+By Narasimhan-Nori \cite{nn}, there are only finitely many principal polarizations on an irreducible and smooth variety $X.$ As a corollary, only finitely many curves may have the same Jacobian since each non-isomorphic curve gives a non-isomorphic principal polarization on its Jacobian.
 
 
 \begin{comment}
@@ -794,13 +793,11 @@ Then $\Lambda$ is the associated lattice spanned by the columns of $\Pi$. Thus, 
 $\text{}$ $\hspace{2mm}$\textit{Output:} Many principal polarizations on $A$.
 \begin{enumerate} 
 
-\item The magma function \texttt{FindPolarizationBasis} determines all integral alternating pairings $E$ on the homology, i.e., $E\in \Alt^2(\C^g, \Z)$, for whose real extension we have:
-
-$$E (i v, i w) = E (v, w)$$
+\item The magma function \texttt{FindPolarizationBasis} determines all integral alternating pairings $E$ on the homology, i.e., $E\in \Alt^2(\C^g, \Z)$, for whose real extension we have $$E (i v, i w) = E (v, w)$$
 This is a basis of alternating forms $\{E_i\}$.
 \item Check that $E$ is positive-definite.
 \item \texttt{CullPB.m} tries some small combinations and sees if $E_i$ actually gives a pairing with determinant 1 indicating that $E_i$ is a principal polarization. If so, it returns $E_i$. This gives us a set $\{E_k\}$ of integral pairings on the homology.
-\item For each $i$, we rewrite these pairings in a symplectic basis. That is, we find a basis of $\Lambda$ in which $$E_i = \begin{pmatrix} 0 & D \\ -D & 0 \end{pmatrix}$$ where $D = \text{diag}(d_1, ..., d_g)$ which we may do by the elementary divisor theorem (section 3.1, \cite{bl}). 
+\item For each $i$, we rewrite these pairings in a symplectic basis. That is, we find a basis of $\Lambda$ in which $$E_i = \begin{pmatrix} 0 & D \\ -D & 0 \end{pmatrix}$$ where $D = \text{diag}(d_1, ..., d_g)$ which we may do by the elementary divisor theorem (\cite{bl} section 3.1).  
 
 \end{enumerate} 
 
@@ -816,7 +813,7 @@ This is a basis of alternating forms $\{E_i\}$.
 
 \begin{defn} We say two principal polarizations $p_1$ and $p_2$ on $A$ are \textbf{auto-equivalent} if and only if $\Aut(A, p_1) \simeq \Aut(A, p_2)$. \end{defn}
 
-This program produces many auto-equivalent principal polarizations. When this equivalent relation is taken, it greatly reduces the number of principal polarizations. Note that auto-equivalence is a weaker notion of equivalence than analytic equivalence, as discussed in section ~\ref{sec:questions}. 
+This program produces many auto-equivalent principal polarizations. Via this equivalence, the number of principal polarizations is greatly reduced. Note that auto-equivalence is a weaker notion of equivalence than analytic equivalence, as discussed in section ~\ref{sec:questions}. 
 
 If the abelian variety is indeed a Jacobian, this method will in practice return at least enough polarizations to find the canonical principal polarization. It is an unsolved problem to find all possible principal polarizations associated to a given abelian variety, called ``explicit Narasimhan-Nori". 
 
@@ -826,11 +823,11 @@ An unexpected result of this paper was finding multiple non-autoequivalent princ
 
 \begin{defn} An abelian variety is \textbf{simple} if it is not isogenous to a product of abelian varieties of lower dimension. \end{defn}
 
-Some previous work on finding multiple principal polarizations on abelian varieties has been done by finding two non-isomorphic curves with the same (unpolarized) Jacobian. By the Torelli theorem, their associated canonical polarizations must be different. Otherwise, the curves would be isomorphic. There are papers which discuss the non-simple case at genus two \cite{iko} and three [Brock, \textit{Superspecial curves of genera two and three}], though the authors was unable to find a copy of the latter. 
+Some previous work on finding multiple principal polarizations on abelian varieties has been done by finding two non-isomorphic curves with the same (unpolarized) Jacobian. By Torelli's theorem, their associated canonical polarizations must be different. Otherwise, the curves would be isomorphic. There are results in which the non-simple case at genus two \cite{iko} and three [Brock, \textit{Superspecial curves of genera two and three}] are discussed, though the authors was unable to find a copy of the latter. 
 
 \begin{remark} There is only a canonical principal polarization on $A$ if a curve $C$ is specified so that $A = \Jac(C).$ In other words, knowing that $A$ is in the image of the functor $\Jac$ is not enough. \end{remark}
 
-Another technique is used in \cite{howe1} and \cite{howe2} which gives examples of genus two curves that are non-isomorphic but give the same (simple) Jacobian. He does this in characteristic $p$ by playing with isogeny classes of abelian varieties which correspond to special Weil numbers. In \cite{several} Theorem 1.5, Lange establishes that the order of $\Aut(A)$ with certain restriction conditions and equivalence relations is equal to the number of principal polarizations on $A$ up to isomorphism, $\pi(A)$. This bijection between sets is induced by a principal polarization, so one must know that one exists to implement this theorem. One could compute the size of this specially carved out version of $\Aut(A)$ by hand using Lange's theorem. However, we compute directly the principal polarizations on $A$ with the aid of a computer.
+Another technique used in \cite{howe1} and \cite{howe2} gives examples of genus two curves that are non-isomorphic but give the same (simple) Jacobian. This is done in characteristic $p$ with isogeny classes of abelian varieties which correspond to special Weil numbers. In \cite{several} Theorem 1.5, Lange establishes that the order of $\Aut(A)$ with certain restrictions and equivalence relations is equal to the number of principal polarizations on $A$ up to isomorphism. This bijection between sets is induced by a principal polarization, so one must know that one exists to implement this theorem. One could compute the size of this specially carved out version of $\Aut(A)$ by hand using Lange's theorem. However, we compute directly the principal polarizations on $A$ with the aid of a computer.
 
 %\begin{remark} In Theorem 3.1, Lange further establishes bounds on $\pi(A)$ in terms of the class group of $End_{\Q}(A)$, if $End_{\Q}(A)$ is a \textit{totally real} number field $K$ (and thus the variety $A$ is simple). Since every abelian variety is isogenous to a product of simple abelian varieties $$A \simeq A_1 \times ... \times A_k$$, it is reasonable to ask how the number of principal polarizations on the simple pieces $A_i$ are related to the whole $A$.  \end{remark}  
 
@@ -844,19 +841,17 @@ Another technique is used in \cite{howe1} and \cite{howe2} which gives examples 
 
 %\ti{is the splitting of I-WP nonisomorphic ellitpic curves?} for langes case can we just multiply the bound on the simple cases together?
 
-We use an entirely different technique, exposited in Section ~\ref{sec:find}, which treats both simple and non-simple cases. This technique, for example, gives us 9 not auto-equivalent principal polarizations on the Jacobian of Schoen's I-WP Surface. This is a very interesting result, especially since the variety $\Jac(\text{I-WP})$ itself factors into a product of 4 elliptic curves\footnote{This is because $\text{End}(\Jac(\text{I-WP})) \simeq M_4(K)$, where $K$ is imaginary quadratic. Thus, $\Jac(\text{I-WP})$ is the product of elliptic curves with CM by $K$.}, so the remaining principal polarizations must come from interesting new cycles in the product of these elliptic curves. Other such results from this technique are shown in Table ~\ref{table:pp}.
+We use an entirely different technique, exposited in section ~\ref{sec:find}, which treats both simple and non-simple cases. This technique, for example, gives us 9 not auto-equivalent principal polarizations on the Jacobian of Schoen's I-WP Surface. This is a very interesting result, especially since the variety $\Jac(\text{I-WP})$ itself factors into a product of 4 elliptic curves\footnote{This is because $\text{End}(\Jac(\text{I-WP})) \simeq M_4(K)$, where $K$ is imaginary quadratic. Thus, $\Jac(\text{I-WP})$ is the product of elliptic curves with CM by $K$.}, so the remaining principal polarizations must come from interesting new cycles in the product of these elliptic curves. Other such results from this technique are shown in Table ~\ref{table:pp}.
 
-\begin{remark} Since every abelian variety is isogenous to a product of simple abelian varieties $$A \simeq A_1 \times ... \times A_k$$ it is reasonable to ask how the numbers of principal polarizations on $A_i$ are related to that of $A$. 
+\begin{remark} Since every abelian variety is isogenous to a product of simple abelian varieties $$A \simeq A_1 \times ... \times A_k$$ it is reasonable to ask how the numbers of principal polarizations on each $A_i$ are related to that of $A$. 
 
 We establish some vocabulary to discuss this intuitively. Recall that we may also define a principal polarization on $A$ as an isogeny which is also an isomorphism between $A \to A^\vee$, where $A^\vee$ denotes the dual variety. Let $A$ and $B$ be arbitrary abelian varieties. Note that $\text{Corr}(A, B) \simeq \Hom(B, A^\vee)$, where we take a correspondence from $A$ to $B$ to be a line bundle $\mathcal{L}$ over the product $A \times B$ which is trivial when restricted to $A$ or $B$.
 
 We are interested in $\Aut(A, A^\vee)$, which is isomorphic to $\Corr(A, A)^\times$ but the problem of comparision arises immediately and obviously without having to pass to isomorphisms. %We wish to compare $$\Hom\left(\prod_{i= 1}^k A_i, (\prod_{j= 1}^k A_j)^{\vee}\right) \qquad \text{ and  } \qquad \prod_{i, j} \Hom(A_i, A_j^{\vee})$$
 
-We wish to compare
+We wish to compare $$\Corr\left(\prod_{j= 1}^k A_j, \prod_{i= 1}^k A_i\right) \qquad \text{ and  } \qquad \prod_{i, j} \Corr(A_j, A_i)$$
 
-$$\Corr\left(\prod_{j= 1}^k A_j, \prod_{i= 1}^k A_i\right) \qquad \text{ and  } \qquad \prod_{i, j} \Corr(A_j, A_i)$$
-
-Let $C$ and $D$ be abelian varieties. Given a line bundle on $C$ and on $D$, we get a line bundle on $C \times D$, but not vice-versa. Intuitively, the product $C \times D$ may have many more interesting cycles than the product of the cycles of $C$ and $D$, and may not necessarily restrict to a line bundle on $C$ or $D$. Therefore, in general the number of principal polarizations of $A$ is at least the product of the principal polarizations of the simple components $A_i$, that is, $$\pi(A_1 \times ... \times A_k) \geq \prod_{i=1}^k \pi(A_i)$$ as observed. We saw that $\Jac(\text{I-WP})$ is isogenous to a product of 4 elliptic curves. Since these curves are all isomorphic, we only get one principal polarization from this decomposition, but we found at least 9 principal polarizations on their product.
+Let $C$ and $D$ be abelian varieties. Given a line bundle on $C$ and on $D$, we get a line bundle on $C \times D$, but not vice-versa. Intuitively, the product $C \times D$ may have many more interesting cycles than the product of the cycles of $C$ and $D$, and may not necessarily restrict to a line bundle on $C$ or $D$. Therefore, in general the number of principal polarizations of $A$ is at least the product of the number of principal polarizations of the simple components $A_i$, that is, $$\pi(A_1 \times ... \times A_k) \geq \prod_{i=1}^k \pi(A_i)$$ as observed. We saw that $\Jac(\text{I-WP})$ is isogenous to a product of 4 elliptic curves. Since these curves are all isomorphic, we only get one principal polarization from this decomposition, but we found at least 9 principal polarizations on their product.
 \end{remark} 
 
 %\ti{discuss the interest in this problem, previous work, provided examples, waiting on MO post!!! and mention the I-WP example as being unsolved}
