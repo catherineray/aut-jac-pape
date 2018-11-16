@@ -186,7 +186,7 @@ Understanding of the number of principal polarizations for a given Jacobian vari
 
 $\text{}$\n The section rundown of this paper is as follows:
 
-In section 2, we summarize the theory of cyclic branched covers over spheres from the first author's thesis \cite{dthesis} and discuss tools we use in finding the plane curve model, tessellation, period matrix, and the automorphism group.
+In section 2, we summarize the theory of cyclically branched covers over punctured spheres from the first author's thesis \cite{dthesis} and discuss tools we use in finding the plane curve model, tessellation, period matrix, and the automorphism group.
 
 In section 3, we discuss the precise Torelli theorem and exposit the outline of its proof. %This gives an insight into how to think of the tessellation on the underlying variety as ``inducing" a tesselation on the Jacobian. 
 
@@ -251,7 +251,7 @@ Given a compact Riemann surface of genus $g$ with a cone metric, let $p_1, \ldot
 
 For example, a euclidean triangular pillowcase is topologically a sphere with a cone metric defined by angles $(\theta_1, \theta_2, \theta_3)$ where $\theta_i$ is the cone angle at each vertex. 
 
-Let $X$ be a cover over $Y.$ We say a cone metric on $Y$ is \textit{admissible} if its pullback yields a translational structure on $X.$ Given a cone metric on $Y,$ the following definition gives us a natural way of finding admissible cone metrics. 
+Let $X$ be a cyclic cover over $Y.$ We say a cone metric on $Y$ is \textit{admissible} if its pullback yields a translational structure on $X.$ Given a cone metric on $Y,$ the following definition gives us a natural way of finding admissible cone metrics. 
 
 \begin{defn} Given branching indices $(d_1, \ldots , d_n),$ we say $a \in \{1, \ldots, d - 1\}$ is a \textit{multiplier} if the cone metric given by cone angles $\frac{2 \pi}{d} \cdot a (d_1, \ldots , d_n) := \frac{2 \pi}{d} (a \cdot d_1 \pmod d, \ldots , a \cdot d_n \pmod d)$ is admissible. For simplicity, we denote $a (d_1,\ldots , d_3)$ as $(a_1, \ldots , a_3)$ where $a_i \in \{0, \ldots , d - 1\}.$ \end{defn}
 
@@ -324,7 +324,9 @@ This notation is partially justified by defining $\Aut(\Delta)$ to be the group 
 
 \begin{defn} A \textbf{tessellation} $\Delta$ is a polygonal decomposition of the surface where the polygons are either disjoint or share an edge or vertex, and their union is the entire surface. We say $\Delta'$ is a refinement of $\Delta$ if the tiles of $\Delta$ can be subdivided into tiles of $\Delta'$. \end{defn}
 
-\begin{defn} \label{defn: base tess} Let $S$ be a $d$-fold cyclic cover over an $n$-punctured sphere. We define the \textbf{base tessellation} of $S$ as a tessellation tiled by $n$-gons with valency $d$ at every vertex. For $n \geq 3$ and $d > \frac{n}{2},$ there exists a unique base tessellation on a surface of genus $g > 1.$ The base tessellation is tiled by $N$-many $n$-gons where $-2 \pi (2 - 2 g) = N (\pi - n \cdot \frac{2 \pi}{d}).$ The right-hand-side of the formula is simply the area of the surface and the rest follows from the Gauss-Bonnet formula. \end{defn}
+\begin{defn} \label{defn: base tess} Let $S$ be a $d$-fold cyclic cover over an $n$-punctured sphere. We define the \textbf{base tessellation} of $S$ as a tessellation tiled by $n$-gons with valency $d$ at every vertex. \end{defn}
+
+For $n \geq 3$ and $d > \frac{n}{2},$ there exists a unique base tessellation on a surface of genus $g > 1.$ The base tessellation is tiled by $N$-many $n$-gons where $-2 \pi (2 - 2 g) = N (\pi - n \cdot \frac{2 \pi}{d}).$ The right-hand-side of the formula is simply the area of the surface and the rest follows from the Gauss-Bonnet formula.
 
 %\begin{defn} An \textbf{all-seeing tessellation} on a surface $S$ is such that $$\Aut(\DD) \simeq \Aut(S) $$ \end{defn}
 
@@ -431,8 +433,7 @@ $$\Aut(\Jac(X), a) \simeq \begin{cases} \Aut(X) & \text{if } X \text{ is hyperel
 %page 203 Jacobian Varieties Cornell-Silverman: Arithmetic Geometry
 
 %Serre states this as a ``precise" form of the Torrelli theorem, and further, that no proof of it is in its entirety is in the literature as far as he knows.  
-%(Here we end quoting the Appendice). is this comment necessary?
-This precise form of Torelli's theorem is proved for algebraically closed fields by Weil \cite{oe}. A modern proof by Martens \cite{finn} proves Torelli's theorem as a combinatorial consequence of the Riemann-Roch theorem and Abel's theorem. Let $\phi$ be the Abel-Jacobi map $\phi: X \to \Jac(X)$ (this map is determined up to translation by the torus $\Jac(X)$). Let $\Div^i(X)$ denote the degree $\leq i$ effective divisors on $X$, and $W^i$ denote their image $\phi(\Div^i(X))$. 
+(Here we end quoting the Appendice). This precise form of Torelli's theorem is proved for algebraically closed fields by Weil \cite{oe}. A modern proof by Martens \cite{finn} proves Torelli's theorem as a combinatorial consequence of the Riemann-Roch theorem and Abel's theorem. Let $\phi$ be the Abel-Jacobi map $\phi: X \to \Jac(X)$ (this map is determined up to translation by the torus $\Jac(X)$). Let $\Div^i(X)$ denote the degree $\leq i$ effective divisors on $X$, and $W^i$ denote their image $\phi(\Div^i(X))$. 
 
 
 %\ti{clean up the following or take it out, how does this move the tessellation of the embedded X into Jac(X)  (Visualizing the induced tessellation on the Jacobian)}
@@ -504,7 +505,7 @@ First, it will be shown that the collection $\{\Theta_a\}$ of manifolds resultin
 %\begin{remark} This can either be seen as leading us to a very subtle point on the relation between a curve and its Jacobian, exposited by \cite{yifeng}. Or, we can see it as an analogue of the James construction -- where a point must be chosen but in the end the point does not matter. \end{remark}
 
 
-\section{Programmatic Computation of the Automorphism Group}
+\section{Programmatically Computing the Automorphism Group of Plane Curves and Abelian Varieties over $\mathbb{C}$}
 \label{sec:chap4}
 \begin{remark} This section is copied with from section 4 of \cite{jeroen} with exposition and examples added for the reader's convenience.\end{remark}
 
@@ -826,6 +827,8 @@ Some previous work on finding multiple principal polarizations on abelian variet
 \begin{remark} There is only a canonical principal polarization on $A$ if a curve $C$ is specified so that $A = \Jac(C).$ In other words, knowing that $A$ is in the image of the functor $\Jac$ is not enough. \end{remark}
 
 Another technique used in \cite{howe1} and \cite{howe2} gives examples of genus two curves that are non-isomorphic but give the same (simple) Jacobian. This is done in characteristic $p$ with isogeny classes of abelian varieties which correspond to special Weil numbers. In \cite{several} Theorem 1.5, Lange establishes that the order of $\Aut(A)$ with certain restrictions and equivalence relations is equal to the number of principal polarizations on $A$ up to isomorphism. This bijection between sets is induced by a principal polarization, so one must know that one exists to implement this theorem. One could compute the size of this specially carved out version of $\Aut(A)$ by hand using Lange's theorem. However, we compute directly the principal polarizations on $A$ with the aid of a computer.
+
+Another technique is used in \cite{howe1} and \cite{howe2} which gives examples of genus two curves that are non-isomorphic but give the same (simple) Jacobian. He does this in characteristic $p$ by playing with isogeny classes of abelian varieties which correspond to special Weil numbers. In \cite{several} Theorem 1.5, Lange establishes that the order of $\Aut(A)$ with certain restriction conditions and equivalence relations is equal to the number of principal polarizations on $A$ up to isomorphism, $\pi(A)$. This bijection between sets is induced by a principal polarization, so one must know that one exists to implement this theorem. One could compute the size of this specially carved out version of $\Aut(A)$ by hand using Lange's theorem. However, we compute directly the principal polarizations on $A$ with the aid of a computer.
 
 %\begin{remark} In Theorem 3.1, Lange further establishes bounds on $\pi(A)$ in terms of the class group of $End_{\Q}(A)$, if $End_{\Q}(A)$ is a \textit{totally real} number field $K$ (and thus the variety $A$ is simple). Since every abelian variety is isogenous to a product of simple abelian varieties $$A \simeq A_1 \times ... \times A_k$$, it is reasonable to ask how the number of principal polarizations on the simple pieces $A_i$ are related to the whole $A$.  \end{remark}  
 
@@ -1289,7 +1292,7 @@ The automorphism groups of $X_0(N) := \mathfrak{h}^{+} / \Gamma_0(N)$ were calcu
 
 \begin{conjecture} \label{63conj} The program \texttt{CullPB.m} finds all principal polarizations on the curves we consider. \end{conjecture}
 
-If this conjecture is true, it would be a radically different proof than that of Elkies, since we compute the automorphism group of the Jacobian of $X_0(63)$. Assuming this conjecture, we have
+If this conjecture is true, it would be a radically different proof than that of Elkies, since we approach by computing the automorphism group of the Jacobian of $X_0(63)$. Assuming this conjecture, we have
 
 \begin{thm*} $\Aut(X_0(63)) \simeq S_4 \times \Z/2$ \end{thm*} 
 
