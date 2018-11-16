@@ -267,11 +267,11 @@ Lastly, we will locate Weierstrass points on the coverings. This information wil
 
 The following propositions are from \cite{fk}. 
 
-\begin{prop*} Let $S$ be a compact Riemann surface of genus $\geq 2.$ Let $\textrm{wt}_p$ be the weight of $p \in S.$ Then $\sum\limits_{p \in S} \textrm{wt}_p = (g - 1) g (g + 1).$
-\end{prop*}
+\begin{proposition} Let $S$ be a compact Riemann surface of genus $\geq 2.$ Let $\textrm{wt}_p$ be the weight of $p \in S.$ Then $\sum\limits_{p \in S} \textrm{wt}_p = (g - 1) g (g + 1).$
+\end{proposition}
 
-\begin{prop*} Let $W(S)$ be the finite set of Weierstrass points on $S.$ If $\phi \in \Aut(S),$ then $\phi (W(S)) = W(S).$ In fact, the sequences of the order of zeros at $p \in S$ and $\phi(p)$ are the same.
-\end{prop*}
+\begin{proposition} Let $W(S)$ be the finite set of Weierstrass points on $S.$ If $\phi \in \Aut(S),$ then $\phi (W(S)) = W(S).$ In fact, the sequences of the order of zeros at $p \in S$ and $\phi(p)$ are the same.
+\end{proposition}
 
 However, in general, the action of $\Aut(S)$ on $W(S)$ is not transitive \cite{ls}. 
 
@@ -324,9 +324,7 @@ This notation is partially justified by defining $\Aut(\Delta)$ to be the group 
 
 \begin{defn} A \textbf{tessellation} $\Delta$ is a polygonal decomposition of the surface where the polygons are either disjoint or share an edge or vertex, and their union is the entire surface. We say $\Delta'$ is a refinement of $\Delta$ if the tiles of $\Delta$ can be subdivided into tiles of $\Delta'$. \end{defn}
 
-\begin{defn} \label{defn: base tess} Let $S$ be a $d$-fold cyclic cover over an $n$-punctured sphere. We define the \textbf{base tessellation} of $S$ as a tessellation tiled by $n$-gons with valency $d$ at every vertex. \end{defn}
-
-For $n \geq 3$ and $d > \frac{n}{2},$ there exists a unique base tessellation on a surface of genus $g > 1.$ The base tessellation is tiled by $N$-many $n$-gons where $-2 \pi (2 - 2 g) = N (\pi - n \cdot \frac{2 \pi}{d}).$ The right-hand-side of the formula is simply the area of the surface and the rest follows from the Gauss-Bonnet formula. 
+\begin{defn} \label{defn: base tess} Let $S$ be a $d$-fold cyclic cover over an $n$-punctured sphere. We define the \textbf{base tessellation} of $S$ as a tessellation tiled by $n$-gons with valency $d$ at every vertex. For $n \geq 3$ and $d > \frac{n}{2},$ there exists a unique base tessellation on a surface of genus $g > 1.$ The base tessellation is tiled by $N$-many $n$-gons where $-2 \pi (2 - 2 g) = N (\pi - n \cdot \frac{2 \pi}{d}).$ The right-hand-side of the formula is simply the area of the surface and the rest follows from the Gauss-Bonnet formula. \end{defn}
 
 %\begin{defn} An \textbf{all-seeing tessellation} on a surface $S$ is such that $$\Aut(\DD) \simeq \Aut(S) $$ \end{defn}
 
@@ -851,7 +849,7 @@ We are interested in $\Aut(A, A^\vee)$, which is isomorphic to $\Corr(A, A)^\tim
 
 We wish to compare $$\Corr\left(\prod_{j= 1}^k A_j, \prod_{i= 1}^k A_i\right) \qquad \text{ and  } \qquad \prod_{i, j} \Corr(A_j, A_i)$$
 
-Let $C$ and $D$ be abelian varieties. Given a line bundle on $C$ and on $D$, we get a line bundle on $C \times D$, but not vice-versa. Intuitively, the product $C \times D$ may have many more interesting cycles than the product of the cycles of $C$ and $D$, and may not necessarily restrict to a line bundle on $C$ or $D$. Therefore, in general the number of principal polarizations of $A$ is at least the product of the number of principal polarizations of the simple components $A_i$, that is, $$\pi(A_1 \times ... \times A_k) \geq \prod_{i=1}^k \pi(A_i)$$ as observed. We saw that $\Jac(\text{I-WP})$ is isogenous to a product of 4 elliptic curves. Since these curves are all isomorphic, we only get one principal polarization from this decomposition, but we found at least 9 principal polarizations on their product.
+Let $C$ and $D$ be abelian varieties. Given a line bundle on $C$ and on $D$, we get a line bundle on $C \times D$, but not vice-versa. Intuitively, the product $C \times D$ may have many more interesting cycles than the product of the cycles of $C$ and $D$, and may not necessarily restrict to a line bundle on $C$ or $D$. Therefore, in general the number of principal polarizations of $A$ is at least the product of the number of principal polarizations of the simple components $A_i$, that is, $$\pi(A_1 \times \ldots \times A_k) \geq \prod_{i=1}^k \pi(A_i)$$ as observed. We saw that $\Jac(\text{I-WP})$ is isogenous to a product of 4 elliptic curves. Since these curves are all isomorphic, we only get one principal polarization from this decomposition, but we found at least 9 principal polarizations on their product.
 \end{remark} 
 
 %\ti{discuss the interest in this problem, previous work, provided examples, waiting on MO post!!! and mention the I-WP example as being unsolved}
@@ -861,11 +859,11 @@ Let $C$ and $D$ be abelian varieties. Given a line bundle on $C$ and on $D$, we 
 
 \section{Example Calculations}
 \label{sec:examples}
-This section is devoted to showing these computational and hyperbolic methods in action, and the occasionally surprising information that is revealed by each method. 
+This section is devoted to showing results from the methods discussed in sections ~\ref{sec:chap3} and \ref{sec:chap4}.
 
-As our test subjects, we consider cyclically branched coverings of the sphere of genus 2, 3, and 4. Recall that $d (d_1, \ldots , d_n)$ denotes the $d$-fold cyclic cover over an $n$-punctured sphere with branching indices $(d_1, \ldots , d_n).$ The first author classified all genus $\leq 5$ cylically branched coverings of the sphere $(n \geq 3)$ in her thesis, and we take examples from this which we expect to have large automorphism groups. We additionally investigate an interesting genus 5 case that is not a cyclically branched cover of a sphere.
+We apply these methods to few genus 2, 3, and 4 surfaces that are cyclic branched covers of the sphere. We take examples from \cite{dthesis} which we expect to have large automorphism groups. We additionally investigate an interesting $X_0(63),$ a genus 5 surface that is not cyclically branched over a sphere.
 
-The two tables highlight the different information revealed by the different methods, and further that the first set of methods works given only a plane curve equation, and the second set works given only the period matrix. The tables are organized by genus and the order of the automorphism group. 
+The two tables highlight the different information revealed by the different methods. The first set of methods works given only a plane curve equation, and the second set works given only the period matrix. The tables are organized by genus and the order of the automorphism group. 
 
 %group lookup table: https://people.maths.bris.ac.uk/~matyd/GroupNames/index500.html
 
@@ -873,14 +871,14 @@ The two tables highlight the different information revealed by the different met
 
 %%% The genus is calculated by Proposition in section~\ref{subsec:theory} using the Riemann-Hurwitz formula.
 
-The results in Table \ref{table:plane} are proved as follows. The genus and their (non)-hyperelliptic nature are calculated by tools from section~\ref{sec:chap3}. The automorphism groups and their orders are calculated by \texttt{autplane.sage}. First we compute the Jacobians and the Jacobian's symplectic automorphism groups. Then by the precise Torelli theorem, we remove the $\Z/2$ factor if the curve is non-hyperelliptic. This is exposited fully in section ~\ref{sec:autplane}. 
+The results in Table \ref{table:plane} are proved as follows. The genus and their (non)-hyperelliptic nature are calculated by tools from section~\ref{sec:chap3}. The automorphism groups and their orders are calculated by algorithms in section~\ref{sec:autplane}.
 
-In the following individual sections, we derive the plane curve models of the cyclic covers of the sphere. We also derive the tessellations $\Delta_T$ to prove that our genus $\leq 4$ examples of cylically branched covers satisfy Conjecture ~\ref{tessconj} discussed in section~\ref{sec:flagflag}. Finally, we derive the period matrices using section~\ref{sec:cyclicperiod} and use the results for calculations in Table \ref{table:pp}. 
+In the following individual sections, we derive the plane curve models of the cyclic covers of the sphere. We also derive the tessellations $\Delta_T$ to show that our examples of cylically branched covers satisfy Conjecture ~\ref{tessconj}, in section~\ref{sec:flagflag}. Finally, we derive the period matrices using cyclicity (section~\ref{sec:cyclicperiod}) and use the results for calculations in Table \ref{table:pp}. 
 
 
 \begin{remark} The case of the modular curve $X_0(63)$ is calculated in a different way which does not require a plane curve model. See section ~\ref{sec:modular}. \end{remark}
 
-The results in Table \ref{table:pp} are proved as follows. These principal polarizations, the corresponding symplectic automorphism groups, and their orders, are found using \texttt{autperio.sage}. This is exposited fully in section ~\ref{sec:autperio}.   
+The results in Table \ref{table:pp} are proved as follows. The principal polarizations, the corresponding symplectic automorphism groups, and their orders are found using \texttt{autperio.sage} (section ~\ref{sec:autperio}).   
 
 % \begin{remark} Bruin \cite{jeroen} has a method of finding period matrices of plane curves numerically using Voronoi deocompositions. We use a different method, using the presentation of the surface as a cyclic covering of a sphere to derive its period matrix. This is exposited in section ~\ref{sec:cyclicperiod}. \end{remark}
 
@@ -955,13 +953,11 @@ $X_0(63)$ & 5 & 2 & $C_2^{\text{ }5}$ & 32 & [32,51] \\
 %should I add explanation of \wr?
 \subsection{8(1, 3, 4)}
 
-In this section, we look at an eightfold cyclic cover over a thrice punctured sphere defined by branching indices $(1, 3, 4).$ As it is a genus two curve, it is hyperelliptic. We will show that its quotient under the hyperelliptic involution is an octahedron and use this fact to find a tessellation on the surface. 
+In this section, we look at a genus two surface defined as an eightfold cyclic cover over a thrice punctured sphere with branching indices $(1, 3, 4).$ Since it is a genus two curve, it is hyperelliptic. We begin this section by discussing two different types of hyperelliptic curves that arise as cyclic branched covers over thrice punctured spheres, namely the $(1, \frac{d}{2} - 1, \frac{d}{2})$-cover and the $(1, 1, d - 2)$-cover. Recall that we let $d (d_1, \ldots , d_n)$ denote the $d$-fold cyclic cover over an $n$-punctured sphere with branching indices $(d_1, \ldots , d_n).$ The former is a genus-$\frac{d}{4}$ curve hence we will write it as a $4 g (1, 2 g - 1, 2 g)$ cover. Similarly, the genus of the latter is $\left(\frac{d}{2} - 1\right)$ hence we denote it as $2 g + 2 (1, 1, 2 g).$ The former type yields a basis of holomorphic 1-forms with divisors $(\omega_i) = (2 i - 2) \widetilde{p_1} + (2 g - 2 i) \widetilde{p_2},$ for $i = 1, \ldots , g.$ Given this basis, the Wronski metric tells us that all $\widetilde{p_i}$ are Weierstrass points. The quotient sphere under the $d$-fold cyclic map is a thrice punctured sphere, but the quotient under the hyperelliptic involution is a $(2 g + 2)$-punctured sphere. Note that the branched points are exactly the hyperelliptic points. We can think of this as a sphere with $\widetilde{p_1}$ and $\widetilde{p_2}$ placed at the North and South Pole, and $2 g$ preimages of $p_3$ along the Equator. These points correspond to the zeros of its plane curve model $y^2 - x (x^{2 g} - 1).$ For the 8(1, 3, 4) cover, we have $y^2 - (x^5 - x).$
 
-We will discuss two different types of hyperelliptic curves that arise as cyclically branched covers over thrice punctured spheres, namely the $d (1, \frac{d}{2} - 1, \frac{d}{2})$-cover and the $d (1, 1, d - 2)$-cover. The former is a genus $\frac{d}{4}$ curve hence we will write it as a $4 g$-fold cover with branching indices $(1, 2 g - 1, 2 g).$ Similarly, the latter a genus $\left(\frac{d}{2} - 1\right)$ curve, which we denote by a $(2 g + 2)$-fold cover with branching indices $(1, 1, 2 g).$ The former type yields a basis of holomorphic 1-forms with divisors $(\omega_1) = (2 g - 2) \widetilde{p_2},$ $(\omega_2) = 2 \widetilde{p_1} + (2 g - 3) \widetilde{p_2},$ $\ldots$, $(\omega_g) = (2 g - 2) \widetilde{p_1}.$ The Wronski metric tells us that all $\widetilde{p_i}$ are Weierstrass points. The quotient sphere under the $d (= 4 g)$-fold cover is a thrice punctured sphere, but the quotient under the hyperelliptic involution is a $(2 g + 2)$-punctured sphere. Note that the branched points are exactly the hyperelliptic points. We can think of this as a sphere with $\widetilde{p_1}$ and $\widetilde{p_2}$ placed at the North and South Pole, and $\widetilde{p_3}_i$ along the Equator. These points correspond to the zeros of its plane curve model $y^2 - x (x^{2 g} - 1),$ hence we have $y^2 - (x^5 - x)$ for the 8(1, 3, 4) cover.
+On the other hand, the $(2 g + 2)$-fold cover yields a basis of holomorphic 1-forms with divisors $(\omega_i) = (i - 1) \widetilde{p_1} + (i - 1) \widetilde{p_2} + (g - i) \widetilde{p_3}_1 + (g - i) \widetilde{p_3}_2,$ for $i = 1, \ldots , g.$ Then none of the $\widetilde{p_i}$ are Weierstrass points but $\widetilde{p_*}$ are, where $p_*$ is a fixed point of an involution that fixes $p_3$ and interchanges $p_1$ and $p_2.$ Since it is not a branched point under the cyclic map, it has $2 g + 2$ preimages which are all fixed under the hyperelliptic involution. The quotient sphere under the hyperelliptic involution can be viewed as a doubled $(2 g + 2)$-gon where all Weierstrass points are located at the vertices. The corresponding plane curve model is $y^2 - (x^{2 g + 2} - 1).$
 
-On the other hand, the $(2 g + 2)$-fold cover yields a basis of holomorphic 1-forms with divisors $(\omega_1) = (g - 1) \widetilde{p_3}_1 + (g - 1) \widetilde{p_3}_2,$ $(\omega_2) = \widetilde{p_1} + \widetilde{p_2} + (g - 2) \widetilde{p_3}_1 + (g - 2) \widetilde{p_3}_2,$ $\ldots$, $(\omega_g) = (g - 1) \widetilde{p_1} + (g - 1) \widetilde{p_2}.$ The Wronski metric tells us that none of the $\widetilde{p_i}$ are Weierstrass points but $\widetilde{p_*}$ are, where $p_*$ is a fixed point of an involution that fixes $p_3$ and interchanges $p_1$ and $p_2.$ As it is not a branched point under the $(2 g + 2)$-fold cover, it has $2 g + 2$ preimages which are fixed under the hyperelliptic involution. The quotient sphere under the hyperelliptic involution can be viewed as a doubled $(2 g + 2)$-gon where all Weierstrass points are located at the vertices. Hence the plane curve model of this type is $y^2 - (x^{2 g + 2} - 1).$
-
-This concludes that the $8(1, 3, 4)$ cover is a double cover over an octahedron. As all of its vertices are 8-valent, we tile the hyperbolic disc via sixteen 8-valent triangles and mark the Weierstrass points by $\bullet.$ Since these triangles are regular, we refine the tessellation to show the threefold symmetry on each triangle. The shaded area in Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:134} indicates a quotient sphere under the eightfold cyclic group.
+The $8(1, 3, 4)$ cover is a double cover over an octahedron, hence tiled by sixteen 8-valent triangles. We tile the hyperbolic disc via these triangles and mark the Weierstrass points by $\bullet.$ Since these tiles are regular, we refine the tessellation to show the order-three symmetry on each tile. The shaded area in Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:134} indicates a quotient sphere under the eightfold cyclic map.
 
 \begin{figure}[htbp]
     \centering
@@ -972,17 +968,17 @@ This concludes that the $8(1, 3, 4)$ cover is a double cover over an octahedron.
     \label{fig:134}%
 \end{figure}
 
-In Figure~\crefformat{figure}{~#2#1{(b)}#3} \cref{fig:134}, we identify opposite edges and use the 1-forms achieved via multipliers. Then the period matrix is 
+In Figure~\crefformat{figure}{~#2#1{(b)}#3} \cref{fig:134} is the flat structure given by $\omega_1.$ We take the closed cycles via the identification of edges and apply cyclity. Then the period matrix is 
 
-$$(\Pi) := (A | B) = \begin{pmatrix}1 & \frac{1 + i}{\sqrt{2}} & i & \frac{-1 + i}{\sqrt{2}}\\
-1 & \frac{-1 + i}{\sqrt{2}} & -i & \frac{1 + i}{\sqrt{2}} \end{pmatrix}.$$
+$$(\Pi) := (A | B) = \begin{pmatrix}1 & \frac{1 + i}{\sqrt{2}} & | & i & \frac{-1 + i}{\sqrt{2}}\\
+1 & \frac{-1 + i}{\sqrt{2}} & | & -i & \frac{1 + i}{\sqrt{2}} \end{pmatrix}.$$
 
 
 % In Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:134}, the base tessellation yields we achieve a tessellation where all vertices are Weierstrass points. Moreover, all vertices on octahedron are similar. Hence, the group of automorphisms acts transitively on the tessellation. We have an order-sixteen rotation $a$ that fixes the center of the tessellation and an order-three rotation $b$ that fixes a triangle. Hence, $\Aut = \langle a, b | a^{16} = b^3 = 1 \rangle$ and $|\Aut| = 48.$ 
 
 \subsection{6(1, 1, 4)}
 
-In this section, we look at another genus two curve defined by branching indices $6(1, 1, 4).$ It is a double cover over a doubled-hexagon and its plane curve model is $y^2 - (x^6 - 1).$ We cannot apply the base tessellation (Definition~\ref{defn: base tess}) here. Instead we tile the disc with twelve $(\frac{\pi}{3}, \frac{\pi}{6}, \frac{\pi}{6})$-triangles. These angles come from Gauss-Bonnet formula. Then we refine the tessellation so that the Weierstrass points are vertices of the tiling. Note that the center of Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:114} is fixed under the sixfold map, not the hyperelliptic map. 
+In this section, we look at another (hyperelliptic) genus two curve. It is a double cover over a doubled-hexagon and its plane curve model is $y^2 - (x^6 - 1).$ Note that we cannot apply the base tessellation (Definition~\ref{defn: base tess}) here\footnote{The conditions in Definition~\ref{defn: base tess} were imposed because of this specific case.}. Instead we use the fact that the quotient sphere (under the hyperelliptic involution) is a doubled-hexagon and tile the disc with twelve $(\frac{\pi}{3}, \frac{\pi}{6}, \frac{\pi}{6})$-triangles. These angles come from Gauss-Bonnet formula ($-2 \pi (2 - 2 \cdot 2) = 12 (\pi - (2 \alpha + \frac{\pi}{3}))$). We refine the tessellation so that the Weierstrass points are vertices of the tiling. Note that the center of Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:114} is fixed under the sixfold map, not the hyperelliptic map. 
 
 \begin{figure}[htbp]
     \centering
@@ -994,10 +990,10 @@ In this section, we look at another genus two curve defined by branching indices
 \end{figure}
 
 
-The shaded area in Figure~\ref{fig:114} indicates a quotient sphere (under the sixfold map) and the Weierstrass points are denoted by $\bullet.$ The gray lines in Figure~\crefformat{figure}{~#2#1{(b)}#3} \cref{fig:114} indicate the identification of edges. We use the gray cycles as the homology basis and the 1-forms achieved via multipliers. Then the period matrix is
+The shaded area in Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:114} indicates a quotient sphere (under the sixfold map) and the Weierstrass points are denoted by $\bullet.$ The identification of edges yield closed cycles. Take the 1-forms achieved via multipliers, then the period matrix is
 
-$$(\Pi) := (A | B) = \begin{pmatrix}1 & \frac{1 + \sqrt{3} i}{2} &  \frac{-1 + \sqrt{3} i}{2} & -1\\
-1 & \frac{-1 + \sqrt{3} i}{2} & \frac{-1 - \sqrt{3} i}{2} & 1 \end{pmatrix}.$$
+$$(\Pi) := (A | B) = \begin{pmatrix}1 & \frac{1 + \sqrt{3} i}{2} & | & \frac{-1 + \sqrt{3} i}{2} & -1\\
+1 & \frac{-1 + \sqrt{3} i}{2} & | & \frac{-1 - \sqrt{3} i}{2} & 1 \end{pmatrix}.$$
 
 % In Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:114}, we have a tessellation of the surface with similar triangles. All triangles have one vertex that is a Weierstrass point, and two vertices that are generic points. That is, not all vertices are similar. Since automorphisms preserve weights of points, given any two triangles in the tessellation, there exists only one map that maps one to the other. To compute $|\Aut|,$ we simply count the number of triangles in the tessellation.
 
@@ -1021,8 +1017,18 @@ $$(\Pi) := (A | B) = \begin{pmatrix}1 & \frac{1 + \sqrt{3} i}{2} &  \frac{-1 + \
 \subsection{8(1, 2, 5) Fermat's quartic}
 %f4
 
-This example arises in \cite{dami} as an abstract quotient of a triply periodic polyhedral surface. The polyhedral surface is called the Octa-4 as it is the boundary of a polyhedron built by gluing four regular octahedra to a centered octahedron. In \cite{dami}, the first author shows that the polyhedral metric induces hyperbolic structures and various translation structures that are compatible with its conformal type. It can also be written as an eightfold cyclic cover over a sphere defined by branching indices $(1, 2, 5).$ Via multipliers we achieve a basis of holomorphic 1-forms and find an explicit algebraic description of the surface that implies Fermat's quartic.  
+This example arises in \cite{dami} as an abstract quotient of a triply periodic polyhedral surface. The polyhedral surface is called the Octa-4 as it is the boundary of a polyhedron built by gluing four regular octahedra to a centered octahedron (Figure~\ref{fig:octa4}). 
 
+\begin{figure}[htbp]
+    \centering
+    \subfloat[Octa-4]{{\includegraphics[width=2.75in]{figures/octa4-5}}}
+    \qquad
+    \subfloat[Fundamental piece of Octa-4]{{\includegraphics[width=2.75in]{figures/funda}}}%
+    \caption{Octa-4}%
+    \label{fig:octa4}%
+\end{figure}
+
+In \cite{dami}, Lee shows that the polyhedral metric induces hyperbolic structures and various translation structures that are compatible with its conformal type. It is described as an eightfold cyclic cover over a sphere.
 
 
 % in case we want to include base tessellation use figures/125_base.pdf
@@ -1037,7 +1043,7 @@ This example arises in \cite{dami} as an abstract quotient of a triply periodic 
     \label{fig:125}%
 \end{figure}
 
-In \cite{dami}, the author shows that the eightfold cover defined over $\mathbb{S}^2 \setminus \{p_1, p_2, p_3\}$ can also be written as a fourfold cyclic cover over $\mathbb{S}^2 \setminus \{q_1, q_2, q_2', q_3\}$ defined by 4(1, 1, 1, 1). We identify $p_i$ and $q_i$ such that $p_i = q_1$ for $i = 1$ and $i = 3,$ and $\widetilde{p_2} = \widetilde{q_2}$ and $\widetilde{p_2}_2 = \widetilde{q_2'}.$ Then the two affine models $y^8 - x(x - 1)^5$ are equivalent $y^4 - x (x - 1) (x + 1),$ and given the latter we achieve Fermat's quartic.
+Furthermore, Lee also shows that the surface can be written as a fourfold cyclic cover over a 4-punctured sphere defined by branching indices (1, 1, 1, 1). Then the two affine models $y^8 - x(x - 1)^5$ are equivalent $y^4 - x (x - 1) (x + 1),$ and given the latter we achieve Fermat's quartic.
 
 %We can reuse the hyperelliptic dummy, as our genus is still 3.
 
@@ -1045,7 +1051,7 @@ In \cite{dami}, the author shows that the eightfold cover defined over $\mathbb{
 
 %\begin{proof} Alternative proof: by \texttt{autplane.sage}. \end{proof}
 
-\begin{remark} It was presented in the paper \cite{dami} as $\Aut(X) = \langle a, b \mid a^8 = b^3 = (ab) ^2 = (a^2b^2)^3 = (a^4b^2)^3 = 1 \rangle$, but this is equivalent to the group in Table ~\ref{table:pp} by the GAP small group identification function. We reproved this with \texttt{autplane.sage}. \end{remark}
+\begin{remark} Using tessellations, the automorphism group of this Riemann surface is presented in \cite{dami} as $\Aut(X) = \langle a, b \mid a^8 = b^3 = (ab) ^2 = (a^2b^2)^3 = (a^4b^2)^3 = 1 \rangle$. This is equivalent to the group in Table ~\ref{table:pp} by the GAP small group identification function. We reprove this with \texttt{autplane.sage}. \end{remark}
 
 %710 PP
 
@@ -1059,7 +1065,7 @@ $$\textrm{int}_1 = \begin{pmatrix} 0 & 1 & 1 & 0 & 0 & 0 \\
  0 & 0 & 0 & -1 & -1 & 0 \end{pmatrix},$$
 
 the period matrix $\Pi_1$ is computed as follows: 
-$$\P_1 = \left(
+$$\Pi_1 = \left(
 \begin{array}{cccccc}
  1 & e^{\frac{\pi i}{4}} & i & e^{\frac{3 \pi i}{4}} & -1 & e^{-\frac{3 \pi i}{4}} \\
  1 & i & -1 & -i & 1 & i \\
@@ -1078,7 +1084,7 @@ $$\textrm{int}_2 = \begin{pmatrix} 0 & 0 & 0 & 1 & 0 & 0 \\
 
 
 This yields the following period matrix $\Pi_2$ 
-$$\Pi_2 = (A|B) = \begin{pmatrix}  1 - i& -((1 + i)/(1 + \sqrt{2}))& (1 + i)/(1 + \sqrt{2})& 1 + i& \sqrt{2}& 2 - \sqrt{2} \\  -2i& 2i& 2i& 2i& -2& -2\\ -1 - i & (1 - i)(1 + \sqrt{2})& (-1 + i)(1 + \sqrt{2})& 1 - i& i\sqrt{2}& i(-2 - \sqrt{2})  \end{pmatrix} $$ and $$\tau = (A^{-1}B) = \begin{pmatrix}i & \frac{1 + i}{2} & \frac{1 + i}{2}\\
+$$\Pi_2 = (A|B) = \begin{pmatrix}  1 - i& -((1 + i)/(1 + \sqrt{2}))& (1 + i)/(1 + \sqrt{2})& | & 1 + i & \sqrt{2}& 2 - \sqrt{2} \\  -2i& 2i& 2i& | & 2i& -2& -2\\ -1 - i & (1 - i)(1 + \sqrt{2})& (-1 + i)(1 + \sqrt{2})& | & 1 - i& i\sqrt{2}& i(-2 - \sqrt{2})  \end{pmatrix} $$ where $$\tau = A^{-1}B = \begin{pmatrix}i & \frac{1 + i}{2} & \frac{1 + i}{2}\\
 \frac{1 + i}{2} & i & \frac{1 + i}{2}\\
 \frac{1 + i}{2} & \frac{1 + i}{2} & i\end{pmatrix}$$
 \end{remark}
@@ -1087,9 +1093,9 @@ $$\Pi_2 = (A|B) = \begin{pmatrix}  1 - i& -((1 + i)/(1 + \sqrt{2}))& (1 + i)/(1 
 \subsection{12(1, 3, 8)}
 
 %f8 
-In this section, we look at an example that arises from the Shiga curve $y^3 = x^4 - 1.$ We observe that there is an order-twelve map $x \mapsto i x,$ $y \mapsto \zeta y,$ where $\zeta$ is a third root of unity. As we have three branched values 0, 1, and $\infty,$ we look at twelvefold cyclic covers that are branched over a thrice punctured sphere. Appendix A of \cite{dthesis} tells us that there are two such covers. One is defined as $12(1, 5, 6)$ and the other is defined as $12(1, 3, 8).$ The former is hyperelliptic whereas the latter is not. Therefore we conclude that the Shiga curve corresponds to the $12(1, 3, 8)$ cover. 
+In this section, we look at an example that arises from the Shiga curve $y^3 = x^4 - 1.$ This is a genus three non-hyperelliptic curve. We observe that there is an order-twelve map $x \mapsto i x,$ $y \mapsto \zeta y,$ where $\zeta$ is a third root of unity. As we have three branched values 0, 1, and $\infty,$ we rely on Appendix A of \cite{dthesis} and search for twelvefold cyclic covers over thrice punctured spheres where we find two possible candidates. One is defined as $12(1, 5, 6)$ and the other is defined as $12(1, 3, 8).$ The former is hyperelliptic whereas the latter is not. Therefore we conclude that the Shiga curve corresponds to the $12(1, 3, 8)$ cover. 
 
-The admissible cone metrics arise from multipliers and yield a basis of 1-forms with divisors $(\omega_1) = \widetilde{p_3}_1 + \widetilde{p_3}_2 + \widetilde{p_3}_3 + \widetilde{p_3}_4,$ $(\omega_2) = \widetilde{p_1} + \widetilde{p_2}_1 + \widetilde{p_2}_2 + \widetilde{p_2}_3,$ and $(\omega_3) = 4 \widetilde{p_1}.$ The Wronskian computation tells us that the Weierstrass points do not have equal weight: $\widetilde{p_1}$ and $\widetilde{p_2}_i$ have weight two, $\widetilde{p_3}_i$ have weight one. Additionally we have $\textrm{wt}(\widetilde{p_*}_i) = 1,$ where $p_*$ is the midpoint of $\overline{p_1 p_2}.$ To find a tessellation that is preserved under its automorphism group, we begin with the base tessellation. Gauss-Bonnet formula tells us that we must have sixteen hyperbolic $(\frac{\pi}{6}, \frac{\pi}{6}, \frac{\pi}{6})$-triangles. The region bounded by the bold lines shows the tessellation of the surface $12(1, 3, 8)$ in Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:138}. We mark the Weiertrass points and subdivide the $(\frac{\pi}{6}, \frac{\pi}{6}, \frac{\pi}{6})$-triangles so that all triangles are congruent to each other. Vertices marked as $\bullet$ are Weierstrass points of weight two, those marked as $\circ$ are points of weight one. 
+The admissible cone metrics arise from multipliers and yield a basis of 1-forms with divisors $(\omega_1) = \widetilde{p_3}_1 + \widetilde{p_3}_2 + \widetilde{p_3}_3 + \widetilde{p_3}_4,$ $(\omega_2) = \widetilde{p_1} + \widetilde{p_2}_1 + \widetilde{p_2}_2 + \widetilde{p_2}_3,$ and $(\omega_3) = 4 \widetilde{p_1}.$ The Wronski metric tells us that the Weierstrass points do not have equal weight: $\widetilde{p_1}$ and $\widetilde{p_2}_i$ have weight two, $\widetilde{p_3}_i$ have weight one. Additionally we have $\textrm{wt}(\widetilde{p_*}_i) = 1,$ where $p_*$ is a fixed point of an involution that fixes $p_3$ and interchanges $p_1$ and $p_2.$ We begin with the base tessellation, then by Gauss-Bonnet formula, the surface is tiled by sixteen hyperbolic $(\frac{\pi}{6}, \frac{\pi}{6}, \frac{\pi}{6})$-triangles. The region bounded by the bold lines shows the tessellation of this surface (Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:138}). We mark the Weierstrass points and subdivide the $(\frac{\pi}{6}, \frac{\pi}{6}, \frac{\pi}{6})$-triangles so that all triangles are congruent to each other. Vertices marked as $\bullet$ are Weierstrass points of weight two, those marked as $\circ$ are points of weight one. 
 
 \begin{figure}[htbp]
     \centering
@@ -1116,7 +1122,12 @@ $$\Pi = \begin{pmatrix} 1 & e^{\frac{\pi i}{6}} & e^{\frac{\pi i}{3}} & i & e^{\
  %The program \texttt{autperio.sage} found only 1 principal polarization up to automorphism-equivalence. Of course $Aut(J(X8, a)) \simeq  (C_4 \cdot A_4) \times C_2$ (of order 96) with respect to this principal polarization $a$. 
 
 \subsection{8(1, 1, 6)}
-In this section, we look at a genus three hyperelliptic curve. We find its base tessellation with thirty two 8-valent triangles. Via the Wronskian we locate the Weierstrass points and refine the tessellation to show all symmetries (Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:116}). These points are fixed under the hyperelliptic involution, whose quotient is a doubled-octagon, hence the plane curve model is $y^2 - (x^8 - 1).$ 
+In this section, we look at a genus three hyperelliptic curve defined as an eightfold cyclic cover with branching indices (1, 1, 6). Its quotient sphere (under the hyperelliptic involution) is a doubled hexagon. We tile the hyperbolic disc by thirty two 8-valent triangles. Via the Wronski metric, we locate the Weierstrass points and refine the tessellation to show all symmetries (Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:116}). Its plane curve model is $y^2 - (x^8 - 1)$ and the period matrix is 
+
+$$\Pi := \begin{pmatrix}
+ 1 & e^{\frac{\pi i}{4}} & i & e^{\frac{3 \pi i}{4}} & -1 & e^{-\frac{3 \pi i}{4}} \\
+ 1 & i & -1 & -i & 1 & i \\
+ 1 & e^{\frac{3 \pi i}{4}} & -i & e^{\frac{\pi i}{4}} & -1 & e^{-\frac{\pi i}{4}} \end{pmatrix}.$$ 
 
 \begin{figure}[htbp]
     \centering
@@ -1127,19 +1138,13 @@ In this section, we look at a genus three hyperelliptic curve. We find its base 
     \label{fig:116}%
 \end{figure}
 
-The period matrix is 
-$$\Pi := \begin{pmatrix}
- 1 & e^{\frac{\pi i}{4}} & i & e^{\frac{3 \pi i}{4}} & -1 & e^{-\frac{3 \pi i}{4}} \\
- 1 & i & -1 & -i & 1 & i \\
- 1 & e^{\frac{3 \pi i}{4}} & -i & e^{\frac{\pi i}{4}} & -1 & e^{-\frac{\pi i}{4}} \end{pmatrix}.$$ 
- 
 % Similar to $6(1, 1, 4),$ the triangles on the tessellation are similar to each other, each with two vertices that are generic, and one vertex that is a Weierstrass point. Therefore, $|\Aut|$ corresponds to the number of triangles on the tessellation.
 
 
 \subsection{12(1, 5, 6)}
 %f10
 
-In this section, we look at another example of a genus three hyperelliptic surface which is defined by branching indices $12(1, 5, 6).$ It is a double-cover over a sphere with six branched points that are located at the North and South Pole, and six equidistributed points on the Equator. Hence, the plane curve model for this is $y^2 - x (x^6 - 1).$ Via Gauss-Bonnet formula, the base tessellation is tiled by twenty four hyperbolic $(\frac{\pi}{6}, \frac{\pi}{4}, \frac{\pi}{4})$-triangles. All Weierstrass points are marked as either $\bullet$ or $\circ$ as they have different valency.
+In this section, we look at another example of a genus three hyperelliptic surface which is defined as a twelvefold cyclic cover over a sphere with branching indices $(1, 5, 6).$ It is a double-cover over a sphere with branched points at the North and South Pole, and six equidistributed points on the Equator. Its plane curve model is $y^2 - x (x^6 - 1).$ We tile the hyperbolic disc by twenty four hyperbolic $(\frac{\pi}{6}, \frac{\pi}{4}, \frac{\pi}{4})$-triangles ($-2 \pi (2 - 2 \cdot 3) = 24 (\pi - (2 \alpha + \frac{\pi}{6})).$ All Weierstrass points are marked as either $\bullet$ or $\circ$ as they have different valency.
 
 \begin{figure}[htbp]
     \centering
@@ -1159,7 +1164,7 @@ In this section, we look at another example of a genus three hyperelliptic surfa
 
 %\begin{remark} In particular, $Aut(J, a)$ is a semidirect product $C_2 \rtimes C_{12}$ ($C_2$ is normal), and the action $C_2 \to Aut(C_{12})$ sends $g \mapsto gmg^{-1} = m^5$. It is not obviously the usual dihedral or dicyclic group.\end{remark}
 
-We use the identification of opposite edges of the 12-gon as the homology basis and the 1-forms achieved via multipliers. Then the period matrix of $12(1, 5, 6)$ is
+We use the identification of opposite edges of the 12-gon as closed cycles to form a homology basis and the 1-forms achieved via multipliers. Then the period matrix is
 
 $$\Pi = \begin{pmatrix}1 & e^{\frac{\pi i}{6}} & e^{\frac{2 \pi i}{6}} & e^{\frac{3 \pi i}{6}} & e^{\frac{4 \pi i}{6}} & e^{\frac{5 \pi i}{6}}\\
 1 & e^{\frac{\pi i}{2}} & e^{\frac{2 \pi i}{2}} & e^{\frac{3 \pi i}{2}} & e^{\frac{4 \pi i}{2}} & e^{\frac{5 \pi i}{2}}\\
@@ -1170,7 +1175,7 @@ $$\Pi = \begin{pmatrix}1 & e^{\frac{\pi i}{6}} & e^{\frac{2 \pi i}{6}} & e^{\fra
 \subsection{4(1, 3, 3, 1)}
 
  %f9
-In this section, we look at a cyclic cover that is branched over a 4-punctured sphere. In our case, the admissible cone metrics are achieved via multipliers, although this is not true for all cyclically branched covers over $n (\geq 4)$-punctured spheres (See chapter~\ref{sec:chap3}). We begin with a base tessellation by eight $(\frac{\pi}{4}, \frac{\pi}{4}, \frac{\pi}{4}, \frac{\pi}{4})$-squares. The admissible cone metrics yield a basis with divisors $(\omega_1) = 2 \widetilde{p_2} + 2 \widetilde{p_3},$ $(\omega_2) = \widetilde{p_1} + \widetilde{p_2} + \widetilde{p_3} + \widetilde{p_4},$ and $(\omega_3) = 2 \widetilde{p_1} + 2 \widetilde{p_4}.$ Given a chart where $(z(p_i)) = (-a, -1, 1, a)$ for some $a > 1,$ the Wronskian tells us that the curve is hyperelliptic and the Weierstrass points are located at the preimages of $q$ where $z(q) = 0$ or $z(q) = \infty.$ The Weierstrass points are marked as $\bullet$ in Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:1331}.
+In this section, we look at a genus three hyperelliptic curve that is a cyclic cover over a 4-punctured sphere. In our case, the admissible cone metrics are achieved via multipliers, although this is not true for all cyclically branched covers over $n (\geq 4)$-punctured spheres (See chapter~\ref{sec:chap3}). The admissible cone metrics yield a basis with divisors $(\omega_1) = 2 \widetilde{p_2} + 2 \widetilde{p_3},$ $(\omega_2) = \widetilde{p_1} + \widetilde{p_2} + \widetilde{p_3} + \widetilde{p_4},$ and $(\omega_3) = 2 \widetilde{p_1} + 2 \widetilde{p_4}.$ Given a chart where $(z(p_i)) = (-a, -1, 1, a)$ for some $a > 1,$ the Wronskian tells us that the curve is hyperelliptic and the Weierstrass points are located at the preimages of $q$ where $z(q) = 0$ or $z(q) = \infty.$ The Weierstrass points are marked as $\bullet$ in Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:1331}.
 
 % explain how h.e. involution works wrt a and b?
  
@@ -1185,7 +1190,7 @@ In this section, we look at a cyclic cover that is branched over a 4-punctured s
     \label{fig:1331}%
 \end{figure}
 
-Given the branching indices, that is, the appropriate cone angles, the four punctured sphere associated to $\omega_1$ is a doubled trapezoid with angles $\frac{\pi}{4}$ and $\frac{3 \pi}{4}.$ However, the trapezoid cannot be pinned down uniquely (Figure~\ref{fig:1331}). However, we set the side lengths of the trapezoid so that $\overline{p_1 p_2} = 1$ and $\overline{p_2 p_3} = b$ for $b > 0.$ For $\omega_2,$ the cone angles are $\frac{\pi}{2}$ at each puncture. We take the side lengths to be 1 and $c,$ and show that $c$ can be arbitrary. Given $b, c >0,$ we calculate the period matrix to be:
+Given the branching indices, that is, the appropriate cone angles, the four punctured sphere associated to $\omega_1$ is a doubled trapezoid with angles $\frac{\pi}{4}$ and $\frac{3 \pi}{4}.$ However, the trapezoid cannot be pinned down uniquely (Figure~\ref{fig:1331}). We parametrize the side lengths of the trapezoid so that $\overline{p_1 p_2} = 1$ and $\overline{p_2 p_3} = b$ for $b > 0.$ Moreover, for $\omega_2,$ we parametrize the side lengths to be 1 and $c,$ and show that $c$ can be arbitrary. Given $b, c >0,$ we calculate the period matrix to be:
 
 $$\Pi = \begin{pmatrix} 1 & i & -1 & (b + \sqrt{2}) e^{\frac{i \pi }{4}} & (b + \sqrt{2}) e^{\frac{3 i \pi }{4}} & (b + \sqrt{2}) e^{-\frac{3 i \pi }{4}} \\
  1 & -1 & 1 & c i & -c i & c i \\
@@ -1230,10 +1235,9 @@ The period matrix of $B$, in its pure form, is calculated in \cite{matti} in Lem
 
 %f6 
 
-In this section, we look at another genus four non-hyperelliptic surface. This surface appears in \cite{dthesis} as an abstract quotient of a triply periodic polyhedral surface where it is called the Octa-8 surface. It is shown in \cite{dthesis} that this curve is a threefold cyclic cover over a six-punctured sphere with branching indices $(1, 1, 1, 1, 1, 1).$ This map is the order-three Gauss map on the minimal surface. The six points are located at the vertices of an octahedron hence the plane curve model is $y^3 - (x^5 - x).$ It is then shown that its conformal structure is compatible to Schoen's I-WP surface.
+In this section, we look at another genus four non-hyperelliptic surface. This surface appears in \cite{dthesis} as an abstract quotient of a triply periodic polyhedral surface where it is called the Octa-8 surface. It is also shown in \cite{dthesis} that this curve can be described as a threefold cyclic cover over a six-punctured sphere with branching indices $(1, 1, 1, 1, 1, 1).$ This map is the order-three Gauss map on the minimal surface in $\mathbb{R}^3.$ The branched points are located at the vertices of an octahedron hence the plane curve model is $y^3 - (x^5 - x).$ It is then shown that the cone metric yields a conformal structure that is compatible to Schoen's I-WP surface.
 
-Its base tessellation is tiled by twenty four $(\frac{\pi}{6}, \frac{\pi}{6}, \frac{\pi}{6})$-triangles. However, after we locate all Weierstrass points, we refine the tessellation as in Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:147}. The vertices marked as $\bullet$ are Weierstrass points of weight four, those marked as $\circ$ are points of weight one. 
-
+The base tessellation is tiled by twenty four $(\frac{\pi}{6}, \frac{\pi}{6}, \frac{\pi}{6})$-triangles. The branched points (under the twelvefold cyclic map) are Weierstrass points of weight four and the preimages of the midpoints of $p_i$ and $p_{i'}$ are Weierstrass points of weight one. These are marked as $\bullet$ and $\circ,$ respectively in Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:147}. 
 
 \begin{figure}[htbp]
     \centering
@@ -1245,11 +1249,7 @@ Its base tessellation is tiled by twenty four $(\frac{\pi}{6}, \frac{\pi}{6}, \f
     \label{fig:147}%
 \end{figure}
 
-
 %Considering the orientation of each triangles, we see that we can not choose any two triangles in the tessellation. However, the tessellation can be divided into two congruence classes of 72 triangles each. Given two triangles from the same congruence class, there is one map that maps one triangle to the other. As in $12(1, 3, 8)$ we saw earlier, the weights of the vertices must be preserved. Hence, $|\Aut(\text{I-WP})| = 72.$
-
-
-
 
 %\begin{thm*} $X6$ is nonhyperelliptic and of genus 4. It is shown in the thesis of the first author \cite{dthesis} that this is the Schoen I-WP Surface. \end{thm*} 
 
@@ -1258,7 +1258,7 @@ Its base tessellation is tiled by twenty four $(\frac{\pi}{6}, \frac{\pi}{6}, \f
 
 % We present the intersection matrix used to make the period matrix, note it shows that the surface is cyclic.
 
-The period matrix is:
+The period matrix is
 
 $$\Pi = \begin{pmatrix}
  1 & e^{\frac{\pi i}{6}} & e^{\frac{\pi i}{3}} & i & e^{\frac{2 \pi i}{3}} & e^{\frac{5 \pi i}{6}} & -1 & e^{-\frac{5 \pi i}{6}} \\
@@ -1283,13 +1283,13 @@ We are most interested in quotients of the upper half plane $\mathfrak{h}^{+}$ b
  \end{defn} 
 
 % The automorphism groups of $X(N)$ were found in \cite{bwx} to be $PSL_2(\Z/N\Z)$ (when the genus is greater than 2). The case of all $X_1(N)$ was reportedly found in general in a print, but the second author cannot locate the answer nor a copy of this manuscript. 
-The automorphism groups of $X_0(N) := \mathfrak{h}^{+} / \Gamma_0(N)$ were calculated in \cite{km} except for $N=63$. The case of $X_0(63)$ was resolved 2 years later by Noam Elkies \cite{elkies} by two different proofs: a conceptual one that uses enumerative geometry and the modular structure, and an explicit one that exhibits the modular equations. 
+The automorphism groups of $X_0(N) := \mathfrak{h}^{+} / \Gamma_0(N)$ were calculated in \cite{km} except for $N=63$. The case of $X_0(63)$ was resolved 2 years later by Elkies in \cite{elkies} by two different proofs: a conceptual one that uses enumerative geometry and the modular structure, and an explicit one that exhibits the modular equations. 
 
 %\begin{conjecture} \label{63conj}  All principal polarizations on a Jacobian $J$ coming from curves are found by the method discussed in section ~\ref{sec:find}.  In other words: if there are exactly $n$ curves such that $J \simeq \Jac(C_1) \simeq \Jac(C_n)$, where $C_i \nsimeq C_j$ when $i \neq j$, then the algorithm will find at least the canonical principal polarizations on $J$ associated to $C_1, ..., C_n$.\end{conjecture} 
 
 \begin{conjecture} \label{63conj} The program \texttt{CullPB.m} finds all principal polarizations on the curves we consider. \end{conjecture}
 
-If this conjecture is true, it would be a radically different proof than that of Elkies, since we go through computing the automorphism group of the Jacobian of $X_0(63)$. Assuming this conjecture, we go through the proof.
+If this conjecture is true, it would be a radically different proof than that of Elkies, since we compute the automorphism group of the Jacobian of $X_0(63)$. Assuming this conjecture, we have
 
 \begin{thm*} $\Aut(X_0(63)) \simeq S_4 \times \Z/2$ \end{thm*} 
 
@@ -1298,7 +1298,7 @@ If this conjecture is true, it would be a radically different proof than that of
 \begin{lemma*} $\Aut(X_0(63))$ is either $A_4 \times \Z/2$ or $S_4 \times \Z/2$. 
 \end{lemma*}
 
-Using the period matrix provided by Mascot, performed with 150 precisions, \texttt{autperio.sage} gives (using Conjecture ~\ref{63conj}):
+Using the period matrix provided by Mascot, performed with 150 precisions, \texttt{autperio.sage} (using Conjecture ~\ref{63conj}) gives
 
 \begin{lemma*} $\Aut(X_0(63))$ is either $C_2^{\text{ }4}$ or $S_4 \times \Z/2$.
 \end{lemma*}
@@ -1310,9 +1310,9 @@ Therefore, it must be that $\Aut(X_0(63)) \simeq S_4 \times \Z/2$.
 \vspace{+10pt} 
 The period matrix used in our calculation of $\Aut(\Jac(X_0(63)), p_i)$ was computed by Nicolas Mascot using an alteration of his personal code.
 
-\begin{remark} Mascot's paper \cite{n} discusses finding the period matrices for $X_1(N)$ by integrating cuspforms along modular symbols. His algorithm works for any compactified modular curve, but it works best when $N$ is square-free. In the non-squarefree case, the coefficients in the $q$-expansions of the cuspforms and the $j$-invariant do not converge as quickly, thus they require more digits of precision. \end{remark}
+\begin{remark} Mascot, in \cite{n}, discusses finding the period matrices for $X_1(N)$ by integrating cuspforms along modular symbols. His algorithm works for any compactified modular curve, but it works best when $N$ is square-free. In the non-squarefree case, the coefficients in the $q$-expansions of the cuspforms and the $j$-invariant do not converge as quickly, thus they require more digits of precision. \end{remark}
 
-\begin{remark} In private correspondence, John Voight programmatically proved that $X_0(63)$ is not a cyclically branched cover of the sphere. He showed that the list of dimensions of the space of $H$-invariant differentials on $X_0(63)$ where $H$ is a cyclic subgroup of $Aut(X_0(63))$, does not contain zero. Note that the genus of the quotient $X_0(63)/H$ is equal to the dimension of the $H$-invariant differentials.
+\begin{remark} In private correspondence, John Voight programmatically proved that $X_0(63)$ is not a cyclically branched cover of the sphere. Given that the genus of the quotient $X_0(63)/H$ is equal to the dimension of the $H$-invariant differentials, he shows that the list of dimensions of the space of $H$-invariant differentials on $X_0(63)$ (where $H$ is a cyclic subgroup of $Aut(X_0(63))$) does not contain zero. 
  \end{remark} 
 
 
@@ -1379,7 +1379,7 @@ The code used in this paper can all be found at \url{https://github.com/catherin
 
 We speak here of polarizations up to auto-equivalence and ask natural questions on Jacobians with multiple principle polarizations, answering all but one of the questions using methods developed in our paper.
 
-We fix some notation. Let $\theta_C$ be the canonical principal polarization of $\Jac(C)$ with respect to $C$. We call $\Aut(A, a_i)$ a symplectic automorphism group of $A$, as the automorphisms respect the principal polarization $a_i$, which is a symplectic form on $A$.
+We fix some notation. Let $\phi_C$ be the canonical principal polarization of $\Jac(C)$ with respect to $C$. We call $\Aut(A, a_i)$ a symplectic automorphism group of $A$, as the automorphisms respect the principal polarization $a_i$, which is a symplectic form on $A$.
 
 \begin{question} $\Aut(\Jac(C), \theta_C)$ will have the highest order of all symplectic automorphism groups of $\Jac(C)$. \end{question}
 
@@ -1521,7 +1521,7 @@ Vol. 220, 2005, pp.167--182.
 A. Weil,
 \textit{Oeuvres Scientifiques},
 Springer,
-Vol. 2. 
+Vol. 2, 1983.
 
 
 %did we use these other guys?
