@@ -144,7 +144,7 @@
 	\maketitle
 	
 \begin{abstract}
-In this paper, we calculate and interpret the interaction between the automorphism group of a Riemann surface and the automorphism group of its Jacobian. We exposit and expand some calculational techniques from computational arithmetic geometry and hyperbolic geometry. Using these methods, we calculate in a new way the automorphism groups of well-known surfaces such as Klein's quartic, Fermat's quartic, and Bring's curve. We exploit the fact that these surfaces can be described as cyclic branched covers over a punctured sphere to apply to further examples. We also use this approach on the modular curve $X_0(63),$ as an example that is not a cyclic cover over a sphere. We find several principal polarizations on many Jacobians of these Riemann surfaces, and the automorphism groups with respect to each of these polarizations. We discuss and answer questions on Jacobians with multiple principal polarizations. 
+In this paper, we calculate and interpret the interaction between the automorphism group of a Riemann surface and the automorphism group of its Jacobian. We exposit and expand some calculational techniques from computational arithmetic geometry and hyperbolic geometry. Using these methods, we calculate in a new way the automorphism group of surfaces. Examples include highly symmetric surfaces such as Klein's quartic, Fermat's quartic, and Bring's curve. Furthermore, we include concrete examples from Lee's thesis and the modular curve $X_0(63)$ to test our techniques. We find several principal polarizations on many Jacobians of these Riemann surfaces, and the automorphism groups with respect to each of these polarizations. We discuss and answer questions on Jacobians with multiple principal polarizations. 
 \end{abstract} 
 	
 	
@@ -230,7 +230,7 @@ We will discuss the topological construction of a cyclically branched cover over
 We define a covering over an $n$-punctured sphere in the following way. Let $Y := \mathbb{S}^2 \setminus \{p_1, \ldots , p_n\}$ be an $n$-punctured sphere and let $q \in Y$ be a base point. Let $\gamma_i$ be simple curves from $q$ to $p_i$ so that $\gamma_i$ are mutually disjoint. These will serve as the branch cuts. We assign a positive integer $d_i$ for each $i$ that shows how the branching occurs at each branch cut. We call $d_i$ the \textit{branching index.} Let $d$ be the degree of the covering map and use $j$ to index $Y_1, \ldots , Y_d.$ For each $i$ and $j$ we identify the ``left'' side of $\gamma_i$ of $Y_j$ with the ``right'' side of $\gamma_i$ of $Y_{j + d_i \pmod d}.$ 
 %%%lookd: is this a correct definition?
 
-\begin{defn} We say that a surface $S$ is a \textbf{$d$-fold cyclic branched cover over a sphere} if $S/(\mathbb{Z}/ d \mathbb{Z})$ is a sphere.  \end{defn}
+\begin{defn} We say that a surface $S$ is a \textbf{$d$-fold cyclically branched cover over an $n$-punctured sphere} if $S/(\mathbb{Z}/ d \mathbb{Z})$ is a sphere and $S$ is branched at $n$ points.  \end{defn}
 
 The following theorem shows when such a covering is defined as a closed surface. 
 
@@ -270,12 +270,10 @@ The following propositions are from \cite{fk}.
 \begin{proposition} Let $S$ be a compact Riemann surface of genus $\geq 2.$ Let $\textrm{wt}_p$ be the weight of $p \in S.$ Then $\sum\limits_{p \in S} \textrm{wt}_p = (g - 1) g (g + 1).$
 \end{proposition}
 
-\begin{proposition} Let $W(S)$ be the finite set of Weierstrass points on $S.$ If $\phi \in \Aut(S),$ then $\phi (W(S)) = W(S).$ In fact, the sequences of the order of zeros at $p \in S$ and $\phi(p)$ are the same.
+\begin{proposition} Let $W(S)$ be the finite set of Weierstrass points on $S.$ If $\phi \in \Aut(S),$ then $\phi (W(S)) = W(S).$  In fact, the sequences of the order of zeros at $p \in S$ and $\phi(p)$ are the same. 
 \end{proposition}
 
-However, in general, the action of $\Aut(S)$ on $W(S)$ is not transitive \cite{ls}. 
-
-Next, we use the Wronski metric to find all Weierstrass points that are not necessarily $\widetilde{p_i}.$
+In other words, there is a faithful representation of $\Aut(S)$ as permutations of the set of Weierstrass points $L: \text{Aut}(S) \to \Sigma_{W(S)}$. However, in general, the action of $\Aut(S)$ on $W(S)$ is not transitive \cite{ls}. Next, we use the Wronski metric to find all Weierstrass points that are not necessarily $\widetilde{p_i}.$
 
 \begin{defn}\label{def: wronski} Given a basis of holomorphic differentials $\omega_i = f_i d z$ on a Riemann surface $X$ of genus $g$, the Wronskian defined by $$\mathcal{W}(z) := \textrm{det} \left( \frac{d^j f_k(z)}{d z^j} \right)_{j = 0, \ldots , g - 1, \, k = 1, \ldots , g}$$ is a non-trivial holomorphic function on $X$ that induces a metric which we call the \textit{Wronski metric.} \end{defn}
 
@@ -783,7 +781,7 @@ We may construct a form $H: H^{1, 0}(C, \C) \times H^{1, 0}(C, \C) \to \Z$ by pr
 \label{sec:find}
 We begin with a representation of our abelian variety as $A := \C^g/\Pi\Z^{2g}$. 
 
-Then $\Lambda$ is the associated lattice spanned by the columns of $\Pi$. Thus, we have a distinguished basis for the homology of $A$, corresponding to the columns of $\Pi$. 
+Then $\Lambda$ is the associated lattice spanned by the columns of $\Pi$. Thus, we have a distinguished basis for the homology of $A$, corresponding to the columns of $\Pi$. We present the most naive algorithm possible.
 
 %\todo[inline]{Do I want to elaborate on this? This is a program, and in a program, we must pick a basis.}
 
@@ -974,7 +972,7 @@ The $8(1, 3, 4)$ cover is a double cover over an octahedron, hence tiled by sixt
     \label{fig:134}%
 \end{figure}
 
-In Figure~\crefformat{figure}{~#2#1{(b)}#3} \cref{fig:134} is the flat structure given by $\omega_1.$ We take the closed cycles via the identification of edges and apply cyclity. Then the period matrix is 
+In Figure~\crefformat{figure}{~#2#1{(b)}#3} \cref{fig:134} is the flat structure given by $\omega_1.$ We take the closed cycles via the parallel identification of edges and apply cyclity. Then the period matrix is 
 
 $$(\Pi) := (A | B) = \begin{pmatrix}1 & \frac{1 + i}{\sqrt{2}} & | & i & \frac{-1 + i}{\sqrt{2}}\\
 1 & \frac{-1 + i}{\sqrt{2}} & | & -i & \frac{1 + i}{\sqrt{2}} \end{pmatrix}.$$
@@ -1228,7 +1226,7 @@ In this section, we look at the genus four non-hyperelliptic Riemann surface ass
     \subfloat[Flat 20-gon represents $\omega_1$ of Bring's curve]{{\includegraphics[width=2.75in]{figures/1243_flat}}}%
    \qquad
     \caption{Bring's curve}%
-    \label{fig:1331}%
+    \label{fig:1243}%
 \end{figure}
 
 % need to give credit for both SSD figures
@@ -1409,6 +1407,27 @@ We checked this question on the family of hyperelliptic cases of genus 2 from \c
 % tktk 
 % change this to conjecture if we are not providing an answer
 
+\section*{Figure Credits}
+
+\begin{itemize}
+ \item Figure \ref{fig: 124_flat}\\*
+``The flat fourteengon fundamental domain represents a holomorphic 1-form,'' H. Karcher, M. Weber, \textit{On Klein's Riemann Surface}, The Eightfold Way, MSRI Publications, Vol. 35, 1998, pp.9--49.
+
+
+\item Figure \ref{fig:octa4}\\*
+``Construction of $\Pi$'' and ``Fundamental piece, $\Pi_0$,'' D. Lee, \textit{On a triply periodic polyhedral surface whose vertices are Weierstrass points}, Arnold Mathematical Journal, Vol. 3, Issue 3, 2017, pp.319--331.
+
+ \item Figure~\crefformat{figure}{~#2#1{(b)}#3} \cref{fig:125}\\*
+``Flat structure of the fundamental piece,'' D. Lee, \textit{On a triply periodic polyhedral surface whose vertices are Weierstrass points}, Arnold Mathematical Journal, Vol. 3, Issue 3, 2017, pp.319--331. 
+
+
+\item Figure~\crefformat{figure}{~#2#1{(b)}#3} \cref{fig:1243}\\*
+``Figure 8,'' M. Weber, \textit{Kepler's small stellated dodecahedron as a Riemann surface}, 
+Pacific Journal of Mathematics, 
+Vol. 220, 2005, pp.167--182.
+\end{itemize}
+
+
 \begin{thebibliography}{20}
 
 \bibitem{bl} 
@@ -1518,7 +1537,7 @@ Vol. 90, 1951, pp.125--128.
 
 \bibitem{matti} 
 M. Weber,
-\textit{Kepler's small stellated dodecahedron as a Riemann surface}
+\textit{Kepler's small stellated dodecahedron as a Riemann surface},
 Pacific Journal of Mathematics, 
 Vol. 220, 2005, pp.167--182.
 
