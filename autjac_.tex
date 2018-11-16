@@ -346,7 +346,10 @@ $\text{}$ $\hspace{2mm}$\textit{Output:} A particular tessellation $\Delta_T$.
 
 %Attempt to align the Weierstrass points of $S$ with the vertices of $\Delta$. If this is not possible, refine $\Delta$ until all Weierstrass points lay on vertices of $\Delta$ and all tiles of $\Delta$ are similar. Call this new tessellation $\widetilde{Delta}$. 
 
-\item Restrict our attention to a tile $T$ of $\widetilde{\Delta}$. Recall that all tiles are similar. Let $G_T$ be the orientation-preserving automorphism group of $T$\footnote{Note that the automorphism group $G_T$ encodes the weight of the vertices of $T$. As automorphisms preserve weights, vertices of different weights cannot be mapped to each other.}). Refine, i.e., subdivide $T$ until all subtiles of $T$ are similar and are $T/G_T =: T'.$ Tile $\widetilde{\Delta}$ by $T',$ and call this tessellation $\Delta_T$.
+\item Let $G_T$ be the orientation-preserving automorphism group of a tile $T$ of $\widetilde{\Delta}$ (recall that all tiles are similar\footnote{Note that the automorphism group $G_T$ encodes the weight of the vertices of $T$. As automorphisms preserve weights, vertices of different weights cannot be mapped to each other. Since all $T$ are similar, all $G_T$ are the same.}). Restrict our attention to a tile $T$ of $\widetilde{\Delta}$. On this tile $T$, add lines until any tile of the refinement $T'$ is the fundamental domain of $G_T$ acting on $T$. Doing this to every tile $T$ gives a new tessellation, which we call $\Delta_T$.
+
+
+%(this wording is unclear, I liked the previous version better. Here is your version: Restrict our attention to a tile $T$ of $\widetilde{\Delta}$. Recall that all tiles are similar. Let $G_T$ be the orientation-preserving automorphism group of $T$\footnote{Note that the automorphism group $G_T$ encodes the weight of the vertices of $T$. As automorphisms preserve weights, vertices of different weights cannot be mapped to each other.}). Refine, i.e., subdivide $T$ until all subtiles of $T$ are similar and are $T/G_T =: T'.$ Tile $\widetilde{\Delta}$ by $T',$ and call this tessellation $\Delta_T$.
 %%%lookd: can we have an issue where the rotation of the fundmental domain T' is an automorphism of the surface S?
 % so a rotation that fixes a T? This happens but why would it be an issue? For instance, Klein's quartic has 56 order-three rotations. 
 \end{enumerate}
@@ -852,7 +855,7 @@ We are interested in $\Aut(A, A^\vee)$, which is isomorphic to $\Corr(A, A)^\tim
 
 We wish to compare $$\Corr\left(\prod_{j= 1}^k A_j, \prod_{i= 1}^k A_i\right) \qquad \text{ and  } \qquad \prod_{i, j} \Corr(A_j, A_i)$$
 
-Let $C$ and $D$ be abelian varieties. Given a line bundle on $C$ and on $D$, we get a line bundle on $C \times D$, but not vice-versa. Intuitively, the product $C \times D$ may have many more interesting cycles than the product of the cycles of $C$ and $D$, and may not necessarily restrict to a line bundle on $C$ or $D$. Therefore, in general the number of principal polarizations of $A$ is at least the product of the number of principal polarizations of the simple components $A_i$, that is, $$\pi(A_1 \times \ldots \times A_k) \geq \prod_{i=1}^k \pi(A_i)$$ as observed. We saw that $\Jac(\text{I-WP})$ is isogenous to a product of 4 elliptic curves. Since these curves are all isomorphic, we only get one principal polarization from this decomposition, but we found at least 9 principal polarizations on their product.
+Let $C$ and $D$ be abelian varieties, and let $\pi(A)$ be the number of principal polarizations on $A$ up to isomorphism. Given a line bundle on $C$ and on $D$, we get a line bundle on $C \times D$, but not vice-versa. Intuitively, the product $C \times D$ may have many more interesting cycles than the product of the cycles of $C$ and $D$, and may not necessarily restrict to a line bundle on $C$ or $D$. Therefore, in general the number of principal polarizations of $A$ is at least the product of the number of principal polarizations of the simple components $A_i$, that is, $$\pi(A_1 \times \ldots \times A_k) \geq \prod_{i=1}^k \pi(A_i)$$ as observed. We saw that $\Jac(\text{I-WP})$ is isogenous to a product of 4 elliptic curves. Since these curves are all isomorphic, we only get one principal polarization from this decomposition, but we found at least 9 principal polarizations on their product.
 \end{remark} 
 
 %\ti{discuss the interest in this problem, previous work, provided examples, waiting on MO post!!! and mention the I-WP example as being unsolved}
@@ -1382,11 +1385,11 @@ The code used in this paper can all be found at \url{https://github.com/catherin
 
 We speak here of polarizations up to auto-equivalence and ask natural questions on Jacobians with multiple principle polarizations, answering all but one of the questions using methods developed in our paper.
 
-We fix some notation. Let $\phi_C$ be the canonical principal polarization of $\Jac(C)$ with respect to $C$. We call $\Aut(A, a_i)$ a symplectic automorphism group of $A$, as the automorphisms respect the principal polarization $a_i$, which is a symplectic form on $A$.
+We fix some notation. Let $\theta_C$ be the canonical principal polarization of $\Jac(C)$ with respect to $C$. We call $\Aut(A, a_i)$ a symplectic automorphism group of $A$, as the automorphisms respect the principal polarization $a_i$, which is a symplectic form on $A$.
 
 \begin{question} $\Aut(\Jac(C), \theta_C)$ will have the highest order of all symplectic automorphism groups of $\Jac(C)$. \end{question}
 
-This is proven false by example $12(1,5,6)$, where $|\Aut(\Jac(12(1, 5, 6)), \phi_{12(1, 5, 6)})| = 24$, but $|\Aut(\Jac(12(1, 5, 6)), a_i)| = 32$ is achieved. It is more dramatically proven false by Schoen's I-WP Surface, where $|\Aut(\Jac(\text{I-WP}), \phi_{\text{I-WP}})| = 288$, but $|\Aut(\Jac(\text{I-WP}), a_i)|$ achieves $576$ and $864$.
+This is proven false by example $12(1,5,6)$, where $|\Aut(\Jac(12(1, 5, 6)), \theta_{12(1, 5, 6)})| = 24$, but $|\Aut(\Jac(12(1, 5, 6)), a_i)| = 32$ is achieved. It is more dramatically proven false by Schoen's I-WP Surface, where $|\Aut(\Jac(\text{I-WP}), \theta_{\text{I-WP}})| = 288$, but $|\Aut(\Jac(\text{I-WP}), a_i)|$ achieves $576$ and $864$.
 
 \begin{question} Principal polarizations $p_1$ and $p_2$ are auto-equivalent if and only if they are analytically equivalent. In other words, $$\Aut(X, p_1) \simeq \Aut(X, p_2) \Leftrightarrow p_1 = p_2$$ \end{question}
 
@@ -1396,11 +1399,11 @@ $$X: 3y^2 = (2x^2- 2)(16x^4 + 28x^2 + 1)$$
 
 $$X': -y^2 = (2x^2 + 2)(16x^4 + 12x^2 + 1)$$ 
 
-which both have $\Aut(\Jac(X), \phi_X)\simeq C_2 \times C_2 \simeq \Aut(\Jac(X'), \phi_{X'})$. %This is true for many curves in Howe's first family where $t \in \Z^\times$. 
+which both have $\Aut(\Jac(X), \theta_X)\simeq C_2 \times C_2 \simeq \Aut(\Jac(X'), \theta_{X'})$. %This is true for many curves in Howe's first family where $t \in \Z^\times$. 
 
 %First, note that $$\Aut(\Jac(X), c_1(\mc{L})) \simeq \Aut(\Jac(X), c_1(\mc{M}))$$ does not immediately imply that $c_1(\mc{L}) = c_1(\mc{M})$.
 
-\begin{question} If $\Jac(C) \simeq \Jac(C')$ as complex varieties, then $$\Aut(\Jac(C), \phi_C) \simeq \Aut(\Jac(C'), \phi_{C'})$$  \end{question} 
+\begin{question} If $\Jac(C) \simeq \Jac(C')$ as complex varieties, then $$\Aut(\Jac(C), \theta_C) \simeq \Aut(\Jac(C'), \theta_{C'})$$  \end{question} 
 
 We checked this question on the family of hyperelliptic cases of genus 2 from \cite{howe1} Theorem 1, where it is true. However, there is no reason to expect this to be true in general. 
 % tktk 
