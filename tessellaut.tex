@@ -143,5 +143,115 @@
 	
 \maketitle
 
+\section{Introduction}
+
+In \cite{dami}, the first author develops the a method to compute the automorphism group of Fermat's quartic by constructing a particular tesselation. This method works particularly well on highly symmetric surfaces, e.g. those whose Weierstrass points have uniform weight. Lee presents Fermat's quartic as an eightfold cyclically branched cover over a thrice punctured sphere and finds a regular hyperbolic tessellation on the surface that is preserved under the automorphism group. Using this tessellation, Lee computes the automorphism group of Fermat's quartic in a generator-relation format. 
+
+In this paper, we conjecturally extend this method to surfaces that have Weierstrass points of different weights. 
+
+We introduce conjectures for computing automorphism groups of cyclically branched surfaces with unequal weight weierstrass points purely by constructing and counting a particular tesselation, and test them with programs based on the alogorithms of Bruin-Sijsling-Zotine. This paper proves no theorems, but rather demonstrates the strength of a computational technique.
+
+[We took the algorithm for plane curves to aut group from https://arxiv.org/pdf/1807.02605.pdf, this is what we used to check the conjecture above.]
+
+\subsection{Exhibiting the Automorphism Group via Tessellation}
+
+\label{sec:flagflag}
+
+In \cite{dami}, the first author computed the automorphism group of an eightfold cyclic cover over a thrice punctured sphere by finding a tessellation on the surface where the vertices corresponded to the Weierstrass points. There, the surface of interest has Weierstrass points of uniform weight. In this paper, we conjecturally generalize this algorithm to surfaces that have Weierstrass points of different weights. %We will use Weierstrass points, computed using the Wronski metric, as our markings on the surface.
+
+In this section, we wish to find a tessellation $\Delta$ on a surface $S$ which exhibits the automorphism group of $S$. Formally, we wish for $\Aut(S)$ to act freely and transitively on the tiles of $\Delta$; we denote this with a slight abuse of notation:
+\vspace{-3pt}
+$$\Aut(\Delta) \simeq \Aut(S)$$
+
+This notation is partially justified by defining $\Aut(\Delta)$ to be the group of automorphisms which are orientation-preserving, send vertices to vertices, edges to edges, and faces to faces. 
+
+\begin{defn} A \textbf{tessellation} $\Delta$ is a polygonal decomposition of the surface where the polygons are either disjoint or share an edge or vertex, and their union is the entire surface. We say $\Delta'$ is a refinement of $\Delta$ if $\Delta \subset \Delta'$. \end{defn}
+
+\begin{defn} \label{defn: base tess} Let $S$ be a $d$-fold cyclic cover over an $n$-punctured sphere. We define the \textbf{base tessellation} of $S$ as a tessellation tiled by $n$-gons with valency $d$ at every vertex. \end{defn}
+
+For $n \geq 3$ and $d > \frac{n}{2},$ there exists a unique base tessellation on a surface of genus $g > 1.$ This follows from the Gauss-Bonnet formula. The base tessellation is tiled by $N$-polygons where $2 \pi (2 - 2 g) = -N (\pi - n \cdot \frac{2 \pi}{d}).$
+
+%\begin{defn} An \textbf{all-seeing tessellation} on a surface $S$ is such that $$\Aut(\DD) \simeq \Aut(S) $$ \end{defn}
+
+%We wish to construct an all-seeing tessellation for any given cyclically branched cover $S$ of a sphere. Our first step is the base tessellation.
+\textbf{Algorithm:} A particular tessellation $\Delta_T$ on $S$.
+
+
+%%%lookd: A tessellation $\Delta_T$ on $S$ such that all tiles are similar, all Weierstrass points occur as vertices, and (the fundamental domain condition is hard to state nicely?)
+
+
+\textit{Input:} A surface $S$ which is a cyclically branched cover of a sphere. \n
+$\text{}$ $\hspace{2mm}$\textit{Output:} A particular tessellation $\Delta_T$. 
+\begin{enumerate}
+\item  Construct a base tessellation $\Delta$ of $S$.
+\item Separately, find the Weierstrass points of $S$ using Definition~\ref{def: wronski}. 
+\item Refine $\Delta$ until all tiles are similar and all Weierstrass points of $S$ occur as vertices. Call this new tessellation $\widetilde{\Delta}$. 
+
+%Attempt to align the Weierstrass points of $S$ with the vertices of $\Delta$. If this is not possible, refine $\Delta$ until all Weierstrass points lay on vertices of $\Delta$ and all tiles of $\Delta$ are similar. Call this new tessellation $\widetilde{Delta}$. 
+
+\item Let $G_T$ be the orientation-preserving automorphism group of a tile $T$ of $\widetilde{\Delta}$ (recall that all tiles are similar\footnote{Note that the automorphism group $G_T$ encodes the weight of the vertices of $T$. As automorphisms preserve weights, vertices of different weights cannot be mapped to each other. Since all $T$ are similar, all $G_T$ are the same.}). Restrict our attention to a tile $T$ of $\widetilde{\Delta}$. On this tile $T$, add lines until any tile of the refinement $T'$ is the fundamental domain of $G_T$ acting on $T$. Doing this to every tile $T$ gives a new tessellation, which we call $\Delta_T$.
+
+
+%%%lookd: can we have an issue where the rotation of the fundmental domain T' is an automorphism of the surface S?
+% so a rotation that fixes a T? This happens but why would it be an issue? For instance, Klein's quartic has 56 order-three rotations. 
+
+\end{enumerate}
+
+\begin{conjecture} \label{tessconj}
+The output tessellation $\Delta_T$ of this algorithm always exists and $$\Aut(\Delta_T) \simeq \Aut(S)$$
+\end{conjecture}
+
+By checking against the automorphism groups obtained via the \texttt{autplane} program described in Section ~\ref{sec:autplane}, we have shown this conjecture to be true for the cyclically branched surfaces of genus $< 5$ mentioned in Section ~\ref{sec:examples}.
+
+
+ %We can also prove that it is true for the case where our surface $S$ is in fact a quotient of a periodic polyhedral surface in $\R^3$, e.g. Fermat's curve, Schoen's I-WP Surface, and Bring's curve.
+
+%\ti{lookd: is it true? CHECK THIS! Can we prove this for surfaces which are quotients of polyhedral surfaces? Fermat's, I-WP, and Bring's are still cyclic covers over spheres. I don't know all triply periodic polyhedral surfaces. I have three more examples of tpps that are also cyclic branched covers and I also have examples of tpps that are not cyclic covers over spheres. The latter, I have no info about.}
+
+\begin{example}
+We perform an example of this algorithm for Klein's quartic. We begin with the base tessellation Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:124}. Both $d$ and $n$ play a role as we already know the existence of the $d$-fold map and the order-$n$ map that permutes the branched values. Due to the Gauss-Bonnet formula, the base tessellation of Klein's quartic is tiled by hyperbolic $\frac{2 \pi}{7}$-triangles (Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:124}). Since the genus is three, we have $2 \pi (2 - 2 \cdot 3) = -56 (\pi - 3 \cdot \frac{2 \pi}{7})$ hence we need 56 triangles. Next, we locate all Weierstrass points. On Klein's quartic, all vertices of the base tessellation correspond to Weierstrass points, that is $\Delta = \widetilde{\Delta}$. We move to the last step. Since each tile $T$ of $\widetilde{\Delta}$ is a regular triangle with all vertices the same weight, we get $G_T = \Z/3$. Thus, we add lines to each tile $T$ such that each tile $T'$ is now a fundamental domain for the action of $G_T$ on $T$. (Figure~\crefformat{figure}{~#2#1{(b)}#3} \cref{fig:124}).
+
+%%%lookd: if this is Z/3, why are there 6 tiles in T'
+% this includes orientation-reversing ones. If it makes more sense, I will remove these lines.
+
+ \end{example}
+
+
+%\footnote{For example, if the tile $T$ is a regular triangle with all 3 vertices the same weight, it has symmetry group $\Z/3$.}
+
+
+%However, if not all Weierstrass points are located at the vertices of the base tessellation, we subdivide the tiles so that Weierstrass points are at the vertices.
+
+%We claim that the smallest tile we achieve represents $\Aut(S).$
+
+\begin{figure}[htbp]
+    \centering
+    \subfloat[The base tessellation $\Delta$]{{\includegraphics[width=2.75in]{figures/124_base}}}
+    \qquad
+    \subfloat[The refined tessellation $\Delta_T$]{{\includegraphics[width=2.75in]{figures/124_hyp}}}%
+    \caption{Klein's quartic}%
+    \label{fig:124}%
+\end{figure}
+
+A Weierstrass point on a non-singular irreducible algebraic curve $S$ is a point $P$ for which there exist functions on the curve with unusual pole orders at $P$ and no poles everywhere else. Hurwitz showed that if the genus $g$ is greater than 2, there there do exist Weierstrass points, and the number of Weierstrass points is bounded by $2g+2 \leq \omega \leq g(g+1)(g-1)$. Further, when genus $g \geq 2$, then $\Aut(S)$ is finite.  In characteristic zero, this can be proved by showing that every automorphism fixing more than $2g + 2$ points is the identity (by the Riemann-Roch theorem), and then obtaining a faithful representation of $\Aut(S)$ as permutations of the set of Weierstrass points $L: \text{Aut}(S) \to \Sigma_\omega$. Note that in general, the action of $\Aut(S)$ on the set of Weierstrass points is not transitive.
+
+We calculate the Weierstrass points of a surface by finding the zeros of the Wronskian.
+\begin{defn} Given a basis of holomorphic functions $\{f_1, \ldots , f_g\}$ on a Riemann surface $X$ of genus $g$, the Wronskian defined by $$\mathcal{W}(z) := \textrm{det} \left( \frac{d^j f_k(z)}{d z^j} \right)_{j = 0, \ldots , g - 1, \, k = 1, \ldots , g}$$ is a non-trivial holomorphic function on $X$ that induces a metric which we call the \textit{Wronski metric.} 
+\end{defn}
+
+
+%In general, we find all-seeing tessellations on such surfaces $S$ using prior knowledge of the automorphism group of $S$. 
+
+%the vertices are coming from the punctures in the underlying sphere, and the tesselation is a lift of the tesselation of the underling sphere (where we choose some special metric on the underlying sphere coming from Gauss Bonnet on the cyclic cover S?) 
+%Is this correct?
+%when you said "the special cases where we know the polyhedral tiling" do you mean we know those surfaces are quotients of polyhedral surfaces in R^3? 
+
+%In some special cases, we know that our surface $S$ is in fact a quotient of a periodic polyhedral surface in $\R^3$, e.g. Fermat's curve, Schoen's I-WP Surface, and Bring's curve. In these very special cases, we can construct an all-seeing tessellation on $S$ without knowing the automorphism group of $S$ a priori. Thus, we can compute the automorphism group of $S$ from the all-seeing tessellation. \ti{prove that we can do it in the case of a quotient of a periodic polyhedral surface quotients?}
+
+%\ti{Add some background here, define weierstrass points, mention Riemann roch, that it is a very rare property for the group to act transitively on the Weierstrass points, wronski to find them}
+% Weierstrass points and Wronski are defined in section 2.1. Riemann-Roch is briefly mentioned there too.
+
+
+
 
 \end{document}
