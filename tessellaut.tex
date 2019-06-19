@@ -1,0 +1,147 @@
+\documentclass[12pt,reqno]{amsart}
+\usepackage[margin=3cm]{geometry}
+
+\usepackage{amsmath, amssymb, amsfonts, tikz,enumerate, graphicx, textcomp, caption, wrapfig, amsthm, todonotes, verbatim, cleveref, caption, float, mathabx}
+\usetikzlibrary{calc, arrows}
+\usepackage[procnames]{listings}
+\usepackage{color, subfig}
+\usepackage[section]{placeins}
+
+\usepackage{color}
+\definecolor{purple}{rgb}{0.5,0,1}
+
+\newenvironment{dami}{
+  \medskip
+\begin{color}{blue}
+    \textcolor{purple}{\textbf{Dami:}} 
+}{
+\end{color}
+  \medskip
+}
+
+
+\newenvironment{cat}{
+  \medskip
+\begin{color}{red}
+    \textcolor{red}{\textbf{Catherine:}} 
+}{
+\end{color}
+  \medskip
+}
+
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{0,0,113}
+\definecolor{red}{RGB}{160,0,0}
+\definecolor{green}{RGB}{0,150,0}
+\lstdefinelanguage{Magma}%
+  {%
+   otherkeywords={:=,+:=,-:=,*:=},%
+          % functions
+   procnamekeys={function,func,intrinsic,procedure,proc},%
+         % Booleans
+   morekeywords={true,false},%
+          % relations
+   morekeywords=[2]{adj,and,cat,cmpeq,cmpne,diff,div,eq,ge,gt,in,is,join,le,lt,%
+          meet,mod,ne,notadj,notin,notsubset,or,sdiff,subset,xor},%
+          % keywords
+   morekeywords=[3]{assigned,break,by,case,catch,continue,declare,default,%
+          delete,do,elif,else,end,eval,exists,exit,for,forall,fprintf,if,local,%
+          not,print,printf,quit,random,read,readi,repeat,restore,save,select,%
+          then,time,to,try,until,vprint,vprintf,vtime,when,where,while},%
+          % directives
+   morekeywords=[4]{clear,forward,freeze,iload,import,load},%
+          % error checks
+   morekeywords=[5]{assert,assert2,assert3,error,require,requirege,requirerange},%
+          % constructors
+   morekeywords=[6]{car,comp,cop,elt,ext,frac,hom,ideal,iso,lideal,loc,map,%
+          ncl,pmap,quo,rec,recformat,rep,rideal,sub},%
+          % other constructors (semi-reserved)
+   morekeywords=[7]{AbelianGroup,AdditiveCode,AffineAlgebra,Algebra,%
+          AssociativeAlgebra,Character,CliffordAlgebra,Design,Digraph,%
+          ExtensionField,FPAlgebra,FiniteAffinePlane,FiniteProjectivePlane,%
+          Graph,Group,GroupAlgebra,IncidenceStructure,LieAlgebra,LinearCode,%
+          LinearSpace,MatrixAlgebra,MatrixGroup,MatrixRing,Monoid,%
+          MultiDigraph,MultiGraph,NearLinearSpace,Network,PartialMap,%
+          PermutationGroup,PolycyclicGroup,QuaternionAlgebra,Semigroup,%
+          ZModule},%
+          % functions
+   morekeywords={[8]function,func,intrinsic,procedure,proc,return},%
+      sensitive,%
+      morecomment=[l]//,%
+      morecomment=[s]{/*}{*/},%
+      morecomment=[s]{\{}{\}},%
+      morestring=[b]"%
+  }[keywords,procnames,comments,strings]%
+\lstset{language=Python, 
+        basicstyle=\ttfamily\small, 
+        keywordstyle=\color{keywords},
+        commentstyle=\color{comments},
+        stringstyle=\color{red},
+        breaklines=true,
+        showstringspaces=false,
+        identifierstyle=\color{green},
+        procnamekeys={def,class}}
+%\usepackage[T1]{fontenc}
+%\usepackage[urw-garamond]{mathdesign}
+\usepackage{tikz-cd}\tikzset{node distance=2cm, auto}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\Corr}{Corr}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\uncurry}{uncurry}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Div}{Div}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\n}{\newline}
+\newcommand{\mc}{\mathcal}
+\newcommand{\te}{\text}
+\newcommand{\bb}{\mathbb}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\BBF}{\overline{\F_p}}
+\newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+\definecolor{codegray}{gray}{0.9}
+\newcommand{\code}[1]{\colorbox{codegray}{\texttt{#1}}}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{thm*}{Theorem}
+\newtheorem*{proposition}{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{qlemma*}{``Lemma"}
+\newtheorem{cor}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{postulate}[theorem]{Postulate}
+\newtheorem*{question}{Question}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{notation}{Notation}
+\newtheorem*{note}{Note}
+\newcommand{\sss}{\ss$\text{ }$}
+\newcommand{\ti}{\todo[inline]}
+\newcommand{\DD}{\Delta\kern -8.3pt {\diamond} \kern -4.5pt \cdot \:}
+\newenvironment{myproof}[1][``\proofname '']{%
+  \proof[ #1]%
+}{\endproof}
+
+
+
+
+\title{Computing Automorphism Groups via Constructing Tessellations} 
+\author{Dami Lee and Catherine Ray}
+
+\begin{document}
+
+	
+\maketitle
+
+
+\end{document}
