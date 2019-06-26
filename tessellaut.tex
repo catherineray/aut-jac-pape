@@ -1,7 +1,7 @@
 \documentclass[12pt,reqno]{amsart}
 \usepackage[margin=3cm]{geometry}
 
-\usepackage{amsmath, amssymb, amsfonts, tikz,enumerate, graphicx, textcomp, caption, wrapfig, amsthm, todonotes, verbatim, cleveref, caption, float, mathabx}
+\usepackage{amsmath, amssymb, amsfonts, tikz,enumerate, graphicx, textcomp, caption, wrapfig, amsthm, todonotes, verbatim, cleveref, caption, float, mathabx, url}
 \usetikzlibrary{calc, arrows}
 \usepackage[procnames]{listings}
 \usepackage{color, subfig}
@@ -87,6 +87,7 @@
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\Sym}{Sym}
 \DeclareMathOperator{\Alt}{Alt}
 \DeclareMathOperator{\Corr}{Corr}
 \DeclareMathOperator{\im}{im}
@@ -143,21 +144,57 @@
 	
 \maketitle
 
+%In this paper, we calculate and interpret the interaction between the automorphism group of a Riemann surface and the automorphism group of its Jacobian. We exposit and expand some calculational techniques from computational arithmetic geometry and hyperbolic geometry. We calculate the automorphism groups of some well-known surfaces such as Klein's quartic, Fermat's quartic, and Bring's curve. For further examples, we exploit the fact that the previously mentioned surfaces can be described as cyclically branched coverings over punctured spheres. We also discuss the modular curve $X_0(63),$ which is not a cyclic cover over a sphere. We find several principal polarizations on many Jacobians of these Riemann surfaces, and the automorphism groups with respect to each of these polarizations. We discuss and answer questions on Jacobians with multiple principal polarizations. 
+
+
+\begin{abstract}
+Given a symmetric surface, we introduce a new conjectural method for computing its automorphism group by constructing and counting a particular tessellation of the surface. More specifically, we consider any cyclically branched surface with either equal or unequal weight Weierstrass points, and construct a regular hyperbolic tessellation on this surface which is preserved under the automorphism group. Examples we explore include Klein's quartic, Fermat's quartic, and Bring's curve. We verify this conjecture up to genus 5 with programs based on the algorithms of Bruin-Sijsling-Zotine.
+\end{abstract}
+
 \section{Introduction}
 
-In \cite{dami}, the first author develops the a method to compute the automorphism group of Fermat's quartic by constructing a particular tesselation. This method works particularly well on highly symmetric surfaces, e.g. those whose Weierstrass points have uniform weight. Lee presents Fermat's quartic as an eightfold cyclically branched cover over a thrice punctured sphere and finds a regular hyperbolic tessellation on the surface that is preserved under the automorphism group. Using this tessellation, Lee computes the automorphism group of Fermat's quartic in a generator-relation format. 
+In \cite{dami}, the first author develops a method to compute the automorphism group of Fermat's quartic by constructing a particular tesselation. This method works particularly well on highly symmetric surfaces, e.g. those whose Weierstrass points have uniform weight. 
 
-In this paper, we conjecturally extend this method to surfaces that have Weierstrass points of different weights. 
+Lee presents Fermat's quartic as an eightfold cyclically branched cover over a thrice punctured sphere and finds a regular hyperbolic tessellation on the surface that is preserved under the automorphism group. Using this ``all-seeing" tessellation, Lee computes the automorphism group of Fermat's quartic in a generator-relation format. Lee's method (all-seeing method?) provides a different way to present automorphisms of a curve concretely, without presenting the automorphism group as an action on the coefficients of a polynomial describing the curve (as is done in Silverman, appendix A). 
 
-We introduce conjectures for computing automorphism groups of cyclically branched surfaces with unequal weight weierstrass points purely by constructing and counting a particular tesselation, and test them with programs based on the alogorithms of Bruin-Sijsling-Zotine. This paper proves no theorems, but rather demonstrates the strength of a computational technique.
+This project began from the second author wondering if the first authors method for computing the automorphism group of Fermat's quartic could be applied in more generality, to model the automorphism group of the principally-polarized Jacobian of a curve (where curve here means cyclically branched cover of the punctured sphere). The aim was to embed the all-seeing tessellation from the original curve $C$ into the Jacobian, and extend it to a tesselation on the entire Jacobian. This embedding would be done by naively trying to extend the all-seeing tessellation's image under an Abel-Jacobi Map $C \hookrightarrow \Jac(C)$, or by embedding the gth symmetric product of the all-seeing tesselation of a genus g curve $C \hookrightarrow \Sym^g(C) \to \Jac(C)$, where the last map is a birational equivalence. We found that it is computationally easier, and conceptually less confusing, to instead calculate the all-seeing tesselation on the underlying curve, and use the precise Torelli theorem to get a concrete presentation of the automorphism group of its principally-polarized Jacobian. We thus focus here on extending the ``all-seeing" method to more curves.
 
-[We took the algorithm for plane curves to aut group from https://arxiv.org/pdf/1807.02605.pdf, this is what we used to check the conjecture above.]
+In this paper, we conjecturally extend the first authors ``all-seeing" method to surfaces that have Weierstrass points of different weights. We verify this conjecture for a class of examples. Lee classified genus < 5 surfaces which are cyclically branched covers of punctured spheres. We check these surfaces by finding a plane curve model, computing the automorphism group via finding a tessellation, and seperately computing the automorphism group as a plane curve using a program based on the algorithm of Bruin-Sijsling-Zotine \cite{jeroen}.
+
+This paper proves no theorems, but rather demonstrates the strength and potential of a computational technique.
 
 \subsection{Exhibiting the Automorphism Group via Tessellation}
 
 \label{sec:flagflag}
 
-In \cite{dami}, the first author computed the automorphism group of an eightfold cyclic cover over a thrice punctured sphere by finding a tessellation on the surface where the vertices corresponded to the Weierstrass points. There, the surface of interest has Weierstrass points of uniform weight. In this paper, we conjecturally generalize this algorithm to surfaces that have Weierstrass points of different weights. %We will use Weierstrass points, computed using the Wronski metric, as our markings on the surface.
+%In \cite{dami}, the first author computed the automorphism group of an eightfold cyclic cover over a thrice punctured sphere by finding a tessellation on the surface where the vertices corresponded to the Weierstrass points. There, the surface of interest has Weierstrass points of uniform weight. In this paper, we conjecturally generalize this algorithm to surfaces that have Weierstrass points of different weights. %We will use Weierstrass points, computed using the Wronski metric, as our markings on the surface.
+
+\section{Background}
+
+\subsection{Cylically branched covers of the Punctured Sphere}
+
+\subsection{Weierstrass points and how to find them}
+
+We will locate Weierstrass points on the coverings. This information will be used in subsection~\ref{sec:flagflag}. These are points where the dimension-count of the Riemann-Roch theorem is not generic. On a compact Riemann surface of genus $> 1,$ there are finitely many such points and we will find all of them using the Wronski metric. For example, Klein's quartic has three holomorphic 1-forms with the following divisors $$(\omega_1) = \widetilde{p_2} + 3 \widetilde{p_3}, \qquad (\omega_2) = \widetilde{p_1} + 3 \widetilde{p_2}, \qquad (\omega_3) = 3 \widetilde{p_1} + \widetilde{p_3}.$$ We define the weight of a point which measures how far the point is from being generic. A generic point is where the order of zeros form the sequence $0, 1, \ldots , g - 1$ given a basis. For Klein's quartic, at $\widetilde{p_i},$ this sequence is $0, 1, 3.$ The weight at each $\widetilde{p_i}$ is computed as $(0 - 0) + (1 - 1) + (3 - 2) = 1.$ 
+
+\begin{proposition} \cite{fk} Let $S$ be a compact Riemann surface of genus $\geq 2.$ Let $\textrm{wt}_p$ be the weight of $p \in S.$ Then $\sum\limits_{p \in S} \textrm{wt}_p = (g - 1) g (g + 1).$
+\end{proposition}
+
+\begin{proposition} \cite{fk} Let $W(S)$ be the finite set of Weierstrass points on $S.$ If $\phi \in \Aut(S),$ then $\phi (W(S)) = W(S).$  In fact, the sequences of the order of zeros at $p \in S$ and $\phi(p)$ are the same. 
+\end{proposition}
+
+In other words, there is a faithful representation of $\Aut(S)$ as permutations of the set of Weierstrass points $L: \text{Aut}(S) \to \Sigma_{W(S)}$. However, in general, the action of $\Aut(S)$ on $W(S)$ is not transitive \cite{ls}. Next, we use the Wronski metric to find all Weierstrass points that are not necessarily $\widetilde{p_i}.$
+
+
+\subsubsection{Wronski Metric}
+
+\begin{defn}\label{def: wronski} Given a basis of holomorphic differentials $\omega_i = f_i d z$ on a Riemann surface $X$ of genus $g$, the Wronskian defined by $$\mathcal{W}(z) := \textrm{det} \left( \frac{d^j f_k(z)}{d z^j} \right)_{j = 0, \ldots , g - 1, \, k = 1, \ldots , g}$$ is a non-trivial holomorphic function on $X$ that induces a metric which we call the \textit{Wronski metric.} \end{defn}
+
+By induction, one can show that a zero of the Wronskian is a Weierstrass point on $X$ and the order of a zero at a point equals its weight. In our case, the Wronskian has simple zeros at the preimages of the midpoint of two $p_i.$
+
+
+\section{Main Conjecture}
+\label{allseeing}
 
 In this section, we wish to find a tessellation $\Delta$ on a surface $S$ which exhibits the automorphism group of $S$. Formally, we wish for $\Aut(S)$ to act freely and transitively on the tiles of $\Delta$; we denote this with a slight abuse of notation:
 \vspace{-3pt}
@@ -201,7 +238,7 @@ $\text{}$ $\hspace{2mm}$\textit{Output:} A particular tessellation $\Delta_T$.
 The output tessellation $\Delta_T$ of this algorithm always exists and $$\Aut(\Delta_T) \simeq \Aut(S)$$
 \end{conjecture}
 
-By checking against the automorphism groups obtained via the \texttt{autplane} program described in Section ~\ref{sec:autplane}, we have shown this conjecture to be true for the cyclically branched surfaces of genus $< 5$ mentioned in Section ~\ref{sec:examples}.
+By checking against the automorphism groups obtained via the \texttt{autplane} program described in Section ~\ref{sec:autplane}, we have shown this conjecture to be true for the cyclically branched surfaces of genus $< 5$ mentioned in Section ~\ref{sec:verirications}.
 
 
  %We can also prove that it is true for the case where our surface $S$ is in fact a quotient of a periodic polyhedral surface in $\R^3$, e.g. Fermat's curve, Schoen's I-WP Surface, and Bring's curve.
@@ -239,6 +276,41 @@ We calculate the Weierstrass points of a surface by finding the zeros of the Wro
 \begin{defn} Given a basis of holomorphic functions $\{f_1, \ldots , f_g\}$ on a Riemann surface $X$ of genus $g$, the Wronskian defined by $$\mathcal{W}(z) := \textrm{det} \left( \frac{d^j f_k(z)}{d z^j} \right)_{j = 0, \ldots , g - 1, \, k = 1, \ldots , g}$$ is a non-trivial holomorphic function on $X$ that induces a metric which we call the \textit{Wronski metric.} 
 \end{defn}
 
+\section{Verifications}
+
+\label{verifications}
+
+The results in Table \ref{table:plane} are proved as follows. The genus, their (non)-hyperelliptic nature, and their Weierstrass points are calculated by tools from section~\ref{sec:chap3}(??). The all-seeing tessellation $\Delta_T$ isconstructed using Section \ref{sec:allseeing}. 
+
+We verify Conjecture ~\ref{tessconj} by using a seperate method of calculating automorphism groups. We derive the plane curve models of the cyclic covers of the sphere. With this input, calculate the automorphism group of the plane curve with: (1) our \texttt{autplane} program based on the algorithm in Jeroen-Sijsling-Zotine \cite{jeroen}, and (2) a group identification algorithm (written by the second author). The code used in this paper can all be found at \url{https://github.com/catherineray/aut-jac}.
+
+
+\begin{table}[H]
+\caption{Plane Curve Automorphism Groups}
+\centering 
+\begin{tabular}{ l | l c r r c} \hline
+  \shortstack{Curve C} & Plane Curve Model & Genus & Aut(C) & $|$Aut(C)$|$ \\ \hline
+   $\ast 8(1, 3, 4)$ & $y^2 - (x^5 - x)$ & 2 & $GL_2(F_3)$ & 48 \\ 
+   $\ast 6(1, 1, 4)$  & $y^2 - (x^6 - 1)$ & 2 & $S_3 \rtimes D_4$  & 24 \\ 
+  $7(1, 2, 4)$ (Klein's quartic) & $y^3x + x^3 + 1$ & 3 & $GL_3(F_2)$ & 168 \\  
+  $8(1, 2, 5)$ (Fermat's quartic) & $y^4 - x (x+1) (x-1)$ & 3 & $C_4^{\text{ }2} \rtimes S_3$ & 96 \\
+  $12(1, 3, 8)$ & $y^3 - (x^4 -1)$ & 3 & $C_4 \cdot A_4$ & 48 \\
+   $\ast 8(1, 1, 6)$ & $y^2 - (x^8 - 1)$  & 3 &  $D_4 \rtimes C_4$ & 32 \\
+  $\ast 12(1, 5, 6)$ &  $y^2 - (x^7 - x)$ & 3 & $C_4 \times S_3$ & 24 \\
+  $\ast 4(1, 3, 3, 1)$ & $y^4 - (x^2-1) (x^2-a^2)^3$ & 3 & $C_2 \times D_8$ & 16 \\
+  $5(1, 2, 4, 3)$ (Bring's curve) & $y^5 - x (x - 1)^2 (x + 1)^3$ & 4 & $S_5$ & 120 \\ 
+  $12(1, 4, 7)$ (I-WP) & $y^3 - (x^5 - x)$ & 4 & $C_3 \times S_4$ & 72 \\ \hline 
+\end{tabular}
+\label{table:plane} 
+\caption*{An $\ast$ indicates that the curve is hyperelliptic}
+\end{table}
+
+(for each example:)
+-- W points
+-- plane curves
+-- hyperbolic tessellation
+-- aut group
+
 
 %In general, we find all-seeing tessellations on such surfaces $S$ using prior knowledge of the automorphism group of $S$. 
 
@@ -250,8 +322,53 @@ We calculate the Weierstrass points of a surface by finding the zeros of the Wro
 
 %\ti{Add some background here, define weierstrass points, mention Riemann roch, that it is a very rare property for the group to act transitively on the Weierstrass points, wronski to find them}
 % Weierstrass points and Wronski are defined in section 2.1. Riemann-Roch is briefly mentioned there too.
+\begin{thebibliography}{20}
 
 
+\bibitem{jeroen}
+N. Bruin, J. Sijsling, A. Zotine,
+\textit{Numerical Computation of Endomorphism Rings of Jacobians},
+\texttt{https://arxiv.org/pdf/1807.02605.pdf}
 
+\bibitem{fk}
+H. Farkas, I. Kra,
+\textit{Riemann Surfaces},
+Springer-Verlag, New York, 1992.
+
+\bibitem{kw}
+H. Karcher, M. Weber,
+\textit{On Klein's Riemann Surface},
+The Eightfold Way, MSRI Publications, 
+Vol. 35, 1998, pp.9--49.
+
+\bibitem{sl}
+Z. Laing, D. Singerman,
+\textit{Transitivity on Weierstrass Points}
+Annales Academiae Scientiarum Fennicae Mathematica,
+Vol. 37, 2012, pp.285--300
+
+\bibitem{dami} 
+D. Lee,
+\textit{On a triply periodic polyhedral surface whose vertices are Weierstrass points},
+Arnold Mathematical Journal, 
+Vol. 3, Issue 3, 2017, pp.319--331.
+
+\bibitem{dthesis} 
+D. Lee, 
+\textit{Geometric realizations of cyclically branched coverings over punctured spheres},
+\texttt{https://arxiv.org/abs/1809.06321}, preprint.
+
+\bibitem{hyp}
+R. Lercier, C. Ritzenthaler, J. Sijsling,
+\textit{Fast computation of isomorphisms of hyperelliptic curves and explicit Galois descent},
+Proceedings of the Tenth Algorithmic Number Theory Symposium, 2013, pp. 463–-486.
+
+\bibitem{matti} 
+M. Weber,
+\textit{Kepler's small stellated dodecahedron as a Riemann surface},
+Pacific Journal of Mathematics, 
+Vol. 220, 2005, pp.167--182.
+
+\end{thebibliography}
 
 \end{document}
