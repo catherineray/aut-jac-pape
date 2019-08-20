@@ -346,7 +346,7 @@ This section is devoted to the computation of automorphism groups by tessellatio
 \begin{remark} Note that the University of Bristol's GroupNames database at the time of writing has groups up to order 500 with full names and structure description. In the cases where the order is greater than 500, we use the output of \texttt{StructureDescription(G);}  \end{remark}
 %\begin{remark} Except f9, its automorphism group was calculated differently, and is discussed in its corresponding section. \end{remark}
 
-\begin{dami} \texttt{StructureDescription(G);} somewhere? \end{dami}
+\begin{dami} none of our test subjects here have order greater than 500, what examples do we pick in the other paper? \end{dami}
 
 
 In each of the following individual sections, we derive tessellations $\Delta_T$ to show that our examples satisfy Conjecture ~\ref{tessconj}.
@@ -357,7 +357,7 @@ In each of the following individual sections, we derive tessellations $\Delta_T$
 
 
 
-Klein's quartic is a genus three curve that is a sevenfold cover over $\widehat{\C}$ with branching indices $(1,2,4)$ \cite{kw}. Its base tessellation is tiled by 56 triangles (Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:124}). With multipliers, we get a basis of holomorphic 1-forms with the following divisors: $$(\omega_1) = \widetilde{p_2} + 3 \widetilde{p_3}, \qquad (\omega_2) = \widetilde{p_1} + 3 \widetilde{p_2}, \qquad (\omega_3) = 3 \widetilde{p_1} + \widetilde{p_3}.$$ All $\widetilde{p_i}$ are Weierstrass points with weight 1. The wronski metric (\cite{code:wronski}) tells us that the remaining Weierstrass points come from the midpoint of $\overline{p_i p_j}.$ We refine the tessellation with additional Weierstrass points as vertices and achieve the well-known tiling by $(\frac{\pi}{2}, \frac{\pi}{3}, \frac{\pi}{7})$-triangles (Figure~\crefformat{figure}{~#2#1{(b)}#3} \cref{fig:124}). Note that this tesellation exhibits orientation reversing automorphisms (reflections). 
+Klein's quartic is a genus three curve that is a sevenfold cover over $\widehat{\C}$ with branching indices $(1,2,4)$ \cite{kw}. Its base tessellation is tiled by 56 triangles (Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:124}). With the cone metric that arises from the branching indices and its multipliers, we get a basis of holomorphic 1-forms with the following divisors: $$(\omega_1) = \widetilde{p_2} + 3 \widetilde{p_3}, \qquad (\omega_2) = \widetilde{p_1} + 3 \widetilde{p_2}, \qquad (\omega_3) = 3 \widetilde{p_1} + \widetilde{p_3}.$$ All $\widetilde{p_i}$ are Weierstrass points with weight 1. Moreover, the \texttt{Resultant} of the wronski metric in \texttt{wronski.nb} tells us that the remaining Weierstrass points have weight one that arise from the midpoint of $\overline{p_i p_j}.$ We refine the tessellation with additional Weierstrass points as vertices and achieve the well-known tiling by $(\frac{\pi}{2}, \frac{\pi}{3}, \frac{\pi}{7})$-triangles (Figure~\crefformat{figure}{~#2#1{(b)}#3} \cref{fig:124}). Note that this tesellation exhibits orientation reversing automorphisms (reflections). 
 
 
 \begin{figure}[htbp]
@@ -370,7 +370,7 @@ Klein's quartic is a genus three curve that is a sevenfold cover over $\widehat{
 \end{figure}
 
 \subsection*{8(1, 1, 6)}
-In this and the following subsection, we will look at two different hyperelliptic curves of genus three. First, we look at the eightfold cover defined by branching indices $(1, 1, 6).$ The admissible cone metrics yield a basis of 1-forms with divisors $$(\omega_1) = 4 \widetilde{p_3}, \qquad (\omega_2) = \widetilde{p_1} + \widetilde{p_2} + \widetilde{p_{3_1}} + \widetilde{p_{3_2}}, \qquad (\omega_3) = 2 \widetilde{p_1} + 2 \widetilde{p_2}.$$ Note that no $\widetilde{p_i}$ is a Weierstrass point. The wronski metric tells us that the Weierstrass points come from the midpoint of $\overline{p_1 p_2}.$ Hence we refine the tessellation to show all symmetries (Figure~\ref{fig:116}). These points are fixed under the hyperelliptic involution, whose quotient is a doubled octagon. In other words, we can rewrite the plane curve model as $y^2 - (x^8 - 1).$ 
+In this and the following subsection, we will look at two different hyperelliptic curves of genus three. First, we look at the eightfold cover defined by branching indices $(1, 1, 6).$ The branching indices along with the multipliers yield a basis of holomorphic 1-forms with divisors $$(\omega_1) = 4 \widetilde{p_3}, \qquad (\omega_2) = \widetilde{p_1} + \widetilde{p_2} + \widetilde{p_{3_1}} + \widetilde{p_{3_2}}, \qquad (\omega_3) = 2 \widetilde{p_1} + 2 \widetilde{p_2}.$$ Note that no $\widetilde{p_i}$ is a Weierstrass point. The wronski metric tells us that the Weierstrass points come from the midpoint of $\overline{p_1 p_2}.$ Hence we refine the tessellation to show all symmetries (Figure~\ref{fig:116}). These points are fixed under the hyperelliptic involution, whose quotient is a doubled octagon. In other words, we can rewrite the plane curve model as $y^2 - (x^8 - 1).$ 
 
 \begin{figure}[htbp]
     \centering
@@ -384,7 +384,7 @@ In this and the following subsection, we will look at two different hyperellipti
 
 \subsection*{12(1, 5, 6)}
 %f10
-This curve is yet another genus three hyperelliptic curve defined by branching indices $(1, 5, 6).$ The admissible cone metrics yield a basis of 1-forms with divisors $$(\omega_1) = 4 \widetilde{p_2}, \qquad (\omega_2) = 2 \widetilde{p_1} + 2 \widetilde{p_2}, \qquad (\omega_3) = 4 \widetilde{p_2},$$ hence $\widetilde{p_1}$ and $\widetilde{p_2}$ are Weierstrass points of weight 3 each. Recall that if $q$ for $q \neq p_i$ is a zero of the Wronski metric, then there must be 12 preimages $\widetilde{q}$ on the genus three curve, which contradicts the total weight theorem ($g^3 - g$). However, the wronski metric tells us that $p_3$ is in fact a triple order zero, hence all six $\widetilde{p_{3_i}}$ are Weierstrass points. All Weierstrass points are marked as either $\bullet$ or $\circ$ as they have different valency (Figure~\ref{fig:156}). The surface is a double cover over a Riemann sphere branched at six points which are located at the North and South Pole, and six equidistributed points on the Equator. Hence, the plane curve model can also be written as $y^2 - (x^7 - x).$
+This curve is yet another genus three hyperelliptic curve that is defined as a twelvefold cover over a sphere with branching indices $(1, 5, 6).$ We achieve a basis of 1-forms with divisors $$(\omega_1) = 4 \widetilde{p_2}, \qquad (\omega_2) = 2 \widetilde{p_1} + 2 \widetilde{p_2}, \qquad (\omega_3) = 4 \widetilde{p_2},$$ hence $\widetilde{p_1}$ and $\widetilde{p_2}$ are Weierstrass points of weight 3 each. Recall that if $q$ for $q \neq p_i$ is a zero of the Wronski metric, then there must be 12 preimages $\widetilde{q}$ on the genus three curve, which contradicts the total weight theorem ($g^3 - g$). However, the wronski metric tells us that $p_3$ is in fact a triple order zero, hence all six $\widetilde{p_{3_i}}$ are Weierstrass points. All Weierstrass points are marked as either $\bullet$ or $\circ$ as they have different valency (Figure~\ref{fig:156}). The surface is a double cover over a Riemann sphere branched at six points which are located at the North and South Pole, and six equidistributed points on the Equator. Hence, the plane curve model can also be written as $y^2 - (x^7 - x).$
 
 \begin{figure}[htbp]
     \centering
@@ -412,7 +412,7 @@ This curve is yet another genus three hyperelliptic curve defined by branching i
 
 \subsection*{5(1, 2, 4, 3) Bring's curve}
 
-In this section, we look at the genus four non-hyperelliptic curve associated to Kepler's small stellated dodecahedron. In \cite{matti}, it is shown that the curve is a fivefold cover over $\widehat{\C}$ with branching indices $(1, 2, 4, 3).$ It is also shown in \cite{matti} that it is biholomorphic to Bring's curve. No $\widetilde{p_i}$ is a Weierstrass point.
+In this section, we look at the genus four non-hyperelliptic curve associated to Kepler's small stellated dodecahedron. In \cite{matti}, it is shown that the curve is a fivefold cover over $\widehat{\C}$ with branching indices $(1, 2, 4, 3).$ It is also shown in \cite{matti} that it is biholomorphic to Bring's curve. The \texttt{Resultant} of the wronski metric tells us that wronski metric has 12 simple zeros that are away from $p_i.$ That is, no $\widetilde{p_i}$ is a Weierstrass point and %%%%
 
 \begin{figure}[htbp]
     \centering
@@ -421,7 +421,9 @@ In this section, we look at the genus four non-hyperelliptic curve associated to
     \label{fig:1243}%
 \end{figure}
 
-\begin{dami} hmmm \end{dami}
+\begin{remark} We 
+
+\end{remark}
 
 
 \subsection*{12(1, 4, 7) Schoen's I-WP Surface}
