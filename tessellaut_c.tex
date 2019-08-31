@@ -197,12 +197,20 @@ As a running example, we will look at the curve from \cite{dami}. It is there ca
 The euclidean triangles on the fundamental piece of $\Pi$ have a one-to-one correspondence to the hyperbolic triangles.
 
 For each $i,$ there are $\gcd(d, d_i)$ preimages $\widetilde{p_i}$ of $p_i$ on $C.$ Hence, each $\widetilde{p_i}$ is a cone point. To pin down a flat metric on $C,$ that is, a holomorphic 1-form on $C,$ we pull back a cone metric from $\mathbb{C}\mathbb{P}^1.$ We say that a cone metric on $\mathbb{C}\mathbb{P}^1$ is \textbf{admissible} if its pullback yields a flat structure on $C.$ The following proposition is a version of Gauss-Bonnet theorem.
-\begin{dami} C, would you like me to add a figure here that shows the geometric interpretation of a holomorphic 1-form? I'm fine either way\end{dami}
+
 \begin{proposition} Given a compact Riemann surface of genus $g$ with a cone metric, let $p_1, \ldots, p_n$ be distinguished points with respective cone angles $\theta_i.$ Then $\sum\limits_{i=1}^n \theta_i = 2 \pi (2 g - 2 + n).$
 \end{proposition}
 
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[width=2in]{figures/125_flat.pdf} 
+	\caption{A flat metric on $8(1, 2, 5)$}
+	\label{fig:125_flat}
+\end{figure}
 
-In other words, the sum of cone angles on a genus zero curve is $2 \pi (n - 2).$ Given branching indices such that $\sum\limits_{i=1}^n d_i = d (n - 2),$ we get a cone metric on the Riemann sphere with cone angles $\frac{2 \pi d_i}{d}$ at each $p_i.$ Our goal is to find other cone metrics that realize the same underlying curve. If $\sum\limits_{i=1}^n d_i \neq d (n - 2),$ then we modify the cone angles by $\frac{2 \pi a_i}{d}$ so that where $a_i \equiv d_i \pmod d$ for each $i.$ As each cone metric corresponds to a holomorphic 1-form, we use the following notion of multipliers that give rise to other cone metrics in order to get a basis of 1-forms.
+In other words, the sum of cone angles on a genus zero curve is $2 \pi (n - 2).$ Given branching indices such that $\sum\limits_{i=1}^n d_i = d (n - 2),$ we get a cone metric on the Riemann sphere with cone angles $\frac{2 \pi d_i}{d}$ at each $p_i.$ For example, by putting a cone metric on the quotient sphere where the cone angles are $\frac{1 \pi}{4}, \frac{2 \pi}{4},$ and $\frac{5 \pi}{4}$ as in Figure~\ref{fig:125_flat}, one can see that the identification of edges are by translations. In other words, there is a flat metric on the eightfold cover of the sphere. 
+
+Our goal is to find other cone metrics that realize the same underlying curve. If $\sum\limits_{i=1}^n d_i \neq d (n - 2),$ then we modify the cone angles by $\frac{2 \pi a_i}{d}$ so that where $a_i \equiv d_i \pmod d$ for each $i.$ As each cone metric corresponds to a holomorphic 1-form, we use the following notion of multipliers that give rise to other cone metrics in order to get a basis of 1-forms.
 
 \begin{defn} Given branching indices $d (d_1, \ldots , d_n),$ we say $a \in \{1, \ldots, d - 1\}$ is a \textbf{multiplier} if the cone metric given by cone angles $\frac{2 \pi}{d} (a \cdot d_1 \pmod d, \ldots , a \cdot d_n \pmod d)$ is admissible. 
 \end{defn}
