@@ -304,23 +304,41 @@ $\text{}$ $\hspace{2mm}$\textit{Output:} A conjectural all-seeing tessellation $
 
 %Attempt to align the Weierstrass points of $S$ with the vertices of $\Delta$. If this is not possible, refine $\Delta$ until all Weierstrass points lay on vertices of $\Delta$ and all tiles of $\Delta$ are similar. Call this new tessellation $\widetilde{Delta}$. 
 
-\item Restrict our attention to a tile $T$ of $\widetilde{\Delta}$. Let $G_T$ be the orientation-preserving automorphism group of a tile $T \in \widetilde{\Delta}.$ (Recall that all tiles are congruent\footnote{Note that the automorphism group $G_T$ encodes the weight of the vertices of $T$. As automorphisms preserve weights, vertices of different weights cannot be mapped to each other. Since all $T$ are congruent, $G_T$ does not depend on T.}). Find a refinement of $T$ by adding edges until each tile $T'$ (or $T' \cup R(T')$ where $R$ is a reflection about an edge) is the fundamental domain of $G_T$ acting on $T$. Apply the same refinement to all $T \in \widetilde{\Delta},$ and call this tessellation $\Delta_T$.
-
+\item Restrict our attention to a tile $T$ of $\widetilde{\Delta}$. Let $G_T$ be the automorphism group of a tile $T \in \widetilde{\Delta}.$ (Recall that all tiles are congruent\footnote{Note that the automorphism group $G_T$ encodes the weight of the vertices of $T$. As automorphisms preserve weights, vertices of different weights cannot be mapped to each other. Since all $T$ are congruent, $G_T$ does not depend on T.}). Find a refinement of $T$ by adding edges until each tile $T'$ is the fundamental domain of $G_T$ acting on $T$. Apply the same refinement to all $T \in \widetilde{\Delta},$ and call this tessellation $\Delta_T$.
 
 %%%lookd: can we have an issue where the rotation of the fundmental domain T' is an automorphism of the surface S?
 % so a rotation that fixes a T? This happens but why would it be an issue? For instance, Klein's quartic has 56 order-three rotations. 
 
 \end{enumerate}
 
+
+\begin{rem}
+For step 4 of the algorithm, we would like point out that we include orientation-reversing automorphisms which we denote by $\Aut_-.$ The two tilings in Figure~\ref{fig:125_hyp_i} show that the resulting tiling is not unique if we take only orientation-preserving maps $\Aut_+.$ Hence, we take $\Aut = \Aut_+ \sqcup \Aut_-$ into account so that the smallest tile in the final tessellation (Figure~\ref{fig:125_ref}) represents $X/\Aut.$
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+\centering
+\begin{minipage}{.5\textwidth}
+	\centering
+	\includegraphics[width=1.3in]{figures/125_hyp_1.pdf}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+	\centering
+	\includegraphics[width=1.3in]{figures/125_hyp_2.pdf}
+\end{minipage}
+\label{fig:125_hyp_i}
+\end{figure}
+\end{rem}
+
+
 \begin{conjecture} \label{tessconj}
 The output tessellation $\Delta_T$ of this algorithm always exists and $$\Aut(\Delta_T) \simeq \Aut(C)$$
 \end{conjecture}
 
 
-
-
 \subsubsection*{Tessellations on Octa-4}
-We perform this algorithm to the underlying curve of Octa-4 as done in \cite{dami}. We begin with the base tessellation (Figure~\ref{fig:125}). The base tessellation of this curve is tiled by 24 regular hyperbolic $\frac{2 \pi}{8}$-triangles. Next, we locate all Weierstrass points. On $C,$ all vertices of the base tessellation correspond to Weierstrass points, that is $\Delta = \widetilde{\Delta}$. Each tile $T$ of $\widetilde{\Delta}$ is a regular triangle with all vertices the same weight, hence $G_T = \Z/ 3\Z$. We include an additional edge to mimic the $(2,3,7)$-tiling on Klein's quartic. This captures orientation-reversing automorphisms. Then, for the smallest tile $T',$ $T' \cup R(T')$ (where $R$ is a reflection about an edge) represents a fundamental domain for the action of $G_T$ on $T$ (Figure~\ref{fig:125_ref}). 
+We perform this algorithm to the underlying curve of Octa-4 as done in \cite{dami}. We begin with the base tessellation (Figure~\ref{fig:125}). The base tessellation of this curve is tiled by 24 regular hyperbolic $\frac{2 \pi}{8}$-triangles. Next, we locate all Weierstrass points. On $C,$ all vertices of the base tessellation correspond to Weierstrass points, that is $\Delta = \widetilde{\Delta}$. Each tile $T$ of $\widetilde{\Delta}$ is a regular triangle with all vertices the same weight, hence $G_T = D_3$. 
+
+%We include an additional edge to mimic the $(2,3,7)$-tiling on Klein's quartic. This captures orientation-reversing automorphisms. Then, for the smallest tile $T',$ $T' \cup R(T')$ (where $R$ is a reflection about an edge) represents a fundamental domain for the action of $G_T$ on $T$ (Figure~\ref{fig:125_ref}). 
 
 %%%lookd: if this is Z/3, why are there 6 tiles in T'
 % this includes orientation-reversing ones. If it makes more sense, I will remove these lines.
