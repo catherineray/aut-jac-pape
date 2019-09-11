@@ -155,18 +155,18 @@ Given a curve with cone metrics, we introduce a new conjectural method for compu
 \section{Introduction}
 
 
-In \cite{dami}, the first author studies the underlying curve of an embedded triply periodic polyhedral surface $\Pi \subset \R^3$ equipped with a polyhedral cone metric. By triply periodic, we mean that $\Pi$ is invariant under a rank-three lattice $\Lambda \subset \R^3$ by translations. With identifications, the underlying curve $C = \Pi / \Lambda$ is a closed genus three curve and with the induced polyhedral cone metric, it is invariant under an order-eight rotation. This order-eight symmetry is not visible on the embedding of the polyhedral surface $\Pi \subset \R^3.$ The quotient under the $\Z/ 8 \Z$ action on $C$ yields the Riemann sphere where the cover is branched over three points. We say that a curve $C$ is a $d$-fold cyclic cover branched over a sphere if $C / (\Z / d \Z) = \mathbb{C}\mathbb{P}^1$ for some positive integer $d.$ A cyclic cover over a sphere gives rise to various cone metrics with which one can compute a basis of holomorphic 1-forms on $C.$With explicit cone metrics and symmetries induced from the polyhedral surface, the author locates all Weierstrass points on $C.$ Then by finding a hyperbolic tessellation $\Delta$ on the curve where all vertices are Weierstrass points, the author computes $\Aut(\Delta)$ and shows that $\Aut(\Delta) \simeq \Aut(C)$. [[the author computes the automorphism group of the tessellation that acts freely and transitively on the tiles]]. We call a tessellation with this property \textbf{all-seeing}. This all-seeing tessellation provides a concrete way of presenting the automorphism group of a curve, as opposed to presenting the automorphism group as an action on the coefficients of a polynomial describing the curve (appendix A, \cite{silverman}). Moreover, the author also shows that the curve is in fact Fermat's quartic (Theorem 5.1, \cite{dami}).
+In \cite{dami}, the first author studies the underlying curve of an embedded triply periodic polyhedral surface $\Pi \subset \R^3$ equipped with a polyhedral cone metric. By triply periodic, we mean that $\Pi$ is invariant under a rank-three lattice $\Lambda \subset \R^3$ by translations. The polyhedral surface is tiled by triangles with eight meeting at each vertex. With identifications, the underlying curve $C = \Pi / \Lambda$ is a closed genus three curve and with the induced polyhedral cone metric, it is invariant under an order-eight rotation. This order-eight symmetry is not visible on the embedding of the polyhedral surface $\Pi \subset \R^3.$ The quotient under the $\Z/ 8 \Z$-action on $C$ yields the Riemann sphere where the cover is branched over three points. We say that a curve $C$ is a $d$-fold cyclic cover branched over a sphere if $C / (\Z / d \Z) = \mathbb{C}\mathbb{P}^1$ for some positive integer $d.$ A cyclic cover over a sphere gives rise to various cone metrics with which one can compute a basis of holomorphic 1-forms on $C.$ With explicit cone metrics and symmetries induced from the polyhedral surface, the author locates all Weierstrass points on $C.$ Then by finding a hyperbolic tessellation $\Delta$ on the curve where all vertices are Weierstrass points, the author computes $\Aut(\Delta)$ and shows that $\Aut(\Delta) \simeq \Aut(C)$. We note that the hyperbolic tessellation coincidentally corresponds to the euclidean tiling on $\Pi.$ [[the author computes the automorphism group of the tessellation that acts freely and transitively on the tiles]]. We call a tessellation with this property \textbf{all-seeing}. This all-seeing tessellation provides a concrete way of presenting the automorphism group of a curve, as opposed to presenting the automorphism group as an action on the coefficients of a polynomial describing the curve (appendix A, \cite{silverman}). % the bit on Fermat is moved to a later section
 
 Although we do not prove any theorem in this paper, we conjecture that given a cyclic cover branched over $\mathbb{C}\mathbb{P}^1,$ there exists a tessellation that exhibits the automorphism group of the curve. Further, we present an algorithm to construct this tessellation. We heavily rely on the first author's thesis \cite{dthesis} where they discuss cone metrics on cyclic covers over $\mathbb{C}\mathbb{P}^1$ and classify all of them up to genus five. We summarize in section~\ref{sec: dthesis} how to find cone metrics, find a basis of holomorphic 1-forms, find a plane curve model, and locate Weierstrass points given only a construction of a cyclic cover over a sphere. Furthermore, from cone metrics we can compute period matrices, which we use in a sequel to this paper. 
 
-This project began from the second author wondering if the first author's method for computing the automorphism group could be applied in more generality to exhibit the automorphism group of any principally-polarized Jacobian variety. As Torelli's theorem gives the relation between the automorphism group of a genus g curve $C_g$ and its Jacobian $\Jac(C_g$, the aim was to find a combinatorial way to exhibit the automorphisms of the Jacobian via an all-seeing tessellation. The initial naive approach was finding an all-seeing tessellation of the Jacobian $\Jac(C_g)$ by taking the image of an all-seeing tessellation of $C$ under one of two maps: either an Abel-Jacobi map $C_g \hookrightarrow \Jac(C_g)$, or embedding the $g$-th symmetric product of the tessellation on $C_g \hookrightarrow \Sym^g(C_g) \to \Jac(C_g)$, where the second map is a birational equivalence. We found that it is computationally easier to find the all-seeing tessellation on the underlying curve and use the precise Torelli theorem to get a concrete presentation of the automorphism group of its principally-polarized Jacobian. We thus focus on formulating the all-seeing tessellation in more generality.
+This project began from the second author wondering if the first author's method for computing the automorphism group could be applied in more generality to exhibit the automorphism group of any principally-polarized Jacobian variety. As Torelli's theorem gives the relation between the automorphism group of a genus $g$ curve $C_g$ and its Jacobian variety $\Jac(C_g$, the aim was to find a combinatorial way to exhibit the automorphisms of the Jacobian via an all-seeing tessellation. The initial naive approach was finding an all-seeing tessellation of the Jacobian by taking the image of an all-seeing tessellation of $C$ under one of two maps: either an Abel-Jacobi map $C_g \hookrightarrow \Jac(C_g)$, or embedding the $g$-th symmetric product of the tessellation on $C_g \hookrightarrow \Sym^g(C_g) \to \Jac(C_g)$, where the second map is a birational equivalence. We found that it is computationally easier to find the all-seeing tessellation on the underlying curve and use the precise Torelli theorem to get a concrete presentation of the automorphism group of its principally-polarized Jacobian. We thus focus on formulating the all-seeing tessellation in more generality.
 
-In this paper, we conjecturally extend the first author's ``all-seeing'' method to curves that have Weierstrass points of different weights. In section~\ref{sec: dthesis}, we discuss how examples that naturally yield cone metrics appear in the wild, that is, cyclic covers that are branched over $\mathbb{C}\mathbb{P}^1.$ Then given a cone metric, we discuss how to achieve plane curve models and find Weierstrass points. In section~\ref{sec:flagflag}, we show an algorithm that yields a tessellation given only the construction of a cyclic cover over $\mathbb{C}\mathbb{P}^1.$ Then we compute the automorphism group of this tessellation. We conjecture that the automorphism group of this tessellation is the same as the automorphism group of the original curve. In section~\ref{sec:examples}, we verify this conjecture for examples of cyclic covers over $\mathbb{C}\mathbb{P}^1.$ Independently, we will compute the automorphism group of the curves using a program based on the algorithm of Bruin-Sijsling-Zotine \cite{jeroen}. This program requires only the plane curve model which we obtain from cone metrics. 
+In this paper, we conjecturally extend the first author's all-seeing method to curves that have Weierstrass points of different weights. In section~\ref{sec: dthesis}, we discuss how examples that naturally yield cone metrics appear in the wild, that is, cyclic covers that are branched over $\mathbb{C}\mathbb{P}^1.$ Then given a cone metric, we discuss how to achieve plane curve models and find Weierstrass points. In section~\ref{sec:flagflag}, we show an algorithm that yields a tessellation given only the construction of a cyclic cover over $\mathbb{C}\mathbb{P}^1.$ Then we compute the automorphism group of this tessellation. We conjecture that the automorphism group of this tessellation is the same as the automorphism group of the original curve which we compute by already known methods. In section~\ref{sec:examples}, we verify this conjecture for examples of cyclic covers over $\mathbb{C}\mathbb{P}^1.$ Independently, we will compute the automorphism group of the curves using a program based on the algorithm of Bruin-Sijsling-Zotine \cite{jeroen}. This program requires only the plane curve model which we obtain from cone metrics. 
 
 This paper proves no theorems, but rather demonstrates the strength and potential of a computational technique, and a new way to present the automorphisms of a curve and its Jacobian.
 
 \section*{Acknowledgements} 
-The first author would like to thank Matthias Weber for his guidance at the beginning of this project. The second author would like to thank Magma and Sage contributors Edgar Costa, John Voight, Nicolas Mascot, and above all Jeroen Sijsling, who generously offered incredibly detailed and consistent help in computing the automorphism groups of Jacobians. The second author is partially supported the National Science Foundation GRFP under Grant Number DGE 1842165.
+The first author would like to thank Matthias Weber for his guidance at the beginning of this project. The second author would like to thank Magma and Sage contributors Edgar Costa, John Voight, Nicolas Mascot, and above all Jeroen Sijsling, who generously offered incredibly detailed and consistent help in computing the automorphism groups of Jacobians. This material is based upon work supported by the National Science Foundation under Grant No. DMS-1440140 while the first author was in residence at the Mathematical Sciences Research Institute in Berkeley, California, during the Fall 2019 semester. The second author is partially supported the National Science Foundation GRFP under Grant Number DGE 1842165. 
 
 \section{Background}
 \label{sec: dthesis}
@@ -201,31 +201,39 @@ For each $i,$ there are $\gcd(d, d_i)$ preimages $\widetilde{p_i}$ of $p_i$ on $
 \begin{proposition} Given a compact Riemann surface of genus $g$ with a cone metric, let $p_1, \ldots, p_n$ be distinguished points with respective cone angles $\theta_i.$ Then $\sum\limits_{i=1}^n \theta_i = 2 \pi (2 g - 2 + n).$
 \end{proposition}
 
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[width=2in]{figures/125_flat.pdf} 
+	\caption{A flat metric on $8(1, 2, 5)$}
+	\label{fig:125_flat}
+\end{figure}
 
-In other words, the sum of cone angles on a genus 0 curve is $2 \pi (n - 2).$ Given branching indices such that $\sum\limits_{i=1}^n d_i = d (n - 2),$ we get a cone metric on the Riemann sphere with cone angles $\frac{2 \pi d_i}{d}$ at each $p_i.$ Our goal is to find other cone metrics that realize the same underlying curve. If $\sum\limits_{i=1}^n d_i \neq d (n - 2),$ then we modify the cone angles by $\frac{2 \pi a_i}{d}$ so that where $a_i \equiv d_i \pmod d$ for each $i.$ As each cone metric corresponds to a holomorphic 1-form, we use the following notion of multipliers that give rise to other cone metrics in order to get a basis of 1-forms.
+In other words, the sum of cone angles on a genus zero curve is $2 \pi (n - 2).$ Given branching indices such that $\sum\limits_{i=1}^n d_i = d (n - 2),$ we get a cone metric on the Riemann sphere with cone angles $\frac{2 \pi d_i}{d}$ at each $p_i.$ For example, by putting a cone metric on the quotient sphere where the cone angles are $\frac{1 \pi}{4}, \frac{2 \pi}{4},$ and $\frac{5 \pi}{4}$ as in Figure~\ref{fig:125_flat}, one can see that the identification of edges are by translations. In other words, there is a flat metric on the eightfold cover of the sphere. 
 
-\begin{defn} Given branching indices $(d_1, \ldots , d_n),$ we say $a \in \{1, \ldots, d - 1\}$ is a \textbf{multiplier} if the cone metric given by cone angles $\frac{2 \pi}{d} (a \cdot d_1 \pmod d, \ldots , a \cdot d_n \pmod d)$ is admissible. 
+Our goal is to find other cone metrics that realize the same underlying curve. If $\sum\limits_{i=1}^n d_i \neq d (n - 2),$ then we modify the cone angles by $\frac{2 \pi a_i}{d}$ so that where $a_i \equiv d_i \pmod d$ for each $i.$ As each cone metric corresponds to a holomorphic 1-form, we use the following notion of multipliers that give rise to other cone metrics in order to get a basis of 1-forms.
+
+\begin{defn} Given branching indices $d (d_1, \ldots , d_n),$ we say $a \in \{1, \ldots, d - 1\}$ is a \textbf{multiplier} if the cone metric given by cone angles $\frac{2 \pi}{d} (a \cdot d_1 \pmod d, \ldots , a \cdot d_n \pmod d)$ is admissible. 
 \end{defn}
 
 It is proved in \cite{dthesis} (Theorem 3.15) that for $n = 3,$ there are exactly $g$ multipliers. 
 
-\subsubsection*{Admissible cone metrics on Octa-4} Given branching indices $(1, 2, 5),$ multipliers 1, 2, and 5 give rise to cone metrics with cone angles $\frac{2 \pi}{8}(1, 2, 5),$ $\frac{2 \pi}{8}(2, 4, 2),$ and $\frac{2 \pi}{8}(5, 2, 1),$ respectively. These cone metrics yield a basis of holomorphic 1-forms with the following divisors: $$(\omega_1) = 4 \widetilde{p_3}, \qquad (\omega_2) = \widetilde{p_1} + \widetilde{p_{2_1}} + \widetilde{p_{2_2}} + \widetilde{p_3}, \qquad (\omega_3) = 4 \widetilde{p_1}.$$
+\subsubsection*{Admissible cone metrics on Octa-4} Given branching indices $8 (1, 2, 5),$ multipliers 1, 2, and 5 give rise to cone metrics with cone angles $\frac{2 \pi}{8}(1, 2, 5),$ $\frac{2 \pi}{8}(2, 4, 2),$ and $\frac{2 \pi}{8}(5, 2, 1),$ respectively. These cone metrics yield a basis of holomorphic 1-forms with the following divisors: $$(\omega_1) = 4 \widetilde{p_3}, \qquad (\omega_2) = \widetilde{p_1} + \widetilde{p_{2_1}} + \widetilde{p_{2_2}} + \widetilde{p_3}, \qquad (\omega_3) = 4 \widetilde{p_1}.$$
 
 \begin{remark} Note that 3, 6, and 7 are not multipliers as their corresponding forms do not yield canonical divisors. On the other hand, 4 is not a multiplier as the cone metric derived from cone angles $\frac{2 \pi}{8} (4, 0, 4)$ is not admissible. This induces a meromorphic form whose divisor is $3 \widetilde{p_1} - \widetilde{p_2}_1 - \widetilde{p_2}_2 + 3 \widetilde{p_3}.$ \end{remark}
 
 \subsection{Plane curve model}
-\label{subsec:polynomial} Given brancing indices $(d_i),$ we write $C$ as $y^d - (x - p_1)^{d_1} (x - p_2)^{d_1} \cdots (x - p_n)^{d_n}.$ In section~\ref{sec:examples}, we will show examples where the degree of the polynomial can be reduced and hence the polynomial is not uniquely defined. However, different polynomials representing the same curve yield the same output when put in the program in \cite{jeroen}.
+\label{subsec:polynomial} Given brancing indices $d (d_i),$ we write $C$ as $y^d - (x - p_1)^{d_1} (x - p_2)^{d_1} \cdots (x - p_n)^{d_n}.$ In section~\ref{sec:examples}, we will show examples where the degree of the polynomial can be reduced and hence the polynomial is not uniquely defined. However, different polynomials representing the same curve yield the same output (automorphism group) when put in the program in \cite{jeroen}.
 
 
 \subsubsection*{Plane curve model on Octa-4}
-With branching indices $(1, 2, 5),$ the underlying curve of Octa-4 is written as $y^8 - x (x-1)^2.$ However, Theorem 5.1 from \cite{dami} shows that by change of coordinates, it can also be written as $y^4 - x (x-1) (x+1).$
+With branching indices $8 (1, 2, 5),$ the underlying curve of Octa-4 is written as $y^8 - x (x-1)^2.$ However, in Theorem 5.1 from \cite{dami} the author shows that it can also be written as $y^4 - x (x-1) (x+1)$ and shows that this is equivalent to Fermat's quartic.
 
 \subsection{Weierstrass points and how to find them}
 
-A Weierstrass point $p \in C$ is a point where there are functions on $C$ with unusual pole orders at $p$ and nowhere else. In other words, they are points where the dimension-count of the Riemann-Roch theorem is not generic. Hurwitz showed that for genus $\geq 2,$ there are finitely many Weierstrass points on $C$ and the number of Weierstrass points is bounded by $2 g + 1 \leq |W(C_g)| \leq (g - 1) g (g + 1)$ where $W(C_g)$ is the set of Weierstrass points on a curve of genus $g.$ In characteristic zero, this can be proved by showing that every automorphism that fixes more than $2 g + 2$ points is the identity (by the Riemann-Roch theorem), from which we obtain a faithful representation of $\Aut(C_g)$ as permutations on $W(C_g)$. Moreover, the number of Weierstrass points on $C_g$ is $2 g + 2$ if and only if the curve is hyperelliptic. That is, the hyperelliptic involution fixes $2 g + 2$ points. We remark that in general, the action of the automorphism group on the set of Weierstrass points is not transitive \cite{sl}. 
+A Weierstrass point $p \in C$ is a point where there are functions on $C$ with unusual pole orders at $p$ and nowhere else. In other words, they are points where the dimension-count of the Riemann-Roch theorem is not generic. We say that a point is generic if it is not a Weierstrass point. Hurwitz showed that for $g \geq 2,$ there are finitely many Weierstrass points on $C$ and the number of Weierstrass points is bounded by $2 g + 1 \leq |W(C_g)| \leq (g - 1) g (g + 1)$ where $W(C_g)$ is the set of Weierstrass points on a genus-$g$ curve. In characteristic zero, this can be proved by showing that every automorphism that fixes more than $2 g + 2$ points is the identity (by the Riemann-Roch theorem), from which we obtain a faithful representation of $\Aut(C_g)$ as permutations on $W(C_g)$. Moreover, the number of Weierstrass points on $C_g$ is $2 g + 2$ if and only if the curve is hyperelliptic. That is, the hyperelliptic involution fixes $2 g + 2$ points. We remark that in general, the action of the automorphism group on the set of Weierstrass points is not transitive \cite{sl}. 
 
 
-In this section, we will discuss how to find all Weierstrass points on cyclic covers over $\mathbb{C}\mathbb{P}^1.$ In the previous sections, we learned that these covers are defined by a $d$-tuple of branching orders which naturally gives rise to a cone metric. Then given a cone metric on the covering, we obtain $g$ admissible cone metrics, in other words, a basis of holomorphic 1-forms. Another way of defining a generic point is as follows: given a basis of holomorphic 1-forms, a generic point $p$ is where the order of zeros at $p$ form the sequence $0, 1, \ldots , g - 1.$ If the sequence differs from this at $p,$ we call $p$ a Weierstrass point. The weight of a point measures how far it is from a generic point and is defined by the difference between the two sequences. For example, if a point $p$ yields a sequence $n_0 = 0 < n_1 < \cdots < n_{g-1},$ then the weight at $p$ is defined as $\textrm{wt}_p = \sum\limits_{i=0}^{g-1} (n_i - i).$ On a compact Riemann surface of genus $\geq 2,$ there are finitely many such points and $\sum\limits_{p \in C_g} \textrm{wt}_p = (g - 1) g (g + 1)$ \cite{fk}. 
+In this section, we will discuss how to find all Weierstrass points on cyclic covers over $\mathbb{C}\mathbb{P}^1.$ In the previous sections, we learned that these covers are defined by a $d$-tuple of branching orders which naturally gives rise to a cone metric. Then given a cone metric on the covering, we obtain $g$ admissible cone metrics, in other words, a basis of holomorphic 1-forms. Another way of defining a Weierstrass point is as follows: given a basis of holomorphic 1-forms, a generic point $p$ is where the order of zeros at $p$ form the sequence $0, 1, \ldots , g - 1.$ If the sequence differs from this at $p,$ we call $p$ a Weierstrass point. The weight of a point measures how far it is from a generic point and is defined by the difference between the two sequences. For example, if a point $p$ yields a sequence $n_0 = 0 < n_1 < \cdots < n_{g-1},$ then the weight at $p$ is defined as $\textrm{wt}_p = \sum\limits_{i=0}^{g-1} (n_i - i).$ On a compact Riemann surface of genus $\geq 2,$ there are finitely many such points and $\sum\limits_{p \in C_g} \textrm{wt}_p = (g - 1) g (g + 1)$ \cite{fk}. 
 
 
 % \begin{proposition} \cite{fk} Let $W(C)$ be the finite set of Weierstrass points on $C.$ If $\phi \in \Aut(C),$ then $\phi (W(C)) = W(C).$  In fact, the sequences of the order of zeros at $p \in C$ and $\phi(p)$ are the same. 
@@ -248,12 +256,15 @@ The zeros of the Wronksi metric correspond to the Weierstrass points and the ord
 \label{sec:flagflag}
 
 
-In \cite{dami}, the first author computed the automorphism group of the underlying curve of Octa-4 by finding a hyperbolic tessellation where all vertices corresponded to the Weierstrass points. By \textbf{tessellation} $\Delta$ of a curve $C$, we mean a polygonal decomposition of $C$ where the polygons are either disjoint or share an edge or a vertex, and their union is the entire curve. First, the author finds maps from the tessellation to itself that permute the Weierstrass points, then pins down the relation between the maps. This leads to finding the automorphism group in a generator-relation format. As a result, the automorphism group of the underlying curve of Octa-4 as $\Aut(C) = \langle a, b \mid a^8 = b^3 = (ab) ^2 = (a^2b^2)^3 = (a^4b^2)^3 = 1 \rangle.$ By the GAP small group identification function, this is equivalent to $C_4^{\text{ }2} \rtimes S_3.$ In the previous section, we showed that all Weierstrass points on this particular curve have uniform weight. Here, we conjecturally generalize this algorithm to curves with Weierstrass points of different weights. 
+In \cite{dami}, the first author computed the automorphism group of the underlying curve of Octa-4 by finding a hyperbolic tessellation where all vertices corresponded to the Weierstrass points. By \textbf{tessellation} $\Delta$ of a curve $C$, we mean a polygonal decomposition of $C$ where the polygons are either disjoint or share an edge or a vertex, and their union is the entire curve. First, the author finds maps on the tessellation that permute the Weierstrass points, then pins down the relation between the maps. This leads to finding the automorphism group in a generator-relation format. As a result, the automorphism group of the underlying curve of Octa-4 as $\Aut(C) = \langle a, b \mid a^8 = b^3 = (ab) ^2 = (a^2b^2)^3 = (a^4b^2)^3 = 1 \rangle.$ By the GAP small group identification function, this is equivalent to $C_4^{\text{ }2} \rtimes S_3.$ In the previous section, we showed that all Weierstrass points on this particular curve have uniform weight. Here, we conjecturally generalize this algorithm to curves with Weierstrass points of different weights. 
 
 
-\begin{remark} A tessellation $\Delta$ of a curve $C$can be considered on its own, without $C$, as a combinatorial object. \end{remark}
+\begin{remark} A tessellation $\Delta$ of a curve $C$ can be considered on its own, without $C$, as a combinatorial object. \end{remark}
+\begin{dami} I don't think a tessellation is a combinatorial object. What exactly do you mean by ``without C''\end{dami}
 
 \begin{defn} Given a tessellation $\Delta$, we define the \textbf{automorphism group of the tessellation} $\Aut(\Delta)$ to be the group of automorphisms of the tessellation. These are invertible maps which are are orientation-preserving, send vertices to vertices, edges to edges, and faces to faces. \end{defn} 
+
+\begin{dami} Why not ``These are maps that acts transitively and freely on the tiles.''\end{dami}
 
 %\begin{defn} A \textbf{tile} $T$ of a tesselation is a face together with its corresponding edges and vertices. \end{defn}
 
@@ -264,9 +275,16 @@ In \cite{dami}, the first author computed the automorphism group of the underlyi
 
 \begin{remark} In this case, all of the combinatorial automorphisms $\Aut(\Delta)$ lift to automorphisms of $C$, and every automorphism of $C$ is uniquely determined by its action described combinatorially.\end{remark}
 
+
 \begin{defn} \label{defn: base tess} Let $C$ be a $d$-fold cyclic cover over $\mathbb{C}\mathbb{P}^1$ branched at $n$ points. We define the \textbf{base tessellation} of $C$ as a tessellation tiled by $n$-gons with valency $d$ at every vertex. \end{defn}
 
-\begin{remark} For $n \geq 3,$ $d > \frac{n}{2},$ and $g > 1,$ there exists a unique base tessellation on $C_g,$ for $g > 1,$ tiled by $N (= \frac{4 d (g - 1)}{(n - 2) (d - 2) - 4})$ regular hyperbolic $n$-gons. Every angle of each $n$-gon is $\frac{2 \pi}{d}.$ This follows from Euler's characteristic formula. \end{remark}
+\begin{remark} For $n \geq 3,$ $d > \frac{n}{2},$ and $g > 1,$ there exists a unique base tessellation on $C_g,$ for $g > 1,$ tiled by $N (= \frac{4 d (g - 1)}{(n - 2) (d - 2) - 4})$ regular hyperbolic $n$-gons. Every angle of each $n$-gon is $\frac{2 \pi}{d}.$ $N$ is computed by Euler's characteristic formula. \end{remark}
+
+\begin{dami} maybe add at the end of the remark 
+
+Moreover, this tessellation exists regardless of the existence of a realization as a polyhedral surface in $\R^3.$
+
+\end{dami}
 
 \begin{defn} We say that a tessellation $\Delta'$ is a \textbf{refinement} of $\Delta$ if $\Delta \subset \Delta'$. \end{defn}
 
@@ -292,23 +310,41 @@ $\text{}$ $\hspace{2mm}$\textit{Output:} A conjectural all-seeing tessellation $
 
 %Attempt to align the Weierstrass points of $S$ with the vertices of $\Delta$. If this is not possible, refine $\Delta$ until all Weierstrass points lay on vertices of $\Delta$ and all tiles of $\Delta$ are similar. Call this new tessellation $\widetilde{Delta}$. 
 
-\item Restrict our attention to a tile $T$ of $\widetilde{\Delta}$. Let $G_T$ be the orientation-preserving automorphism group of a tile $T \in \widetilde{\Delta}.$ (Recall that all tiles are congruent\footnote{Note that the automorphism group $G_T$ encodes the weight of the vertices of $T$. As automorphisms preserve weights, vertices of different weights cannot be mapped to each other. Since all $T$ are congruent, $G_T$ does not depend on T.}). Find a refinement of $T$ by adding edges until each tile $T'$ (or $T' \cup R(T')$ where $R$ is a reflection about an edge) is the fundamental domain of $G_T$ acting on $T$. Apply the same refinement to all $T \in \widetilde{\Delta},$ and call this tessellation $\Delta_T$.
-
+\item Restrict our attention to a tile $T$ of $\widetilde{\Delta}$. Let $G_T$ be the automorphism group of a tile $T \in \widetilde{\Delta}.$ (Recall that all tiles are congruent\footnote{Note that the automorphism group $G_T$ encodes the weight of the vertices of $T$. As automorphisms preserve weights, vertices of different weights cannot be mapped to each other. Since all $T$ are congruent, $G_T$ does not depend on T.}). Find a refinement of $T$ by adding edges until each tile $T'$ is the fundamental domain of $G_T$ acting on $T$. Apply the same refinement to all $T \in \widetilde{\Delta},$ and call this tessellation $\Delta_T$.
 
 %%%lookd: can we have an issue where the rotation of the fundmental domain T' is an automorphism of the surface S?
 % so a rotation that fixes a T? This happens but why would it be an issue? For instance, Klein's quartic has 56 order-three rotations. 
 
 \end{enumerate}
 
+
+\begin{rem}
+For step 4 of the algorithm, we would like point out that we include orientation-reversing automorphisms which we denote by $\Aut_-.$ The two tilings in Figure~\ref{fig:125_hyp_i} show that the resulting tiling is not unique if we take only orientation-preserving maps $\Aut_+.$ Hence, we take $\Aut = \Aut_+ \sqcup \Aut_-$ into account so that the smallest tile in the final tessellation (Figure~\ref{fig:125_ref}) represents $X/\Aut.$
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+\centering
+\begin{minipage}{.5\textwidth}
+	\centering
+	\includegraphics[width=1.3in]{figures/125_hyp_1.pdf}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+	\centering
+	\includegraphics[width=1.3in]{figures/125_hyp_2.pdf}
+\end{minipage}
+\label{fig:125_hyp_i}
+\end{figure}
+\end{rem}
+
+
 \begin{conjecture} \label{tessconj}
 The output tessellation $\Delta_T$ of this algorithm always exists and $$\Aut(\Delta_T) \simeq \Aut(C)$$
 \end{conjecture}
 
 
-
-
 \subsubsection*{Tessellations on Octa-4}
-We perform this algorithm to the underlying curve of Octa-4 as done in \cite{dami}. We begin with the base tessellation (Figure~\ref{fig:125}). The base tessellation of this curve is tiled by 24 regular hyperbolic $\frac{2 \pi}{8}$-triangles. Next, we locate all Weierstrass points. On $C,$ all vertices of the base tessellation correspond to Weierstrass points, that is $\Delta = \widetilde{\Delta}$. Each tile $T$ of $\widetilde{\Delta}$ is a regular triangle with all vertices the same weight, hence $G_T = \Z/ 3\Z$. We add edges to each $T$ so that for the smallest tile $T',$ $T' \cup R(T')$ (where $R$ is a reflection about an edge) represents a fundamental domain for the action of $G_T$ on $T$ (Figure~\ref{fig:125_ref}). We include an additional edge to mimic the $(2,3,7)$-tiling on Klein's quartic. This captures orientation-reversing automorphisms. 
+We perform this algorithm to the underlying curve of Octa-4 as done in \cite{dami}. We begin with the base tessellation (Figure~\ref{fig:125}). The base tessellation of this curve is tiled by 24 regular hyperbolic $\frac{2 \pi}{8}$-triangles. Next, we locate all Weierstrass points. On $C,$ all vertices of the base tessellation correspond to Weierstrass points, that is $\Delta = \widetilde{\Delta}$. Each tile $T$ of $\widetilde{\Delta}$ is a regular triangle with all vertices the same weight, hence $G_T = D_3$. 
+
+%We include an additional edge to mimic the $(2,3,7)$-tiling on Klein's quartic. This captures orientation-reversing automorphisms. Then, for the smallest tile $T',$ $T' \cup R(T')$ (where $R$ is a reflection about an edge) represents a fundamental domain for the action of $G_T$ on $T$ (Figure~\ref{fig:125_ref}). 
 
 %%%lookd: if this is Z/3, why are there 6 tiles in T'
 % this includes orientation-reversing ones. If it makes more sense, I will remove these lines.
@@ -352,7 +388,7 @@ As our test subjects, we consider a subset of examples from the classification o
 \caption{Plane Curve Automorphism Groups}
 \centering 
 \begin{tabular}{ l | l c r r c} \hline
-  \shortstack{Curve C} & Plane Curve Model & Genus & Aut(C) & $|$Aut(C)$|$ \\ \hline
+  \shortstack{Curve $C$} & Plane Curve Model & Genus & Aut($C$) & $|$Aut(C)$|$ \\ \hline
   $7(1, 2, 4)$ (Klein's quartic) & $y^3x + x^3 + 1$ & 3 & $GL_3(F_2)$ & 168 \\  % check if y^7 - x(x-1)^2 works, then let's switch to the latter
   $\ast 8(1, 1, 6)$ & $y^2 - (x^8 - 1)$  & 3 &  $D_4 \rtimes C_4$ & 32 \\ % check if y^8 - x(x-1)
   $8(1, 2, 5)$ (Fermat's quartic) & $y^4 - x (x+1) (x-1)$ & 3 & $C_4^{\text{ }2} \rtimes S_3$ & 96 \\ % y^8 - x(x-1)^2
@@ -390,6 +426,8 @@ Klein's quartic is a genus three curve that is a sevenfold cover over $\mathbb{C
 \subsection*{8(1, 1, 6)}
 In this and the following subsection, we will look at two different hyperelliptic curves of genus three. First, we look at the eightfold cover defined by branching indices $(1, 1, 6).$ The branching indices along with the multipliers yield a basis of holomorphic 1-forms with divisors $$(\omega_1) = 4 \widetilde{p_3}, \qquad (\omega_2) = \widetilde{p_1} + \widetilde{p_2} + \widetilde{p_{3_1}} + \widetilde{p_{3_2}}, \qquad (\omega_3) = 2 \widetilde{p_1} + 2 \widetilde{p_2}.$$ Note that no $\widetilde{p_i}$ is a Weierstrass point. The wronski metric tells us that the Weierstrass points come from the midpoint of $\overline{p_1 p_2}.$ Hence we refine the tessellation to show all symmetries (Figure~\ref{fig:116}). These points are fixed under the hyperelliptic involution, whose quotient is a doubled octagon. In other words, we can rewrite the plane curve model as $y^2 - (x^8 - 1).$ 
 
+The base tessellation is identical to that of $8(1,2,5)$ (Figure~\ref{fig:125}) and Figure~\ref{fig:116} shows its all-seeing tessellation. 
+
 \begin{figure}[htbp]
     \centering
     \subfloat{{\includegraphics[width=2.75in]{figures/116_hyp}}}
@@ -402,7 +440,7 @@ In this and the following subsection, we will look at two different hyperellipti
 
 \subsection*{12(1, 5, 6)}
 %f10
-This curve is yet another genus three hyperelliptic curve that is defined as a twelvefold cover over a sphere with branching indices $(1, 5, 6).$ We achieve a basis of 1-forms with divisors $$(\omega_1) = 4 \widetilde{p_2}, \qquad (\omega_2) = 2 \widetilde{p_1} + 2 \widetilde{p_2}, \qquad (\omega_3) = 4 \widetilde{p_2},$$ hence $\widetilde{p_1}$ and $\widetilde{p_2}$ are Weierstrass points of weight 3 each. Recall that if $q$ for $q \neq p_i$ is a zero of the Wronski metric, then there must be 12 preimages $\widetilde{q}$ on the genus three curve, which contradicts the total weight theorem ($g^3 - g$). However, the wronski metric tells us that $p_3$ is in fact a triple order zero, hence all six $\widetilde{p_{3_i}}$ are Weierstrass points. All Weierstrass points are marked as either $\bullet$ or $\circ$ as they have different valency (Figure~\ref{fig:156}). The surface is a double cover over a Riemann sphere branched at six points which are located at the North and South Pole, and six equidistributed points on the Equator. Hence, the plane curve model can also be written as $y^2 - (x^7 - x).$
+This curve is another genus three hyperelliptic curve that is defined as a twelvefold cover over a sphere with branching indices $(1, 5, 6).$ We achieve a basis of 1-forms with divisors $$(\omega_1) = 4 \widetilde{p_2}, \qquad (\omega_2) = 2 \widetilde{p_1} + 2 \widetilde{p_2}, \qquad (\omega_3) = 4 \widetilde{p_2},$$ hence $\widetilde{p_1}$ and $\widetilde{p_2}$ are Weierstrass points of weight 3 each. Recall that if $q$ for $q \neq p_i$ is a zero of the Wronski metric, then there must be 12 preimages $\widetilde{q}$ on the genus three curve, which contradicts the total weight theorem ($g^3 - g$). However, the wronski metric tells us that $p_3$ is in fact a triple order zero, hence all six $\widetilde{p_{3_i}}$ are Weierstrass points. All Weierstrass points are marked as either $\bullet$ or $\circ$ as they have different valency (Figure~\ref{fig:156}). The surface is a double cover over a Riemann sphere branched at six points which are located at the North and South Pole, and six equidistributed points on the Equator. Hence, the plane curve model can also be written as $y^2 - (x^7 - x).$
 
 \begin{figure}[htbp]
     \centering
@@ -411,6 +449,9 @@ This curve is yet another genus three hyperelliptic curve that is defined as a t
     \label{fig:156}%
 \end{figure}
 
+\begin{dami} add the base tess to 156 here. \end{dami}
+
+The base tessellation of $12(1,5,6)$ is tiled by 16 $\frac{2 \pi}{12}$-hyperbolic triangles. However, to visualize the order-12 rotational symmetry, we subdivide four triangles into 12 third-triangles % (Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:156}).
 
 
 
@@ -450,7 +491,7 @@ The wronski metric tells us that three simple zeros are located at the midpoint 
 
 \section{Programmatic Method of Checking Conjecture}
 
-We checked a calculations of an all-seeing tessellations of a curve $C$ by taking a plane curve presentation of $C$, and plugging into our program \texttt{autplane.sage} based on the algorithms of Bruin-Sijsling-Zotine (Section 4.1, \cite{jeroen}). Our code is available at \begin{center} \texttt{https://github.com/catherineray/aut-jac/autplane.sage} \end{center}.
+We checked our calculations of an all-seeing tessellation of a curve $C$ by taking a plane curve presentation of $C$, and plugging into our program \texttt{autplane.sage} based on the algorithms of Bruin-Sijsling-Zotine (Section 4.1, \cite{jeroen}). Our code is available at \begin{center} \texttt{https://github.com/catherineray/aut-jac/autplane.sage} \end{center}.
 
 \begin{remark}We exposit the algebreo-geometric and programmatic background of this section in much more detail in our sequel paper \textit{The Study of Principal Polarizations through Automorphisms of the Jacobian}.\end{remark}
 
