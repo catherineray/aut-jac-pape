@@ -35,54 +35,7 @@
 \definecolor{comments}{RGB}{0,0,113}
 \definecolor{red}{RGB}{160,0,0}
 \definecolor{green}{RGB}{0,150,0}
-\lstdefinelanguage{Magma}%
-  {%
-   otherkeywords={:=,+:=,-:=,*:=},%
-          % functions
-   procnamekeys={function,func,intrinsic,procedure,proc},%
-         % Booleans
-   morekeywords={true,false},%
-          % relations
-   morekeywords=[2]{adj,and,cat,cmpeq,cmpne,diff,div,eq,ge,gt,in,is,join,le,lt,%
-          meet,mod,ne,notadj,notin,notsubset,or,sdiff,subset,xor},%
-          % keywords
-   morekeywords=[3]{assigned,break,by,case,catch,continue,declare,default,%
-          delete,do,elif,else,end,eval,exists,exit,for,forall,fprintf,if,local,%
-          not,print,printf,quit,random,read,readi,repeat,restore,save,select,%
-          then,time,to,try,until,vprint,vprintf,vtime,when,where,while},%
-          % directives
-   morekeywords=[4]{clear,forward,freeze,iload,import,load},%
-          % error checks
-   morekeywords=[5]{assert,assert2,assert3,error,require,requirege,requirerange},%
-          % constructors
-   morekeywords=[6]{car,comp,cop,elt,ext,frac,hom,ideal,iso,lideal,loc,map,%
-          ncl,pmap,quo,rec,recformat,rep,rideal,sub},%
-          % other constructors (semi-reserved)
-   morekeywords=[7]{AbelianGroup,AdditiveCode,AffineAlgebra,Algebra,%
-          AssociativeAlgebra,Character,CliffordAlgebra,Design,Digraph,%
-          ExtensionField,FPAlgebra,FiniteAffinePlane,FiniteProjectivePlane,%
-          Graph,Group,GroupAlgebra,IncidenceStructure,LieAlgebra,LinearCode,%
-          LinearSpace,MatrixAlgebra,MatrixGroup,MatrixRing,Monoid,%
-          MultiDigraph,MultiGraph,NearLinearSpace,Network,PartialMap,%
-          PermutationGroup,PolycyclicGroup,QuaternionAlgebra,Semigroup,%
-          ZModule},%
-          % functions
-   morekeywords={[8]function,func,intrinsic,procedure,proc,return},%
-      sensitive,%
-      morecomment=[l]//,%
-      morecomment=[s]{/*}{*/},%
-      morecomment=[s]{\{}{\}},%
-      morestring=[b]"%
-  }[keywords,procnames,comments,strings]%
-\lstset{language=Python, 
-        basicstyle=\ttfamily\small, 
-        keywordstyle=\color{keywords},
-        commentstyle=\color{comments},
-        stringstyle=\color{red},
-        breaklines=true,
-        showstringspaces=false,
-        identifierstyle=\color{green},
-        procnamekeys={def,class}}
+
 %\usepackage[T1]{fontenc}
 %\usepackage[urw-garamond]{mathdesign}
 \usepackage{tikz-cd}\tikzset{node distance=2cm, auto}
@@ -154,8 +107,14 @@ Given a curve with cone metrics, we introduce a new conjectural method for compu
 
 \section{Introduction}
 
+Computing the automorphism groups of curves with genus $\geq 2$ is incredibly difficult. The usual method is presenting the automorphism group as an action on the coefficients of a polynomial describing the curve (appendix A, \cite{silverman}). Not much progress was made until the algorithms of Bruin-Sijsling-Zotine \cite{jeroen} for all genus in characteristic 0. We present in this paper a conjectural new way to calculate and present automorphism groups in characteristic 0, the algorithm used to construct this tessellation is discussed in section ~\ref{sec:flagflag}.
 
-In \cite{dami}, the first author studies the underlying curve of an embedded triply periodic polyhedral surface $\Pi \subset \R^3$ equipped with a polyhedral cone metric. By triply periodic, we mean that $\Pi$ is invariant under a rank-three lattice $\Lambda \subset \R^3$ by translations. The polyhedral surface is tiled by triangles with eight meeting at each vertex. With identifications, the underlying curve $C = \Pi / \Lambda$ is a closed genus three curve and with the induced polyhedral cone metric, it is invariant under an order-eight rotation. This order-eight symmetry is not visible on the embedding of the polyhedral surface $\Pi \subset \R^3.$ The quotient under the $\Z/ 8 \Z$-action on $C$ yields the Riemann sphere where the cover is branched over three points. We say that a curve $C$ is a $d$-fold cyclic cover branched over a sphere if $C / (\Z / d \Z) = \mathbb{C}\mathbb{P}^1$ for some positive integer $d.$ A cyclic cover over a sphere gives rise to various cone metrics with which one can compute a basis of holomorphic 1-forms on $C.$ With explicit cone metrics and symmetries induced from the polyhedral surface, the author locates all Weierstrass points on $C.$ Then by finding a hyperbolic tessellation $\Delta$ on the curve where all vertices are Weierstrass points, the author computes $\Aut(\Delta)$ and shows that $\Aut(\Delta) \simeq \Aut(C)$. We note that the hyperbolic tessellation coincidentally corresponds to the euclidean tiling on $\Pi.$ [[the author computes the automorphism group of the tessellation that acts freely and transitively on the tiles]]. We call a tessellation with this property \textbf{all-seeing}. This all-seeing tessellation provides a concrete way of presenting the automorphism group of a curve, as opposed to presenting the automorphism group as an action on the coefficients of a polynomial describing the curve (appendix A, \cite{silverman}). % the bit on Fermat is moved to a later section
+
+\begin{conjecture} Given a curve $C$ with genus $\geq 2$ which is a cyclic cover of a punctured sphere, we may algorithmically construct a tessellation $\Delta$ on $C$, such that $$\Aut(\Delta) \simeq \Aut(C)$$  
+\end{conjecture}
+
+
+In \cite{dami}, the first author studies the underlying curve of an embedded triply periodic polyhedral surface $\Pi \subset \R^3$ equipped with a polyhedral cone metric. By triply periodic, we mean that $\Pi$ is invariant under a rank-three lattice $\Lambda \subset \R^3$ by translations. The polyhedral surface is tiled by triangles with eight meeting at each vertex. With identifications, the underlying curve $C = \Pi / \Lambda$ is a closed genus three curve and with the induced polyhedral cone metric, it is invariant under an order-eight rotation. This order-eight symmetry is not visible on the embedding of the polyhedral surface $\Pi \subset \R^3.$ The quotient under the $\Z/ 8 \Z$-action on $C$ yields the Riemann sphere where the cover is branched over three points. We say that a curve $C$ is a $d$-fold cyclic cover branched over a sphere if $C / (\Z / d \Z) = \mathbb{C}\mathbb{P}^1$ for some positive integer $d.$ A cyclic cover over a sphere gives rise to various cone metrics with which one can compute a basis of holomorphic 1-forms on $C.$ With explicit cone metrics and symmetries induced from the polyhedral surface, the author locates all Weierstrass points on $C.$ Then by finding a hyperbolic tessellation $\Delta$ on the curve where all vertices are Weierstrass points, the author computes $\Aut(\Delta)$ and shows that $\Aut(\Delta) \simeq \Aut(C)$. We note that the hyperbolic tessellation coincidentally corresponds to the euclidean tiling on $\Pi.$ We call a tessellation with this property \textbf{all-seeing}. This all-seeing tessellation provides a new way of presenting the automorphism group of a curve, as opposed to presenting the automorphism group as an action on the coefficients of a polynomial describing the curve (appendix A, \cite{silverman}). % the bit on Fermat is moved to a later section
 
 Although we do not prove any theorem in this paper, we conjecture that given a cyclic cover branched over $\mathbb{C}\mathbb{P}^1,$ there exists a tessellation that exhibits the automorphism group of the curve. Further, we present an algorithm to construct this tessellation. We heavily rely on the first author's thesis \cite{dthesis} where they discuss cone metrics on cyclic covers over $\mathbb{C}\mathbb{P}^1$ and classify all of them up to genus five. We summarize in section~\ref{sec: dthesis} how to find cone metrics, find a basis of holomorphic 1-forms, find a plane curve model, and locate Weierstrass points given only a construction of a cyclic cover over a sphere. Furthermore, from cone metrics we can compute period matrices, which we use in a sequel to this paper. 
 
@@ -259,12 +218,8 @@ The zeros of the Wronksi metric correspond to the Weierstrass points and the ord
 In \cite{dami}, the first author computed the automorphism group of the underlying curve of Octa-4 by finding a hyperbolic tessellation where all vertices corresponded to the Weierstrass points. By \textbf{tessellation} $\Delta$ of a curve $C$, we mean a polygonal decomposition of $C$ where the polygons are either disjoint or share an edge or a vertex, and their union is the entire curve. First, the author finds maps on the tessellation that permute the Weierstrass points, then pins down the relation between the maps. This leads to finding the automorphism group in a generator-relation format. As a result, the automorphism group of the underlying curve of Octa-4 as $\Aut(C) = \langle a, b \mid a^8 = b^3 = (ab) ^2 = (a^2b^2)^3 = (a^4b^2)^3 = 1 \rangle.$ By the GAP small group identification function, this is equivalent to $C_4^{\text{ }2} \rtimes S_3.$ In the previous section, we showed that all Weierstrass points on this particular curve have uniform weight. Here, we conjecturally generalize this algorithm to curves with Weierstrass points of different weights. 
 
 
-\begin{remark} A tessellation $\Delta$ of a curve $C$ can be considered on its own, without $C$, as a combinatorial object. \end{remark}
-\begin{dami} I don't think a tessellation is a combinatorial object. What exactly do you mean by ``without C''\end{dami}
+\begin{defn} Given a tessellation $\Delta$, we define the \textbf{automorphism group of the tessellation} $\Aut(\Delta)$ to be the group of automorphisms of the tessellation. These are invertible maps which are are orientation-preserving, send vertices to vertices of the same weight, edges to edges, and faces to faces. \end{defn} 
 
-\begin{defn} Given a tessellation $\Delta$, we define the \textbf{automorphism group of the tessellation} $\Aut(\Delta)$ to be the group of automorphisms of the tessellation. These are invertible maps which are are orientation-preserving, send vertices to vertices, edges to edges, and faces to faces. \end{defn} 
-
-\begin{dami} Why not ``These are maps that acts transitively and freely on the tiles.''\end{dami}
 
 %\begin{defn} A \textbf{tile} $T$ of a tesselation is a face together with its corresponding edges and vertices. \end{defn}
 
@@ -273,18 +228,15 @@ In \cite{dami}, the first author computed the automorphism group of the underlyi
 \begin{defn} We call a tessellation $\Delta$ of a curve $C$ an \textbf{all-seeing tessellation} if we have a group isomorphism: $$\Aut(\Delta) \simeq \Aut(C)$$ 
 \end{defn}
 
-\begin{remark} In this case, all of the combinatorial automorphisms $\Aut(\Delta)$ lift to automorphisms of $C$, and every automorphism of $C$ is uniquely determined by its action described combinatorially.\end{remark}
+%\begin{remark} \begin{dami} Why not ``These are maps that acts transitively and freely on the tiles.''\end{dami} In this case, all of the combinatorial automorphisms $\Aut(\Delta)$ lift to automorphisms of $C$, and every automorphism of $C$ is uniquely determined by its action described combinatorially.\end{remark}
 
 
 \begin{defn} \label{defn: base tess} Let $C$ be a $d$-fold cyclic cover over $\mathbb{C}\mathbb{P}^1$ branched at $n$ points. We define the \textbf{base tessellation} of $C$ as a tessellation tiled by $n$-gons with valency $d$ at every vertex. \end{defn}
 
-\begin{remark} For $n \geq 3,$ $d > \frac{n}{2},$ and $g > 1,$ there exists a unique base tessellation on $C_g,$ for $g > 1,$ tiled by $N (= \frac{4 d (g - 1)}{(n - 2) (d - 2) - 4})$ regular hyperbolic $n$-gons. Every angle of each $n$-gon is $\frac{2 \pi}{d}.$ $N$ is computed by Euler's characteristic formula. \end{remark}
+\begin{remark} For $n \geq 3,$ $d > \frac{n}{2},$ and $g > 1,$ there exists a unique base tessellation on $C_g,$ for $g > 1,$ tiled by $N (= \frac{4 d (g - 1)}{(n - 2) (d - 2) - 4})$ regular hyperbolic $n$-gons. Every angle of each $n$-gon is $\frac{2 \pi}{d}.$ $N$ is computed by Euler's characteristic formula. Moreover, this tessellation exists regardless of the existence of a realization as a polyhedral surface in $\R^3.$
+ \end{remark}
 
-\begin{dami} maybe add at the end of the remark 
 
-Moreover, this tessellation exists regardless of the existence of a realization as a polyhedral surface in $\R^3.$
-
-\end{dami}
 
 \begin{defn} We say that a tessellation $\Delta'$ is a \textbf{refinement} of $\Delta$ if $\Delta \subset \Delta'$. \end{defn}
 
@@ -318,7 +270,7 @@ $\text{}$ $\hspace{2mm}$\textit{Output:} A conjectural all-seeing tessellation $
 \end{enumerate}
 
 
-\begin{rem}
+\begin{remark}
 For step 4 of the algorithm, we would like point out that we include orientation-reversing automorphisms which we denote by $\Aut_-.$ The two tilings in Figure~\ref{fig:125_hyp_i} show that the resulting tiling is not unique if we take only orientation-preserving maps $\Aut_+.$ Hence, we take $\Aut = \Aut_+ \sqcup \Aut_-$ into account so that the smallest tile in the final tessellation (Figure~\ref{fig:125_ref}) represents $X/\Aut.$
 
 \begin{figure}[htbp] %  figure placement: here, top, bottom, or page
@@ -333,7 +285,7 @@ For step 4 of the algorithm, we would like point out that we include orientation
 \end{minipage}
 \label{fig:125_hyp_i}
 \end{figure}
-\end{rem}
+\end{remark}
 
 
 \begin{conjecture} \label{tessconj}
@@ -372,7 +324,13 @@ We perform this algorithm to the underlying curve of Octa-4 as done in \cite{dam
 \section{Example Calculations}
 \label{sec:examples}
 
-This section is devoted to the computation of automorphism groups of our Riemann surfaces by all-seeing tessellations using the algorithm shown in section~\ref{sec:flagflag}. We checked the results programmatically with programs based on the algorithms of Bruin-Sijsling-Zotine \cite{jeroen}, which we discuss in section \ref{jeroen}.
+This section is devoted to the computation of automorphism groups of our Riemann surfaces by all-seeing tessellations using the algorithm shown in section~\ref{sec:flagflag}. We checked the results programmatically by taking a plane curve presentation of each surface, and plugging into our program \texttt{autplane.sage} based on the algorithms of Bruin-Sijsling-Zotine (Section 4.1, \cite{jeroen}). Then, we checked that the automorphism groups from both methods are the same. Our code is available at \begin{center} \texttt{https://github.com/catherineray/aut-jac/autplane.sage} \end{center}.
+
+
+\begin{remark}We exposit the algebreo-geometric and programmatic background of our programs in much more detail in our sequel paper \textit{The Study of Principal Polarizations through Automorphisms of the Jacobian}.\end{remark}
+
+%We checked the results programmatically with programs based around the algorithm of Bruin-Sijsling-Zotine \cite{jeroen}.
+
 
 As our test subjects, we consider a subset of examples from the classification of cyclic covers found in \cite{dthesis} that we expect to have large automorphism groups. 
 
@@ -489,13 +447,8 @@ The wronski metric tells us that three simple zeros are located at the midpoint 
 \end{figure}
 
 
-\section{Programmatic Method of Checking Conjecture}
 
-We checked our calculations of an all-seeing tessellation of a curve $C$ by taking a plane curve presentation of $C$, and plugging into our program \texttt{autplane.sage} based on the algorithms of Bruin-Sijsling-Zotine (Section 4.1, \cite{jeroen}). Our code is available at \begin{center} \texttt{https://github.com/catherineray/aut-jac/autplane.sage} \end{center}.
-
-\begin{remark}We exposit the algebreo-geometric and programmatic background of this section in much more detail in our sequel paper \textit{The Study of Principal Polarizations through Automorphisms of the Jacobian}.\end{remark}
-
-The brilliance of Bruin-Sijsling-Zotine's approach is proving that given plane algebraic curves (not necessarily smooth) and their Jacobians, we may \textit{heuristically} calculate their automorphisms, and obtain rigorous results. 
+%The brilliance of Bruin-Sijsling-Zotine's approach is proving that given plane algebraic curves (not necessarily smooth) and their Jacobians, we may \textit{heuristically} calculate their automorphisms, and obtain rigorous results. 
 
 
 
