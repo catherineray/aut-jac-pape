@@ -1,7 +1,7 @@
 \documentclass[12pt,reqno]{amsart}
 \usepackage[margin=3cm]{geometry}
 
-\usepackage{amsmath, amssymb, amsfonts, tikz,enumerate, graphicx, textcomp, caption, wrapfig, amsthm, todonotes, verbatim, cleveref, caption, float, mathabx}
+\usepackage{amsmath, amssymb, amsfonts, tikz,enumerate, graphicx, textcomp, caption, wrapfig, amsthm, todonotes, verbatim, cleveref, caption, float, mathabx, flafter}
 \usetikzlibrary{calc, arrows}
 \usepackage[procnames]{listings}
 \usepackage{color, subfig}
@@ -150,18 +150,22 @@
 \section{Introduction/Summary of Prior Work}
 The main result of this paper is finding multiple non-autoequivalent principal polarizations on many different Jacobians by using a new method. Before we state our result we summarize what is known about abelian varieties with several principal polarizations.
 
-Narasimhan nori. Abelian varieties with several principal polarizations
+The fact that an abelian variety admits only a finite number of isomorphism classes of principal polarizations was established by Narasimhan-Nori in (?). In this paper, they state the still unsolved problem of finding a closed formula for the number of principal polarizations of any given abelian variety over any field. In general, abelian varieties with several principal polarizations are incredibly rare. In fact, abelian varieties with no principal polarizations are in some sense dense on the moduli stack of abelian varieties (considered in terms of their big Period matrix).
 
 The previous work toward the Narasimhan-Nori conjecture can be divided into the simple and non-simple cases (in which we can further indicate char 0 or char p cases). An abelian variety is \textbf{simple} if it is not isogenous to a product of abelian varieties of lower dimension. 
 
 A technique developed by Lange first for \textit{simple} varieties in characteristic 0. In \cite{several} Theorem 1.5, Lange establishes for simple varieties that the order of $\Aut(A)$ with certain restriction conditions and equivalence relations is equal to the number of principal polarizations on $A$ up to isomorphism, $\pi(A)$. One could in principal compute the size of this specially carved out version of $\Aut(A)$ by hand using Lange's theorem, however, it is computationally infeasible. This is incredible, it gives us a a set equivalence between a slighly carved automorphism group of a variety, and its set of principal polarizations.
 
-\begin{remark} In Theorem 3.1, Lange further establishes bounds on $\pi(A)$ in terms of the class group of $End_{\Q}(A)$, if $End_{\Q}(A)$ is a \textit{totally real} number field $K$ (and thus the variety $A$ is simple). \end{remark}  
-
-ADD OTHER RECENT WORK OF LANGE ON products of elliptic curves without complex multiplication. 
-
 \begin{remark} His bijection between sets is induced by considering an element in the Neron-Severi group of $A$, and representing such elements as endomorphisms of $A$ preserved under the Rosati involution with respect to a chosen polarization. Since this bijection is induced by a principal polarization, one must know that one exists to implement this theorem. \end{remark}
 
+
+\begin{remark} In Theorem 3.1, Lange further establishes bounds on $\pi(A)$ in terms of the class group of $End_{\Q}(A)$, if $End_{\Q}(A)$ is a \textit{totally real} number field $K$ (and thus the variety $A$ is simple). \end{remark}  
+
+More recently, Lange treated the non-simple case of products of elliptic curves without complex multiplication in Theorem 3.5 \cite{langenew}. He did so by giving an interpretation of the number of principal polarizations in terms of class numbers of definite Hermitian forms.
+
+\begin{remark} The main idea of the proof of 3.5 is that the canonical principal polarization of X induces a bijection between P(X) and the set of equivalence classes of symmetric automorphisms of X. Via the analytic representation of X and a suitable choice of bases this set can be considered as a set of equivalence classes of Hermitian forms. \end{remark}
+
+%
 All other previous works known to the authors on finding multiple principal polarizations on abelian varieties have been done by finding two non-isomorphic curves with the same (unpolarized) Jacobian. Therefore, their associated canonical polarizations must be different by the Torelli theorem. Otherwise, the curves would be isomorphic. All papers that the we know of using this technique do so only in characteristic $p$. 
 
 \begin{remark} There is only a canonical principal polarization on $A$ if a curve $C$ is specified so that $A = \Jac(C).$ If $C$ is not specified, there is no canonical choice -- knowing that $A$ is in the image of the functor $\Jac$ is not enough. Thus, there can be several ``canonical" principal polarizations on one Jacobian, its canonicality only refers to the fact that it comes from a curve. \end{remark}
@@ -170,21 +174,7 @@ The papers using this non-isomorphic curve technique discuss the case of \textit
 
 This technique is again used by E. Howe \cite{howe1} and \cite{howe2} which gives examples of non-isomorphic genus two curves with the same \textit{simple} Jacobian. He finds such examples in characteristic $p$ by playing with isogeny classes of abelian varieties which correspond to special Weil numbers. 
 
-To finish up the discussion on what was known before our paper, we wish to make a remark on how to use techniques for simple varieties to bound below the number of principal polarizations of nonsimple varieties. 
-
-\begin{remark} Since every abelian variety is isogenous to a product of simple abelian varieties $$A \simeq A_1 \times ... \times A_k$$ it is reasonable to ask how the numbers of principal polarizations on $A_i$ are related to that of $A$. 
-
-Let's quickly establish some vocabulary to discuss this intuitively. Recall that we may also define a principal polarization on $A$ as an isogeny which is also an isomorphism between $A \to A^\vee$, where $A^\vee$ denotes the dual variety. Let $A$ and $B$ be arbitrary abelian varieties. Note that $\text{Corr}(A, B) \simeq \Hom(B, A^\vee)$, where we take a correspondence from $A$ to $B$ to be a line bundle $\mathcal{L}$ over the product $A \times B$ which is trivial when restricted to $A$ or $B$.
-
-We are interested in $\Aut(A, A^\vee)$, which is isomorphic to $\Corr(A, A)^\times$ but the problem of comparision arises immediately and obviously without having to pass to isomorphisms. %We wish to compare $$\Hom\left(\prod_{i= 1}^k A_i, (\prod_{j= 1}^k A_j)^{\vee}\right) \qquad \text{ and  } \qquad \prod_{i, j} \Hom(A_i, A_j^{\vee})$$
-
-We wish to compare
-
-$$\Corr\left(\prod_{j= 1}^k A_j, \prod_{i= 1}^k A_i\right) \qquad \text{ and  } \qquad \prod_{i, j} \Corr(A_j, A_i)$$
-
-Let $C$ and $D$ be abelian varieties. Given a line bundle on $C$ and on $D$, we get a line bundle on $C \times D$, but not vice-versa. Intuitively, the product $C \times D$ may have many more interesting cycles than the product of the cycles of $C$ and $D$, and may not necessarily restrict to a line bundle on $C$ or $D$. Therefore, in general the number of principal polarizations of $A$ is at least the product of the principal polarizations of the simple components $A_i$, that is, $$\pi(A_1 \times ... \times A_k) \geq \prod_{i=1}^k \pi(A_i)$$ as observed. %We saw that $\Jac(\text{I-WP})$ is isogenous to a product of 4 elliptic curves. Since these curves are all isomorphic, we only get one principal polarization from this decomposition, but we found at least 9 principal polarizations on their product.
-\end{remark}  
-
+To finish up the discussion on what was known before our paper, 
 In this paper, we introduce an entirely different technique to find different principal polarizations on Jacobians, exposited in Section ~\ref{sec:find}, which treats both simple and non-simple cases in characteristic 0. This technique, for example, gives us 9 nonisomorphic principal polarizations on the Jacobian of Schoen's I-WP Surface. This is a very interesting result, especially since the variety $\Jac(\text{I-WP})$ itself factors into a product of 4 elliptic curves\footnote{This is because $\text{End}(\Jac(\text{I-WP})) \simeq M_4(K)$, where $K$ is imaginary quadratic. Thus, $\Jac(\text{I-WP})$ is the product of elliptic curves with CM by $K$.}, so the remaining principal polarizations must come from interesting new cycles in the product of these elliptic curves. Other such surprising results from this technique are shown in Table ~\ref{table:pp}.
 
 The key insight(?) of our technique is as follows. It is computationally hard (impossible?? -- check with J) to compare two principal polarizations to check if they are isomorphic, so we compute the automorphism group of the Jacobian with respect to them, and if these automorphism groups are nonisomorphic, the principal polarizations are nonisomorphic as well. This allows us to compare and study the principal polarizations further. 
@@ -234,7 +224,7 @@ Furthermore, we can produce flat structures that arise from $\omega_2$ and $\ome
 
 
 \subsection{A Non Cyclic Cover: The Modular Curve $X_0(63)$}
-<<<<<<< HEAD
+
 
 \label{sec:modular}
 Recall that $SL_2(\Z)$ acts transitively on the upper half plane $\mathfrak{h}$ by $\tau \mapsto \frac{a\tau + b}{c\tau + d}$. We quotient the upper half plane by subgroups $\Gamma$ of $SL_2(\Z)$ and metrize the quotient, however, this yields non-compact Riemann surfaces. To get a compact Riemann surface, we consider the extended upper half plane $\mathfrak{h}^{+} := \mathfrak{h} \cup \R \cup \{ \infty \}$ as a subset of $\C P^1$.  
@@ -288,7 +278,15 @@ The period matrix used in our calculation of $\Aut(\Jac(X_0(63)), p_i)$ was comp
 
  \section{Programmatically Computing the Automorphism Group of Plane Curves and Abelian Varieties over $\mathbb{C}$}
 
-\begin{remark} The first two subsections of the section are copied from section 4 of Bruin-Sijsling-Zotine \cite{jeroen} with lots of exposition and examples added for the readers' convenience. This sets us up to introduce the code for brute force calculating principal polarizations. All of our code is available at \begin{center}\texttt{https://github.com/catherineray/aut-jac}\end{center}\end{remark} 
+
+
+
+
+
+
+
+
+\begin{remark} The first two subsections of the section are copied from section 4 of Bruin-Sijsling-Zotine \cite{jeroen} with lots of exposition and examples added for the readers' convenience. This sets us up to introduce the code for brute force calculating principal polarizations. All of our code is available at \begin{center}\texttt{https://github.com/catherineray/aut-jac}\end{center} We discuss the certification of these numerical results in Section ~\ref{cert}. \end{remark} 
 
 Let us examine abelian varieties represented as analytic groups $X := V/\Lambda$ and $X' := V'/\Lambda'$. They need not be Jacobians.
 
@@ -408,12 +406,75 @@ $\text{}$ $\hspace{2mm}$\textit{Output:} For each combination of principal polar
 \item If $(J_1, a_i) = (J_2, b_i)$, find the group structure of each set $\Aut(J_1, a_i)$ (using the algorithm in the previous section).
 \end{enumerate}
 
+
 %what makes these automorphisms symplectic? 
 
 %\begin{remark} This algorithm is a repeat of the algorithm in the next section, beginning with different inputs [it begins at step (4) of the algorithm for plane curves]. We exposit it seperately to emphasize that is works for more than just plane curves. \end{remark}
 
 
 %In the following description of the program, we assume that the period matrix is already known. We find the period matrix using either Lee-Webers's method for cyclic covers \todo{does it work more generally?}, or using Bruin's calculation of the period matrix from the Voronoi cell decomposition.
+
+
+\subsection{Certifying Heuristic Methods}
+\label{sec:cert}
+We summarize here the fantastic work of Costa-Mascot-Sijsling-Voight \cite{rigor} on certifying that numerically computed endomorphisms of a Jacobian are infact endomorphisms of that Jacobian. This is extremely nontrivial because in an analytic sense, abelian varieties with no principal polarizations are dense in the moduli space of Big Period Matrices (source?). 
+
+A key conceptual part of their approach is relating divisors on $X \times Y$ to endomorphisms of the Jacobians $\Jac(X)$ and $\Jac(Y)$ via the theory of correspondences. Smith shows that all endomorphisms of Jacobians come from correspondences (did smith prove it or someone else?). Each correspondece on $X \times Y$ induces a homomorphism of the divisor groups of $X$ and $Y$. These homomorphisms in turn induce homomorphisms of Jacobians. In our case, $X=Y$, but we will exposit the more general case. Let $C$ be a prime divisor on $X \times Y$, then we denote the associated correspondence as follows.
+
+\begin{center}
+\begin{tikzcd}
+  & X \times Y \arrow[ld, "\pi_1^C"'] \arrow[rd, "\pi_2^C"] &   \\
+X &                                                         & Y
+\end{tikzcd}
+\end{center}
+
+\begin{center}
+\begin{tikzcd}
+                                                       & \Div(C) \arrow[rd, "(\pi_2^C)_*"] &         \\
+\Div(X) \arrow[ru, "(\pi_1^{C})^*"] \arrow[rr, dashed] &                                   & \Div(Y)
+\end{tikzcd}
+\end{center}
+
+\begin{center}
+\begin{tikzcd}
+                                                       & \Jac(C) \arrow[rd, "(\pi_2^C)_*"] &         \\
+\Jac(X) \arrow[ru, "(\pi_1^{C})^*"] \arrow[rr, dashed] &                                   & \Jac(Y)
+\end{tikzcd}
+\end{center}
+
+
+reference the rest to their endo paper.
+
+
+
+Given a pair of .,..?
+show that there is a divisor which vanishes on a set of points associated to the numerical endomorphism. 
+
+
+Their method is along the lines of the following: \begin{itemize} 
+\item we get a matrix M which is a tangent representation, associated to this M we have some points $\tilde{Q_j}$ by either Newton/Puiseux lifting. 
+\item We can then check if there is a divisor E which fits those points, and then further make a "better" divisor Y that also fits these points? (where Y is just E with no exciting nilpotents in the intersection of irreducible dim 1 components) 
+\item If yes, since divisor = morphism of Jacobians, we get an honest endomorphism. 
+\end{itemize}
+
+
+
+While we are on the topic of correspondences, we wish to make a remark on how to use techniques for simple varieties to bound below the number of principal polarizations of nonsimple varieties. 
+
+\begin{remark} Since every abelian variety is isogenous to a product of simple abelian varieties $$A \simeq A_1 \times ... \times A_k$$ it is reasonable to ask how the numbers of principal polarizations on $A_i$ are related to that of $A$. 
+
+Let's quickly establish some vocabulary to discuss this intuitively. Recall that we may also define a principal polarization on $A$ as an isogeny which is also an isomorphism between $A \to A^\vee$, where $A^\vee$ denotes the dual variety. Let $A$ and $B$ be arbitrary abelian varieties. Note that $\text{Corr}(A, B) \simeq \Hom(B, A^\vee)$, where we take a correspondence from $A$ to $B$ to be a line bundle $\mathcal{L}$ over the product $A \times B$ which is trivial when restricted to $A$ or $B$.
+
+We are interested in $\Aut(A, A^\vee)$, which is isomorphic to $\Corr(A, A)^\times$ but the problem of comparision arises immediately and obviously without having to pass to isomorphisms. %We wish to compare $$\Hom\left(\prod_{i= 1}^k A_i, (\prod_{j= 1}^k A_j)^{\vee}\right) \qquad \text{ and  } \qquad \prod_{i, j} \Hom(A_i, A_j^{\vee})$$
+
+We wish to compare
+
+$$\Corr\left(\prod_{j= 1}^k A_j, \prod_{i= 1}^k A_i\right) \qquad \text{ and  } \qquad \prod_{i, j} \Corr(A_j, A_i)$$
+
+Let $C$ and $D$ be abelian varieties. Given a line bundle on $C$ and on $D$, we get a line bundle on $C \times D$, but not vice-versa. Intuitively, the product $C \times D$ may have many more interesting cycles than the product of the cycles of $C$ and $D$, and may not necessarily restrict to a line bundle on $C$ or $D$. Therefore, in general the number of principal polarizations of $A$ is at least the product of the principal polarizations of the simple components $A_i$, that is, $$\pi(A_1 \times ... \times A_k) \geq \prod_{i=1}^k \pi(A_i)$$ as observed. %We saw that $\Jac(\text{I-WP})$ is isogenous to a product of 4 elliptic curves. Since these curves are all isomorphic, we only get one principal polarization from this decomposition, but we found at least 9 principal polarizations on their product.
+\end{remark}  
+
+
 
 \subsection{Introduction to Polarizations: From Theory to Code}
 \label{sec:intropol}
@@ -598,10 +659,18 @@ If the abelian variety is indeed a Jacobian, this method will in practice return
 
 (maybe talk about relation to automorphism group?)
 
-\subsection{Examples}
-%\label{sec:accident}
 
-\begin{table}
+%\ti{discuss the interest in this problem, previous work, provided examples, waiting on MO post!!! and mention the I-WP example as being unsolved}
+
+%https://math.stackexchange.com/questions/2837906/is-there-one-canonical-principal-polarization-of-a-jacobian-per-nonisomorphic-cu, and Observations Regarding Different Curves with the Same Jacobian https://mathoverflow.net/questions/303803/an-example-of-curves-with-the-same-jacobian-but-different-jacobian-automorphism
+
+
+\subsection{Examples}
+\label{sec:accident}
+
+\begin{cat} Insert some text here introducing examples. \end{cat}
+
+\begin{table}[!hbt]
 \caption{Automorphism Groups wrt each of the Principal Polarizations}
 \centering
 \begin{tabular}{ l | c c r r r} \hline
@@ -643,11 +712,8 @@ $X_0(63)$ & 5 & 2 & $C_2^{\text{ }5}$ & 32 & [32,51] \\
 \begin{remark} Note that the University of Bristol's GroupNames database at the time of writing has groups up to order 500 with full names and structure description. In the cases where the order is greater than 500, we use the output of \texttt{StructureDescription(G);} \end{remark}
 
 
-ADD IN THE PERIOD MATRIXES??
-%\ti{discuss the interest in this problem, previous work, provided examples, waiting on MO post!!! and mention the I-WP example as being unsolved}
-
-%https://math.stackexchange.com/questions/2837906/is-there-one-canonical-principal-polarization-of-a-jacobian-per-nonisomorphic-cu, and Observations Regarding Different Curves with the Same Jacobian https://mathoverflow.net/questions/303803/an-example-of-curves-with-the-same-jacobian-but-different-jacobian-automorphism
-
+\begin{cat}Dami can you please make a file of the period matrices for us to add to github?
+\end{cat}
 
 \subsection{Questions and Answers on Abelian Varieties with Multiple Principal Polarizations}
 \label{sec:questions}
@@ -696,6 +762,10 @@ E. Costa, N. Mascot, J. Sijsling, J. Voight
 N. Bruin, J. Sijsling, A. Zotine,
 \textit{Numerical Computation of Endomorphism Rings of Jacobians},
 \texttt{https://arxiv.org/pdf/1807.02605.pdf}, preprint.
+
+\bibitem{smith}
+B. Smith
+\textit{Explicit Endomorphisms and Correspondence, PhD Thesis 2005}
 
 \bibitem{elkies}
 N. Elkies,
@@ -750,6 +820,11 @@ H. Lange,
 Duke Mathematical Journal,
 Vol. 55, Number 3, 1987, pp.617--628.
 
+\bibitem{newlange}
+H. Lange
+\textit{Principal Polarizations on Products of Elliptic Curves}
+\texttt{https://arxiv.org/pdf/math/0508458.pdf}
+
 \bibitem{dami} 
 D. Lee,
 \textit{On a triply periodic polyhedral surface whose vertices are Weierstrass points},
@@ -787,9 +862,5 @@ Vol. 220, 2005, pp.167--182.
 
 
 \end{thebibliography}
+\end{document}
 
-<<<<<<< HEAD
-\end{document}
-=======
-\end{document}
->>>>>>> cd73ad6cdcc6853e440ebbb0835db6c53fda1d14
