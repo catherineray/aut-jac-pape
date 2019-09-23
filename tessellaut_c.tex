@@ -160,14 +160,14 @@ For each $i,$ there are $\gcd(d, d_i)$ preimages $\widetilde{p_i}$ of $p_i$ on $
 \begin{proposition} Given a compact Riemann surface of genus $g$ with a cone metric, let $p_1, \ldots, p_n$ be distinguished points with respective cone angles $\theta_i.$ Then $\sum\limits_{i=1}^n \theta_i = 2 \pi (2 g - 2 + n).$
 \end{proposition}
 
+In other words, the sum of cone angles on a genus zero curve is $2 \pi (n - 2).$ Given branching indices such that $\sum\limits_{i=1}^n d_i = d (n - 2),$ we get a cone metric on the Riemann sphere with cone angles $\frac{2 \pi d_i}{d}$ at each $p_i.$ For example, by putting a cone metric on the quotient sphere where the cone angles are $\frac{1 \pi}{4}, \frac{2 \pi}{4},$ and $\frac{5 \pi}{4}$ as in Figure~\ref{fig:125_flat}, one can see that the identification of edges are by translations. In other words, there is a flat metric on the eightfold cover of the sphere. 
+
 \begin{figure}[htbp] %  figure placement: here, top, bottom, or page
    \centering
    \includegraphics[width=2in]{figures/125_flat.pdf} 
-	\caption{A flat metric on $8(1, 2, 5)$}
+	\caption{A flat structure $\omega_1$ on $8(1, 2, 5)$}
 	\label{fig:125_flat}
 \end{figure}
-
-In other words, the sum of cone angles on a genus zero curve is $2 \pi (n - 2).$ Given branching indices such that $\sum\limits_{i=1}^n d_i = d (n - 2),$ we get a cone metric on the Riemann sphere with cone angles $\frac{2 \pi d_i}{d}$ at each $p_i.$ For example, by putting a cone metric on the quotient sphere where the cone angles are $\frac{1 \pi}{4}, \frac{2 \pi}{4},$ and $\frac{5 \pi}{4}$ as in Figure~\ref{fig:125_flat}, one can see that the identification of edges are by translations. In other words, there is a flat metric on the eightfold cover of the sphere. 
 
 Our goal is to find other cone metrics that realize the same underlying curve. If $\sum\limits_{i=1}^n d_i \neq d (n - 2),$ then we modify the cone angles by $\frac{2 \pi a_i}{d}$ so that where $a_i \equiv d_i \pmod d$ for each $i.$ As each cone metric corresponds to a holomorphic 1-form, we use the following notion of multipliers that give rise to other cone metrics in order to get a basis of 1-forms.
 
@@ -177,6 +177,16 @@ Our goal is to find other cone metrics that realize the same underlying curve. I
 It is proved in \cite{dthesis} (Theorem 3.15) that for $n = 3,$ there are exactly $g$ multipliers. 
 
 \subsubsection*{Admissible cone metrics on Octa-4} Given branching indices $8 (1, 2, 5),$ multipliers 1, 2, and 5 give rise to cone metrics with cone angles $\frac{2 \pi}{8}(1, 2, 5),$ $\frac{2 \pi}{8}(2, 4, 2),$ and $\frac{2 \pi}{8}(5, 2, 1),$ respectively. These cone metrics yield a basis of holomorphic 1-forms with the following divisors: $$(\omega_1) = 4 \widetilde{p_3}, \qquad (\omega_2) = \widetilde{p_1} + \widetilde{p_{2_1}} + \widetilde{p_{2_2}} + \widetilde{p_3}, \qquad (\omega_3) = 4 \widetilde{p_1}.$$
+
+For example, Figure~\ref{fig:flat_rs2} presents $\omega_2$ given by cone angles $\frac{2 \pi}{8}(2, 4, 2).$
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[width=2in]{figures/flat_rs2.pdf} 
+	\caption{A flat structure $\omega_2$ on $8(1, 2, 5)$}
+	\label{fig:flat_rs2}
+\end{figure}
+
 
 \begin{remark} Note that 3, 6, and 7 are not multipliers as their corresponding forms do not yield canonical divisors. On the other hand, 4 is not a multiplier as the cone metric derived from cone angles $\frac{2 \pi}{8} (4, 0, 4)$ is not admissible. This induces a meromorphic form whose divisor is $3 \widetilde{p_1} - \widetilde{p_2}_1 - \widetilde{p_2}_2 + 3 \widetilde{p_3}.$ \end{remark}
 
