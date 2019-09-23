@@ -191,13 +191,41 @@ For example, Figure~\ref{fig:flat_rs2} presents $\omega_2$ given by cone angles 
 \begin{remark} Note that 3, 6, and 7 are not multipliers as their corresponding forms do not yield canonical divisors. On the other hand, 4 is not a multiplier as the cone metric derived from cone angles $\frac{2 \pi}{8} (4, 0, 4)$ is not admissible. This induces a meromorphic form whose divisor is $3 \widetilde{p_1} - \widetilde{p_2}_1 - \widetilde{p_2}_2 + 3 \widetilde{p_3}.$ \end{remark}
 
 \subsection{Plane curve model}
-\label{subsec:polynomial} Given brancing indices $d (d_i),$ we write $C$ as $y^d - (x - p_1)^{d_1} (x - p_2)^{d_1} \cdots (x - p_n)^{d_n}.$ In section~\ref{sec:examples}, we will show examples where the degree of the polynomial can be reduced and hence the polynomial is not uniquely defined. However, different polynomials representing the same curve yield the same output (automorphism group) when put in the program in \cite{jeroen}.
+\label{subsec:polynomial} Given brancing indices $d (d_i),$ we write $C$ as $y^d - (x - p_1)^{d_1} (x - p_2)^{d_1} \cdots (x - p_n)^{d_n}.$ When possible, we show that we can minimize the degree of the covering that still preserves the conformal structure. We verify with the program in \cite{jeroen} that the output (automorphism group) is independent of this change
+
+\begin{exmp} ($g = 3$ Hyperelliptic curves)
+In this paper, we look at three different hyperelliptic curves of genus three. % I'm going to include 7(1,1,5) in this example/discussion but let's not put it in the computation section. 
+By different, we mean that the quotient spheres (under the hyperelliptic involution) are not conformally equivalent to each other. Instead of viewing them as $d$-fold cyclic covers over $n$-punctured spheres (where $n < 2 g + 2$), we view them as double covers over spheres branched at $2 g + 2$ points. The $2 g + 2$ points correspond to Weierstrass points (fixed points under the hyperelliptic involution), and the details can be found in section~\ref{subsec:Wpts}. 
+
+Section 3.2 of \cite{dthesis} includes details regarding lifts of maps in particular. 
+
+\begin{enumerate}
+\item 8(1,1,6)
+
+This case can be generalized to $d(1, 1, d-2)$ for any even $d.$ This is equivalent to a double-cover over a sphere where the branch points lie at the vertices of a double (regular) octagon. The eight ($= 2 g + 2$) points correspond to the Weierstrass points. The hyperelliptic involution is a lift of the involution $\phi$ on the thrice punctured sphere, where $\phi$ fixes $p_3$ and interchanges $p_1$ and $p_2.$ However, $p_3$ has two preimages so $\widetilde{\phi}$ interchanges $\widetilde{p_3}_1$ and $\widetilde{p_3}_2.$ In other words, none of the $\widetilde{p_i}$ are fixed under the hyperelliptic involution. The fixed points are $\widetilde{q}$ for $q \neq p_i$ for all $i,$ and we denote the plane curve model as $y^2 - (x^8 - 1)$ 
+
+
+\item 12(1,5,6)
+
+This case can be generalized to $d(1, \frac{d}{2} - 1, \frac{d}{2})$ for $d$ even. The quotient sphere (under the hyperelliptic involution) is a sphere where the branch points lie at the North pole, South pole, and six equidistributed points along the Equator. The hyperelliptic involution is a lift of an involution $\phi$ on the thrice punctured sphere, where $\phi$ similarly fixes $p_3$ and interchanges $p_1$ and $p_2.$ In this case, all $\widetilde{p_i}$ are fixed under the hyperelliptic involution and the plane curve model is $y^2 - x (x^{2 g} - 1).$
+
+
+\item 7(1,1,5)
+This case is similar to the first case, the difference comes from the parity of $d.$ If $d$ is odd, $\widetilde{p_3}$ and $\widetilde{q}$ (for $q \neq p_i,$ hence there are $d$ preimages of $q$) are fixed under the hyperelliptic involution. The quotient sphere is a cone over a regular $2 g + 1 (= d)$-gon, and the plane curve model is written as $y^2 - x(x^{2 g + 1} - 1).$
+
+
+\item 6(1,3,5,3)
+The last case is where we distribute the eight points at the vertices of a regular cube. This covering is shown in section 5.1 of the second author's thesis \cite{dthesis}. By stereographic projection map, we achieve $y^2 = x^8 - 14 x^4 + 1.$
+\end{enumerate}
+
+\end{exmp}
 
 
 \subsubsection*{Plane curve model on Octa-4}
-With branching indices $8 (1, 2, 5),$ the underlying curve of Octa-4 is written as $y^8 - x (x-1)^2.$ However, in Theorem 5.1 from \cite{dami} the author shows that it can also be written as $y^4 - x (x-1) (x+1)$ and shows that this is equivalent to Fermat's quartic.
+With branching indices $8 (1, 2, 5),$ the underlying curve of Octa-4 is written as $y^8 - x (x-1)^2.$ However, we can reduce the degree of the polynomial and write it as $y^4 - x (x-1) (x+1).$ See Theorem 5.1 from \cite{dami} for details.
 
 \subsection{Weierstrass points and how to find them}
+\label{subsec:Wpts}
 
 A Weierstrass point $p \in C$ is a point where there are functions on $C$ with unusual pole orders at $p$ and nowhere else. In other words, they are points where the dimension-count of the Riemann-Roch theorem is not generic. We say that a point is generic if it is not a Weierstrass point. Hurwitz showed that for $g \geq 2,$ there are finitely many Weierstrass points on $C$ and the number of Weierstrass points is bounded by $2 g + 1 \leq |W(C_g)| \leq (g - 1) g (g + 1)$ where $W(C_g)$ is the set of Weierstrass points on a genus-$g$ curve. In characteristic zero, this can be proved by showing that every automorphism that fixes more than $2 g + 2$ points is the identity (by the Riemann-Roch theorem), from which we obtain a faithful representation of $\Aut(C_g)$ as permutations on $W(C_g)$. Moreover, the number of Weierstrass points on $C_g$ is $2 g + 2$ if and only if the curve is hyperelliptic. That is, the hyperelliptic involution fixes $2 g + 2$ points. We remark that in general, the action of the automorphism group on the set of Weierstrass points is not transitive \cite{sl}. 
 
@@ -405,6 +433,7 @@ The base tessellation is identical to that of $8(1,2,5)$ (Figure~\ref{fig:125}) 
 
 
 
+\begin{dami} replace 12(1,5,6) with 8(1,3,4) bolza \end{dami}
 
 \subsection*{12(1, 5, 6)}
 %f10
@@ -417,7 +446,7 @@ This curve is another genus three hyperelliptic curve that is defined as a twelv
     \label{fig:156}%
 \end{figure}
 
-\begin{dami} add the base tess to 156 here. \end{dami}
+
 
 The base tessellation of $12(1,5,6)$ is tiled by 16 $\frac{2 \pi}{12}$-hyperbolic triangles. However, to visualize the order-12 rotational symmetry, we subdivide four triangles into 12 third-triangles % (Figure~\crefformat{figure}{~#2#1{(a)}#3} \cref{fig:156}).
 
@@ -513,10 +542,7 @@ D. Lee,
 Arnold Mathematical Journal, 
 Vol. 3, Issue 3, 2017, pp.319--331.
 
-\bibitem{dthesis} 
-D. Lee, 
-\textit{Geometric realizations of cyclically branched coverings over punctured spheres},
-\texttt{https://arxiv.org/abs/1809.06321}, preprint.
+\bibitem{thesis} D. Lee, \textit{Geometric realizations of cyclically branched coverings over punctured spheres,} 2018, Ph.D thesis. 
 
 \bibitem{hyp}
 R. Lercier, C. Ritzenthaler, J. Sijsling,
