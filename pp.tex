@@ -188,9 +188,71 @@ We demonstrate the power of our method with a variety of different period matric
 %Along the way of exploring our technique, we found some surprised. For example, the Jacobian of Schoen's I-WP surface has at least 9 different principal polarizations. Since it is a product of four isomorphic elliptic curves, this means that 
 
 
-\section{Period Matrices}
 
-ADD BACK IN INTRO TO CYCLICALLY BRANCHED...
+\section{Background}
+\label{sec: dthesis}
+In their thesis \cite{dthesis}, the first author classifies curves with cone metrics that are realizable as a quotient of a triply periodic surface embedded in $\R^3.$ By triply periodic, we mean that the surface is invariant under a rank-three lattice $\Lambda \subset \R^3.$ Specifically, they consider curves that are cyclically branched over $\mathbb{C}\mathbb{P}^1,$ hence we will devote this section to providing the background. This section is a summary of chapter 3 from \cite{dthesis}. 
+
+\subsection{Cone metrics}
+First, we discuss the topological construction of cyclic covers over $\mathbb{C}\mathbb{P}^1.$ This will naturally yield cone metrics on the curves.
+
+\subsubsection*{Construction of cyclic covers over $\mathbb{C}\mathbb{P}^1$}
+\begin{defn} We say that a curve $C$ is a $d$-fold cyclic cover over $\mathbb{C}\mathbb{P}^1$ if $C / (\Z/ d \Z) = \mathbb{C}\mathbb{P}^1.$ \end{defn}
+
+We construct such curves with the given data: let $p_i, \ldots , p_n \in \mathbb{C}\mathbb{P}^1$ be $n$ distinct points. Let $Y := \mathbb{C}\mathbb{P}^1 \backslash \{p_1, \ldots, p_n\}$ and let $\gamma_i$ be a branch cut from $p_i$ to some $q \in Y$ so that $\gamma_i$ are mutually disjoint. For each $i,$ assign $d_i \in \{1, \ldots, d - 1\}$ and call it the \textbf{branching index at} $p_i.$ Let $d$ be the degree of the covering map and use $j$ to label $Y_1, \ldots , Y_d.$ For each $i$ and $j,$ we identify the ``left side'' of $\gamma_i$ of $Y_j$ to the ``right side'' of $\gamma_i$ of $Y_{j + d_i \pmod d}.$ We denote such a covering $C$ by a $d$-tuple $d (d_1, \ldots , d_n).$
+
+
+\begin{remark} A covering $d (d_1, \ldots , d_n)$ is uniquely defined up to homeomorphism. That is, the construction only depends on $d_i$ and is independent of $p_i,$ $\gamma_i,$ and $q.$ We will assume that $\sum\limits_{i=1}^n d_i \equiv 0 \pmod d$ and also $\gcd (d_1, \ldots, d_n) = 1.$ The former guarantees that the covering is closed and the latter guarantees that the covering is connected. In fact, both are sufficient and necessary conditions. Then one can compute the genus of the curve by Riemann-Hurwitz formula and $g(C) = \frac{d (n-2)}{2} + 1 - \frac{1}{2} \sum\limits_{i=1}^n \gcd(d,d_i).$ 
+\end{remark}
+
+\subsubsection*{Branching indices on Octa-4}
+As a running example, we will look at the curve from \cite{dami}. It is there called Octa-4 due to the formation of the triply periodic surface. The underlying genus three curve $C$ (Figure~\ref{fig:125} (reprinted from \cite{dami})) is invariant under an order-eight rotational symmetry. The curve is an eightfold cyclic cover over $\mathbb{C}\mathbb{P}^1$ denoted as $8 (1, 2, 5).$
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[width=2in]{figures/125_base_.pdf} 
+	\caption{Hyperbolic tessellation on $8(1, 2, 5)$}
+	\label{fig:125}
+\end{figure}
+
+% The euclidean triangles on the fundamental piece of $\Pi$ have a one-to-one correspondence to the hyperbolic triangles.
+
+For each $i,$ there are $\gcd(d, d_i)$ preimages $\widetilde{p_i}$ of $p_i$ on $C.$ Hence, each $\widetilde{p_i}$ is a non-trivial cone point. To pin down a holomorphic 1-form on $C,$ we find cone metrics on $\mathbb{C}\mathbb{P}^1$ and pull-back to its covering. We say that a cone metric on $\mathbb{C}\mathbb{P}^1$ is \textbf{admissible} if its pullback yields a flat structure on $C.$ The following proposition is a version of Gauss-Bonnet theorem.
+
+\begin{proposition} Given a compact Riemann surface of genus $g$ with a cone metric, let $p_1, \ldots, p_n$ be distinguished points with respective cone angles $\theta_i.$ Then $\sum\limits_{i=1}^n \theta_i = 2 \pi (2 g - 2 + n).$
+\end{proposition}
+
+Specifically, the sum of cone angles on a genus zero curve is $2 \pi (n - 2).$ Given branching indices such that $\sum\limits_{i=1}^n d_i = d (n - 2),$ we get a cone metric on the Riemann sphere with cone angles $\frac{2 \pi d_i}{d}$ at each $p_i.$ For example, by putting a cone metric on the quotient sphere where the cone angles are $\frac{1 \pi}{4}, \frac{2 \pi}{4},$ and $\frac{5 \pi}{4}$ as in Figure~\ref{fig:125_flat}, one can see that the identification of edges are by translations. In other words, this gives rise to a translation structure on the eightfold cover of the sphere. 
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[width=2in]{figures/125_flat.pdf} 
+	\caption{A flat structure $\omega_1$ on $8(1, 2, 5)$}
+	\label{fig:125_flat}
+\end{figure}
+
+In order to compute the Jacobian of the curve, we need a basis of holomorphic 1-forms. Our goal is to find other admissible cone metrics on the sphere that yield different translation structures (linearly independent 1-forms) on the same curve. We claim that the cone metric given by cone angles $\frac{2 \pi a_i}{d}$ where $a_i \equiv d_i \pmod d$ is admissible (Theorem 3.4, \cite{dthesis}). An easier way of finding admissible cone metrics is given by the following notion of multipliers.
+
+\begin{defn} Given branching indices $d (d_1, \ldots , d_n),$ we say $a \in \{1, \ldots, d - 1\}$ is a \textbf{multiplier} if the cone metric given by cone angles $\frac{2 \pi}{d} (a \cdot d_1 \pmod d, \ldots , a \cdot d_n \pmod d)$ is admissible. 
+\end{defn}
+
+Theorem 3.5, \cite{dthesis} proves that for $n = 3,$ there are exactly $g$ multipliers. In other words, one achieves a basis of holomorphic 1-forms. 
+
+\subsubsection*{Admissible cone metrics on Octa-4} Given branching indices $8 (1, 2, 5),$ multipliers 1, 2, and 5 give rise to cone metrics with cone angles $\frac{2 \pi}{8}(1, 2, 5),$ $\frac{2 \pi}{8}(2, 4, 2),$ and $\frac{2 \pi}{8}(5, 2, 1),$ respectively. These cone metrics yield a basis of holomorphic 1-forms with the following divisors: $$(\omega_1) = 4 \widetilde{p_3}, \qquad (\omega_2) = \widetilde{p_1} + \widetilde{p_{2_1}} + \widetilde{p_{2_2}} + \widetilde{p_3}, \qquad (\omega_3) = 4 \widetilde{p_1}.$$
+
+For example, Figure~\ref{fig:flat_rs2} presents $\omega_2$ given by cone angles $\frac{2 \pi}{8}(2, 4, 2).$
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+   \centering
+   \includegraphics[width=2in]{figures/flat_rs2.pdf} 
+	\caption{A flat structure $\omega_2$ on $8(1, 2, 5)$}
+	\label{fig:flat_rs2}
+\end{figure}
+
+
+\begin{remark} Note that 3, 6, and 7 are not multipliers as their corresponding forms do not yield canonical divisors. On the other hand, 4 is not a multiplier as the cone metric derived from cone angles $\frac{2 \pi}{8} (4, 0, 4)$ is not admissible. This induces a meromorphic form whose divisor is $3 \widetilde{p_1} - \widetilde{p_2}_1 - \widetilde{p_2}_2 + 3 \widetilde{p_3}.$ \end{remark}
+
+
 
 \subsection{Computing the Period Matrix on Cyclic Covers}
 \label{sec:cyclicperiod}
