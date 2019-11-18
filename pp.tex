@@ -156,7 +156,7 @@ Our paper introduces a new computer program to find multiple non-isomorphic prin
 
 The fact that an abelian variety admits only a finite number of isomorphism classes of principal polarizations was established by Narasimhan-Nori in \cite{nn}. In this paper, they pose problem of finding a closed formula for the number of principal polarizations of any given abelian variety over any field, which is still unsolved. 
 
-In this paper, we introduce an entirely different technique to find different principal polarizations on Jacobians, exposited in Section ~\ref{sec:find}, which treats both simple and non-simple cases in characteristic 0. We use this to give lower bounds on the number of non-isomorphic principal polarizations. %of the abelian varieties we tried the program on, for example, Theorem ~\ref{IWP}.
+In this paper, we introduce an entirely different technique to find different principal polarizations on Jacobians, exposited in Section ~\ref{sec:find}, which treats both simple and non-simple cases in characteristic 0. We use this to give lower bounds on the number of non-isomorphic principal polarizations. For example, we have the following result. %of the abelian varieties we tried the program on, for example, Theorem ~\ref{IWP}.
 
 \begin{theorem} \label{IWP} Let $\pi(X)$ denote the number of non-isomorphic principal polarizations on any given variety $X$. Let I-WP denote Schoen's I-WP surface, then $$\pi(\text{I-WP}) \geq 9.$$\end{theorem}
 
@@ -168,7 +168,7 @@ The fact that our numerical computations with period matrices give rigorous resu
 
 %A further insight of our technique is as follows. It is computationally impossible(?) to compare two principal polarizations to check if they are isomorphic, so we compute the automorphism group of the Jacobian with respect to them, and if these automorphism groups are nonisomorphic, the principal polarizations are nonisomorphic as well. This allows us to compare and study the principal polarizations further. 
 
-We demonstrate the power of our method with a variety of different period matrices found roaming in the wild. We exposit first folk-lore from low dimensional geometry which allows us to compute exact period matrices of cyclically branched covers of punctured spheres. Across the land in the realm of numerically computed(phrasing?) Galois representations and moduli spaces of elliptic curves, as codified by Mascot in a slight modification of \cite{n}, we also work with period matrices of modular curves. These modular curves are not cyclically branched covers, and thus give us a completely disjoint collection of curves to which we apply our methods. Assuming conjecture \ref{63conj}, we give a new proof of the automorphism group of $X_0(63)$, which was the only remaining unresolved automorphism group of a compact modular curve until \cite{elkies}.  
+We demonstrate the power of our method with a variety of different period matrices found roaming in the wild. We exposit some low dimensional geometry which allows us to compute exact period matrices of cyclically branched covers of punctured spheres. We also work with period matrices of modular curves, as codified by Mascot in a slight modification of \cite{n} toward computing Galois representations. These modular curves are not cyclically branched covers, and thus give us a completely disjoint collection of curves to which we apply our methods. Assuming conjecture \ref{63conj}, we give a new proof of the automorphism group of $X_0(63)$, which was the only remaining unresolved automorphism group of a compact modular curve until \cite{elkies}.  
 
 %Along the way of exploring our technique, we found some surprised. For example, the Jacobian of Schoen's I-WP surface has at least 9 different principal polarizations. Since it is a product of four isomorphic elliptic curves, this means that 
 %\ti{add precise torelli to appendix?}
@@ -377,7 +377,7 @@ The period matrix used in our calculation of $\Aut(\Jac(X_0(63)), p_i)$ was comp
 
  \section{Programmatically Computing the Automorphism Group of Plane Curves and Abelian Varieties over $\mathbb{C}$}
 
-
+\label{sec:computing}
 
 \begin{remark} The first two subsections of the section are copied from section 4 of Bruin-Sijsling-Zotine \cite{jeroen} with lots of exposition and examples added for the readers' convenience. This sets us up to introduce the code for brute force calculating principal polarizations. All of our code is available at \begin{center}\texttt{https://github.com/catherineray/aut-jac}\end{center} We discuss the certification of these numerical results in Section ~\ref{cert}. \end{remark} 
 
@@ -510,7 +510,7 @@ $\text{}$ $\hspace{2mm}$\textit{Output:} For each combination of principal polar
 
 \subsection{Certifying Heuristic Methods}
 \label{sec:cert}
-We summarize here the fantastic work of Costa-Mascot-Sijsling-Voight \cite{rigor} on certifying that numerically computed endomorphisms of a Jacobian are infact endomorphisms of that Jacobian. This is extremely nontrivial because in an analytic sense, abelian varieties with no principal polarizations are dense in the moduli space (of Big Period Matrices) (SOURCE?). 
+We summarize here the fantastic work of Costa-Mascot-Sijsling-Voight \cite{rigor} on certifying that numerically computed endomorphisms of a Jacobian are infact endomorphisms of that Jacobian. This is extremely nontrivial because in an analytic sense, abelian varieties with no principal polarizations are dense in the moduli space. 
 
 A key conceptual part of their approach is relating divisors on $X \times Y$ to endomorphisms of the Jacobians $\Jac(X)$ and $\Jac(Y)$ via the theory of correspondences. All endomorphisms of Jacobians come from correspondences. Each correspondece on $X \times Y$ induces a homomorphism of the divisor groups of $X$ and $Y$. These homomorphisms in turn induce homomorphisms of Jacobians. In our case, $X=Y$, but we will exposit the more general case. Let $C$ be a prime divisor on $X \times Y$, then we denote the associated correspondence as follows.
 
@@ -536,16 +536,16 @@ X &                                                         & Y
 \end{center}
 
 
-reference the rest to their endo paper.
+%reference the rest to their endo paper.
 
 
 
-Given a pair of .,..?
-show that there is a divisor which vanishes on a set of points associated to the numerical endomorphism. 
+%Given a pair of .,..?
+%show that there is a divisor which vanishes on a set of points associated to the numerical endomorphism. 
 
 
 Their method is along the lines of the following: \begin{itemize} 
-\item we get a matrix M which is a tangent representation, associated to this M we have some points $\tilde{Q_j}$ by either Newton/Puiseux lifting. 
+\item We represent our numerical endomorphism by a matrix $R$, as exposited in ~\ref{computing}. Associated to $R$, we calculate points $\tilde{Q_j}$ by Puiseux lifting, see Section ??? in \cite{rigor}. 
 \item We can then check if there is a divisor E which fits those points, and then further make a "better" divisor Y that also fits these points? (where Y is just E with no exciting nilpotents in the intersection of irreducible dim 1 components) 
 \item If yes, since divisor = morphism of Jacobians, we get an honest endomorphism. 
 \end{itemize}
