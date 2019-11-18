@@ -88,6 +88,7 @@
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Jac}{Jac}
 \DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\Sym}{Sym}
 \DeclareMathOperator{\Corr}{Corr}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\uncurry}{uncurry}
@@ -528,19 +529,34 @@ X &                                                         & Y
 \end{center}
 
 
-%reference the rest to their endo paper.
 
+
+A putative endomorphism is $\alpha$ a potential element of $\Aut(\Jac(X))$ we compute numerically as a matrix $R$ via the methods in Section ~\ref{sec:computing} . Their method of certifying putative endomorphisms are actual one is along the lines of the following.  We go through the map $\alpha_X$, defined as the composite of the Abel-Jacobi Map, the putative morphism $\alpha$, and the Mumford birational map. These maps are discussed in detail on page 6 of \cite{jeroen}.
+
+\[
+\begin{tikzcd}
+X \arrow[r, "AJ"] \arrow[rrr, "\alpha_X", bend right] & \Jac(X) \arrow[r, "\alpha"] & \Jac(X) \arrow[r, "\text{Mum}", dashed] & \Sym^g(X).
+\end{tikzcd}
+\]
+%$$\alpha_X: X \to \Jac(X) \xrightarrow{\alpha} \Jac(X) \dashrightarrow \Sym^g(X).$$
+Their method is then along the lines of the following.
+\begin{itemize}
+\item Given $\alpha$, we now use the Puiseux lifting described in Section 5 \cite{rigor} to write down the image  $\{ \tilde{Q_j} \}_j$ of any $x \in X$ under the above composition $M_\alpha$.
+\item We then check if there is a divisor $E$ which fits the points $\{ \tilde{Q_j} \}_j$. If so, we then modify the divisor $E$ by removing all of its nilpotent components, we call this new divisor $Y$. This ensures that $Y$ confirms that $\alpha$ is an actual endomorphism of $J$. This is because of the above bijection between correspondences (condition??) $X \leftarrow X \times X \to X$, and endomorphisms of $\Jac(X)$.
+\item If we indeed find such a $Y$, this ensures that $\alpha$ is an honest endomorphism.
+\end{itemize}
 
 
 %Given a pair of .,..?
 %show that there is a divisor which vanishes on a set of points associated to the numerical endomorphism. 
 
-
+\begin{comment}
 Their method is along the lines of the following: \begin{itemize} 
 \item We represent our numerical endomorphism by a matrix $R$, as exposited in ~\ref{computing}. Associated to $R$, we calculate points $\tilde{Q_j}$ by Puiseux lifting, see Section ??? in \cite{rigor}. 
 \item We can then check if there is a divisor E which fits those points, and then further make a "better" divisor Y that also fits these points? (where Y is just E with no exciting nilpotents in the intersection of irreducible dim 1 components) 
 \item If yes, since divisor = morphism of Jacobians, we get an honest endomorphism. 
 \end{itemize}
+\end{comment}
 
 \subsubsection{From Simple to Non-simple}
 
