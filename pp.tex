@@ -230,7 +230,7 @@ For each $i,$ there are $\gcd(d, d_i)$ preimages $\widetilde{p_i}$ of $p_i$ on $
 \begin{proposition} Given a compact Riemann surface of genus $g$ with a cone metric, let $p_1, \ldots, p_n$ be distinguished points with respective cone angles $\theta_i.$ Then $\sum\limits_{i=1}^n \theta_i = 2 \pi (2 g - 2 + n).$
 \end{proposition}
 
-Specifically, the sum of cone angles on a genus zero curve is $2 \pi (n - 2).$ Given branching indices such that $\sum\limits_{i=1}^n d_i = d (n - 2),$ we get a cone metric on the Riemann sphere with cone angles $\frac{2 \pi d_i}{d}$ at each $p_i.$ For example, by putting a cone metric on the quotient sphere where the cone angles are $\frac{1 \pi}{4}, \frac{2 \pi}{4},$ and $\frac{5 \pi}{4}$ as in Figure~\ref{fig:125_flat}, one can see that the identification of edges are by translations. In other words, this gives rise to a translation structure on the eightfold cover of the sphere. 
+Specifically, the sum of cone angles on a genus zero curve is $2 \pi (n - 2).$ Given branching indices such that $\sum\limits_{i=1}^n d_i = d (n - 2),$ we get a cone metric on the Riemann sphere with cone angles $\frac{2 \pi d_i}{d}$ at each $p_i.$ For example, by putting a cone metric on the quotient sphere where the cone angles are $\frac{1 \pi}{4}, \frac{2 \pi}{4},$ and $\frac{5 \pi}{4}$ as in Figure~\ref{fig:125_flat}, one can see that the identification of edges are by translations. In other words, this gives rise to a translation structure on the eightfold cover of the sphere. Moreover, we obtain a holomorphic 1-form with one order-4 zero.
 
 \begin{figure}[htbp] %  figure placement: here, top, bottom, or page
    \centering
@@ -239,7 +239,7 @@ Specifically, the sum of cone angles on a genus zero curve is $2 \pi (n - 2).$ G
 	\label{fig:125_flat}
 \end{figure}
 
-In order to compute the Jacobian of the curve, we need a basis of holomorphic 1-forms. Our goal is to find other admissible cone metrics on the sphere that yield different translation structures (linearly independent 1-forms) on the same curve. We claim that the cone metric given by cone angles $\frac{2 \pi a_i}{d}$ where $a_i \equiv d_i \pmod d$ is admissible (Theorem 3.4, \cite{dthesis}). An easier way of finding admissible cone metrics is given by the following notion of multipliers.
+Our goal is to find other admissible cone metrics on the sphere that yield different translation structures (linearly independent 1-forms) on the same curve. We claim that the cone metric given by cone angles $\frac{2 \pi a_i}{d}$ where $a_i \equiv d_i \pmod d$ is admissible (Theorem 3.4, \cite{dthesis}). An easier way of finding admissible cone metrics is given by the following notion of multipliers.
 
 \begin{defn} Given branching indices $d (d_1, \ldots , d_n),$ we say $a \in \{1, \ldots, d - 1\}$ is a \textbf{multiplier} if the cone metric given by cone angles $\frac{2 \pi}{d} (a \cdot d_1 \pmod d, \ldots , a \cdot d_n \pmod d)$ is admissible. 
 \end{defn}
@@ -248,7 +248,7 @@ Theorem 3.5, \cite{dthesis} proves that for $n = 3,$ there are exactly $g$ multi
 
 \subsubsection*{Admissible cone metrics on Octa-4} Given branching indices $8 (1, 2, 5),$ multipliers 1, 2, and 5 give rise to cone metrics with cone angles $\frac{2 \pi}{8}(1, 2, 5),$ $\frac{2 \pi}{8}(2, 4, 2),$ and $\frac{2 \pi}{8}(5, 2, 1),$ respectively. These cone metrics yield a basis of holomorphic 1-forms with the following divisors: $$(\omega_1) = 4 \widetilde{p_3}, \qquad (\omega_2) = \widetilde{p_1} + \widetilde{p_{2_1}} + \widetilde{p_{2_2}} + \widetilde{p_3}, \qquad (\omega_3) = 4 \widetilde{p_1}.$$
 
-For example, Figure~\ref{fig:flat_rs2} presents $\omega_2$ given by cone angles $\frac{2 \pi}{8}(2, 4, 2).$
+Figure~\ref{fig:flat_rs2} represents $\omega_2$ given by cone angles $\frac{2 \pi}{8}(2, 4, 2).$ The four simple zeros are marked on the figure.
 
 \begin{figure}[htbp] %  figure placement: here, top, bottom, or page
    \centering
@@ -257,8 +257,12 @@ For example, Figure~\ref{fig:flat_rs2} presents $\omega_2$ given by cone angles 
 	\label{fig:flat_rs2}
 \end{figure}
 
+\begin{remark} Note that the multipliers preserve the labeling of edges in both Figure~\ref{fig:125_flat} and Figure~\ref{fig:flat_rs2}: 1,2,3,4,5,6,2,8,4,7,6,1,8,3,7,5.
+\end{remark}
 
 \begin{remark} Note that 3, 6, and 7 are not multipliers as their corresponding forms do not yield canonical divisors. On the other hand, 4 is not a multiplier as the cone metric derived from cone angles $\frac{2 \pi}{8} (4, 0, 4)$ is not admissible. This induces a meromorphic form whose divisor is $3 \widetilde{p_1} - \widetilde{p_2}_1 - \widetilde{p_2}_2 + 3 \widetilde{p_3}.$ \end{remark}
+
+\begin{remark} The geometric representation of $\omega_3$ can also be achieved by reflecting $\frac{\pi}{8}(5, 2, 1)$ triangles. However, we omit the corresponding figure. \end{remark}
 
 
 
@@ -770,12 +774,11 @@ If the abelian variety is indeed a Jacobian, this method will in practice return
 \subsection{Examples}
 \label{sec:accident}
 
-All curves of our interest (besides the modular curve $X_0(63)$) that we look into are cyclic covers over $\C\P^1.$ Techniques from section~\ref{sec:cyclicperiod} allow us to compute the period matrices in an algorithmic way. 
+All curves (besides the modular curve $X_0(63)$) that we look into are cyclic covers over $\C\P^1.$ 
 
-Klein's quartic is a genus three non-hyperelliptic curve defined by branching indices 7(1,2,4) \cite{kw}. Fermat's quartic is another genus three non-hyperelliptic curve defined by 8(1,2,5) \cite{dami}. As an example of a hyperelliptic curve, we look into 12(1,5,6). Its quotient under the hyperelliptic involution is $\C\P^1$ where the eight hyperelliptic points are located at the North Pole, South Pole, and at six equidistributed points along the Equator. 
+Here we describe our examples in terms of their branching indices over $\C\P^1.$ For each case, we will show explicit flat structures that are induced from the branching indices. The flat structures give rise to holomorphic 1-forms that are used in computing period matrices. We will also describe each case via their (various) plane curve models. In general, we choose $p_i = 0, 1, \infty$ (for covers over thrice punctured spheres) and describe each curve algebraically as $y^d = x^{d_1} (x-1)^{d_2}.$
 
-Bring's curve is a genus four non-hyperelliptic curve denoted by 5(1,2,4,3) \cite{matti}. Lastly, I-WP is another genus four non-hyperelliptic curve defined by 12(1,4,7). In \cite{thesis}, it is shown that Schoen's I-WP surface is equipped with cone metrics that are compatible with the twelvefold cyclic cover over $\C\P^1.$
-
+The computation of the period matrices can be found in \texttt{github/...}. The general version of the period matrix is shown in Section~\ref{sec:cyclicperiod}.
 
 \begin{table}[!hbt]
 \caption{Automorphism Groups wrt each of the Principal Polarizations}
@@ -819,7 +822,78 @@ $X_0(63)$ & 5 & 2 & $C_2^{\text{ }5}$ & 32 & [32,51] \\
 
 \begin{remark} Note that the University of Bristol's GroupNames database at the time of writing has groups up to order 500 with full names and structure description. In the cases where the order is greater than 500, we use the output of \texttt{StructureDescription(G);} \end{remark}
 
-The file containing the period matrices for the above objects is located on \texttt{github/...}.
+\subsubsection{Genus three Klein's quartic}
+Klein's quartic is a genus three non-hyperelliptic curve defined by branching indices 7(1,2,4) \cite{kw}. Its multipliers give rise to cone metrics defined by cone angles $\frac{\pi}{7}(1,2,4), \frac{\pi}{7}(2,4,1),$ and $\frac{\pi}{7}(4,1,2).$ Figure~\ref{fig:124} represents $\omega_1$ and $\omega_2.$
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+\centering
+\begin{minipage}{0.5\textwidth}
+	\centering
+	\includegraphics[width=2in]{figures/124_flat.pdf}
+\end{minipage}%
+\begin{minipage}{0.5\textwidth}
+	\centering
+	\includegraphics[width=2in]{figures/124_flat_2.pdf}
+\end{minipage}
+	\caption{Two different flat structures on Klein's quartic.}
+	\label{fig:124}
+\end{figure}
+
+Along with $\omega_3$ one can compute the period matrix as in Section~\ref{sec:cyclicperiod}.
+
+\subsubsection{Genus three Fermat's quartic}
+Fermat's quartic is another genus three non-hyperelliptic curve defined by 8(1,2,5) \cite{dami}. The flat structures are described in Figure~\ref{fig:125_flat} and Figure~\ref{fig:flat_rs2}. The period matrices can be found in Section~\ref{sec:cyclicperiod}. One can write the curve model as $y^8 = x (x-1)^2.$ However, one can also consider a fourfold covering over $\C\P^1$ branched over four points and write it as $y^4 = x (x-1) (x+1).$ See \cite{dami} for details.
+
+\subsubsection{Genus three hyperelliptic curve}
+As an example of a hyperelliptic curve, we look into 12(1,5,6). Its quotient under the hyperelliptic involution is $\C\P^1$ where the eight hyperelliptic points are located at the North Pole, South Pole, and at six equidistributed points along the Equator. That is, the curve can be described as $y^2 = x(x^6 -1).$
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+\centering
+\begin{minipage}{0.5\textwidth}
+	\centering
+	\includegraphics[width=2in]{figures/156_flat.pdf}
+\end{minipage}%
+\begin{minipage}{0.5\textwidth}
+	\centering
+	\includegraphics[width=2in]{figures/156_flat_2.pdf}
+\end{minipage}
+	\caption{Two different flat structures on 12(1,5,6).}
+	\label{fig:156}
+\end{figure}
+
+\subsubsection{Genus four Bring's curve}
+Bring's curve is a genus four non-hyperelliptic curve denoted by 5(1,2,4,3). In \cite{matti}, this curve as $y^5 = (x+1)x^2(x+1)^4$ by choosing $p_i = -1, 0, 1, \infty.$
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+\centering
+\begin{minipage}{0.5\textwidth}
+	\centering
+	\includegraphics[width=2in]{figures/1243_flat.pdf}
+\end{minipage}%
+\begin{minipage}{0.5\textwidth}
+	\centering
+	\includegraphics[width=2in]{figures/1243_flat_2.pdf}
+\end{minipage}
+	\caption{Two different flat structures on Bring's curve.}
+	\label{fig:1243}
+\end{figure}
+
+\subsubsection{Schoen's I-WP minimal surface}
+Lastly, I-WP is another genus four non-hyperelliptic curve defined by 12(1,4,7). This notation to this covering is due to \cite{thesis}, where it is shown that Schoen's I-WP surface is equipped with cone metrics that are compatible with the twelvefold cyclic cover over $\C\P^1.$ There, it is also shown that the curve is a threefold cover over the octahedron, hence one can write it as $y^3 = x (x^4 -1).$
+
+\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+\centering
+\begin{minipage}{0.5\textwidth}
+	\centering
+	\includegraphics[width=2in]{figures/147_flat.pdf}
+\end{minipage}%
+\begin{minipage}{0.5\textwidth}
+	\centering
+	\includegraphics[width=2in]{figures/147_flat_2.pdf}
+	\caption{Two different flat structures on Schoen's I-WP.}
+	\label{fig:147}
+\end{minipage}
+\end{figure}
 
 \subsection{Questions and Answers on Abelian Varieties with Multiple Principal Polarizations}
 \label{sec:questions}
