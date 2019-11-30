@@ -234,7 +234,7 @@ Specifically, the sum of cone angles on a genus zero curve is $2 \pi (n - 2).$ G
 
 \begin{figure}[htbp] %  figure placement: here, top, bottom, or page
    \centering
-   \includegraphics[width=2in]{figures/125_flat.pdf} 
+   \includegraphics[width=3in]{figures/125_flat.pdf} 
 	\caption{A flat structure $\omega_1$ on $8(1, 2, 5)$}
 	\label{fig:125_flat}
 \end{figure}
@@ -507,7 +507,17 @@ $\text{}$ $\hspace{2mm}$\textit{Output:} For each combination of principal polar
 
 \subsection{Certifying Heuristic Methods}
 \label{sec:cert}
-We summarize here the fantastic work of Costa-Mascot-Sijsling-Voight \cite{rigor} on certifying that numerically computed endomorphisms of a Jacobian are infact endomorphisms of that Jacobian. This is extremely nontrivial because in an analytic sense, abelian varieties with no principal polarizations are dense in the moduli space. 
+
+We must certify that numerically computed endomorphisms of a Jacobian are infact endomorphisms of that Jacobian. This is extremely nontrivial because in an analytic sense, abelian varieties with no principal polarizations are dense in the moduli space. 
+
+
+For cyclically branched covers of the sphere, the extra certification step is unneccesary because the entries of our period matrices are exact and algebraic over $\Q$. If the period matrix is known exactly, then the Puiseux step is redundant because it is far easier to check that the putative endomorphisms are correct via a linear-algebraic verification. This amounts to given $\Pi \in M_{g, 2g}(\overline{\Q})$, find
+$$M \Pi = \Pi R,$$
+where $R \in  M_{2g}(\Z)$ and $M \in M_g(\overline{\Q})$. We then know that $R$ is an endomorphism of $\Lambda$ and $M$ is a representation of the endomorphism of the abelian variety on the tangent space around the origin.
+
+%The entries of the period matrices that we consider, while furnished as complex numbers, are in fact exact. This means in particular that all equations involved can be checked to hold exactly. Since the number field and specific algebraic numbers involved are very decent, the typically used precision of hundreds of digits will only detect actual endomorphisms, and fake relations will not pass muster. 
+
+For non-cyclically branched covers of the sphere (e.g., $X_0(63)$), our period matrices are non-exact. We must then use the fantastic work of Costa-Mascot-Sijsling-Voight \cite{rigor} to certify that the $M$ and $R$ found above are exact and not putative, which we now quickly summarize.
 
 A key conceptual part of their approach is relating divisors on $X \times Y$ to endomorphisms of the Jacobians $\Jac(X)$ and $\Jac(Y)$ via the theory of correspondences. All endomorphisms of Jacobians come from correspondences. Each correspondece on $X \times Y$ induces a homomorphism of the divisor groups of $X$ and $Y$. These homomorphisms in turn induce homomorphisms of Jacobians. In our case, $X=Y$, but we will exposit the more general case. Let $C$ be a prime divisor on $X \times Y$, then we denote the associated correspondence as follows.
 
@@ -833,7 +843,7 @@ Klein's quartic is a genus three non-hyperelliptic curve defined by branching in
 \end{minipage}%
 \begin{minipage}{0.5\textwidth}
 	\centering
-	\includegraphics[width=2in]{figures/124_flat_2.pdf}
+	\includegraphics[width=3in]{figures/124_flat_2.pdf}
 \end{minipage}
 	\caption{Two different flat structures on Klein's quartic.}
 	\label{fig:124}
@@ -855,7 +865,7 @@ As an example of a hyperelliptic curve, we look into 12(1,5,6). Its quotient und
 \end{minipage}%
 \begin{minipage}{0.5\textwidth}
 	\centering
-	\includegraphics[width=2in]{figures/156_flat_2.pdf}
+	\includegraphics[width=3in]{figures/156_flat_2.pdf}
 \end{minipage}
 	\caption{Two different flat structures on 12(1,5,6).}
 	\label{fig:156}
@@ -872,7 +882,7 @@ Bring's curve is a genus four non-hyperelliptic curve denoted by 5(1,2,4,3). In 
 \end{minipage}%
 \begin{minipage}{0.5\textwidth}
 	\centering
-	\includegraphics[width=2in]{figures/1243_flat_2.pdf}
+	\includegraphics[width=3in]{figures/1243_flat_2.pdf}
 \end{minipage}
 	\caption{Two different flat structures on Bring's curve.}
 	\label{fig:1243}
@@ -889,7 +899,7 @@ Lastly, I-WP is another genus four non-hyperelliptic curve defined by 12(1,4,7).
 \end{minipage}%
 \begin{minipage}{0.5\textwidth}
 	\centering
-	\includegraphics[width=2in]{figures/147_flat_2.pdf}
+	\includegraphics[width=3in]{figures/147_flat_2.pdf}
 	\caption{Two different flat structures on Schoen's I-WP.}
 	\label{fig:147}
 \end{minipage}
