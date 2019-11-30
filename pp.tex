@@ -134,7 +134,7 @@
 }{\endproof}
 
 
-\title{The Study of Principal Polarizations through Automorphisms of Abelian Varieties} 
+\title{Automorphisms of Abelian Varieties \\ and Principal Polarizations} 
 \author{Dami Lee and Catherine Ray}
 
 \begin{document}
@@ -142,14 +142,9 @@
 	
 \maketitle
 
-\begin{abstract} 
+\begin{abstract} Abelian varieties with several principal polarizations are incredibly rare. The still unsolved Narasimhan-Nori conjecture asks for a closed formula for the number of non-isomorphic principal polarizations of any given abelian variety. We give lower bounds on the number of principal polarizations on any given abelian variety by introducing a new computer program.
+We show, for example, that the Jacobian of Schoen's Wrapping Package surface, from minimal surface theory, has at least 9 non-isomorphic principal polarizations. We also explore the Jacobians of Klein's quartic, Fermat's quartic, Bring's curve, and the modular curve $X_0(63)$.   
 \end{abstract}
-
-%todo: 
-%rearrange
-%correct grammatical errors
-%read lange's latest paper and add to intro
-%why is Narasimhan Nori important? -- unsolved as fuck. 
 
 \section{Introduction}
 
@@ -161,21 +156,17 @@ In this paper, we introduce an entirely different technique to find different pr
 
 \begin{theorem} \label{IWP} Let $\pi(X)$ denote the number of non-isomorphic principal polarizations on any given variety $X$. Let I-WP denote Schoen's I-WP surface, then $$\pi(\text{I-WP}) \geq 9.$$\end{theorem}
 
-This is a charming result, especially since the variety $\Jac(\text{I-WP})$ itself factors into a product of 4 elliptic curves\footnote{This is because $\text{End}(\Jac(\text{I-WP})) \simeq M_4(K)$, where $K$ is imaginary quadratic. Thus, $\Jac(\text{I-WP})$ is the product of elliptic curves with CM by $K$.}, so the remaining principal polarizations must come from interesting new cycles in the product of these elliptic curves. Other such surprising results found by applying our technique are shown in Table ~\ref{table:tablelabel}, Section ~\ref{}.
+This is a charming result, especially since the variety $\Jac(\text{I-WP})$ itself factors into a product of 4 elliptic curves\footnote{This is because $\text{End}(\Jac(\text{I-WP})) \simeq M_4(K)$, where $K$ is imaginary quadratic. Thus, $\Jac(\text{I-WP})$ is the product of elliptic curves with CM by $K$.}, so the remaining principal polarizations must come from interesting new cycles in the product of these elliptic curves. Other such surprising results found by applying our technique are shown in Table ~\ref{table:tablelabel}, Section ~\ref{sec:examples}.
 
-Our method works as follows. Given any period matrix, we introduce new code to compute many principal polarizations on the corresponding abelian variety. We then implement a modification of the psuedocode of Bruin-Jeroen-Sijsling \cite{jeroen} to compute, for each found principal polarization, the automorphism group of the given Jacobian which fixes that polarization. If the automorphism groups are different, then the principal polarizations are non-isomorphic. This gives us a lower bound on the number of different principal polarizations for a given Jacobian. %We further conjecture \ref{63conj} that our brute-force method finds all principal polarizations.
+Our method works as follows. Given any period matrix, we introduce new code to compute many principal polarizations on the corresponding abelian variety. We then implement a modification of the psuedocode of Bruin-Jeroen-Sijsling \cite{jeroen} to compute, for each found principal polarization, the automorphism group of the given Jacobian which fixes that polarization. If the automorphism groups are different, then the principal polarizations are non-isomorphic. This gives us a lower bound on the number of different principal polarizations for a given Jacobian. The fact that numerical computations with period matrices, which we use for surfaces which are not cyclically branched covers of the punctured sphere, give rigorous results relies on the brilliant work of Costa-Mascot-Sijsling-Voight \cite{rigor} (see Prop 6.1.1).
 
-The fact that our numerical computations with period matrices give rigorous results relies on the brilliant work of Costa-Mascot-Sijsling-Voight \cite{rigor} (see Prop 6.1.1).
-
-%A further insight of our technique is as follows. It is computationally impossible(?) to compare two principal polarizations to check if they are isomorphic, so we compute the automorphism group of the Jacobian with respect to them, and if these automorphism groups are nonisomorphic, the principal polarizations are nonisomorphic as well. This allows us to compare and study the principal polarizations further. 
-
-We demonstrate the power of our method with a variety of different period matrices found roaming in the wild. We exposit some low dimensional geometry which allows us to compute exact period matrices of cyclically branched covers of punctured spheres. We also work with period matrices of modular curves, as codified by Mascot in a slight modification of \cite{n} toward computing Galois representations. These modular curves are not cyclically branched covers, and thus give us a completely disjoint collection of curves to which we apply our methods. Assuming conjecture \ref{63conj}, we give a new proof of the automorphism group of $X_0(63)$, which was the only remaining unresolved automorphism group of a compact modular curve until \cite{elkies}.  
+We demonstrate the power of our method with a variety of different period matrices. We exposit some low dimensional geometry which allows us to compute exact period matrices of cyclically branched covers of punctured spheres. We also work with period matrices of modular curves, as codified by Mascot in a slight modification of \cite{n} toward computing Galois representations. These modular curves are not cyclically branched covers, and thus give us a completely disjoint collection of curves to which we apply our methods. Assuming that our program finds \textit{all} principal polarizations of any given abelian variety, we give a new proof of the automorphism group of $X_0(63)$, which was the only remaining unresolved automorphism group of a compact modular curve until \cite{elkies}.  
 
 %Along the way of exploring our technique, we found some surprised. For example, the Jacobian of Schoen's I-WP surface has at least 9 different principal polarizations. Since it is a product of four isomorphic elliptic curves, this means that 
 %\ti{add precise torelli to appendix?}
 \section{Summary of Prior Work}
 
-We summarize what is known about abelian varieties with several principal polarizations. The previous work toward the Narasimhan-Nori conjecture can be divided into the simple and non-simple cases (in which we can further indicate char 0 or char p cases). An abelian variety is simple if it is not isogenous to a product of abelian varieties of lower dimension. 
+We summarize what is known about abelian varieties with several principal polarizations. The previous work toward the Narasimhan-Nori conjecture can be divided into the simple and non-simple cases (in which we can further indicate char 0 or char $p$ cases). An abelian variety is simple if it is not isogenous to a product of abelian varieties of lower dimension. 
 
 A technique developed by Lange first for \textit{simple} varieties in characteristic 0. In \cite{several} Theorem 1.5, Lange establishes for simple varieties that the order of $\Aut(A)$ with certain restriction conditions and equivalence relations is equal to the number of principal polarizations on $A$ up to isomorphism, $\pi(A)$. One could in principal compute the size of this specially carved out version of $\Aut(A)$ by hand using Lange's theorem, however, it is computationally infeasible. This is incredible, it gives us a a set equivalence between a slighly carved automorphism group of a variety, and its set of principal polarizations.
 
@@ -365,7 +356,7 @@ The period matrix used in our calculation of $\Aut(\Jac(X_0(63)), p_i)$ was comp
 
 \begin{remark} Mascot, in \cite{n}, discusses finding the period matrices for $X_1(N)$ by integrating cuspforms along modular symbols. His algorithm works for any compactified modular curve, but it works best when $N$ is square-free. In the non-squarefree case, the coefficients in the $q$-expansions of the cuspforms and the $j$-invariant do not converge as quickly, thus they require more digits of precision. \end{remark}
 
-\begin{remark} In private correspondence, John Voight programmatically proved that $X_0(63)$ is not a cyclically branched cover of the sphere. Given that the genus of the quotient $X_0(63)/H$ is equal to the dimension of the $H$-invariant differentials, he shows that the list of dimensions of the space of $H$-invariant differentials on $X_0(63)$ (where $H$ is a cyclic subgroup of $Aut(X_0(63))$) does not contain zero. 
+\begin{remark} In private correspondence, John Voight programmatically proved that $X_0(63)$ is not a cyclically branched cover of the sphere. Given that the genus of the quotient $X_0(63)/H$ is equal to the dimension of the $H$-invariant differentials, he shows that the list of dimensions of the space of $H$-invariant differentials on $X_0(63)$ (where $H$ is a cyclic subgroup of $\Aut(X_0(63))$) does not contain zero. 
  \end{remark} 
 
 
@@ -376,7 +367,7 @@ The period matrix used in our calculation of $\Aut(\Jac(X_0(63)), p_i)$ was comp
 
 \label{sec:computing}
 
-\begin{remark} The first two subsections of the section are copied from section 4 of Bruin-Sijsling-Zotine \cite{jeroen} with lots of exposition and examples added for the readers' convenience. This sets us up to introduce the code for brute force calculating principal polarizations. All of our code is available at \begin{center}\texttt{https://github.com/catherineray/aut-jac}\end{center} We discuss the certification of these numerical results in Section ~\ref{cert}. \end{remark} 
+\begin{remark} The first two subsections of the section are copied from section 4 of Bruin-Sijsling-Zotine \cite{jeroen} with lots of exposition and examples added for the readers' convenience. This sets us up to introduce the code for brute force calculating principal polarizations. All of our code is available at \begin{center}\texttt{https://github.com/catherineray/aut-jac}\end{center} We discuss the certification of these numerical results in Section ~\ref{sec:cert}. \end{remark} 
 
 Let us examine abelian varieties represented as analytic groups $X := V/\Lambda$ and $X' := V'/\Lambda'$. They need not be Jacobians.
 
@@ -511,9 +502,9 @@ $\text{}$ $\hspace{2mm}$\textit{Output:} For each combination of principal polar
 We must certify that numerically computed endomorphisms of a Jacobian are infact endomorphisms of that Jacobian. This is extremely nontrivial because in an analytic sense, abelian varieties with no principal polarizations are dense in the moduli space. 
 
 
-For cyclically branched covers of the sphere, the extra certification step is unneccesary because the entries of our period matrices are exact and algebraic over $\Q$. If the period matrix is known exactly, then the Puiseux step is redundant because it is far easier to check that the putative endomorphisms are correct via a linear-algebraic verification. This amounts to given $\Pi \in M_{g, 2g}(\overline{\Q})$, find
-$$M \Pi = \Pi R,$$
-where $R \in  M_{2g}(\Z)$ and $M \in M_g(\overline{\Q})$. We then know that $R$ is an endomorphism of $\Lambda$ and $M$ is a representation of the endomorphism of the abelian variety on the tangent space around the origin.
+For cyclically branched covers of the sphere, this extra certification step is unneccesary because the entries of our period matrices are exact and algebraic over $\Q$. If the period matrix is known exactly, then the Puiseux step is redundant because it is far easier to check that the putative endomorphisms are correct via a linear-algebraic verification. This amounts to given the period matrix $P \in M_{g, 2g}(\overline{\Q})$, find
+$$M P = P R,$$
+where $R \in  M_{2g}(\Z)$ and $M \in M_g(\overline{\Q})$. We then know that $R$ is an endomorphism of $\Lambda$ (the lattice defined by the period matrix $\Pi$) and $M$ is a representation of the endomorphism of the abelian variety on the tangent space around the origin.
 
 %The entries of the period matrices that we consider, while furnished as complex numbers, are in fact exact. This means in particular that all equations involved can be checked to hold exactly. Since the number field and specific algebraic numbers involved are very decent, the typically used precision of hundreds of digits will only detect actual endomorphisms, and fake relations will not pass muster. 
 
@@ -732,8 +723,6 @@ We begin with a representation of our abelian variety as $A := \C^g/\Pi\Z^{2g}$.
 
 Then $\Lambda$ is the associated lattice spanned by the columns of $\Pi$. Thus, we have a distinguished basis for the homology of $A$, corresponding to the columns of $\Pi$. 
 
-%\todo[inline]{Do I want to elaborate on this? This is a program, and in a program, we must pick a basis.}
-
 \vspace{+5pt}
 
 \textbf{Algorithm:} Compute many principal polarizations on a given abelian variety $A$.
@@ -755,17 +744,9 @@ This is a basis of alternating forms $\{E_i\}$.
 \begin{remark} This does nothing but modify the (homology) basis of $\Lambda$. Multiplying $\Pi$ on the right with this integral matrix, we get a new period matrix $Q$ whose columns span exactly the same lattice but for which the standard symplectic pairing $E$ is actually the Chern class of a line bundle. This is often called the Frobenius form of the period matrix $\Pi$. \end{remark}
 
 
-%\footnote{Note that every period matrix $\Pi$ may be written as $(\tau \mid Id)$ where $\tau$ is symmetric with positive definite imaginary part.} We then normalize the left part of $Q$ to be 1. This gives us $\tau$. What do we use tau for then?
-
-
-
-%\item As a last step, we check that things (?? do we in fact do this earlier?) are positive definite, to make sure that the aforementioned line bundle is ample.
-
-
-
 \section{Studying Principal Polarizations via Automorphisms of the Jacobian}
 
-%how is frobenius form like elementary divisors for alternating integer matrices.?
+%how is frobenius form like elementary divisors for alternating integer matrices?
 
 \begin{defn} We say two principal polarizations $p_1$ and $p_2$ on $A$ are \textbf{auto-equivalent} if and only if $\Aut(A, p_1) \simeq \Aut(A, p_2)$. \end{defn}
 
@@ -782,7 +763,7 @@ If the abelian variety is indeed a Jacobian, this method will in practice return
 
 
 \subsection{Examples}
-\label{sec:accident}
+\label{sec:examples}
 
 All curves (besides the modular curve $X_0(63)$) that we look into are cyclic covers over $\C\P^1.$ 
 
