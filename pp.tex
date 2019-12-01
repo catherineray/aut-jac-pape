@@ -143,7 +143,7 @@
 \maketitle
 
 \begin{abstract} Abelian varieties with several principal polarizations are incredibly rare. The still unsolved Narasimhan-Nori conjecture asks for a closed formula for the number of non-isomorphic principal polarizations of any given abelian variety. We give lower bounds on the number of principal polarizations on any given abelian variety by introducing a new computer program.
-We show, for example, that the Jacobian of Schoen's Wrapping Package surface, from minimal surface theory, has at least 9 non-isomorphic principal polarizations. We also explore the Jacobians of Klein's quartic, Fermat's quartic, Bring's curve, and the modular curve $X_0(63)$.   
+We show, for example, that the Jacobian of Schoen's Wrapping Package surface, from minimal surface theory, has at least 9 non-isomorphic principal polarizations. We also explore the Jacobians of Klein's quartic, Fermat's quartic, Bring's curve, the modular curve $X_0(63)$, and more.   
 \end{abstract}
 
 \section{Introduction}
@@ -152,18 +152,16 @@ Our paper introduces a new computer program to find multiple non-isomorphic prin
 
 The fact that an abelian variety admits only a finite number of isomorphism classes of principal polarizations was established by Narasimhan-Nori in \cite{nn}. In this paper, they pose the problem of finding a closed formula for the number of principal polarizations of any given abelian variety over any field, which is still unsolved. 
 
-In this paper, we introduce an entirely different technique to find different principal polarizations on Jacobians, exposited in Section ~\ref{sec:find}, which treats both simple and non-simple cases in characteristic 0. We use this to give lower bounds on the number of non-isomorphic principal polarizations. For example, we have the following result. %of the abelian varieties we tried the program on, for example, Theorem ~\ref{IWP}.
+In this paper, we introduce an entirely different technique to find different principal polarizations on Jacobians, exposited in Section ~\ref{sec:find}, which treats both simple and non-simple cases in characteristic 0. We use this to give lower bounds on the number of non-isomorphic principal polarizations. For example, we have the following result. 
 
 \begin{theorem} \label{IWP} Let $\pi(X)$ denote the number of non-isomorphic principal polarizations on any given variety $X$. Let I-WP denote Schoen's I-WP surface, then $$\pi(\text{I-WP}) \geq 9.$$\end{theorem}
 
 This is a charming result, especially since the variety $\Jac(\text{I-WP})$ itself factors into a product of 4 elliptic curves\footnote{This is because $\text{End}(\Jac(\text{I-WP})) \simeq M_4(K)$, where $K$ is imaginary quadratic. Thus, $\Jac(\text{I-WP})$ is the product of elliptic curves with CM by $K$.}, so the remaining principal polarizations must come from interesting new cycles in the product of these elliptic curves. Other such surprising results found by applying our technique are shown in Table ~\ref{table:tablelabel}, Section ~\ref{sec:examples}.
 
-Our method works as follows. Given any period matrix, we introduce new code to compute many principal polarizations on the corresponding abelian variety. We then implement a modification of the psuedocode of Bruin-Jeroen-Sijsling \cite{jeroen} to compute, for each found principal polarization, the automorphism group of the given Jacobian which fixes that polarization. If the automorphism groups are different, then the principal polarizations are non-isomorphic. This gives us a lower bound on the number of different principal polarizations for a given Jacobian. The fact that numerical computations with period matrices, which we use for surfaces which are not cyclically branched covers of the punctured sphere, give rigorous results relies on the brilliant work of Costa-Mascot-Sijsling-Voight \cite{rigor} (see Prop 6.1.1).
+Our method works as follows. Given any period matrix, we introduce new code to compute many principal polarizations on the corresponding abelian variety. We then implement a modification of the psuedocode of Bruin-Jeroen-Sijsling \cite{numerical} to compute, for each found principal polarization, the automorphism group of the given Jacobian which fixes that polarization. If the automorphism groups are different, then the principal polarizations are non-isomorphic. This gives us a lower bound on the number of different principal polarizations for a given Jacobian. The fact that numerical computations with period matrices, which we use for surfaces which are not cyclically branched covers of the punctured sphere, give rigorous results relies on the brilliant work of Costa-Mascot-Sijsling-Voight \cite{rigor} (see Prop 6.1.1).
 
 We demonstrate the power of our method with a variety of different period matrices. We exposit some low dimensional geometry which allows us to compute exact period matrices of cyclically branched covers of punctured spheres. We also work with period matrices of modular curves, as codified by Mascot in a slight modification of \cite{n} toward computing Galois representations. These modular curves are not cyclically branched covers, and thus give us a completely disjoint collection of curves to which we apply our methods. Assuming that our program finds \textit{all} principal polarizations of any given abelian variety, we give a new proof of the automorphism group of $X_0(63)$, which was the only remaining unresolved automorphism group of a compact modular curve until \cite{elkies}.  
 
-%Along the way of exploring our technique, we found some surprised. For example, the Jacobian of Schoen's I-WP surface has at least 9 different principal polarizations. Since it is a product of four isomorphic elliptic curves, this means that 
-%\ti{add precise torelli to appendix?}
 \section{Summary of Prior Work}
 
 We summarize what is known about abelian varieties with several principal polarizations. The previous work toward the Narasimhan-Nori conjecture can be divided into the simple and non-simple cases (in which we can further indicate char 0 or char $p$ cases). An abelian variety is simple if it is not isogenous to a product of abelian varieties of lower dimension. 
@@ -183,7 +181,7 @@ All other previous works known to the authors on finding multiple principal pola
 
 \begin{remark} There is only a canonical principal polarization on $A$ if a curve $C$ is specified so that $A = \Jac(C).$ If $C$ is not specified, there is no canonical choice -- knowing that $A$ is in the image of the functor $\Jac$ is not enough. Thus, there can be several ``canonical" principal polarizations on one Jacobian, its canonicality only refers to the fact that it comes from a curve. \end{remark}
 
-The papers using this non-isomorphic curve technique discuss the case of \textit{nonsimple} Jacobians of curves of genus two \cite{iko} and three [Brock, \textit{Superspecial curves of genera two and three}], though the second author was unable to find a copy of the latter. 
+The papers using this non-isomorphic curve technique discuss the case of \textit{nonsimple} Jacobians of curves of genus two \cite{iko} and three [Brock, \textit{Superspecial curves of genera two and three}], though we were unable to find a copy of the latter. 
 
 This technique is again used by E. Howe \cite{howe1} and \cite{howe2} which gives examples of non-isomorphic genus two curves with the same \textit{simple} Jacobian. He finds such examples in characteristic $p$ by playing with isogeny classes of abelian varieties which correspond to special Weil numbers. This summarizes all previous work known to the authors.
 
@@ -207,14 +205,14 @@ We construct such curves with the given data: let $p_i, \ldots , p_n \in \mathbb
 \subsubsection*{Branching indices on Octa-4}
 As a running example, we will look at the curve from \cite{dami}. It is there called Octa-4 due to the formation of the triply periodic surface. The underlying genus three curve $C$ (Figure~\ref{fig:125} (reprinted from \cite{dami})) is invariant under an order-eight rotational symmetry. The curve is an eightfold cyclic cover over $\mathbb{C}\mathbb{P}^1$ denoted as $8 (1, 2, 5).$
 
-\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+\begin{figure}[htbp] 
    \centering
    \includegraphics[width=2in]{figures/125_base_.pdf} 
 	\caption{Hyperbolic tessellation on $8(1, 2, 5)$}
 	\label{fig:125}
 \end{figure}
 
-% The euclidean triangles on the fundamental piece of $\Pi$ have a one-to-one correspondence to the hyperbolic triangles.
+%The euclidean triangles on the fundamental piece of $\Pi$ have a one-to-one correspondence to the hyperbolic triangles.
 
 For each $i,$ there are $\gcd(d, d_i)$ preimages $\widetilde{p_i}$ of $p_i$ on $C.$ Hence, each $\widetilde{p_i}$ is a non-trivial cone point. To pin down a holomorphic 1-form on $C,$ we find cone metrics on $\mathbb{C}\mathbb{P}^1$ and pull-back to its covering. We say that a cone metric on $\mathbb{C}\mathbb{P}^1$ is \textbf{admissible} if its pullback yields a flat structure on $C.$ The following proposition is a version of Gauss-Bonnet theorem.
 
@@ -223,9 +221,9 @@ For each $i,$ there are $\gcd(d, d_i)$ preimages $\widetilde{p_i}$ of $p_i$ on $
 
 Specifically, the sum of cone angles on a genus zero curve is $2 \pi (n - 2).$ Given branching indices such that $\sum\limits_{i=1}^n d_i = d (n - 2),$ we get a cone metric on the Riemann sphere with cone angles $\frac{2 \pi d_i}{d}$ at each $p_i.$ For example, by putting a cone metric on the quotient sphere where the cone angles are $\frac{1 \pi}{4}, \frac{2 \pi}{4},$ and $\frac{5 \pi}{4}$ as in Figure~\ref{fig:125_flat}, one can see that the identification of edges are by translations. In other words, this gives rise to a translation structure on the eightfold cover of the sphere. Moreover, we obtain a holomorphic 1-form with one order-4 zero.
 
-\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+\begin{figure}[htbp]
    \centering
-   \includegraphics[width=3in]{figures/125_flat.pdf} 
+   \includegraphics[width=2.5in]{figures/125_flat.pdf} 
 	\caption{A flat structure $\omega_1$ on $8(1, 2, 5)$}
 	\label{fig:125_flat}
 \end{figure}
@@ -241,9 +239,9 @@ Theorem 3.5, \cite{dthesis} proves that for $n = 3,$ there are exactly $g$ multi
 
 Figure~\ref{fig:flat_rs2} represents $\omega_2$ given by cone angles $\frac{2 \pi}{8}(2, 4, 2).$ The four simple zeros are marked on the figure.
 
-\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+\begin{figure}[htbp]
    \centering
-   \includegraphics[width=2in]{figures/flat_rs2.pdf} 
+   \includegraphics[width=4in]{figures/flat_rs2.pdf} 
 	\caption{A flat structure $\omega_2$ on $8(1, 2, 5)$}
 	\label{fig:flat_rs2}
 \end{figure}
@@ -278,24 +276,10 @@ $$\Pi_1 = \left(
  1 & i & -1 & -i & 1 & i \\
  1 & e^{-\frac{3 \pi i}{4}} & i & e^{-\frac{\pi i}{4}} & -1 & e^{\frac{\pi i}{4}} 
 \end{array}
-\right)$$
-
-\begin{remark} In \cite{dthesis}, the first author computes the period matrix by choosing a different homology basis. The closed cycles are images of the ``handles'' on the polyhedral surface embedded in $\R^3.$ This yields the following intersection matrix 
-$$\textrm{int}_2 = \begin{pmatrix} 0 & 0 & 0 & 1 & 0 & 0 \\
- 0 & 0 & 0 & 0 & 1 & 0 \\
- 0 & 0 & 0 & 0 & 0 & 1 \\
- -1 & 0 & 0 & 0 & 0 & 0 \\
- 0 & -1 & 0 & 0 & 0 & 0 \\
- 0 & 0 & -1 & 0 & 0 & 0\end{pmatrix}$$ and the following period matrix
-
-$$\Pi_2 = (A|B) = \begin{pmatrix}  1 - i& -\frac{1 + i}{1 + \sqrt{2}}& \frac{1 + i}{1 + \sqrt{2}}& 1 + i& \sqrt{2}& 2 - \sqrt{2} \\  -2i& 2i& 2i& 2i& -2& -2\\ -1 - i & (1 - i)(1 + \sqrt{2})& (-1 + i)(1 + \sqrt{2})& 1 - i& i\sqrt{2}& i(-2 - \sqrt{2})  \end{pmatrix} $$ and $$\tau = (A^{-1}B) = \begin{pmatrix}i & \frac{1 + i}{2} & \frac{1 + i}{2}\\
-\frac{1 + i}{2} & i & \frac{1 + i}{2}\\
-\frac{1 + i}{2} & \frac{1 + i}{2} & i\end{pmatrix}$$
-\end{remark}
+\right).$$
 
 
-In general, % emphasize on the fact that this arises from cyclicity
-we get 
+In general, from cyclicity we get 
 
 $$\Pi = \left(
 \begin{array}{ccccc}
@@ -307,6 +291,21 @@ $$\Pi = \left(
 \right)$$
 where $\alpha_i$ are the multipliers.
 
+
+
+
+\begin{remark} In \cite{dthesis}, the first author computes the period matrix by choosing a different homology basis. The closed cycles are images of the ``handles'' on the polyhedral surface embedded in $\R^3.$ This yields the following intersection matrix 
+$$\textrm{int}_2 = \begin{pmatrix} 0 & 0 & 0 & 1 & 0 & 0 \\
+ 0 & 0 & 0 & 0 & 1 & 0 \\
+ 0 & 0 & 0 & 0 & 0 & 1 \\
+ -1 & 0 & 0 & 0 & 0 & 0 \\
+ 0 & -1 & 0 & 0 & 0 & 0 \\
+ 0 & 0 & -1 & 0 & 0 & 0\end{pmatrix}$$ and the following period matrix
+
+$$\Pi_2 = (A|B) = \begin{pmatrix}  1 - i& -\frac{1 + i}{1 + \sqrt{2}}& \frac{1 + i}{1 + \sqrt{2}}& 1 + i& \sqrt{2}& 2 - \sqrt{2} \\  -2i& 2i& 2i& 2i& -2& -2\\ -1 - i & (1 - i)(1 + \sqrt{2})& (-1 + i)(1 + \sqrt{2})& 1 - i& i\sqrt{2}& i(-2 - \sqrt{2})  \end{pmatrix} $$ and $$\tau = (A^{-1}B) = \begin{pmatrix}i & \frac{1 + i}{2} & \frac{1 + i}{2}\\
+\frac{1 + i}{2} & i & \frac{1 + i}{2}\\
+\frac{1 + i}{2} & \frac{1 + i}{2} & i\end{pmatrix}.$$
+\end{remark}
 
 
 
@@ -349,7 +348,6 @@ Using the period matrix provided by Mascot, performed with 150 precisions, \text
 
 Therefore, it must be that $\Aut(X_0(63)) \simeq S_4 \times \Z/2$. 
 \end{proof} 
-%add citation for this paper etc. 
 
 \vspace{+10pt} 
 The period matrix used in our calculation of $\Aut(\Jac(X_0(63)), p_i)$ was computed by Nicolas Mascot using an alteration of his personal code.
@@ -367,17 +365,12 @@ The period matrix used in our calculation of $\Aut(\Jac(X_0(63)), p_i)$ was comp
 
 \label{sec:computing}
 
-\begin{remark} The first two subsections of the section are copied from section 4 of Bruin-Sijsling-Zotine \cite{jeroen} with lots of exposition and examples added for the readers' convenience. This sets us up to introduce the code for brute force calculating principal polarizations. All of our code is available at \begin{center}\texttt{https://github.com/catherineray/aut-jac}\end{center} We discuss the certification of these numerical results in Section ~\ref{sec:cert}. \end{remark} 
+\begin{remark} The first two subsections of the section are copied from section 4 of Bruin-Sijsling-Zotine \cite{numerical} with lots of exposition and examples added for the readers' convenience. This sets us up to introduce the code for brute force calculating principal polarizations. All of our code is available at \begin{center}\texttt{https://github.com/catherineray/aut-jac}\end{center} We discuss the certification of these numerical results in Section ~\ref{sec:cert}. \end{remark} 
 
 Let us examine abelian varieties represented as analytic groups $X := V/\Lambda$ and $X' := V'/\Lambda'$. They need not be Jacobians.
 
-%\begin{remark} We slightly abuse notation here, $\Lambda$ represents both a matrix in $M_{g \times 2g}(\Z)$, and the $2g$-integral-dimensional (i.e., $g$-complex-dimensional) lattice in $\C^g$ generated by the columns of that matrix.\end{remark}
+\begin{remark} We slightly abuse notation here, $\Lambda$ represents both a matrix in $M_{g \times 2g}(\Z)$, and the $2g$-integral-dimensional (i.e., $g$-complex-dimensional) lattice in $\C^g$ generated by the columns of that matrix.\end{remark}
  
-%A homomorphism $\phi: J \to J'$ induces a tangent map $V \to V'$ and a map on ``homology"\footnote{In the case of Jacobians $\Jac(C) = H^0(C, \Omega_{C}^1)/H_1(C; \Z) \simeq \C^g/\Lambda$, hence the name homology representation for the map on $\Lambda$.} $\Lambda_1 \to \Lambda_2$. After a choice of basis, these correspond to matrices $T=T_\phi \in M_{g_2 \times g_1}(\C)$ and $R = R_\phi \in M_{2g_2 \times 2g_1}(\Z)$. 
-
-%Let $\Lambda_1 = (A \mid B)$, that is, break the gx2g matrix into two square matrices.
-
-
 
 \begin{thm*}[BL 1.2.1] Let $X:= V/\Lambda$ and $X':= V'/\Lambda'$ be abelian varieties. Under addition the set of homomorphisms $\Hom(X, X')$ forms an abelian group. There is an injective homomorphism of abelian groups: 
 
@@ -397,7 +390,7 @@ f &\mapsto F|_{\Lambda}
 
 
 \end{thm*}
-%Let $E := \begin{pmatrix} 0 & I \\ -I & 0 \end{pmatrix}$, in other words, the standard symplectic matrix.
+
 
 We will namely use the representation $\rho|_{\Lambda}$ and find the basis of our set of maps in terms of this representation. 
 
@@ -407,17 +400,13 @@ $$f: (X, c_1(\mc{L})) \to (Y, c_1(\mc{M}))$$
 
 such that $f^*(Y, c_1(\mc{M})) = (X, c_1(\mc{L}))$ (for isomorphisms).  We may represent polarizations as integral valued alternating forms. 
 
-% tktk 
-% define polarization here before using it in the next definition
-
-
 \begin{defn} Let $a$ be a polarization of $X$. We call $\Aut(X, a)$ a \textbf{symplectic automorphism group} of $X$, as it respects the symplectic form $a$. 
 \end{defn}
 
 % tktk 
 % Define/mention what R is here. You use it in the algorithm but there's no info about that here. 
 
-Let $E_1$ and $E_2$ be forms representing $c_1(\mc{L}_1)$ and $c_1(\mc{L}_2)$, respectively. Note that a map $\alpha: (X_1, c_1(\mc{L}_1)) \to (X_2, c_1(\mc{L}_2))$ such that $$\alpha^*(c_1(\mc{L}_2)) = c_1(\mc{L}_1)$$ is equivalent to $R$ in the image of $\rho|_{\Lambda}$ such that $$R^tE_2R = E_1$$
+Let $E_1$ and $E_2$ be forms representing $c_1(\mc{L}_1)$ and $c_1(\mc{L}_2)$, respectively. Note that a map $\alpha: (X_1, c_1(\mc{L}_1)) \to (X_2, c_1(\mc{L}_2))$ such that $$\alpha^*(c_1(\mc{L}_2)) = c_1(\mc{L}_1)$$ is equivalent to a matrix $R \in M_{2g}(\Z)$ in the image of $\rho|_{\Lambda}$ such that $$R^tE_2R = E_1$$
 
 
 \subsection{Computing the Automorphism Group of Plane Curves}
@@ -425,9 +414,9 @@ Let $E_1$ and $E_2$ be forms representing $c_1(\mc{L}_1)$ and $c_1(\mc{L}_2)$, r
 
 \begin{remark} This section is on the algorithm used in \texttt{autplane.sage}. \end{remark}
 
-In the case that our abelian variety is of the form $\Jac(C_i) =: J_i$, and we know the curve $C_i$, there is a special principal polarization $E_i$ with respect to that curve $C_i$. This is programmatically found using Lemma 2.6 from \cite{jeroen}. 
+In the case that our abelian variety is of the form $\Jac(C_i) =: J_i$, and we know the curve $C_i$, there is a special principal polarization $E_i$ with respect to that curve $C_i$. This is programmatically found using Lemma 2.6 from \cite{numerical}. 
 \vspace{+10pt} 
-%The following psuedocode is copied from section 4.2 ``Computing symplectic isomorphisms" \cite{jeroen}  for the readers convienience. Note that steps 4-7 coicide with steps (???) in the previous algorithm, however, since the canonical principal polarizations are known, we use only one iteration of steps 5-7. We write it out to avoid unneccessary confusion.
+%The following psuedocode is copied from section 4.2 ``Computing symplectic isomorphisms" \cite{numerical}  for the readers convienience. Note that steps 4-7 coicide with steps (???) in the previous algorithm, however, since the canonical principal polarizations are known, we use only one iteration of steps 5-7. We write it out to avoid unneccessary confusion.
 
 
 %or equivalently, $\alpha_*(c_1(\mc{L})) = c_1(\mc{M})$.
@@ -440,8 +429,8 @@ $\text{}$ $\hspace{2mm}$\textit{Output:} The set of isomorphisms $C_1 \to C_2$, 
 \begin{enumerate}
 \item Check if $g(C_1) = g(C_2)$; if not, return the empty set.
 \item Check if $C_1$ and $C_2$ are hyperelliptic; if so, use the methods in \cite{hyp}.
-\item Determine the period matrices $P_1, P_2$ of $C_1, C_2$ to the given precision.
-\item Determine a $\Z$-basis of $\Hom(J_1, J_2) \subset M_{2g \times 2g}(\Z)$ represented by integral matrices $R \in  M_{2g \times 2g}(\Z)$. [Lemma 4.3 \cite{jeroen}]
+\item Determine the period matrices $\Pi_1, \Pi_2$ of $C_1, C_2$ to the given precision.
+\item Determine a $\Z$-basis of $\Hom(J_1, J_2) \subset M_{2g \times 2g}(\Z)$ represented by integral matrices $R \in  M_{2g \times 2g}(\Z)$. [Lemma 4.3 \cite{numerical}]
 \item Using Fincke-Pohst\footnote{This is an algorithm for finding vectors of small norm. We use it here to solve for the finite set of solutions $R = \sum_{i = 1}^{2g} \lambda_i B_i$, where $B$ is the basis from step 4.}, determine the finite set [from 5.1.9 BL] $$S = \{ R \in \Hom(J_1, J_2) \text{ } | \text{ } \text{tr}((E_1^{-1}R^tE_2)R) = 2g\}$$
 \item Return the subset\footnote{The condition $R^tE_2R = E_1$ (i.e., $E_1^{-1}R^tE_2R = \text{Id}$) implies that $\text{tr}((E_1^{-1}R^tE_2)R) = 2g$. So we first solve for the latter to thin the results, then solve for the former from that set.}  of $R \in S$ which further satisfies $R^tE_2R = E_1$. (These are the symplectic endomorphisms.)
 \item Look at the subset of $R$ such that $\det(R) = \pm 1$. These are the symplectic automorphisms.
@@ -453,7 +442,7 @@ $\text{}$ $\hspace{2mm}$\textit{Output:} The set of isomorphisms $C_1 \to C_2$, 
 
 Note that if the curves $C_1$ and $C_2$ are non-hyperelliptic, by the precise Torelli theorem, we get $\Hom((J_1, E_1), (J_2, E_2)) \simeq \Hom(C_1, C_2) \sqcup \{ \pm 1 \}$ from this algorithm. So, we must remove the direct summand $\{ \pm 1 \}$.
 
-\begin{remark} Step 8 of the above algorithm was added by the second author to tame these unwieldy matrix groups, and is achieved as follows.\end{remark}
+\begin{remark} Step 8 of the above algorithm was added by Ray to tame these unwieldy matrix groups, and is achieved as follows.\end{remark}
 
 \textbf{Algorithm:} Compute the group structure of an underlying set of matrices.
 
@@ -475,8 +464,6 @@ Note that if the curves $C_1$ and $C_2$ are non-hyperelliptic, by the precise To
 
 \textbf{Algorithm:} Compute the group of isomorphisms between abelian varieties. 
 
-%what makes these automorphisms symplectic? 
-
 \textit{Input:} Period matrices of abelian varieties $J_1$ and $J_2$, as $\Pi_1$ and $\Pi_2$ respectively. \n
 $\text{}$ $\hspace{2mm}$\textit{Output:} For each combination of principal polarizations $(a_i, b_j)$, the set of isomorphisms between $(J_1, a_i)$ and $(J_2, b_j)$ (or the group, if they coincide).
 \begin{enumerate}
@@ -488,29 +475,20 @@ $\text{}$ $\hspace{2mm}$\textit{Output:} For each combination of principal polar
 \end{enumerate}
 
 
-%what makes these automorphisms symplectic? 
-
-%\begin{remark} This algorithm is a repeat of the algorithm in the next section, beginning with different inputs [it begins at step (4) of the algorithm for plane curves]. We exposit it seperately to emphasize that is works for more than just plane curves. \end{remark}
-
-
-%In the following description of the program, we assume that the period matrix is already known. We find the period matrix using either Lee-Webers's method for cyclic covers \todo{does it work more generally?}, or using Bruin's calculation of the period matrix from the Voronoi cell decomposition.
-
-
 \subsection{Certifying Heuristic Methods}
 \label{sec:cert}
 
 We must certify that numerically computed endomorphisms of a Jacobian are infact endomorphisms of that Jacobian. This is extremely nontrivial because in an analytic sense, abelian varieties with no principal polarizations are dense in the moduli space. 
 
+We have two distinct cases, exact period matrices, and numerical ones. The period matrices associated to cyclically branched covers of punctured spheres via the method described in Section ~\ref{sec:cyclicperiod} are exact, as are the period matrices of varieties with complex multiplication. 
 
-For cyclically branched covers of the sphere, this extra certification step is unneccesary because the entries of our period matrices are exact and algebraic over $\Q$. If the period matrix is known exactly, then the Puiseux step is redundant because it is far easier to check that the putative endomorphisms are correct via a linear-algebraic verification. This amounts to given the period matrix $P \in M_{g, 2g}(\overline{\Q})$, find
-$$M P = P R,$$
-where $R \in  M_{2g}(\Z)$ and $M \in M_g(\overline{\Q})$. We then know that $R$ is an endomorphism of $\Lambda$ (the lattice defined by the period matrix $\Pi$) and $M$ is a representation of the endomorphism of the abelian variety on the tangent space around the origin.
+If the entries of the period matrices are exact and algebraic over $\Q$, this extra certification step is unneccesary. We need only check that putative endomorphisms are correct via a simple linear-algebraic verification. This amounts to given a period matrix $\Pi \in M_{g, 2g}(\overline{\Q})$ associated to an abelian variety $C^g/\Lambda$, find
+$$M \Pi = \Pi R,$$
+where $R \in  M_{2g}(\overline{\Q})$ and $M \in M_{g}(\overline{\Q})$. We then know that $R$ is an endomorphism of $\Lambda$ and $M$ is a representation of the endomorphism of the abelian variety on $\C^g$, the tangent space around the origin.
 
-%The entries of the period matrices that we consider, while furnished as complex numbers, are in fact exact. This means in particular that all equations involved can be checked to hold exactly. Since the number field and specific algebraic numbers involved are very decent, the typically used precision of hundreds of digits will only detect actual endomorphisms, and fake relations will not pass muster. 
+If the entries of the period matrix is are non-exact, then to certify that such numerical $M$ and $R$ found above are exact and not putative, we must use the fantastic work of Costa-Mascot-Sijsling-Voight \cite{rigor}, which we now quickly summarize.
 
-For non-cyclically branched covers of the sphere (e.g., $X_0(63)$), our period matrices are non-exact. To certify that such numerical $M$ and $R$ found above are exact and not putative, we must then use the fantastic work of Costa-Mascot-Sijsling-Voight \cite{rigor}, which we now quickly summarize.
-
-A key conceptual part of their approach is relating divisors on $X \times Y$ to endomorphisms of the Jacobians $\Jac(X)$ and $\Jac(Y)$ via the theory of correspondences. All endomorphisms of Jacobians come from correspondences. Each correspondece on $X \times Y$ induces a homomorphism of the divisor groups of $X$ and $Y$. These homomorphisms in turn induce homomorphisms of Jacobians. In our case, $X=Y$, but we will exposit the more general case. Let $C$ be a prime divisor on $X \times Y$, then we denote the associated correspondence as follows.
+A key conceptual part of their approach is relating prime divisors on $X \times Y$ to endomorphisms of the Jacobians $\Jac(X)$ and $\Jac(Y)$ via the theory of correspondences. This is exposited fully in Section 3.3 of \cite{smith}. All endomorphisms of Jacobians come from correspondences associated to prime divisors, i.e., prime correspondences. Each correspondece on $X \times Y$ induces a homomorphism of the divisor groups of $X$ and $Y$. These homomorphisms in turn induce homomorphisms of Jacobians. In our case, $X=Y$, but we will exposit the more general case. Let $C$ be a prime divisor on $X \times Y$, then we denote the associated correspondence as follows.
 
 \begin{center}
 \begin{tikzcd}
@@ -533,52 +511,37 @@ X &                                                         & Y
 \end{tikzcd}
 \end{center}
 
-\begin{cat} (WHAT ARE CONDITIONS?) What are the constraints on the divisor for it to correspond to an endomorphism?Look up in smith. if $E$ contains only $g$-infinitesimal branches given as input, and contains no other such components.  \end{cat}
 
 
 
-A putative endomorphism is $\alpha$ a potential element of $\Aut(\Jac(X))$ we compute numerically as a matrix $R$ via the methods in Section ~\ref{sec:computing} . Their method of certifying putative endomorphisms are actual one is along the lines of the following.  We go through the map $\alpha_X$, defined as the composite of the Abel-Jacobi Map, the putative morphism $\alpha$, and the Mumford birational map. These maps are discussed in detail on page 6 of \cite{jeroen}.
+A putative endomorphism is $\alpha$ a potential element of $\Aut(\Jac(X))$ we compute numerically as a matrix $R$ via the methods in Section ~\ref{sec:computing} . Their method of certifying putative endomorphisms are actual one is along the lines of the following.  We go through the map $\alpha_X$, defined as the composite of the Abel-Jacobi Map, the putative morphism $\alpha$, and the Mumford birational map. These maps are discussed in detail on page 6 of \cite{numerical}.
 
 \[
 \begin{tikzcd}
 X \arrow[r, "AJ"] \arrow[rrr, "\alpha_X", bend right] & \Jac(X) \arrow[r, "\alpha"] & \Jac(X) \arrow[r, "\text{Mum}", dashed] & \Sym^g(X).
 \end{tikzcd}
 \]
-%$$\alpha_X: X \to \Jac(X) \xrightarrow{\alpha} \Jac(X) \dashrightarrow \Sym^g(X).$$
+
 Their method is then along the lines of the following.
 \begin{itemize}
 \item Given $\alpha$, we now use the Puiseux lifting described in Section 5 \cite{rigor} to write down the image  $\{ \tilde{Q_j} \}_j$ of any $x \in X$ under the above composition $M_\alpha$.
-\item We then check if there is a divisor $E$ which fits the points $\{ \tilde{Q_j} \}_j$. If so, we then modify the divisor $E$ by removing all of its nilpotent components, we call this new divisor $Y$. This ensures that $Y$ confirms that $\alpha$ is an actual endomorphism of $J$. This is because of the above bijection between correspondences (condition??) $X \leftarrow X \times X \to X$, and endomorphisms of $\Jac(X)$.
+\item We then check if there is a divisor $E$ which fits the points $\{ \tilde{Q_j} \}_j$. If so, we then modify the divisor $E$ by removing all of its nilpotent components, we call this new divisor $Y$. This ensures that $Y$ is a prime divisor, and which confirms that $\alpha$ is an actual endomorphism of $J$. This is because of the above bijection between prime correspondences $X \leftarrow X \times X \to X$, and endomorphisms of $\Jac(X)$.
 \item If we indeed find such a $Y$, this ensures that $\alpha$ is an honest endomorphism.
 \end{itemize}
-
-
-%Given a pair of .,..?
-%show that there is a divisor which vanishes on a set of points associated to the numerical endomorphism. 
-
-\begin{comment}
-Their method is along the lines of the following: \begin{itemize} 
-\item We represent our numerical endomorphism by a matrix $R$, as exposited in ~\ref{computing}. Associated to $R$, we calculate points $\tilde{Q_j}$ by Puiseux lifting, see Section ??? in \cite{rigor}. 
-\item We can then check if there is a divisor E which fits those points, and then further make a "better" divisor Y that also fits these points? (where Y is just E with no exciting nilpotents in the intersection of irreducible dim 1 components) 
-\item If yes, since divisor = morphism of Jacobians, we get an honest endomorphism. 
-\end{itemize}
-\end{comment}
 
 \subsubsection{From Simple to Non-simple}
 
 While we are on the topic of correspondences, we wish to make a remark on how to use techniques for simple varieties to bound below the number of principal polarizations of nonsimple varieties. Our program does not use this, but it is useful for context.
 
-\begin{remark} Since every abelian variety is isogenous to a product of simple abelian varieties $$A \simeq A_1 \times ... \times A_k$$ it is reasonable to ask how the numbers of principal polarizations on $A_i$ are related to that of $A$. 
+\begin{remark} Since every abelian variety is isogenous to a product of simple abelian varieties $$A \simeq A_1 \times ... \times A_k,$$ it is reasonable to ask how the numbers of principal polarizations on $A_i$ are related to that of $A$. 
 
 Let's quickly establish some vocabulary to discuss this intuitively. Recall that we may also define a principal polarization on $A$ as an isogeny which is also an isomorphism between $A \to A^\vee$, where $A^\vee$ denotes the dual variety. Let $A$ and $B$ be arbitrary abelian varieties. Note that $\text{Corr}(A, B) \simeq \Hom(B, A^\vee)$, where we take a correspondence from $A$ to $B$ to be a line bundle $\mathcal{L}$ over the product $A \times B$ which is trivial when restricted to $A$ or $B$.
 
-We are interested in $\Aut(A, A^\vee)$, which is isomorphic to $\Corr(A, A)^\times$ but the problem of comparision arises immediately and obviously without having to pass to isomorphisms. %We wish to compare $$\Hom\left(\prod_{i= 1}^k A_i, (\prod_{j= 1}^k A_j)^{\vee}\right) \qquad \text{ and  } \qquad \prod_{i, j} \Hom(A_i, A_j^{\vee})$$
+We are interested in $\Aut(A, A^\vee)$, which is isomorphic to $\Corr(A, A)^\times$ but the problem of comparision arises immediately and obviously without having to pass to isomorphisms. We wish to compare
 
-We wish to compare
+$$\Corr\left(\prod_{j= 1}^k A_j, \prod_{i= 1}^k A_i\right) \qquad \text{ and  } \qquad \prod_{i, j} \Corr(A_j, A_i).$$
 
-$$\Corr\left(\prod_{j= 1}^k A_j, \prod_{i= 1}^k A_i\right) \qquad \text{ and  } \qquad \prod_{i, j} \Corr(A_j, A_i)$$
-
-Let $C$ and $D$ be abelian varieties. Given a line bundle on $C$ and on $D$, we get a line bundle on $C \times D$, but not vice-versa. Intuitively, the product $C \times D$ may have many more interesting cycles than the product of the cycles of $C$ and $D$, and may not necessarily restrict to a line bundle on $C$ or $D$. Therefore, in general the number of principal polarizations of $A$ is at least the product of the principal polarizations of the simple components $A_i$, that is, $$\pi(A_1 \times ... \times A_k) \geq \prod_{i=1}^k \pi(A_i)$$ as observed. %We saw that $\Jac(\text{I-WP})$ is isogenous to a product of 4 elliptic curves. Since these curves are all isomorphic, we only get one principal polarization from this decomposition, but we found at least 9 principal polarizations on their product.
+Let $C$ and $D$ be abelian varieties. Given a line bundle on $C$ and on $D$, we get a line bundle on $C \times D$, but not vice-versa. Intuitively, the product $C \times D$ may have many more interesting cycles than the product of the cycles of $C$ and $D$, and may not necessarily restrict to a line bundle on $C$ or $D$. Therefore, in general the number of principal polarizations of $A$ is at least the product of the principal polarizations of the simple components $A_i$, that is, $$\pi(A_1 \times ... \times A_k) \geq \prod_{i=1}^k \pi(A_i)$$ as observed. For example, $\Jac(\text{I-WP})$ is isogenous to a product of 4 elliptic curves. Since these curves are all isomorphic, we only get one principal polarization from this decomposition, but we found at least 9 principal polarizations on their product.
 \end{remark}  
 
 
@@ -590,23 +553,16 @@ The notion of a polarization of an abelian variety has many faces. If a complex 
 \begin{defn} A \textbf{polarization} of a complex torus $X$ is an embedding $j: X \to \P^N$ for large enough $N$. \end{defn}
 
 
-%is it important that it is a projective embedding
-
 We can understand this embedding $j$ as a map $$p \mapsto [a_1(p) : \cdots : a_{N-1}(p)]$$ where $a_i$ are a chosen generating set of global sections of a line bundle $\mc{L}$ on $X$. 
 
-%locally free of rank 1 globally generated sheaf = ample line bundle; are other ranked globally generated sheaves going to give other embeddings? 
-
-\begin{defn} A line bundle $\mc{L}$ is defined to be \textbf{very ample} on $X$ if it defines a closed embedding into $\P^N$ for large enough $N$. %if it has finitely many global sections, such that for every $x \in X$, there is at least one section not vanishing at this point. 
+\begin{defn} A line bundle $\mc{L}$ is defined to be \textbf{very ample} on $X$ if it defines a closed embedding into $\P^N$ for large enough $N$.
 \end{defn}
 
 \begin{defn} A line bundle is \textbf{ample} if a tensor power of the line bundle is very ample. Since the Chern class is additive, $c_1(\mc{L}^{\otimes k}) = kc_1(\mc{L})$, the ample bundle and its tensor power are equivalent datum. \end{defn} 
 
 \begin{remark} In other words, $\mc{L}$ is defined to be ample if it (or a tensor power of it) specifies an embedding of $X$ into projective space.\end{remark}
 
-%Note that $\mc{F}$ is a sheaf generated by its finitely many global sections. We may restate this property as follows. 
 
-%\begin{remark} Let $X$ be a Riemann surface of genus $g$. We can understand this embedding $j$ as the map $$p \to [\omega_1(p) : \cdots \omega_g(p)]$$ where $\omega_i$ are a chosen basis of holomophic differentials on $X$, that is, a chosen generating set of global sections of a line bundle (the sheaf of differential 1-forms). This is where we get the canonical polarization associated to a curve. \end{remark}
-%This embedding information is often specified by \todo[inline]{IS IT EQUIVALENT TO} an ample line bundle $\mc{L}$ on $X$. 
 
 \begin{defn} Line bundles $\mc{L}_1$ and $\mc{L}_2$  on $X$ are \textbf{analytically equivalent} if there is a connected complex analytic space $T$, a line bundle $\mc{L}$ on $X \times T$, and points $t_1, t_2 \in T$ such that $$\mc{L} |_{X\times \{t_i\}} \simeq \mc{L}_i$$ for $i = 1, 2$. \end{defn}
 
@@ -623,44 +579,16 @@ A line bundle $\mc{L}$ over $X$ is specified up to analytic equivalence by its f
 \end{thm*}
 
 
-%We may recover a line bundle $\mc{L}$ on $X$ from its first chern class by $(f, c_1(\mc{L}))^*(\mc{P}_X) \simeq \mc{L}^{\otimes 2}$, where $\mc{P}_X$ is the Poincare correspondence on $X$.  
-
-
-%and a semi-character $\chi$.  \ti{add more on semicharacter, is it needed to fully specify polarization}
-
-
 \begin{defn} The \textbf{first Chern class} of a line bundle $\mc{L}$ is the image of $\mc{L} \in \Pic(X) = H^1(\mc{O}_X^*)$ under the map $c_1$ on cohomology which arises as follows. Consider the exact sequence $$0 \to \Z \to \mc{O}_X \to \mc{O}_X^* \to 0$$ and its long cohomology sequence:
 %\to H^1(X, \Z) \to H^1(\mc{O}_X) \to 
 $$\cdots \to H^1(\mc{O}_X^*) \xrightarrow{c_1} H^2(X, \Z) \to \cdots$$ \end{defn} 
-
-%\ti{is there a more universal defn?} 
-
-
-%pp works for all varieties, why are algebraic varieties abelian?
-
-%\ti{why is chern class of line bundle automatically integral by [BL B.1 and 2.1.1]?}, because that is its target!!!
-
-%By definition, every (chern class of a holomorphic) line bundle on $X$ \in H^2(X, \Z)
 
 We associate to every first Chern class an alternating form.
 
 \begin{thm*} [BL 1.3.2 \& 2.1.2] $$\psi: H^2(X; \Z) \simeq \Alt^2(\Lambda, \Z)$$ 
 \end{thm*} 
-
-
-
-%To each element of $S$, 
-
-%This associates to every (chern class of a holomorphic) line bundle on $X$  
-%\ti{explore this because the code in 4.4 doesn't seem to reflect this, what small combinations is CullPB using to check if it has det 1?? how is CullPB checking thm 10?} 
- 
  
 Let $S$ be the set of $c_1(\mc{L})$ where $\mc{L}$ ranges over all holomorphic line bundles on $X$. The image $\psi(S)$ is isomorphic to all Hermitian alternating forms.
-
-%\begin{remark} We may use the Frobenius form to calculate all Hermitian forms and prune out those which are in $\phi(S)$. \end{remark}
-
-
-%It is specifically the Hermitian forms which come from line bundles represented as maps $X \to \hat{X}$ (this representation is explained in section???).
 
 \begin{thm*} [BL 2.1.6] Let $X:= V/\Lambda$ be an abelian variety. For an alternating form $E: V \times V \to \R$, the following conditions are equivalent: 
 
@@ -683,9 +611,6 @@ A line bundle $\mc{L}$ on $X$ is called \textbf{positive} if $c_1(\mc{L})$ is re
 Let $X$ be a smooth complex projective variety. A line bundle $\mc{L}$ on $X$ is ample if and only if it is positive.
 \end{thm*}
 
-%We end our descent from theory to practice with the test for how to check if an alternating integral form is Hermitian.
-
-%\begin{remark} By [BL 2.1.7], the alternating forms over $\R$ of 2.1.6 are the imaginary parts of hermitian forms over $\C$. That is, there is a bijection between the set of Hermitian forms on $V$ and the set of real valued alternating forms on $V$ satisfying $E(iv, iw) = E(v, w)$. \end{remark} 
 
 This is how we ask the computer to find polarizations of an abelian variety $X$, which are steps 1 and 2 of the following section.
 
@@ -699,23 +624,6 @@ As a motivational theorem:
 
 By Narasimhan-Nori \cite{nn}, there are only finitely many principal polarizations on a variety $X,$ which is irreducible and smooth. And as a corollary, only finitely many curves may have the same Jacobian since each non-isomorphic curve gives a non-isomorphic principal polarization on its Jacobian.
 
-
-\begin{comment}
-\begin{defn} 
-The \textbf{Jacobian} of a genus $g$ curve $C$ is defined as quotient space $V/\Lambda$. Here $V$ is the dual of the $g$-complex dimensional vector space of global holomorphic differentials on $C$, i.e. $H^0(C, \Omega_{C/\C}^1) \simeq H^1(C, \mc{O}_C)$, and $\Lambda$ is the lattice of all elements of $V$ of the form $[\gamma]: \omega \mapsto \int_{\gamma} \omega$, where $\gamma$ is a closed curve in $C$. In other words, $\Jac{C} := H^0(C, \Omega_{C, \C}^1)^*/H_1(C)$.
-\end{defn} 
-
-\begin{remark} The Jacobian is an ``abelianization" functor from $\Jac: \text{RiemSurf} \to \text{AbVar}_{\C}$. \end{remark}
-
-A curve gives a principal polarization on its Jacobian as follows. We are given an intersection form which takes $\cap: H_1(X, \Z) \times H_1(X, \Z) \to \Z$ (computing the intersection number of two given cycles). 
-
-\begin{remark} We may pick a \end{remark}
-
-We may construct a form $H: H^{1, 0}(C, \C) \times H^{1, 0}(C, \C) \to \Z$ by precomposing $\cap$ with a dualizing map. That is, $H$ takes a pair of forms, returns the dual of each form as a cycle, and computes the intersection of these cycles using $\cap$. By the earlier discussed [BL 2.1.6], this Hermitian form gives a polarization. 
-
-\begin{remark} It is difficult to recover the line bundle corresponding $\mc{L}$ to this polarization $c_1(\mc{L})$ as the inverse to the first Chern class map is very difficult to construct.\end{remark}
-
-\end{comment}
 
 \subsection{Finding Principal Polarizations} 
 \label{sec:find}
@@ -746,7 +654,6 @@ This is a basis of alternating forms $\{E_i\}$.
 
 \section{Studying Principal Polarizations via Automorphisms of the Jacobian}
 
-%how is frobenius form like elementary divisors for alternating integer matrices?
 
 \begin{defn} We say two principal polarizations $p_1$ and $p_2$ on $A$ are \textbf{auto-equivalent} if and only if $\Aut(A, p_1) \simeq \Aut(A, p_2)$. \end{defn}
 
@@ -754,20 +661,13 @@ Our program produces many auto-equivalent principal polarizations.  Note that au
 
 If the abelian variety is indeed a Jacobian, this method will in practice return at least enough polarizations to find the canonical principal polarization. As we discussed in the introduction, it is an unsolved problem to find all possible principal polarizations associated to a given abelian variety, called ``explicit Narasimhan-Nori". 
 
-%(maybe talk about relation to automorphism group?)
-
-
-%\ti{discuss the interest in this problem, previous work, provided examples, waiting on MO post!!! and mention the I-WP example as being unsolved}
-
-%https://math.stackexchange.com/questions/2837906/is-there-one-canonical-principal-polarization-of-a-jacobian-per-nonisomorphic-cu, and Observations Regarding Different Curves with the Same Jacobian https://mathoverflow.net/questions/303803/an-example-of-curves-with-the-same-jacobian-but-different-jacobian-automorphism
-
 
 \subsection{Examples}
 \label{sec:examples}
 
-All curves (besides the modular curve $X_0(63)$) that we look into are cyclic covers over $\C\P^1.$ 
+With the exception of the modular curve $X_0(63)$, all curves on which we apply our method are cyclic covers over $\C\P^1.$ 
 
-Here we describe our examples in terms of their branching indices over $\C\P^1.$ For each case, we will show explicit flat structures that are induced from the branching indices. The flat structures give rise to holomorphic 1-forms that are used in computing period matrices. We will also describe each case via their (various) plane curve models. In general, we choose $p_i = 0, 1, \infty$ (for covers over thrice punctured spheres) and describe each curve algebraically as $y^d = x^{d_1} (x-1)^{d_2}.$
+Here we describe our examples in terms of their branching indices over $\C\P^1.$ For each case, we will show explicit flat structures that are induced from the branching indices. The flat structures give rise to holomorphic 1-forms that are used in computing period matrices. We will also describe each case via their plane curve models. In general, we choose $p_i = 0, 1, \infty$ (for covers over thrice punctured spheres) and describe each curve algebraically as $y^d = x^{d_1} (x-1)^{d_2}.$
 
 The computation of the period matrices can be found in \texttt{github/...}. The general version of the period matrix is shown in Section~\ref{sec:cyclicperiod}.
 
@@ -816,7 +716,7 @@ $X_0(63)$ & 5 & 2 & $C_2^{\text{ }5}$ & 32 & [32,51] \\
 \subsubsection{Genus three Klein's quartic}
 Klein's quartic is a genus three non-hyperelliptic curve defined by branching indices 7(1,2,4) \cite{kw}. Its multipliers give rise to cone metrics defined by cone angles $\frac{\pi}{7}(1,2,4), \frac{\pi}{7}(2,4,1),$ and $\frac{\pi}{7}(4,1,2).$ Figure~\ref{fig:124} represents $\omega_1$ and $\omega_2.$
 
-\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+\begin{figure}[htbp] 
 \centering
 \begin{minipage}{0.5\textwidth}
 	\centering
@@ -838,7 +738,7 @@ Fermat's quartic is another genus three non-hyperelliptic curve defined by 8(1,2
 \subsubsection{Genus three hyperelliptic curve}
 As an example of a hyperelliptic curve, we look into 12(1,5,6). Its quotient under the hyperelliptic involution is $\C\P^1$ where the eight hyperelliptic points are located at the North Pole, South Pole, and at six equidistributed points along the Equator. That is, the curve can be described as $y^2 = x(x^6 -1).$
 
-\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+\begin{figure}[htbp]
 \centering
 \begin{minipage}{0.5\textwidth}
 	\centering
@@ -872,7 +772,7 @@ Bring's curve is a genus four non-hyperelliptic curve denoted by 5(1,2,4,3). In 
 \subsubsection{Schoen's I-WP minimal surface}
 Lastly, I-WP is another genus four non-hyperelliptic curve defined by 12(1,4,7). This notation to this covering is due to \cite{thesis}, where it is shown that Schoen's I-WP surface is equipped with cone metrics that are compatible with the twelvefold cyclic cover over $\C\P^1.$ There, it is also shown that the curve is a threefold cover over the octahedron, hence one can write it as $y^3 = x (x^4 -1).$
 
-\begin{figure}[htbp] %  figure placement: here, top, bottom, or page
+\begin{figure}[htbp] 
 \centering
 \begin{minipage}{0.5\textwidth}
 	\centering
@@ -881,9 +781,9 @@ Lastly, I-WP is another genus four non-hyperelliptic curve defined by 12(1,4,7).
 \begin{minipage}{0.5\textwidth}
 	\centering
 	\includegraphics[width=3in]{figures/147_flat_2.pdf}
+\end{minipage}
 	\caption{Two different flat structures on Schoen's I-WP.}
 	\label{fig:147}
-\end{minipage}
 \end{figure}
 
 \subsection{Questions and Answers on Abelian Varieties with Multiple Principal Polarizations}
@@ -905,17 +805,13 @@ $$X: 3y^2 = (2x^2- 2)(16x^4 + 28x^2 + 1)$$
 
 $$X': -y^2 = (2x^2 + 2)(16x^4 + 12x^2 + 1)$$ 
 
-which both have $\Aut(\Jac(X), \theta_X)\simeq C_2 \times C_2 \simeq \Aut(\Jac(X'), \theta_{X'})$. %This is true for many curves in Howe's first family where $t \in \Z^\times$. 
-
-%First, note that $$\Aut(\Jac(X), c_1(\mc{L})) \simeq \Aut(\Jac(X), c_1(\mc{M}))$$ does not immediately imply that $c_1(\mc{L}) = c_1(\mc{M})$.
+which both have $\Aut(\Jac(X), \theta_X)\simeq C_2 \times C_2 \simeq \Aut(\Jac(X'), \theta_{X'})$. 
 
 \begin{question} If $\Jac(C) \simeq \Jac(C')$ as complex varieties, then $$\Aut(\Jac(C), \theta_C) \simeq \Aut(\Jac(C'), \theta_{C'})$$  \end{question} 
 
 We checked this question on the family of hyperelliptic cases of genus 2 from \cite{howe1} Theorem 1, where it is true. However, there is no reason to expect this to be true in general. Yet, we cannot disprove it easily. 
 
 
-% tktk 
-% change this to conjecture if we are not providing an answer
 
 \begin{thebibliography}{20}
 
@@ -929,7 +825,7 @@ E. Costa, N. Mascot, J. Sijsling, J. Voight
 \textit{Rigorous Computation of the Endomorphism Ring of a Jacobian}
 \texttt{https://arxiv.org/pdf/1705.09248.pdf}
 
-\bibitem{jeroen}
+\bibitem{numerical}
 N. Bruin, J. Sijsling, A. Zotine,
 \textit{Numerical Computation of Endomorphism Rings of Jacobians},
 \texttt{https://arxiv.org/pdf/1807.02605.pdf}, preprint.
@@ -944,10 +840,12 @@ N. Elkies,
 Composito Mathematica,
 Vol. 74, 1986, pp.127--152.
 
+\begin{comment}
 \bibitem{fk}
 H. Farkas, I. Kra,
 \textit{Riemann Surfaces},
 Springer-Verlag, New York, 1992.
+\end{comment} 
 
 \bibitem{howe1}
 E. Howe,
@@ -978,12 +876,6 @@ M. A. Kenku, F. Momose,
 \textit{Automorphism Groups of the modular curves $X_0(N)$},
 Composito Mathematica,
 Vol. 65, No. 1, 1988, pp.51--80.
-
-\bibitem{sl}
-Z. Laing, D. Singerman,
-\textit{Transitivity on Weierstrass Points}
-Annales Academiae Scientiarum Fennicae Mathematica,
-Vol. 37, 2012, pp.285--300
 
 \bibitem{several} 
 H. Lange,
