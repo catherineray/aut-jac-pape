@@ -134,7 +134,7 @@
 }{\endproof}
 
 
-\title{Automorphisms of Abelian Varieties \\ and Principal Polarizations} 
+\title[Automorphisms of Abelian Varieties and Principal Polarizations]{Automorphisms of Abelian Varieties \\ and Principal Polarizations}
 \author{Dami Lee and Catherine Ray}
 
 \begin{document}
@@ -143,14 +143,14 @@
 \maketitle
 
 \begin{abstract} Abelian varieties with several principal polarizations are incredibly rare. The still unsolved Narasimhan-Nori conjecture asks for a closed formula for the number of non-isomorphic principal polarizations of any given abelian variety. We give lower bounds on the number of principal polarizations on any given abelian variety by introducing a new computer program.
-We show, for example, that the Jacobian of Schoen's Wrapping Package surface, from minimal surface theory, has at least 9 non-isomorphic principal polarizations. We also explore the Jacobians of Klein's quartic, Fermat's quartic, Bring's curve, the modular curve $X_0(63)$, and more.   
+We show, for example, that the Jacobian of Schoen's I-WP minimal surface has at least 9 non-isomorphic principal polarizations. We also explore the Jacobians of Klein's quartic, Fermat's quartic, Bring's curve, the modular curve $X_0(63)$, and more.   
 \end{abstract}
 
 \section{Introduction}
 
 Our paper introduces a new computer program to find multiple non-isomorphic principal polarizations on abelian varieties in characteristic 0, the code for which is publically available. In general, abelian varieties with several principal polarizations are incredibly rare. In fact, abelian varieties with no principal polarizations are, in some sense, dense on the moduli stack of abelian varieties. %(considered in terms of their big Period matrix).
 
-The fact that an abelian variety admits only a finite number of isomorphism classes of principal polarizations was established by Narasimhan-Nori in \cite{nn}. In this paper, they pose the problem of finding a closed formula for the number of principal polarizations of any given abelian variety over any field, which is still unsolved. 
+The fact that an abelian variety admits only a finite number of isomorphism classes of principal polarizations was established by Narasimhan-Nori. In \cite{nn}, they pose the problem of finding a closed formula for the number of principal polarizations of any given abelian variety over any field, which is still unsolved. 
 
 In this paper, we introduce an entirely different technique to find different principal polarizations on Jacobians, exposited in Section ~\ref{sec:find}, which treats both simple and non-simple cases in characteristic 0. We use this to give lower bounds on the number of non-isomorphic principal polarizations. For example, we have the following result. 
 
@@ -158,39 +158,39 @@ In this paper, we introduce an entirely different technique to find different pr
 
 This is a charming result, especially since the variety $\Jac(\text{I-WP})$ itself factors into a product of 4 elliptic curves\footnote{This is because $\text{End}(\Jac(\text{I-WP})) \simeq M_4(K)$, where $K$ is imaginary quadratic. Thus, $\Jac(\text{I-WP})$ is the product of elliptic curves with CM by $K$.}, so the remaining principal polarizations must come from interesting new cycles in the product of these elliptic curves. Other such surprising results found by applying our technique are shown in Table ~\ref{table:tablelabel}, Section ~\ref{sec:examples}.
 
-Our method works as follows. Given any period matrix, we introduce new code to compute many principal polarizations on the corresponding abelian variety. We then implement a modification of the psuedocode of Bruin-Jeroen-Sijsling \cite{numerical} to compute, for each found principal polarization, the automorphism group of the given Jacobian which fixes that polarization. If the automorphism groups are different, then the principal polarizations are non-isomorphic. This gives us a lower bound on the number of different principal polarizations for a given Jacobian. The fact that numerical computations with period matrices, which we use for surfaces which are not cyclically branched covers of the punctured sphere, give rigorous results relies on the brilliant work of Costa-Mascot-Sijsling-Voight \cite{rigor} (see Prop 6.1.1).
+Our method works as follows. Given any period matrix, we introduce new code to compute many principal polarizations on the corresponding abelian variety. For curves that are cyclic covers over $\C\bb{P}^1$, we can compute exact period matrices, exposited in Section ~\ref{sec:cyclicperiod}. We then implement a modification of the psuedocode of Bruin-Jeroen-Sijsling \cite{numerical} to compute, for each found principal polarization, the automorphism group of the given Jacobian which fixes that polarization. If the automorphism groups are different, then the principal polarizations are non-isomorphic. This gives us a lower bound on the number of different principal polarizations for a given Jacobian. The fact that numerical computations with period matrices, which we use for surfaces which are not cyclically branched covers of the punctured sphere, give rigorous results relies on the brilliant work of Costa-Mascot-Sijsling-Voight \cite{rigor} (see Prop 6.1.1).
 
 We demonstrate the power of our method with a variety of different period matrices. We exposit some low dimensional geometry which allows us to compute exact period matrices of cyclically branched covers of punctured spheres. We also work with period matrices of modular curves, as codified by Mascot in a slight modification of \cite{n} toward computing Galois representations. These modular curves are not cyclically branched covers, and thus give us a completely disjoint collection of curves to which we apply our methods. Assuming that our program finds \textit{all} principal polarizations of any given abelian variety, we give a new proof of the automorphism group of $X_0(63)$, which was the only remaining unresolved automorphism group of a compact modular curve until \cite{elkies}.  
 
 \section{Summary of Prior Work}
 
-We summarize what is known about abelian varieties with several principal polarizations. The previous work toward the Narasimhan-Nori conjecture can be divided into the simple and non-simple cases (in which we can further indicate char 0 or char $p$ cases). An abelian variety is simple if it is not isogenous to a product of abelian varieties of lower dimension. 
+We summarize what is known about abelian varieties with several principal polarizations. The previous work toward the Narasimhan-Nori conjecture can be divided into the simple and non-simple cases, in which we can further divide into the characteristic 0 or characteristic $p$ cases. An abelian variety is simple if it is not isogenous to a product of abelian varieties of lower dimension. 
 
-A technique developed by Lange first for \textit{simple} varieties in characteristic 0. In \cite{several} Theorem 1.5, Lange establishes for simple varieties that the order of $\Aut(A)$ with certain restriction conditions and equivalence relations is equal to the number of principal polarizations on $A$ up to isomorphism, $\pi(A)$. One could in principal compute the size of this specially carved out version of $\Aut(A)$ by hand using Lange's theorem, however, it is computationally infeasible. This is incredible, it gives us a a set equivalence between a slighly carved automorphism group of a variety, and its set of principal polarizations.
+We review first the work toward understanding the case of \textit{simple} varieties in characteristic 0. In \cite{several} Theorem 1.5, Lange establishes for simple varieties that the order of $\Aut(A)$ with certain restriction conditions and equivalence relations is equal to the number of principal polarizations on $A$ up to isomorphism, $\pi(A)$. One could in principal compute the size of this specially carved out version of $\Aut(A)$ by hand using Lange's theorem, however, it is computationally infeasible. This is incredible, it gives us a set equivalence between a slighly carved automorphism group of a variety, and its set of principal polarizations.
 
 %\begin{remark} His bijection between sets is induced by considering an element in the Neron-Severi group of $A$, and representing such elements as endomorphisms of $A$ preserved under the Rosati involution with respect to a chosen polarization. Since this bijection is induced by a principal polarization, one must know that one exists to implement this theorem. \end{remark}
 
 
-\begin{remark} In Theorem 3.1, Lange further establishes bounds on $\pi(A)$ in terms of the class group of $End_{\Q}(A)$, if $End_{\Q}(A)$ is a \textit{totally real} number field $K$ (and thus the variety $A$ is simple). \end{remark}  
+\begin{remark} In Theorem 3.1 \cite{several}, Lange further establishes bounds on $\pi(A)$ in terms of the class group of $End_{\Q}(A)$, if $End_{\Q}(A)$ is a \textit{totally real} number field $K$ (and thus the variety $A$ is simple). \end{remark}  
 
 More recently, Lange treated the non-simple case of products of elliptic curves without complex multiplication in Theorem 3.5 \cite{newlange}. He did so by giving an interpretation of the number of principal polarizations in terms of class numbers of definite Hermitian forms.
 
 %\begin{remark} The main idea of the proof of 3.5 is that the canonical principal polarization of X induces a bijection between P(X) and the set of equivalence classes of symmetric automorphisms of X. Via the analytic representation of X and a suitable choice of bases this set can be considered as a set of equivalence classes of Hermitian forms. \end{remark}
 
-All other previous works known to the authors on finding multiple principal polarizations on abelian varieties have been done by finding two non-isomorphic curves with the same (unpolarized) Jacobian. Therefore, their associated canonical polarizations must be different by the Torelli theorem. Otherwise, the curves would be isomorphic. All papers that the we know of using this technique do so only in characteristic $p$. 
+All other previous works known to the authors on finding multiple principal polarizations on abelian varieties have been done by finding two non-isomorphic curves with the same (unpolarized) Jacobian. Therefore, their associated canonical polarizations must be different by the Torelli theorem. Otherwise, the curves would be isomorphic. All papers that we know of using this technique do so only in characteristic $p$. 
 
 \begin{remark} There is only a canonical principal polarization on $A$ if a curve $C$ is specified so that $A = \Jac(C).$ If $C$ is not specified, there is no canonical choice -- knowing that $A$ is in the image of the functor $\Jac$ is not enough. Thus, there can be several ``canonical" principal polarizations on one Jacobian, its canonicality only refers to the fact that it comes from a curve. \end{remark}
 
-The papers using this non-isomorphic curve technique discuss the case of \textit{nonsimple} Jacobians of curves of genus two \cite{iko} and three [Brock, \textit{Superspecial curves of genera two and three}], though we were unable to find a copy of the latter. 
+The papers using this non-isomorphic curve technique discuss the case of \textit{non-simple} Jacobians of curves of genus two \cite{iko} and three [Brock, \textit{Superspecial curves of genera two and three}], though we were unable to find a copy of the latter. 
 
 This technique is again used by E. Howe \cite{howe1} and \cite{howe2} which gives examples of non-isomorphic genus two curves with the same \textit{simple} Jacobian. He finds such examples in characteristic $p$ by playing with isogeny classes of abelian varieties which correspond to special Weil numbers. This summarizes all previous work known to the authors.
 
 
 \section{Background}
 \label{sec: dthesis}
-In \cite{dthesis}, Lee classifies curves with cone metrics that are realizable as a quotient of a triply periodic surface embedded in $\R^3.$ By triply periodic, we mean that the surface is invariant under a rank-three lattice $\Lambda \subset \R^3.$ Specifically, they consider curves that are cyclically branched over $\mathbb{C}\mathbb{P}^1,$ hence we will devote this section to providing the background. This section is a summary of chapter 3 from \cite{dthesis}. 
+In \cite{dthesis}, Lee classifies curves with cone metrics that are realizable as a quotient of a triply periodic surface embedded in $\R^3.$ By triply periodic, we mean that the surface is invariant under a rank-three lattice $\Lambda \subset \R^3.$ Specifically, they consider curves that are cyclically branched over $\mathbb{C}\mathbb{P}^1,$ hence we will devote this section to providing the background. This section is a summary of Chapter 3 \cite{dthesis}. 
 
-\subsection{Cone metrics}
+\subsection{Cone Metrics}
 First, we discuss the topological construction of cyclic covers over $\mathbb{C}\mathbb{P}^1.$ This will naturally yield cone metrics on the curves.
 
 \subsubsection*{Construction of cyclic covers over $\mathbb{C}\mathbb{P}^1$}
