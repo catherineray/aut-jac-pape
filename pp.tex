@@ -514,7 +514,7 @@ X &                                                         & Y
 
 
 
-A putative endomorphism is $\alpha$ a potential element of $\Aut(\Jac(X))$ we compute numerically as a matrix $R$ via the methods in Section ~\ref{sec:computing} . Their method of certifying putative endomorphisms are actual one is along the lines of the following.  We go through the map $\alpha_X$, defined as the composite of the Abel-Jacobi Map, the putative morphism $\alpha$, and the Mumford birational map. These maps are discussed in detail on page 6 of \cite{numerical}.
+A putative endomorphism is $\alpha$ a potential element of $\Aut(\Jac(X))$ we compute numerically as a matrix $R$ via the methods in Section ~\ref{sec:computing} . Their method of certifying putative endomorphisms are actual one is along the lines of the following.  We go through the map $\alpha_X$, defined as the composite of the Abel-Jacobi Map, the putative morphism $\alpha$, and the Mumford birational map. These maps are discussed in detail in Section 3.1.10 of \cite{numerical}.
 
 \[
 \begin{tikzcd}
@@ -657,7 +657,7 @@ This is a basis of alternating forms $\{E_i\}$.
 
 \begin{defn} We say two principal polarizations $p_1$ and $p_2$ on $A$ are \textbf{auto-equivalent} if and only if $\Aut(A, p_1) \simeq \Aut(A, p_2)$. \end{defn}
 
-Our program produces many auto-equivalent principal polarizations.  Note that auto-equivalence is a weaker notion of equivalence than analytic equivalence, as discussed in section ~\ref{sec:questions}. 
+Our program produces many auto-equivalent principal polarizations.  Note that auto-equivalence is a weaker notion of equivalence than analytic equivalence, as we show in section ~\ref{sec:questions}. 
 
 If the abelian variety is indeed a Jacobian, this method will in practice return at least enough polarizations to find the canonical principal polarization. As we discussed in the introduction, it is an unsolved problem to find all possible principal polarizations associated to a given abelian variety, called ``explicit Narasimhan-Nori". 
 
@@ -791,11 +791,11 @@ Lastly, I-WP is another genus four non-hyperelliptic curve defined by 12(1,4,7).
 
 We speak here of polarizations up to auto-equivalence and ask natural questions on Jacobians with multiple principal polarizations, answering all but one of the questions using methods developed in our paper.
 
-We fix some notation. Let $\theta_C$ be the canonical principal polarization of $\Jac(C)$ with respect to $C$. We call $\Aut(A, a_i)$ a symplectic automorphism group of $A$, as the automorphisms respect the principal polarization $a_i$, which is a symplectic form on $A$.
+We fix some notation. Let $\theta_C$ be the canonical principal polarization of $\Jac(C)$ with respect to $C$. We call $\Aut(A, a_i)$ a symplectic automorphism group of $A$, as the automorphisms respect the principal polarization $a_i$, which is a symplectic form on $A$. Let $\phi_{C}$ denote the canonical principal polarization induced by the curve $C$ on its Jacobian $\Jac(C)$.
 
 \begin{question} $\Aut(\Jac(C), \theta_C)$ will have the highest order of all symplectic automorphism groups of $\Jac(C)$. \end{question}
 
-This is proven false by example $12(1,5,6)$, where $|\Aut(\Jac(12(1, 5, 6)), \phi_{12(1, 5, 6)})| = 24$, but $|\Aut(\Jac(12(1, 5, 6)), a_i)| = 32$ is achieved. It is more dramatically proven false by Schoen's I-WP Surface, where $|\Aut(\Jac(\text{I-WP}), \phi_{\text{I-WP}})| = 288$, but $|\Aut(\Jac(\text{I-WP}), a_i)|$ achieves $576$ and $864$.
+This is proven false by example $12(1,5,6)$, where $|\Aut(\Jac(12(1, 5, 6)), \phi_{12(1, 5, 6)})| = 24$, but $|\Aut(\Jac(12(1, 5, 6)), a_i)| = 32$ is achieved. It is more dramatically proven false by Schoen's I-WP Surface, where $|\Aut(\Jac(\text{I-WP}), \phi_{\text{I-WP}})| = 288$, but $|\Aut(\Jac(\text{I-WP}), a_i)|$ achieves $576$ and $864$. 
 
 \begin{question} Principal polarizations $p_1$ and $p_2$ are auto-equivalent if and only if they are analytically equivalent. In other words, $$\Aut(X, p_1) \simeq \Aut(X, p_2) \Leftrightarrow p_1 = p_2$$ \end{question}
 
