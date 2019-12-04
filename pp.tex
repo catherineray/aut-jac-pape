@@ -124,6 +124,7 @@
 \newtheorem{example}[theorem]{Example}
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
+\newtheorem*{answer}{Answer}
 \newtheorem*{notation}{Notation}
 \newtheorem*{note}{Note}
 \newcommand{\sss}{\ss$\text{ }$}
@@ -707,7 +708,7 @@ $$E (i v, i w) = E (v, w)$$
 This is a basis of alternating forms $\{E_i\}$.
 \item Check that $E$ is positive-definite.
 \item \texttt{CullPB.m} tries some small combinations and sees if $E_i$ actually gives a pairing with determinant 1 indicating that $E_i$ is a principal polarization. If so, it returns $E_i$. This gives us a set $\{E_k\}$ of integral pairings on the homology.
-\item For each $i$, we rewrite these pairings in a symplectic basis. That is, we find a basis of $\Lambda$ in which $$E_i = \begin{pmatrix} 0 & D \\ -D & 0 \end{pmatrix}$$ where $D = \text{diag}(d_1, ..., d_g)$ which we may do by the elementary divisor theorem (section 3.1, \cite{bl}). 
+\item For each $i$, we rewrite these pairings in a symplectic basis. That is, we find a basis of $\Lambda$ in which $$E_i = \begin{pmatrix} 0 & D \\ -D & 0 \end{pmatrix}$$ where $D = \text{diag}(d_1, ..., d_g)$ which we may do by the elementary divisor theorem (Section 3.1, \cite{bl}). 
 
 \end{enumerate} 
 
@@ -853,21 +854,21 @@ Lastly, I-WP is another genus four non-hyperelliptic curve defined by 12(1,4,7).
 
 We speak here of polarizations up to auto-equivalence and ask natural questions on Jacobians with multiple principal polarizations, answering all but one of the questions using methods developed in our paper.
 
-We fix some notation. Let $\theta_C$ be the canonical principal polarization of $\Jac(C)$ with respect to $C$. We call $\Aut(A, a_i)$ a symplectic automorphism group of $A$, as the automorphisms respect the principal polarization $a_i$, which is a symplectic form on $A$. Let $\phi_{C}$ denote the canonical principal polarization induced by the curve $C$ on its Jacobian $\Jac(C)$.
+We fix some notation. We call $\Aut(A, a_i)$ a symplectic automorphism group of $A$, as the automorphisms respect the principal polarization $a_i$, which is a symplectic form on $A$. Let $\theta_C$ be the canonical principal polarization of $\Jac(C)$ with respect to $C$.
 
 \begin{question} $\Aut(\Jac(C), \theta_C)$ will have the highest order of all symplectic automorphism groups of $\Jac(C)$. \end{question}
 
-This is proven false by example $12(1,5,6)$, where $|\Aut(\Jac(12(1, 5, 6)), \phi_{12(1, 5, 6)})| = 24$, but $|\Aut(\Jac(12(1, 5, 6)), a_i)| = 32$ is achieved. It is more dramatically proven false by Schoen's I-WP Surface, where $|\Aut(\Jac(\text{I-WP}), \phi_{\text{I-WP}})| = 288$, but $|\Aut(\Jac(\text{I-WP}), a_i)|$ achieves $576$ and $864$. 
+\begin{answer} This is proven false by example $12(1,5,6)$, where $|\Aut(\Jac(12(1, 5, 6)), \theta_{12(1, 5, 6)})| = 24$, but $|\Aut(\Jac(12(1, 5, 6)), a_i)| = 32$ is achieved. It is more dramatically proven false by Schoen's I-WP Surface, where $|\Aut(\Jac(\text{I-WP}), \theta_{\text{I-WP}})| = 288$, but $|\Aut(\Jac(\text{I-WP}), a_i)|$ achieves $576$ and $864$. \end{answer}
 
 \begin{question} Principal polarizations $p_1$ and $p_2$ are auto-equivalent if and only if they are analytically equivalent. In other words, $$\Aut(X, p_1) \simeq \Aut(X, p_2) \Leftrightarrow p_1 = p_2$$ \end{question}
 
-The direction ($\Leftarrow$) is clear because $\mc{L}$ and $\mc{M}$ are analytically equivalent if and only if $c_1(\mc{L}) = c_1(\mc{M})$ by [BL 2.5.3]. The other direction ($\Rightarrow$) is false.  This is proven false by applying our method to the the following two \textit{non-isomorphic} curves with the same (unpolarized) Jacobian from Theorem 1 of \cite{howe1}:
-
+\begin{answer} The direction ($\Leftarrow$) is true because $\mc{L}$ and $\mc{M}$ are analytically equivalent if and only if $c_1(\mc{L}) = c_1(\mc{M})$ by [BL 2.5.3]. The other direction ($\Rightarrow$) is false.  This is proven false by applying our method to the the following two \textit{non-isomorphic} curves with the same \textit{unpolarized} Jacobian from Theorem 1 of \cite{howe1}:
+\vspace{-2pt}
 $$X: 3y^2 = (2x^2- 2)(16x^4 + 28x^2 + 1)$$ 
-
+\vspace{-15pt}
 $$X': -y^2 = (2x^2 + 2)(16x^4 + 12x^2 + 1)$$ 
 
-which both have $\Aut(\Jac(X), \theta_X)\simeq C_2 \times C_2 \simeq \Aut(\Jac(X'), \theta_{X'})$. 
+\noindent which both have $\Aut(\Jac(X), \theta_X)\simeq C_2 \times C_2 \simeq \Aut(\Jac(X'), \theta_{X'})$. \end{answer}
 
 \begin{question} If $\Jac(C) \simeq \Jac(C')$ as complex varieties, then $$\Aut(\Jac(C), \theta_C) \simeq \Aut(\Jac(C'), \theta_{C'})$$  \end{question} 
 
