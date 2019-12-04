@@ -159,9 +159,9 @@ In this paper, we introduce an entirely different technique to find different pr
 
 This is a charming result, especially since the variety $\Jac(\text{I-WP})$ itself factors into a product of 4 elliptic curves\footnote{This is because $\text{End}(\Jac(\text{I-WP})) \simeq M_4(K)$, where $K$ is imaginary quadratic. Thus, $\Jac(\text{I-WP})$ is the product of elliptic curves with CM by $K$.}, so the remaining principal polarizations must come from interesting new cycles in the product of these elliptic curves. Other such surprising results found by applying our technique are shown in Table ~\ref{table:tablelabel}, Section ~\ref{sec:examples}.
 
-Our method works as follows. Given any period matrix, we introduce new code to compute many principal polarizations on the corresponding abelian variety. For curves that are cyclic covers over $\C\bb{P}^1$, we can compute exact period matrices, exposited in Section ~\ref{sec:cyclicperiod}. We then implement a modification of the psuedocode of Bruin-Jeroen-Sijsling \cite{numerical} to compute, for each found principal polarization, the automorphism group of the given Jacobian which fixes that polarization. If the automorphism groups are different, then the principal polarizations are non-isomorphic. This gives us a lower bound on the number of different principal polarizations for a given Jacobian. The fact that numerical computations with period matrices, which we use for surfaces which are not cyclically branched covers of the punctured sphere, give rigorous results relies on the brilliant work of Costa-Mascot-Sijsling-Voight \cite{rigor} (see Prop 6.1.1).
+Our method works as follows. Given any period matrix, we introduce new code to compute many principal polarizations on the corresponding abelian variety. For curves that are cyclic covers over $\C\bb{P}^1$, we can compute exact period matrices, exposited in Section ~\ref{sec:cyclicperiod}. We then implement a modification of the psuedocode of Bruin-Jeroen-Sijsling \cite{numerical} to compute, for each found principal polarization, the automorphism group of the given Jacobian which fixes that polarization. If the automorphism groups are different, then the principal polarizations are non-isomorphic. This gives us a lower bound on the number of different principal polarizations for a given Jacobian. The fact that numerical computations with period matrices, which we use for surfaces which are not cyclically branched covers of $\C\P^1,$ give rigorous results relies on the brilliant work of Costa-Mascot-Sijsling-Voight \cite{rigor} (see Prop 6.1.1).
 
-We demonstrate the power of our method with a variety of different period matrices. We exposit some low dimensional geometry which allows us to compute exact period matrices of cyclically branched covers of punctured spheres. We also work with period matrices of modular curves, as codified by Mascot in a slight modification of \cite{n} toward computing Galois representations. These modular curves are not cyclically branched covers, and thus give us a completely disjoint collection of curves to which we apply our methods. Assuming that our program finds \textit{all} principal polarizations of any given abelian variety, we give a new proof of the automorphism group of $X_0(63)$, which was the only remaining unresolved automorphism group of a compact modular curve until \cite{elkies}.  
+We demonstrate the power of our method with a variety of different period matrices. We exposit some low dimensional geometry which allows us to compute exact period matrices of cyclically branched covers of $\C\P^1.$ We also work with period matrices of modular curves, as codified by Mascot in a slight modification of \cite{n} toward computing Galois representations. These modular curves are not cyclically branched covers over $\C\P^1,$ and thus give us a completely disjoint collection of curves to which we apply our methods. Assuming that our program finds \textit{all} principal polarizations of any given abelian variety, we give a new proof of the automorphism group of $X_0(63)$, which was the only remaining unresolved automorphism group of a compact modular curve until \cite{elkies}.  
 
 \section{Summary of Prior Work}
 
@@ -204,12 +204,12 @@ We construct such curves with the given data: let $p_i, \ldots , p_n \in \mathbb
 \end{remark}
 
 \subsubsection*{Branching indices on Octa-4}
-As a running example, we will look at the curve from \cite{dami}. It is there called Octa-4 due to the formation of the triply periodic surface. The underlying genus three curve $C$ (Figure~\ref{fig:125} (reprinted from \cite{dami})) is invariant under an order-eight rotational symmetry. The curve is an eightfold cyclic cover over $\mathbb{C}\mathbb{P}^1$ denoted as $8 (1, 2, 5).$
+As a running example, we will look at the curve from \cite{dami}. It is there called Octa-4 due to the formation of the triply periodic surface. It is also shown that the underlying curve is conformally equivalent to Fermat's quartic. The underlying genus three curve $C$ (Figure~\ref{fig:125}) is invariant under an order-eight rotational symmetry. The curve is an eightfold cyclic cover over $\mathbb{C}\mathbb{P}^1$ denoted as $8 (1, 2, 5).$
 
 \begin{figure}[htbp] 
    \centering
    \includegraphics[width=2in]{figures/125_base_.pdf} 
-	\caption{Hyperbolic tessellation on $8(1, 2, 5)$}
+	\caption{Hyperbolic tessellation on $8(1, 2, 5).$ Reprinted from \cite{dami}.}
 	\label{fig:125}
 \end{figure}
 
@@ -225,16 +225,16 @@ Specifically, the sum of cone angles on a genus zero curve is $2 \pi (n - 2).$ G
 \begin{figure}[htbp]
    \centering
    \includegraphics[width=2.5in]{figures/125_flat.pdf} 
-	\caption{A flat structure $\omega_1$ on $8(1, 2, 5)$}
+	\caption{A flat structure $\omega_1$ on $8(1, 2, 5)$ with one marked zero. Modified from \cite{dami}}
 	\label{fig:125_flat}
 \end{figure}
 
-Our goal is to find other admissible cone metrics on the sphere that yield different translation structures (linearly independent 1-forms) on the same curve. We claim that the cone metric given by cone angles $\frac{2 \pi a_i}{d}$ where $a_i \equiv d_i \pmod d$ is admissible (Theorem 3.4, \cite{dthesis}). An easier way of finding admissible cone metrics is given by the following notion of multipliers.
+Our goal is to find other admissible cone metrics on the sphere that yield different translation structures (linearly independent 1-forms) on the same curve. We claim that the cone metric given by cone angles $\frac{2 \pi a_i}{d}$ where $a_i \equiv d_i \pmod d$ for all $i$ is admissible (Theorem 3.4, \cite{dthesis}). An easier way of finding admissible cone metrics is given by the following notion of multipliers.
 
 \begin{defn} Given branching indices $d (d_1, \ldots , d_n),$ we say $a \in \{1, \ldots, d - 1\}$ is a \textbf{multiplier} if the cone metric given by cone angles $\frac{2 \pi}{d} (a \cdot d_1 \pmod d, \ldots , a \cdot d_n \pmod d)$ is admissible. 
 \end{defn}
 
-Theorem 3.5, \cite{dthesis} proves that for $n = 3,$ there are exactly $g$ multipliers. In other words, one achieves a basis of holomorphic 1-forms. 
+Theorem 3.5, \cite{dthesis} proves that for $n = 3,$ there are exactly $g$ multipliers. In other words, one achieves a basis of holomorphic 1-forms via multipliers. We denote the multipliers by $a_i,$ hence the admissible cone angles are given by $\frac{2\pi}{d}(a_1 d_1, a_1 d_2, a_1 d_3), \ldots , \frac{2\pi}{d}(a_g d_1, a_g d_2, a_g d_3).$ 
 
 \subsubsection*{Admissible cone metrics on Octa-4} Given branching indices $8 (1, 2, 5),$ multipliers 1, 2, and 5 give rise to cone metrics with cone angles $\frac{2 \pi}{8}(1, 2, 5),$ $\frac{2 \pi}{8}(2, 4, 2),$ and $\frac{2 \pi}{8}(5, 2, 1),$ respectively. These cone metrics yield a basis of holomorphic 1-forms with the following divisors: $$(\omega_1) = 4 \widetilde{p_3}, \qquad (\omega_2) = \widetilde{p_1} + \widetilde{p_{2_1}} + \widetilde{p_{2_2}} + \widetilde{p_3}, \qquad (\omega_3) = 4 \widetilde{p_1}.$$
 
@@ -243,7 +243,7 @@ Figure~\ref{fig:flat_rs2} represents $\omega_2$ given by cone angles $\frac{2 \p
 \begin{figure}[htbp]
    \centering
    \includegraphics[width=4in]{figures/flat_rs2.pdf} 
-	\caption{A flat structure $\omega_2$ on $8(1, 2, 5)$}
+	\caption{A flat structure $\omega_2$ on $8(1, 2, 5)$ with four simple zeros. Modified from \cite{dthesis}}
 	\label{fig:flat_rs2}
 \end{figure}
 
@@ -258,7 +258,7 @@ Figure~\ref{fig:flat_rs2} represents $\omega_2$ given by cone angles $\frac{2 \p
 
 \subsection{Computing the Period Matrix on Cyclic Covers}
 \label{sec:cyclicperiod}
-In this section, we use the flat structure of a surface to compute the period matrix of a given surface. We will look at the simplest case where $n = 3$ and $d_1 = 1.$ Then, since $\sum d_i = d,$ a cone metric with cone angles $\frac{2 \pi}{d}(d_1, d_2, d_3)$ is admissible. $Y$ is topologically equivalent to a doubled triangle with angles $\frac{2 \pi}{d}(d_1, d_2, d_3)$ so we construct $X$ with $d$ copies of $Y,$ which yields a flat structure on $X.$  We will follow the underlying surface of Octa-4 as our leading example.
+In this section, we use the flat structure of a surface to compute the period matrix of a given curve. We will look at the simplest case where $n = 3$ and $d_1 = 1.$ Then, since $\sum d_i = d,$ a cone metric with cone angles $\frac{2 \pi}{d}(d_1, d_2, d_3)$ is admissible. $Y$ is topologically equivalent to a doubled triangle with angles $\frac{2 \pi}{d}(d_1, d_2, d_3)$ so we construct $C$ with $d$ copies of $Y,$ which yields a flat structure on $C.$  We will follow the underlying surface of Octa-4 as our leading example.
 
 
 Figure~\ref{fig:125_flat} shows the flat structures on the underlying surface of Octa-4 \cite{dami}. The identification of edges are via parallel translations, which verifies that the cone metric is admissible. Parallel translations yield closed cycles on the surface from which we get a homology basis with the following intersection matrix
@@ -295,7 +295,7 @@ where $\alpha_i$ are the multipliers.
 
 
 
-\begin{remark} In \cite{dthesis}, the first author computes the period matrix by choosing a different homology basis. The closed cycles are images of the ``handles'' on the polyhedral surface embedded in $\R^3.$ This yields the following intersection matrix 
+\begin{remark} In \cite{dthesis}, Lee computes the period matrix by choosing a different homology basis. The closed cycles are images of the ``handles'' on the polyhedral surface embedded in $\R^3.$ This yields the following intersection matrix 
 $$\textrm{int}_2 = \begin{pmatrix} 0 & 0 & 0 & 1 & 0 & 0 \\
  0 & 0 & 0 & 0 & 1 & 0 \\
  0 & 0 & 0 & 0 & 0 & 1 \\
@@ -355,7 +355,7 @@ The period matrix used in our calculation of $\Aut(\Jac(X_0(63)), p_i)$ was comp
 
 \begin{remark} Mascot, in \cite{n}, discusses finding the period matrices for $X_1(N)$ by integrating cuspforms along modular symbols. His algorithm works for any compactified modular curve, but it works best when $N$ is square-free. In the non-squarefree case, the coefficients in the $q$-expansions of the cuspforms and the $j$-invariant do not converge as quickly, thus they require more digits of precision. \end{remark}
 
-\begin{remark} In private correspondence, John Voight programmatically proved that $X_0(63)$ is not a cyclically branched cover of the sphere. Given that the genus of the quotient $X_0(63)/H$ is equal to the dimension of the $H$-invariant differentials, he shows that the list of dimensions of the space of $H$-invariant differentials on $X_0(63)$ (where $H$ is a cyclic subgroup of $\Aut(X_0(63))$) does not contain zero. 
+\begin{remark} In private correspondence, John Voight programmatically proved that $X_0(63)$ is not a cyclically branched cover of $\C\P^1.$ Given that the genus of the quotient $X_0(63)/H$ is equal to the dimension of the $H$-invariant differentials, he shows that the list of dimensions of the space of $H$-invariant differentials on $X_0(63)$ (where $H$ is a cyclic subgroup of $\Aut(X_0(63))$) does not contain zero. 
  \end{remark} 
 
 
@@ -428,7 +428,7 @@ Let $X$ and $Y$ have the same Jacobian, and $V^{k}$ denote $\phi(\Div^k(Y))$. We
 
 \label{sec:computing}
 
-\begin{remark} The first two subsections of the section are copied from section 4 of Bruin-Sijsling-Zotine \cite{numerical} with lots of exposition and examples added for the readers' convenience. This sets us up to introduce the code for brute force calculating principal polarizations. All of our code is available at \begin{center}\texttt{https://github.com/catherineray/aut-jac}\end{center} We discuss the certification of these numerical results in Section ~\ref{sec:cert}. \end{remark} 
+\begin{remark} The first two subsections of the section are copied from Section 4 of Bruin-Sijsling-Zotine \cite{numerical} with lots of exposition and examples added for the readers' convenience. This sets us up to introduce the code for brute force calculating principal polarizations. All of our code is available at \begin{center}\texttt{https://github.com/catherineray/aut-jac}\end{center} We discuss the certification of these numerical results in Section ~\ref{sec:cert}. \end{remark} 
 
 Let us examine abelian varieties represented as analytic groups $X := V/\Lambda$ and $X' := V'/\Lambda'$. They need not be Jacobians.
 
@@ -541,9 +541,9 @@ $\text{}$ $\hspace{2mm}$\textit{Output:} For each combination of principal polar
 \subsection{Certifying Heuristic Methods}
 \label{sec:cert}
 
-We must certify that numerically computed endomorphisms of a Jacobian are infact endomorphisms of that Jacobian. This is extremely nontrivial because in an analytic sense, abelian varieties with no principal polarizations are dense in the moduli space. 
+We must certify that numerically computed endomorphisms of a Jacobian are in fact endomorphisms of that Jacobian. This is extremely nontrivial because in an analytic sense, abelian varieties with no principal polarizations are dense in the moduli space. 
 
-We have two distinct cases, exact period matrices, and numerical ones. The period matrices associated to cyclically branched covers of punctured spheres via the method described in Section ~\ref{sec:cyclicperiod} are exact, as are the period matrices of varieties with complex multiplication. 
+We have two distinct cases, exact period matrices, and numerical ones. The period matrices associated to cyclically branched covers of $\C\P^1$ via the method described in Section ~\ref{sec:cyclicperiod} are exact, as are the period matrices of varieties with complex multiplication. 
 
 If the entries of the period matrices are exact and algebraic over $\Q$, this extra certification step is unneccesary. We need only check that putative endomorphisms are correct via a simple linear-algebraic verification. This amounts to given a period matrix $\Pi \in M_{g, 2g}(\overline{\Q})$ associated to an abelian variety $C^g/\Lambda$, find
 $$M \Pi = \Pi R,$$
@@ -551,7 +551,7 @@ where $R \in  M_{2g}(\overline{\Q})$ and $M \in M_{g}(\overline{\Q})$. We then k
 
 If the entries of the period matrix is are non-exact, then to certify that such numerical $M$ and $R$ found above are exact and not putative, we must use the fantastic work of Costa-Mascot-Sijsling-Voight \cite{rigor}, which we now quickly summarize.
 
-A key conceptual part of their approach is relating prime divisors on $X \times Y$ to endomorphisms of the Jacobians $\Jac(X)$ and $\Jac(Y)$ via the theory of correspondences. This is exposited fully in Section 3.3 of \cite{smith}. All endomorphisms of Jacobians come from correspondences associated to prime divisors, i.e., prime correspondences (Lemma 3.3.11 \cite{smith}). Each correspondece on $X \times Y$ induces a homomorphism of the divisor groups of $X$ and $Y$. These homomorphisms in turn induce homomorphisms of Jacobians. In our case, $X=Y$, but we will exposit the more general case. Let $C$ be a prime divisor on $X \times Y$, then we denote the associated correspondence as follows.
+A key conceptual part of their approach is relating prime divisors on $X \times Y$ to endomorphisms of the Jacobians $\Jac(X)$ and $\Jac(Y)$ via the theory of correspondences. This is exposited fully in Section 3.3 of \cite{smith}. All endomorphisms of Jacobians come from correspondences associated to prime divisors, i.e., prime correspondences (Lemma 3.3.11 \cite{smith}). Each correspondence on $X \times Y$ induces a homomorphism of the divisor groups of $X$ and $Y$. These homomorphisms in turn induce homomorphisms of Jacobians. In our case, $X=Y$, but we will exposit the more general case. Let $C$ be a prime divisor on $X \times Y$, then we denote the associated correspondence as follows.
 
 \begin{center}
 \begin{tikzcd}
@@ -632,7 +632,7 @@ We can understand this embedding $j$ as a map $$p \mapsto [a_1(p) : \cdots : a_{
 A line bundle $\mc{L}$ over $X$ is specified up to analytic equivalence by its first Chern class $c_1(\mc{L}) \in H^2(X; \Z)$. More precisely,
 
 \begin{thm*} 
-[2.5.3 BL] Let $X$ be an abelian variety. For line bundles $\mc{L}_1$ and $\mc{L}_2$ over $X$, the following statements are equivalent: 
+[\cite{bl} 2.5.3] Let $X$ be an abelian variety. For line bundles $\mc{L}_1$ and $\mc{L}_2$ over $X$, the following statements are equivalent: 
 \begin{enumerate} 
 \item $\mc{L}_1$ and $\mc{L}_2$ are analytically equivalent.
 %\item $\mc{L}_1 \otimes \mc{L}_2^{-1} \in \text{Pic}^0(X)$
@@ -648,12 +648,12 @@ $$\cdots \to H^1(\mc{O}_X^*) \xrightarrow{c_1} H^2(X, \Z) \to \cdots$$ \end{defn
 
 We associate to every first Chern class an alternating form.
 
-\begin{thm*} [BL 1.3.2 \& 2.1.2] $$\psi: H^2(X; \Z) \simeq \Alt^2(\Lambda, \Z)$$ 
+\begin{thm*} [\cite{bl} 1.3.2 \& 2.1.2] $$\psi: H^2(X; \Z) \simeq \Alt^2(\Lambda, \Z)$$ 
 \end{thm*} 
  
 Let $S$ be the set of $c_1(\mc{L})$ where $\mc{L}$ ranges over all holomorphic line bundles on $X$. The image $\psi(S)$ is isomorphic to all Hermitian alternating forms.
 
-\begin{thm*} [BL 2.1.6] Let $X:= V/\Lambda$ be an abelian variety. For an alternating form $E: V \times V \to \R$, the following conditions are equivalent: 
+\begin{thm*} [\cite{bl} 2.1.6] Let $X:= V/\Lambda$ be an abelian variety. For an alternating form $E: V \times V \to \R$, the following conditions are equivalent: 
 
 \begin{enumerate} 
 \item There is a holomorphic line bundle $\mc{L}$ on $X$ such that $\psi(c_1(\mc{L}))= E$. 
@@ -683,7 +683,7 @@ However, there may be infinitely many polarizations. We are interested in a part
 
 As a motivational theorem:
 
-\begin{thm*} [BL 4.1.2] Every polarization is induced by a principal polarization via an isogeny. \end{thm*}
+\begin{thm*} [\cite{bl} 4.1.2] Every polarization is induced by a principal polarization via an isogeny. \end{thm*}
 
 By Narasimhan-Nori \cite{nn}, there are only finitely many principal polarizations on a variety $X,$ which is irreducible and smooth. And as a corollary, only finitely many curves may have the same Jacobian since each non-isomorphic curve gives a non-isomorphic principal polarization on its Jacobian.
 
@@ -702,7 +702,7 @@ Then $\Lambda$ is the associated lattice spanned by the columns of $\Pi$. Thus, 
 $\text{}$ $\hspace{2mm}$\textit{Output:} Many principal polarizations on $A$.
 \begin{enumerate} 
 
-\item The magma function \texttt{FindPolarizationBasis} determines all integral alternating pairings $E$ on the homology, i.e., $E\in \Alt^2(\C^g, \Z)$, for whose real extension we have:
+\item The \texttt{Magma} function \texttt{FindPolarizationBasis} determines all integral alternating pairings $E$ on the homology, i.e., $E\in \Alt^2(\C^g, \Z)$, for whose real extension we have:
 
 $$E (i v, i w) = E (v, w)$$
 This is a basis of alternating forms $\{E_i\}$.
@@ -739,14 +739,14 @@ The computation of the period matrices can be found in \texttt{github/...}. The 
 \centering
 \begin{tabular}{ l | c c r r r} \hline
   \shortstack{Curve C} & Genus & \shortstack{\# Principal \\ Polarizations} & $\Aut(\Jac(C), a_i)$ & $|\Aut(\Jac, a_i)|$ & GAPID \\ \hline\hline
-  Klein & 3 & 2 & $S_4 \times C_2$ & 48 & [48, 48]\\ 
+  Klein's quartic & 3 & 2 & $S_4 \times C_2$ & 48 & [48, 48]\\ 
   & & & $GL_3(F_2) \times C_2$ & 336 & [336, 209] \\  \hline %N
-Fermat & 3 & 2 &  $(C_4\wr C_2) \times C_2$ & 64 & [64, 101] \\ %N 
+Fermat's quartic & 3 & 2 &  $(C_4\wr C_2) \times C_2$ & 64 & [64, 101] \\ %N 
 & & & $(C_4^{\text{ }2} \rtimes S_3) \times C_2$ & 192 & [192, 944] \\  \hline
 $12(1, 5, 6)$ & 3 & 3 & $D_6$  & 12 & [12, 4]\\ %12, ?
 &  & & $C_4 \times S_3$ & 24 & [24, 5] \\
 & & & $C_4 \times D_4$ & 32  & [32, 25] \\ \hline 
-Bring & 4 & 2 & $C_2^{\text{ }2} \times D_4$ & 32 & [32, 46] \\
+Bring's curve & 4 & 2 & $C_2^{\text{ }2} \times D_4$ & 32 & [32, 46] \\
 & & & $C_2 \times S_5$ & 240 & [240, 189] \\ \hline %N 
 I-WP & 4 & 9 & $C_2^{\text{ }4}$ & 16 & [16, 14] \\
  
@@ -777,7 +777,7 @@ $X_0(63)$ & 5 & 2 & $C_2^{\text{ }5}$ & 32 & [32,51] \\
 \begin{remark} Note that the University of Bristol's GroupNames database at the time of writing has groups up to order 500 with full names and structure description. In the cases where the order is greater than 500, we use the output of \texttt{StructureDescription(G);} \end{remark}
 
 \subsubsection{Genus three Klein's quartic}
-Klein's quartic is a genus three non-hyperelliptic curve defined by branching indices 7(1,2,4) \cite{kw}. Its multipliers give rise to cone metrics defined by cone angles $\frac{\pi}{7}(1,2,4), \frac{\pi}{7}(2,4,1),$ and $\frac{\pi}{7}(4,1,2).$ Figure~\ref{fig:124} represents $\omega_1$ and $\omega_2.$
+Klein's quartic is a genus three non-hyperelliptic curve defined by branching indices 7(1,2,4) \cite{kw}. Its multipliers give rise to cone metrics defined by cone angles $\frac{\pi}{7}(1,2,4), \frac{\pi}{7}(2,4,1),$ and $\frac{\pi}{7}(4,1,2).$ Figure~\ref{fig:124} (reprinted from \cite{kw}) represents $\omega_1$ and $\omega_2.$
 
 \begin{figure}[htbp] 
 \centering
@@ -796,10 +796,10 @@ Klein's quartic is a genus three non-hyperelliptic curve defined by branching in
 Along with $\omega_3$ one can compute the period matrix as in Section~\ref{sec:cyclicperiod}.
 
 \subsubsection{Genus three Fermat's quartic}
-Fermat's quartic is another genus three non-hyperelliptic curve defined by 8(1,2,5) \cite{dami}. The flat structures are described in Figure~\ref{fig:125_flat} and Figure~\ref{fig:flat_rs2}. The period matrices can be found in Section~\ref{sec:cyclicperiod}. One can write the curve model as $y^8 = x (x-1)^2.$ However, one can also consider a fourfold covering over $\C\P^1$ branched over four points and write it as $y^4 = x (x-1) (x+1).$ See \cite{dami} for details.
+Fermat's quartic is another genus three non-hyperelliptic curve defined by 8(1,2,5) \cite{dami}. The flat structures are described in Figure~\ref{fig:125_flat} and Figure~\ref{fig:flat_rs2}. The period matrix can be found in Section~\ref{sec:cyclicperiod}. One can write the curve model as $y^8 = x (x-1)^2.$ However, one can also consider a fourfold covering over $\C\P^1$ branched over four points and write it as $y^4 = x (x-1) (x+1).$ See \cite{dami} for details.
 
 \subsubsection{Genus three hyperelliptic curve}
-As an example of a hyperelliptic curve, we look into 12(1,5,6). Its quotient under the hyperelliptic involution is $\C\P^1$ where the eight hyperelliptic points are located at the North Pole, South Pole, and at six equidistributed points along the Equator. That is, the curve can be described as $y^2 = x(x^6 -1).$
+As an example of a hyperelliptic curve, we look into 12(1,5,6). Its quotient under the hyperelliptic involution is $\C\P^1$ where the eight hyperelliptic points are located at the North Pole, South Pole, and at six equidistributed points along the Equator. That is, the curve can be described as $y^2 = x(x^6 -1).$ Figure~\ref{fig:156} describes two different flat structures, one order-4 zero (left), and two order-2 zeros (right).
 
 \begin{figure}[htbp]
 \centering
@@ -816,7 +816,7 @@ As an example of a hyperelliptic curve, we look into 12(1,5,6). Its quotient und
 \end{figure}
 
 \subsubsection{Genus four Bring's curve}
-Bring's curve is a genus four non-hyperelliptic curve denoted by 5(1,2,4,3). In \cite{matti}, this curve as $y^5 = (x+1)x^2(x+1)^4$ by choosing $p_i = -1, 0, 1, \infty.$
+Bring's curve is a genus four non-hyperelliptic curve denoted by 5(1,2,4,3). In \cite{matti}, this curve as $y^5 = (x+1)x^2(x+1)^4$ by choosing $p_i = -1, 0, 1, \infty.$ Figure~\ref{fig:1243} represents two different flat structures $(\omega_1) = \widetilde{p_2} + 3 \widetilde{p_3} + 2 \widetilde{p_4}$ (reprinted from \cite{matti}) and $(\omega_2) = \widetilde{p_1} + 3 \widetilde{p_2} + 2 \widetilde{p_3}.$
 
 \begin{figure}[htbp] %  figure placement: here, top, bottom, or page
 \centering
@@ -833,7 +833,7 @@ Bring's curve is a genus four non-hyperelliptic curve denoted by 5(1,2,4,3). In 
 \end{figure}
 
 \subsubsection{Schoen's I-WP minimal surface}
-Lastly, I-WP is another genus four non-hyperelliptic curve defined by 12(1,4,7). This notation to this covering is due to \cite{dthesis}, where it is shown that Schoen's I-WP surface is equipped with cone metrics that are compatible with the twelvefold cyclic cover over $\C\P^1.$ There, it is also shown that the curve is a threefold cover over the octahedron, hence one can write it as $y^3 = x (x^4 -1).$
+Lastly, I-WP is another genus four non-hyperelliptic curve defined by 12(1,4,7). This notation to this covering is due to \cite{dthesis}, where it is shown that the underlying curve of Schoen's I-WP surface is equipped with cone metrics that are compatible with the twelvefold cyclic cover over $\C\P^1.$ There, it is also shown that the curve is a threefold cover over the octahedron, hence one can write it as $y^3 = x (x^4 -1).$ Figure~\ref{fig:147} represents a holomorphic 1-form with one order-6 zero and a 1-form with six simple zeros.
 
 \begin{figure}[htbp] 
 \centering
@@ -959,9 +959,10 @@ Vol. 3, Issue 3, 2017, pp.319--331.
 
 \bibitem{dthesis} 
 D. Lee, 
-\textit{Geometric realizations of cyclically branched coverings over punctured spheres},
-\texttt{https://arxiv.org/abs/1809.06321}, preprint.
-
+\textit{Geometric realizations of cyclically branched coverings over punctured spheres}, 
+Ph.D thesis, 2018.
+ 
+ 
 \bibitem{hyp}
 R. Lercier, C. Ritzenthaler, J. Sijsling,
 \textit{Fast computation of isomorphisms of hyperelliptic curves and explicit Galois descent},
