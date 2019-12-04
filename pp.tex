@@ -360,6 +360,68 @@ The period matrix used in our calculation of $\Aut(\Jac(X_0(63)), p_i)$ was comp
 
 
 
+\section{The Precise Torelli Theorem}
+\label{sec:torelli}
+
+
+\begin{remark} The first portion of this section is an English translation of the first two paragraphs of the Appendice \cite{Torelli}, with modifications for the reader's convenience. We exposit it here as it is used heavily in the next section. \end{remark}
+
+Let $k$ be a field, and let $X$ be a nice (smooth, projective and geometrically integral) curve over $k$ of genus $g > 1$.  Let $(\operatorname{Jac}(X),a)$ denote the Jacobian of $X$ together with the Jacobian's canonical principal polarization $a$, which is of degree 1.  Let $X'$ be another nice curve over $k.$ Any isomorphism $f: X \to X'$ defines by functoriality an isomorphism $f_J: (\Jac(X), a) \to (\Jac(X'), a')$. 
+
+\begin{remark} The isomorphism $f: X \to X'$ induces an isomorphism between the divisor groups $\text{Div}^i(X)$ and $\text{Div}^i(X')$ for every $i$. This is because these groups are defined as formal combinations of codimension 1 subvarieties, and, via the isomorphism $f$, we can pull back the inclusions of subvarieties of $X'$ to inclusions of subvarieties of $X$. Note that the image of $\text{Div}^{g-1}(X)$ under the Abel-Jacobi map determines the canonical principal polarization of $\Jac(X)$ with respect to $X$. \end{remark}
+
+%\begin{remark} This functoriality can more easily be seen when we consider that $Pic^0(X)$ is dual to $Jac(X)$, then the induced map from $f: X \to X'$ is just the pullback of line bundles $f^*: Pic^0(X') \to Pic^0(X)$, and further, considering the principal    \end{remark}
+
+
+%defines by structure transport an isomorphism $f_J: (J, a) \to (J', a')$. 
+
+Torelli's theorem says that we get almost all of the isomorphisms $(\Jac(X), a) \to (\Jac(X'), a')$. More precisely:
+
+\begin{thm*} Suppose $X$ is hyperelliptic.  Then for every isomorphism of polarized abelian varieties $F: (\operatorname{Jac}(X),a) \stackrel{\sim}{\rightarrow} (\operatorname{Jac}(X'),a')$, there exists a unique isomorphism $f: X \stackrel{\sim}{\rightarrow} X'$ such that $F = f_J$.  \end{thm*}
+
+\begin{thm*} Suppose $X$ is not hyperelliptic.  Then, for every isomorphism of polarized varieties $F: (\operatorname{Jac}(X),a) \stackrel{\sim}{\rightarrow} (\operatorname{Jac}(X'),a'),$ there exists an isomorphism $f: X \stackrel{\sim}{\rightarrow} X'$ and $e \in \{ \pm 1\}$ such that $F = e \cdot  J_f$.  Moreover, the pair $(f,e)$ is uniquely determined by $F$. \end{thm*}
+
+So, we conclude: 
+
+$$\Aut(\Jac(X), a) \simeq \begin{cases} \Aut(X) & \text{if } X \text{ is hyperelliptic} \\
+\Aut(X) \oplus \Z/2 &  \text{if } X \text{ is not hyperelliptic}
+\end{cases} $$
+
+%\begin{remark} There is a very important point here. $\Aut(X)$  is \textit{not} the pointed automorphisms. Indeed, the pointed automorphism groups \textit{depend on the choice of point}. \end{remark}
+
+%page 203 Jacobian Varieties Cornell-Silverman: Arithmetic Geometry
+
+%Serre states this as a ``precise" form of the Torrelli theorem, and further, that no proof of it is in its entirety is in the literature as far as he knows.  
+(Here we end quoting the Appendice). This precise form of Torelli's theorem is proved for algebraically closed fields by Weil \cite{oe}. A modern proof by Martens \cite{finn} proves Torelli's theorem as a combinatorial consequence of the Riemann-Roch theorem and Abel's theorem. Let $\phi$ be the Abel-Jacobi map $\phi: X \to \Jac(X)$ (this map is determined up to translation by the torus $\Jac(X)$). Let $\Div^i(X)$ denote the degree $\leq i$ effective divisors on $X$, and $W^i$ denote their image $\phi(\Div^i(X))$. 
+
+
+%\ti{clean up the following or take it out, how does this move the tessellation of the embedded X into Jac(X)  (Visualizing the induced tessellation on the Jacobian)}
+
+Note that: 
+
+\begin{itemize} 
+\item $\Div^1(X)$ is simply the points on $X$, so  $\Div^1(X) = X$.
+
+\item $W^1$ is birationally equivalent to $X$, that is, we can think of $X$ as being embedded in its Jacobian. 
+
+\item  $W^{g-1}$ determines the canonical polarization of $\Jac(X) = W^g$ with respect to $X$.  
+
+\item There is a map \begin{align*}
+\text{flip}: \Jac(X) &\to \Jac(X)\\
+u &\mapsto -u + \phi(Z)
+\end{align*}
+where $Z$ is a canonical divisor on $X$.
+\item By translation of $U$, we mean for every $p \in U \subset \Jac(X),$ we have $p+a$ using the Jacobian group operation.
+\end{itemize} 
+
+Let $X$ and $Y$ have the same Jacobian, and $V^{k}$ denote $\phi(\Div^k(Y))$. We finish by showing that if the canonical polarizations are the same, i.e. $V^{g-1} = W^{g-1}$, then $V^1$ is a translate of $W^1$ or $\text{flip}(W^1)$. This is done by induction on the smallest $r$ such that $V^1 \subseteq W^{r+1}$ or $V^1 \subseteq \text{flip}(W^{r+1})$, up to translation, showing that $r$ must be 0.
+
+%Taking into account the tessellation-flag method of computation of the automorphism groups of Riemann surfaces (which are cyclic covers of the sphere), we may visualize this as inducing a tessellation on the Jacobian via the tessellation on the embedded variety.\ti{clarify this}
+
+ In the case of hyperelliptic curves, $W^1 = \text{flip}(W^1)$, that is, they coincide as sets in $\Jac(X)$. For non-hyperelliptic curves, $W^1 \neq \text{flip}(W^1)$, hence we have the $\Z/2$ factor. 
+
+
+
 
  \section{Programmatically Computing the Automorphism Group of Plane Curves and Abelian Varieties over $\mathbb{C}$}
 
@@ -922,6 +984,24 @@ M. Weber,
 \textit{Kepler's small stellated dodecahedron as a Riemann surface},
 Pacific Journal of Mathematics, 
 Vol. 220, 2005, pp.167--182.
+
+\bibitem{Torelli}
+K. Lauter, J.-P., Serre, 
+\textit{Geometric Methods for Improving the Upper Bounds on the Number of Rational Points on Algebraic Curves over Finite Fields}, 
+Journal of Algebraic Geometry,
+Vol. 10, 2001.
+
+\bibitem{oe}
+A. Weil,
+\textit{Oeuvres Scientifiques},
+Springer,
+Vol. 2, 1983.
+
+\bibitem{finn}
+H. Martens,
+\textit{A New Proof of Torelli's Theorem},
+Annals of Mathematics,
+Second Series, Vol. 78, No. 1, 1963, pp.107--111.
 
 
 \end{thebibliography}
