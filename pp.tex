@@ -212,7 +212,7 @@ As a running example, we will look at the curve from \cite{dami}. It is there ca
 
 \begin{figure}[htbp] 
    \centering
-   \includegraphics[width=2in]{figures/125_base_.pdf} 
+   \includegraphics[width=2in]{figures/125_base.pdf} 
   \caption{Hyperbolic tessellation on $8(1, 2, 5).$ Reprinted from \cite{dami}.}
   \label{fig:125}
 \end{figure}
@@ -299,7 +299,16 @@ where $\alpha_i$ are the multipliers.
 
 
 
-\begin{remark} In \cite{dthesis}, Lee computes the period matrix by choosing a different homology basis. The closed cycles are images of the ``handles'' on the polyhedral surface embedded in $\R^3.$ This yields the following intersection matrix 
+\begin{remark} In \cite{dthesis}, Lee computes the period matrix by choosing a different homology basis. In \cite{dami}, Lee shows that the 8(1,2,5) covering has a geometric realization as a quotient of a triply periodic polyhedral surface where the hyperbolic structure of the underlying curve is induced from the polyhedral cone metric. A triply periodic polyhedral surface is a polyhedral surface that is invariant under a rank-three lattice in $\R^3.$ Figure~\ref{fig:funda} is the genus-three quotient of the polyhedral surface via its lattice of translations. 
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=2.5in]{figures/funda.png} 
+  \caption{Geometric realization of 8(1,2,5) as a quotient of a triply periodic polyhedral surface. Modified from \cite{dami}}
+  \label{fig:funda}
+\end{figure}
+
+In Theorem 5.6 of \cite{dthesis}, Lee chooses the closed cycles as the image of the ``handles'' on the polyhedral surface. This yields the following intersection matrix 
 $$\textrm{int}_2 = \begin{pmatrix} 0 & 0 & 0 & 1 & 0 & 0 \\
  0 & 0 & 0 & 0 & 1 & 0 \\
  0 & 0 & 0 & 0 & 0 & 1 \\
