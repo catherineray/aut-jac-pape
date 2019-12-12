@@ -788,6 +788,43 @@ $X_0(63)$ & 5 & 2 & $C_2^{\text{ }5}$ & 32 & [32,51] \\
 
 \begin{remark} Note that the University of Bristol's GroupNames database at the time of writing has groups up to order 500 with full names and structure description. In the cases where the order is greater than 500, we use the output of \texttt{StructureDescription(G);} \end{remark}
 
+\begin{remark} Table ~\ref{table:plane} is the result of running \texttt{autplane}, whose algorithm is described in Section ~\ref{sec:autplane}. We use the results in this table to understand the automorphism group of $\Jac(C)$ with respect to the principal polarization induced by the curve $C$.\end{remark}
+
+%Klein's curve 
+%Fermat's curve
+%12(1,5,6)
+%Bring's curve y^5 = x^2(x+1)(x-1)^4, y^5 = x (x - 1)^2 (x + 1)^3
+%I-WP
+
+\begin{table}[H]
+\caption{Plane Curve Automorphism Groups}
+\centering 
+\begin{tabular}{ l | l c r r c} \hline
+  \shortstack{Curve C} & Plane Curve Model & Genus & Aut(C) & $|$Aut(C)$|$ \\ \hline
+  $7(1, 2, 4)$ (Klein's quartic) & $y^7 - x^2(x-1)^4$ & 3 & $GL_3(F_2)$ & 168 \\  
+  $8(1, 2, 5)$ (Fermat's quartic) & $y^8 - x(x-1)^2$ & 3 & $C_4^{\text{ }2} \rtimes S_3$ & 96 \\
+  $\ast 12(1, 5, 6)$ &  $y^{12} - x(x-1)^5$ & 3 & $C_4 \times S_3$ & 24 \\
+  $5(1, 2, 4, 3)$ (Bring's curve) & $y^5 - x (x - 1)^2 (x + 1)^3$ & 4 & $S_5$ & 120 \\ 
+  $12(1, 4, 7)$ (I-WP) & $y^{12} - x(x-1)^4$ & 4 & $C_3 \times S_4$ & 72 \\
+  $X_0(63)$ & ? & 5 & $C_2 \times S_4$ & 48  \\ \hline 
+\end{tabular}
+\label{table:plane} 
+\caption*{An $\ast$ indicates that the curve is hyperelliptic}
+\centering
+\end{table}
+
+Given a curve, its plane curve model is not uniquely defined. For example, there are two different types of hyperelliptic curves that are cyclic covers over $\C\P^1$ branched over three points, namely the $d (1, \frac{d}{2} - 1, \frac{d}{2})$-cover and the $d (1, 1, d - 2)$-cover. The former is a genus $\frac{d}{4}$ curve hence we will write it as a $4 g$-fold cover with branching indices $(1, 2 g - 1, 2 g).$ Similarly, the latter a genus $\left(\frac{d}{2} - 1\right)$ curve, which we denote by a $(2 g + 2)$-fold cover with branching indices $(1, 1, 2 g).$ The former type yields a basis of holomorphic 1-forms with divisors $(\omega_1) = (2 g - 2) \widetilde{p_2},$ $(\omega_2) = 2 \widetilde{p_1} + (2 g - 3) \widetilde{p_2},$ $\ldots$, $(\omega_g) = (2 g - 2) \widetilde{p_1}.$ Then all $\widetilde{p_i}$ are hyperelliptic points and the quotient sphere under the hyperelliptic involution can be viewed as a sphere with $\widetilde{p_1}$ and $\widetilde{p_2}$ placed at the North and South Pole, and $\widetilde{p_3}_i$ along the Equator. These points correspond to the zeros of its plane curve model $y^2 - x (x^{2 g} - 1).$
+
+On the other hand, the $(2 g + 2)$-fold cover yields a basis of holomorphic 1-forms with divisors $(\omega_1) = (g - 1) \widetilde{p_3}_1 + (g - 1) \widetilde{p_3}_2,$ $(\omega_2) = \widetilde{p_1} + \widetilde{p_2} + (g - 2) \widetilde{p_3}_1 + (g - 2) \widetilde{p_3}_2,$ $\ldots$, $(\omega_g) = (g - 1) \widetilde{p_1} + (g - 1) \widetilde{p_2}.$ None of the $\widetilde{p_i}$ are hyperelliptic points but $\widetilde{p_*}$ are, where $p_*$ is a fixed point of an involution that fixes $p_3$ and interchanges $p_1$ and $p_2.$ As it is not a branched point under the $(2 g + 2)$-fold cover, it has $2 g + 2$ preimages which are fixed by the involution on the covering. The quotient sphere under the hyperelliptic involution can be viewed as a doubled $(2 g + 2)$-gon where all fixed points are located at the vertices. Hence the plane curve model of this type is $y^2 - (x^{2 g + 2} - 1).$
+
+For non-hyperelliptic curves, there is no general method of finding isomorphic plane curve models. However, we cite results from Section 5.2 of \cite{dthesis} to find an isomorphic plane curve model for 12(1,4,7). Let $\omega_i$ be holomorphic 1-forms that arise from admissible cone metrics with following divisors:
+
+$$(\omega_1) = 6 \widetilde{p_3}, (\omega_2) = \widetilde{p_1} + \widetilde{p_2}_1 + \widetilde{p_2}_2 + \widetilde{p_2}_3 + \widetilde{p_2}_4 + \widetilde{p_3}, (\omega_3) = 3 \widetilde{p_1} + 3 \widetilde{p_3}, (\omega_4) = 6 \widetilde{p_1}.$$
+
+Then one can define meromorphic functions $u$ and $v$ such that $(u) : = \left(\frac{\omega_2}{\omega_4}\right)$ and $(v) := \left(\frac{\omega_3}{\omega_4}\right).$ After scaling, we have $\frac{v^5}{u^3} - 1 = \frac{v}{u^3},$ that is, $v^5 - v = u^3.$
+
+This works particularly well for curves with large symmetry groups, that is, for $d$ with many divisors.
+
 \subsubsection{Genus three Klein's quartic}
 Klein's quartic is a genus three non-hyperelliptic curve defined by branching indices 7(1,2,4) \cite{kw}. Its multipliers give rise to cone metrics defined by cone angles $\frac{\pi}{7}(1,2,4), \frac{\pi}{7}(2,4,1),$ and $\frac{\pi}{7}(4,1,2).$ Figure~\ref{fig:124} (reprinted from \cite{kw}) represents $\omega_1$ and $\omega_2.$
 
@@ -861,34 +898,9 @@ Lastly, I-WP is another genus four non-hyperelliptic curve defined by 12(1,4,7).
   \label{fig:147}
 \end{figure}
 
-\begin{remark} Table ~\ref{table:plane} is the result of running \texttt{autplane}, whose algorithm is described in Section ~\ref{sec:autplane}. We use the results in this table to understand the automorphism group of $\Jac(C)$ with respect to the principal polarization induced by the curve $C$.\end{remark}
-
 \subsection{Questions and Answers on Abelian Varieties with Multiple Principal Polarizations}
 \label{sec:questions}
 
-
-%Klein's curve 
-%Fermat's curve
-%12(1,5,6)
-%Bring's curve y^5 = x^2(x+1)(x-1)^4, y^5 = x (x - 1)^2 (x + 1)^3
-%I-WP
-
-\begin{table}[H]
-\caption{Plane Curve Automorphism Groups}
-\centering 
-\begin{tabular}{ l | l c r r c} \hline
-  \shortstack{Curve C} & Plane Curve Model & Genus & Aut(C) & $|$Aut(C)$|$ \\ \hline
-  $7(1, 2, 4)$ (Klein's quartic) & $y^7 - x^2(x-1)^4$ & 3 & $GL_3(F_2)$ & 168 \\  
-  $8(1, 2, 5)$ (Fermat's quartic) & $y^8 - x(x-1)^2$ & 3 & $C_4^{\text{ }2} \rtimes S_3$ & 96 \\
-  $\ast 12(1, 5, 6)$ &  $y^{12} - x(x-1)^5$ & 3 & $C_4 \times S_3$ & 24 \\
-  $5(1, 2, 4, 3)$ (Bring's curve) & $y^5 - x (x - 1)^2 (x + 1)^3$ & 4 & $S_5$ & 120 \\ 
-  $12(1, 4, 7)$ (I-WP) & $y^12 - x(x-1)^4$ & 4 & $C_3 \times S_4$ & 72 \\
-  $X_0(63)$ & ? & 5 & $C_2 \times S_4$ & 48  \\ \hline 
-\end{tabular}
-\label{table:plane} 
-\caption*{An $\ast$ indicates that the curve is hyperelliptic}
-\centering
-\end{table}
 
 We speak here of polarizations up to auto-equivalence and ask natural questions on Jacobians with multiple principal polarizations, answering all but one of the questions using methods developed in our paper.
 
