@@ -149,15 +149,18 @@
   
 \maketitle
 
-\begin{abstract} Abelian varieties with several principal polarizations are incredibly rare. The still unsolved Narasimhan-Nori conjecture asks for a closed formula for the number of non-isomorphic principal polarizations of any given abelian variety. We give lower bounds on the number of principal polarizations on any given abelian variety by introducing a new computer program.
-We show, for example, that the Jacobian of the genus four underlying curve of Schoen's I-WP minimal surface has at least 9 non-isomorphic principal polarizations. We also explore the Jacobians of Klein's quartic, Fermat's quartic, Bring's curve, the modular curve $X_0(63)$, and more.   
+\begin{abstract} %Abelian varieties with several principal polarizations are incredibly rare. 
+The Narasimhan-Nori conjecture asks for a closed formula for the number of non-isomorphic principal polarizations of any given abelian variety. In this paper, we introduce a new computer program that gives a lower bound on the number of principal polarizations on any given abelian variety. We show, for example, that the Jacobian of the genus four underlying curve of Schoen's I-WP minimal surface has at least 9 non-isomorphic principal polarizations. We also explore the Jacobians of Klein's quartic, Fermat's quartic, Bring's curve, the modular curve $X_0(63)$, and more.   
 \end{abstract}
 
 \section{Introduction}
 
-Abelian varieties with several principal polarizations are incredibly rare. In fact, abelian varieties with no principal polarizations are, in some sense, dense on the moduli stack of abelian varieties. The fact that an abelian variety admits only a finite number of isomorphism classes of principal polarizations was established by Narasimhan-Nori. In \cite{nn}, they pose the problem of finding a closed formula for the number of principal polarizations of any given abelian variety over any field, which is still unsolved.
+Let $\pi(X)$ be the number of non-isomorphic principal polarizations on a variety $X.$ Abelian varieties with several principal polarizations are incredibly rare. In fact, abelian varieties with no principal polarizations are, in some sense, dense on the moduli stack of abelian varieties. The fact that an abelian variety admits only a finite number of isomorphism classes of principal polarizations was established by Narasimhan-Nori. In \cite{nn}, they pose the problem of finding a closed formula for the number of principal polarizations of any given abelian variety over any field, which is still unsolved.
 
-Previous work toward the Narasimhan-Nori conjecture can be divided into the simple and non-simple cases. An abelian variety is \textbf{simple} if it is not isogenous to a product of abelian varieties of lower dimension. We can further divide into the characteristic 0 or characteristic $p$ cases. Our main goal is to understand cases of simple varieties in characteristic 0. 
+Previous work toward the Narasimhan-Nori conjecture can be divided into the simple and non-simple cases. %An abelian variety is \textbf{simple} if it is not isogenous to a product of abelian varieties of lower dimension. 
+It can further be divided into characteristic 0 and characteristic $p$ cases. Our main goal is to understand cases of simple varieties in characteristic 0. 
+
+In Theorem 1.5 \cite{several}, Lange establishes for simple varieties that $|\Aut(A)| = \pi(A)$ with certain restriction conditions and equivalence relations. One could in principle compute $|\Aut(A)|$ by hand, however, it is computationally infeasible. 
 
 %\begin{remark} His bijection between sets is induced by considering an element in the Neron-Severi group of $A$, and representing such elements as endomorphisms of $A$ preserved under the Rosati involution with respect to a chosen polarization. Since this bijection is induced by a principal polarization, one must know that one exists to implement this theorem. \end{remark}
 
@@ -167,7 +170,7 @@ In Theorem 3.1 \cite{several}, Lange further establishes bounds on $\pi(A)$ in t
 
 All other previous works known to the authors on finding multiple principal polarizations on abelian varieties have been done by finding two non-isomorphic curves with the same (unpolarized) Jacobian. Therefore, their associated canonical polarizations must be different by Torelli theorem. Otherwise, the curves would be isomorphic. All papers that we know of using this technique do so only in characteristic $p$. 
 
-There is only a canonical principal polarization on $A$ if a curve $C$ is specified so that $A = \Jac(C).$ If $C$ is not specified, there is no canonical choice -- knowing that $A$ is in the image of the functor $\Jac$ is not enough. Thus, there can be several ``canonical" principal polarizations on one Jacobian, its canonicality only refers to the fact that it comes from a curve. The papers using this technique discuss the case of \textit{non-simple} Jacobians of curves of genus two \cite{iko} and three [Brock, \textit{Superspecial curves of genera two and three}], though we were unable to find a copy of the latter. 
+There is only a canonical principal polarization on $A$ if a curve $C$ is specified so that $A = \Jac(C).$ If $C$ is not specified, there is no canonical choice -- knowing that $A$ is in the image of the functor $\Jac$ is not enough. Thus, there can be several ``canonical" principal polarizations on a Jacobian. Its canonicality only refers to the fact that it comes from a curve. The papers using this technique discuss the case of \textit{non-simple} Jacobians of curves of genus two \cite{iko} and three [Brock, \textit{Superspecial curves of genera two and three}], though we were unable to find a copy of the latter. 
 
 This technique is again used by E. Howe \cite{howe1} and \cite{howe2} which gives examples of non-isomorphic genus two curves with the same \textit{simple} Jacobian. He finds such examples in characteristic $p$ through isogeny classes of abelian varieties which correspond to special Weil numbers, an application of the Honda-Tate method. 
 
@@ -175,11 +178,11 @@ In this paper, we introduce an entirely different technique to find different pr
 
 \begin{theorem} \label{IWP} Let $\pi(X)$ denote the number of non-isomorphic principal polarizations on any given variety $X$. Let I-WP denote the underlying genus four curve of Schoen's I-WP minimal surface, and $\Jac(\text{I-WP})$ its Jacobian variety, then $$\pi(\Jac(\text{I-WP})) \geq 9.$$\end{theorem}
 
-This is a charming result, especially since the variety $\Jac(\text{I-WP})$ itself factors into a product of 4 elliptic curves\footnote{This is because $\text{End}(\Jac(\text{I-WP})) \simeq M_4(K)$, where $K$ is imaginary quadratic. Thus, $\Jac(\text{I-WP})$ is the product of elliptic curves with CM by $K$.}, so the remaining principal polarizations must come from interesting new cycles in the product of these elliptic curves. Other such surprising results found by applying our technique are shown in Table ~\ref{table:tablelabel}, Section ~\ref{sec:examples}.
+This is a charming result, especially since the variety $\Jac(\text{I-WP})$ itself factors into a product of 4 elliptic curves\footnote{This is because $\text{End}(\Jac(\text{I-WP})) \simeq M_4(K)$, where $K$ is imaginary quadratic. Thus, $\Jac(\text{I-WP})$ is the product of elliptic curves with CM by $K$.}, so the remaining principal polarizations must come from interesting new cycles in the product of these elliptic curves. Other results found by applying our technique include $\pi(A)$ and $|Aut(A)|$ of Klein's quartic, Fermat's quartic, Bring's curve, and the modular curve $X_0(63)$ (Table ~\ref{table:tablelabel}, Section ~\ref{sec:examples}).
 
-Our method works as follows. For curves that are cyclic covers over $\C\bb{P}^1$, we can compute exact period matrices, exposited in Section ~\ref{sec:cyclicperiod}; otherwise, we compute the period matrices numerically. Given any period matrix, we introduce new code to compute many principal polarizations on the corresponding abelian variety.  Then, we implement a modification of the psuedocode of Bruin-Jeroen-Sijsling \cite{numerical} to compute, for each found principal polarization, the automorphism group of the given Jacobian which fixes that polarization. If the automorphism groups are different, then the principal polarizations are non-isomorphic. This gives us a lower bound on the number of different principal polarizations for a given Jacobian. The fact that numerical computations with period matrices, which we use for surfaces which are not cyclically branched covers of $\C\P^1,$ give rigorous results relies on the brilliant work of Costa-Mascot-Sijsling-Voight (\cite{rigor} Prop 6.1.1), which we discuss in Section ~\ref{sec:cert}.
+Our method works as follows. For curves that are cyclic covers over $\C\bb{P}^1$, we can compute exact period matrices, exposited in Section ~\ref{sec:cyclicperiod}. Otherwise, we compute the period matrices numerically. Given any period matrix, we introduce new code to compute principal polarizations on the corresponding abelian variety.  Then, we implement a modification of the psuedocode of Bruin-Jeroen-Sijsling \cite{numerical} to compute, for each found principal polarization, the automorphism group of the given Jacobian which fixes that polarization. If the automorphism groups are different, then the principal polarizations are non-isomorphic. This gives us a lower bound on the number of different principal polarizations for a given Jacobian. %The fact that numerical computations with period matrices, which we use for surfaces which are not cyclically branched covers of $\C\P^1,$ give rigorous results relies on the brilliant work of Costa-Mascot-Sijsling-Voight (\cite{rigor} Prop 6.1.1), which we discuss in Section ~\ref{sec:cert}.
 
-We demonstrate the power of our method with a variety of different period matrices. We exposit some low dimensional geometry which allows us to compute exact period matrices of cyclically branched covers of $\C\P^1.$ We also work with period matrices of modular curves, as codified by Mascot in a slight modification of \cite{n} toward computing Galois representations. These modular curves are not cyclically branched covers over $\C\P^1,$ and thus give us a completely disjoint collection of curves to which we apply our methods. Assuming that our program finds \textit{all} principal polarizations of any given abelian variety, we give a new proof of the automorphism group of $X_0(63)$, which was the only remaining unresolved automorphism group of a compact modular curve until 1990 \cite{elkies}.  
+We demonstrate the power of our method with a variety of different period matrices. We exposit cyclic covers of $\C\P^1$ that allow us to compute exact period matrices. We also work with period matrices of modular curves, as codified by Mascot in a slight modification of \cite{n} toward computing Galois representations. These modular curves are not cyclically branched covers over $\C\P^1,$ and thus give us a completely disjoint collection of curves to which we apply our methods. Assuming that our program finds \textit{all} principal polarizations of any given abelian variety, we give a new proof of the automorphism group of $X_0(63)$, which was the only remaining unresolved automorphism group of a compact modular curve until 1990 \cite{elkies}.  
 
 
 \section*{Acknowledgements} 
@@ -187,7 +190,7 @@ Lee would like to thank Matthias Weber for his guidance at the beginning of this
 
 \section{Objects Of Our Interest}
 \label{sec: dthesis}
-We use computational techniques from \cite{dthesis} to compute explicit period matrices. These techniques apply to curves that are cyclically branched over $\mathbb{C}\mathbb{P}^1.$ In this section, we summarize Chapter 3 \cite{dthesis} and devote this section to providing background material on cyclic covers over $\mathbb{C}\mathbb{P}^1.$ We discuss the construction of such curves, various cone metrics that arise from the construction, and how to compute period matrices. We also discuss an example that is not a cyclic cover over $\mathbb{C}\mathbb{P}^1,$ namely, the modular curve $X_0(63).$
+We use computational techniques from \cite{dthesis} to compute explicit period matrices. These techniques apply to curves that are cyclically branched over $\mathbb{C}\mathbb{P}^1.$ In this section, we summarize Chapter 3 of \cite{dthesis} and devote this section to providing background material on cyclic covers over $\mathbb{C}\mathbb{P}^1.$ We discuss the construction of such curves, various cone metrics that arise from the construction, and how to compute period matrices. We also discuss an example that is not a cyclic cover over $\mathbb{C}\mathbb{P}^1,$ namely, the modular curve $X_0(63).$
 
 \subsection{Construction of Cyclic Covers over $\mathbb{C}\mathbb{P}^1$}
 First, we discuss the topological construction of cyclic covers over $\mathbb{C}\mathbb{P}^1.$ This will naturally yield cone metrics on the curves.
@@ -197,7 +200,7 @@ First, we discuss the topological construction of cyclic covers over $\mathbb{C}
 We construct such curves with the given data: let $p_i, \ldots , p_n \in \mathbb{C}\mathbb{P}^1$ be $n$ distinct points. Let $Y := \mathbb{C}\mathbb{P}^1 \backslash \{p_1, \ldots, p_n\}$ and let $\gamma_i$ be a branch cut from $p_i$ to some $q \in Y$ so that $\gamma_i$ are mutually disjoint. For each $i,$ assign $d_i \in \{1, \ldots, d - 1\}$ and call it the \textbf{branching index at} $p_i.$ Let $d$ be the degree of the covering map and use $j$ to label $Y_1, \ldots , Y_d.$ For each $i$ and $j,$ we identify the ``left side'' of $\gamma_i$ of $Y_j$ to the ``right side'' of $\gamma_i$ of $Y_{j + d_i \pmod d}.$ We denote such a covering $C$ by a $n$-tuple $d (d_1, \ldots , d_n).$
 
 
-\begin{remark} A covering $d (d_1, \ldots , d_n)$ is uniquely defined up to homeomorphism. That is, the construction only depends on $d_i$ and is independent of $p_i,$ $\gamma_i,$ and $q.$ We will assume that $\sum\limits_{i=1}^n d_i \equiv 0 \pmod d$ and also $\gcd (d_1, \ldots, d_n) = 1.$ The former guarantees that the covering is closed and the latter guarantees that the covering is connected. In fact, both are sufficient and necessary conditions. Then one can compute the genus of the curve by Riemann-Hurwitz formula and $g(C) = \frac{d (n-2)}{2} + 1 - \frac{1}{2} \sum\limits_{i=1}^n \gcd(d,d_i).$ 
+\begin{remark} A covering $d (d_1, \ldots , d_n)$ is uniquely defined up to homeomorphism. That is, the construction only depends on $d_i$ and is independent of $p_i,$ $\gamma_i,$ and $q.$ We further assume that $\sum\limits_{i=1}^n d_i \equiv 0 \pmod d$ and $\gcd (d_1, \ldots, d_n) = 1.$ The former guarantees that the covering is closed and the latter guarantees that the covering is connected. Then one can compute the genus of the curve by Riemann-Hurwitz formula and $g(C) = \frac{d (n-2)}{2} + 1 - \frac{1}{2} \sum\limits_{i=1}^n \gcd(d,d_i).$ 
 \end{remark}
 
 \subsubsection*{Branching indices on Fermat's quartic}
@@ -233,7 +236,7 @@ Our goal is to find other admissible cone metrics on the sphere that yield diffe
 
 Theorem 3.5, \cite{dthesis} proves that for $n = 3,$ there are exactly $g$ multipliers. In other words, one achieves a basis of holomorphic 1-forms via multipliers. We denote the multipliers by $a_i,$ hence the admissible cone angles are given by $$\frac{2\pi}{d}(a_1 d_1, a_1 d_2, a_1 d_3), \ldots , \frac{2\pi}{d}(a_g d_1, a_g d_2, a_g d_3).$$ 
 
-\subsubsection*{Admissible cone metrics on $8 (1, 2, 5).$} Given branching indices $8 (1, 2, 5),$ multipliers 1, 2, and 5 give rise to cone metrics with cone angles $\frac{2 \pi}{8}(1, 2, 5),$ $\frac{2 \pi}{8}(2, 4, 2),$ and $\frac{2 \pi}{8}(5, 2, 1),$ respectively. These cone metrics yield a basis of holomorphic 1-forms with the following divisors: $$(\omega_1) = 4 \widetilde{p_3}, \qquad (\omega_2) = \widetilde{p_1} + \widetilde{p_2}_1 + \widetilde{p_2}_2 + \widetilde{p_3}, \qquad (\omega_3) = 4 \widetilde{p_1}.$$
+\subsubsection*{Admissible cone metrics on $8 (1, 2, 5)$} Given branching indices $8 (1, 2, 5),$ multipliers 1, 2, and 5 give rise to cone metrics with cone angles $\frac{2 \pi}{8}(1, 2, 5),$ $\frac{2 \pi}{8}(2, 4, 2),$ and $\frac{2 \pi}{8}(5, 2, 1),$ respectively. These cone metrics yield a basis of holomorphic 1-forms with the following divisors: $$(\omega_1) = 4 \widetilde{p_3}, \qquad (\omega_2) = \widetilde{p_1} + \widetilde{p_2}_1 + \widetilde{p_2}_2 + \widetilde{p_3}, \qquad (\omega_3) = 4 \widetilde{p_1}.$$
 
 Figure~\ref{fig:flat_rs2} represents $\omega_2$ given by cone angles $\frac{2 \pi}{8}(2, 4, 2).$ The four simple zeros are marked on the figure.
 
@@ -248,13 +251,13 @@ Figure~\ref{fig:flat_rs2} represents $\omega_2$ given by cone angles $\frac{2 \p
 
 %\begin{remark} Note that 3, 6, and 7 are not multipliers as their corresponding forms do not yield canonical divisors. On the other hand, 4 is not a multiplier as the cone metric derived from cone angles $\frac{2 \pi}{8} (4, 0, 4)$ is not admissible. This induces a meromorphic form whose divisor is $3 \widetilde{p_1} - \widetilde{p_2}_1 - \widetilde{p_2}_2 + 3 \widetilde{p_3}.$ \end{remark}
 
-\begin{remark} The geometric representation of $\omega_3$ can also be achieved by reflecting $\frac{\pi}{8}(5, 2, 1)$ triangles. However, we omit the corresponding figure. \end{remark}
+%\begin{remark} The geometric representation of $\omega_3$ can also be achieved by reflecting $\frac{\pi}{8}(5, 2, 1)$ triangles. However, we omit the corresponding figure. \end{remark}
 
 \subsubsection*{Computing the period matrix of cyclic covers}
 \label{sec:cyclicperiod}
 In this section, we use the flat structure of a surface to compute the period matrix of a given curve. We will look at the simplest case where $n = 3$ and $d_1 = 1.$ Then, since $\sum d_i = d,$ a cone metric with cone angles $\frac{2 \pi}{d}(d_1, d_2, d_3)$ is admissible. $Y$ is topologically equivalent to a doubled triangle with angles $\frac{2 \pi}{d}(d_1, d_2, d_3)$ so we construct $C$ with $d$ copies of $Y,$ which yields a flat structure on $C.$  We will follow the underlying surface of Fermat's quartic as our leading example.
 
-Figure~\ref{fig:125_flat} shows the flat structures on the underlying surface of Fermat's quartic \cite{dami}. The identification of edges are via parallel translations, which verifies that the cone metric is admissible. Parallel translations yield closed cycles on the surface from which we get a homology basis with the following intersection matrix
+The identification of edges are via parallel translations, which verifies that the cone metric is admissible. Parallel translations yield closed cycles on the surface from which we get a homology basis with the following intersection matrix
 
 $$\textrm{int}_1 = \begin{pmatrix} 0 & 1 & 1 & 0 & 0 & 0 \\
  -1 & 0 & 1 & 1 & 0 & 0 \\
@@ -740,7 +743,7 @@ The computation of the period matrices can be found in \url{https://github.com/c
 \caption{Automorphism Groups wrt each of the Principal Polarizations}
 \centering
 \begin{adjustbox}{ tabular= l | c c r r r, center} \hline
-  \shortstack{Curve C} & Genus & \shortstack{\# Principal \\ Polarizations} & $\Aut(\Jac(C), a_i)$ & $|\Aut(\Jac, a_i)|$ & GAPID \\ \hline\hline
+  \shortstack{Curve C} & Genus & $\pi(A)$ & $\Aut(\Jac(C), a_i)$ & $|\Aut(\Jac, a_i)|$ & GAPID \\ \hline\hline
   Klein's quartic & 3 & 2 & $S_4 \times C_2$ & 48 & [48, 48]\\ 
   & & & $GL_3(F_2) \times C_2$ & 336 & [336, 209] \\  \hline %N
 Fermat's quartic & 3 & 2 &  $(C_4\wr C_2) \times C_2$ & 64 & [64, 101] \\ %N 
