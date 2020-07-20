@@ -155,8 +155,21 @@ The Narasimhan-Nori conjecture asks for a closed formula for the number of non-i
 
 \section{Introduction}
 
-Let $\pi(X)$ be the number of non-isomorphic principal polarizations on a variety $X.$ Abelian varieties with several principal polarizations are incredibly rare. In fact, abelian varieties with no principal polarizations are, in some sense, dense on the moduli stack of abelian varieties. The fact that an abelian variety admits only a finite number of isomorphism classes of principal polarizations was established by Narasimhan-Nori. In \cite{nn}, they pose the problem of finding a closed formula for the number of principal polarizations of any given abelian variety over any field, which is still unsolved.
 
+Polarizations of varieties were introduced by Weil as an analogue of orientations of manifolds. There is a special kind of polarization called a principal polarization -- all polarizations are induced by these up to isogeny. The fact that an abelian variety admits only a finite number of isomorphism classes of principal polarizations was established by Narasimhan-Nori. In \cite{nn}, they pose the problem of finding a closed formula for the number of principal polarizations of any given abelian variety over any field, which is still unsolved. It is worth noting that abelian varieties with no principal polarizations are dense on the moduli stack of abelian varieties, and thus finding abelian varieties with many principal polarizations is a cause for celebration.
+
+There has been a lot of prior work on the Narasimhan-Nori conjecture, exposited in Section ~\ref{sec:prior}. In this paper, we introduce an entirely different method of finding different principal polarizations on Jacobians, exposited in Section ~\ref{sec:find}, which treats both simple and non-simple cases in characteristic 0. We use this to give lower bounds on the number of non-isomorphic principal polarizations. For example, we have the following result. 
+
+\begin{theorem} \label{IWP} Let $\pi(X)$ denote the number of non-isomorphic principal polarizations on any given variety $X$. Let I-WP denote the underlying genus four curve of Schoen's I-WP minimal surface, and $\Jac(\text{I-WP})$ its Jacobian variety, then $$\pi(\Jac(\text{I-WP})) \geq 9.$$\end{theorem}
+
+This is a charming result, especially since the variety $\Jac(\text{I-WP})$ itself factors into a product of 4 elliptic curves\footnote{This is because $\text{End}(\Jac(\text{I-WP})) \simeq M_4(K)$, where $K$ is imaginary quadratic. Thus, $\Jac(\text{I-WP})$ is the product of elliptic curves with CM by $K$.}, so the remaining principal polarizations must come from interesting new cycles in the product of these elliptic curves. Other results found by applying our technique include $\pi(A)$ and $|\Aut(A)|$ of Klein's quartic, Fermat's quartic, Bring's curve, and the modular curve $X_0(63)$ (Table ~\ref{table:tablelabel}, Section ~\ref{sec:examples}).
+
+Our method works as follows. For curves that are cyclic covers over $\C\bb{P}^1$, we can compute exact period matrices, exposited in Section ~\ref{sec:cyclicperiod}. Otherwise, we compute the period matrices numerically. Given any period matrix, we introduce new code to compute principal polarizations on the corresponding abelian variety.  Then, we implement a modification of the psuedocode of Bruin-Jeroen-Sijsling \cite{numerical} to compute, for each found principal polarization, the automorphism group of the given Jacobian which fixes that polarization. If the automorphism groups are different, then the principal polarizations are non-isomorphic. This gives us a lower bound on the number of different principal polarizations for a given Jacobian. %The fact that numerical computations with period matrices, which we use for surfaces which are not cyclically branched covers of $\C\P^1,$ give rigorous results relies on the brilliant work of Costa-Mascot-Sijsling-Voight (\cite{rigor} Prop 6.1.1), which we discuss in Section ~\ref{sec:cert}.
+
+We demonstrate the power of our method with a variety of different period matrices. We exposit cyclic covers of $\C\P^1$ that allow us to compute exact period matrices. We also work with period matrices of modular curves, as codified by Mascot in a slight modification of \cite{n} toward computing Galois representations. These modular curves are not cyclically branched covers over $\C\P^1,$ and thus give us a completely disjoint collection of curves to which we apply our methods. Assuming that our program finds \textit{all} principal polarizations of any given abelian variety, we give a new proof of the automorphism group of $X_0(63)$, which was the only remaining unresolved automorphism group of a compact modular curve until 1990 \cite{elkies}.  
+
+\section{Prior Work}
+\label{sec:prior}
 Previous work toward the Narasimhan-Nori conjecture can be divided into the simple and non-simple cases. %An abelian variety is \textbf{simple} if it is not isogenous to a product of abelian varieties of lower dimension. 
 It can further be divided into characteristic 0 and characteristic $p$ cases. Our main goal is to understand cases of simple varieties in characteristic 0. 
 
@@ -168,25 +181,18 @@ In Theorem 3.1 \cite{several}, Lange further establishes bounds on $\pi(A)$ in t
 
 %\begin{remark} The main idea of the proof of 3.5 is that the canonical principal polarization of X induces a bijection between P(X) and the set of equivalence classes of symmetric automorphisms of X. Via the analytic representation of X and a suitable choice of bases this set can be considered as a set of equivalence classes of Hermitian forms. \end{remark}
 
-All other previous works known to the authors on finding multiple principal polarizations on abelian varieties have been done by finding two non-isomorphic curves with the same (unpolarized) Jacobian. Therefore, their associated canonical polarizations must be different by Torelli theorem. Otherwise, the curves would be isomorphic. All papers that we know of using this technique do so only in characteristic $p$. 
 
-There is only a canonical principal polarization on $A$ if a curve $C$ is specified so that $A = \Jac(C).$ If $C$ is not specified, there is no canonical choice -- knowing that $A$ is in the image of the functor $\Jac$ is not enough. Thus, there can be several ``canonical" principal polarizations on a Jacobian. Its canonicality only refers to the fact that it comes from a curve. The papers using this technique discuss the case of \textit{non-simple} Jacobians of curves of genus two \cite{iko} and three [Brock, \textit{Superspecial curves of genera two and three}], though we were unable to find a copy of the latter. 
+Given an abelian variety $A$ and a curve $C$, an isomorphism $A \simeq \Jac(C)$ induces a polarization on $A$ called the canonical principal polarization [defn ~\ref{canpp}]. Note that this polarization does depend on the specified curve $C$. In particular, if $A \simeq \Jac(C) \simeq \Jac(C')$ is the Jacobian of multiple different nonisomorphic curves $C \not\simeq C'$, there can be several ``canonical" principal polarizations on a Jacobian.
+
+%The canonical principal polarization is a principal polarization on an abelian variety $A$, induced by the isomorphism $A \simeq \Jac(C)$ for a specified curve $C$ . It is very important to note that there is only a canonical principal polarization on $A$ if a curve $C$ is specified. If $C$ is not specified, there is no canonical choice -- knowing that $A$ is in the image of the functor $\Jac$ is not enough. More specifically,  Its canonicality only refers to the fact that the principal polarization on $A$ induced by a \textit{specified} curve $C$ is canonical.
+
+All other previous works known to the authors on finding multiple principal polarizations on abelian varieties have been done by finding two non-isomorphic curves with the same (unpolarized) Jacobian. Therefore, their associated canonical polarizations must be different by Torelli theorem. Otherwise, the curves would be isomorphic. All papers that we know of using this technique do so only in characteristic $p$. The papers using this technique discuss the case of \textit{non-simple} Jacobians of curves of genus two \cite{iko} and three [Brock, \textit{Superspecial curves of genera two and three}], though we were unable to find a copy of the latter. 
 
 This technique is again used by E. Howe \cite{howe1} and \cite{howe2} which gives examples of non-isomorphic genus two curves with the same \textit{simple} Jacobian. He finds such examples in characteristic $p$ through isogeny classes of abelian varieties which correspond to special Weil numbers, an application of the Honda-Tate method. 
 
-In this paper, we introduce an entirely different technique to find different principal polarizations on Jacobians, exposited in Section ~\ref{sec:find}, which treats both simple and non-simple cases in characteristic 0. We use this to give lower bounds on the number of non-isomorphic principal polarizations. For example, we have the following result. 
-
-\begin{theorem} \label{IWP} Let $\pi(X)$ denote the number of non-isomorphic principal polarizations on any given variety $X$. Let I-WP denote the underlying genus four curve of Schoen's I-WP minimal surface, and $\Jac(\text{I-WP})$ its Jacobian variety, then $$\pi(\Jac(\text{I-WP})) \geq 9.$$\end{theorem}
-
-This is a charming result, especially since the variety $\Jac(\text{I-WP})$ itself factors into a product of 4 elliptic curves\footnote{This is because $\text{End}(\Jac(\text{I-WP})) \simeq M_4(K)$, where $K$ is imaginary quadratic. Thus, $\Jac(\text{I-WP})$ is the product of elliptic curves with CM by $K$.}, so the remaining principal polarizations must come from interesting new cycles in the product of these elliptic curves. Other results found by applying our technique include $\pi(A)$ and $|Aut(A)|$ of Klein's quartic, Fermat's quartic, Bring's curve, and the modular curve $X_0(63)$ (Table ~\ref{table:tablelabel}, Section ~\ref{sec:examples}).
-
-Our method works as follows. For curves that are cyclic covers over $\C\bb{P}^1$, we can compute exact period matrices, exposited in Section ~\ref{sec:cyclicperiod}. Otherwise, we compute the period matrices numerically. Given any period matrix, we introduce new code to compute principal polarizations on the corresponding abelian variety.  Then, we implement a modification of the psuedocode of Bruin-Jeroen-Sijsling \cite{numerical} to compute, for each found principal polarization, the automorphism group of the given Jacobian which fixes that polarization. If the automorphism groups are different, then the principal polarizations are non-isomorphic. This gives us a lower bound on the number of different principal polarizations for a given Jacobian. %The fact that numerical computations with period matrices, which we use for surfaces which are not cyclically branched covers of $\C\P^1,$ give rigorous results relies on the brilliant work of Costa-Mascot-Sijsling-Voight (\cite{rigor} Prop 6.1.1), which we discuss in Section ~\ref{sec:cert}.
-
-We demonstrate the power of our method with a variety of different period matrices. We exposit cyclic covers of $\C\P^1$ that allow us to compute exact period matrices. We also work with period matrices of modular curves, as codified by Mascot in a slight modification of \cite{n} toward computing Galois representations. These modular curves are not cyclically branched covers over $\C\P^1,$ and thus give us a completely disjoint collection of curves to which we apply our methods. Assuming that our program finds \textit{all} principal polarizations of any given abelian variety, we give a new proof of the automorphism group of $X_0(63)$, which was the only remaining unresolved automorphism group of a compact modular curve until 1990 \cite{elkies}.  
-
-
 \section*{Acknowledgements} 
 Lee would like to thank Matthias Weber for his guidance at the beginning of this project. Ray would like to thank \texttt{Magma} and \texttt{Sage} contributors John Voight, Edgar Costa, Nicolas Mascot, and above all Jeroen Sijsling, who generously offered incredibly detailed and consistent help in computing the automorphism groups of Jacobians.  This material is based upon work supported by the National Science Foundation under Grant No. DMS-1440140 while Lee was in residence at the Mathematical Sciences Research Institute in Berkeley, California, during the Fall 2019 semester. Ray is partially supported the National Science Foundation GRFP under Grant Number DGE 1842165.
+
 
 \section{Objects Of Our Interest}
 \label{sec: dthesis}
@@ -316,52 +322,121 @@ $$\Pi_2 = (A|B) = \begin{pmatrix}  1 - i& -\frac{1 + i}{1 + \sqrt{2}}& \frac{1 +
 
 
 
-\subsection{A Non-Cyclic Cover: The Modular Curve $X_0(63)$}
 
 
-\label{sec:modular}
-%Recall that $SL_2(\Z)$ acts transitively on the upper half plane $\mathfrak{h}$ by $\tau \mapsto \frac{a\tau + b}{c\tau + d}$. We quotient the upper half plane by subgroups $\Gamma$ of $SL_2(\Z)$ and metrize the quotient, however, this yields non-compact Riemann surfaces. To get a compact Riemann surface, we consider the extended upper half plane $\mathfrak{h}^{+} := \mathfrak{h} \cup \R \cup \{ \infty \}$ as a subset of $\C \P^1$.  
+ \section{Programmatically Computing Principal Polarizations of Abelian Varieties over $\mathbb{C}$}
 
-We are most interested in quotients of the upper half plane $\mathfrak{h}^{+} := \mathfrak{h} \cup \R \cup \{ \infty \}$ by the following subgroups of $SL_2(\Z)$. These subgroups come up naturally in the study of modular forms associated to elliptic curves.
+\label{sec:computing}
+
+\subsection{Introduction to Polarizations: From Theory to Code}
+\label{sec:intropol}
+The notion of a polarization of an abelian variety has many faces. If a complex torus has a polarization, it is an abelian variety.
+
+\begin{defn} A \textbf{polarization} of a complex torus $X$ is an embedding $j: X \to \P^N$ for large enough $N$. \end{defn}
+
+
+We can understand this embedding $j$ as a map $$p \mapsto [a_1(p) : \cdots : a_{N-1}(p)],$$ where $a_i$ are a chosen generating set of global sections of a line bundle $\mc{L}$ on $X$. 
+
+\begin{defn} A line bundle $\mc{L}$ is defined to be \textbf{very ample} on $X$ if it defines a closed embedding into $\P^N$ for large enough $N$.
+\end{defn}
+
+\begin{defn} A line bundle is \textbf{ample} if a tensor power of the line bundle is very ample. Since the Chern class is additive, $c_1(\mc{L}^{\otimes k}) = kc_1(\mc{L})$, the ample bundle and its tensor power are equivalent datum. \end{defn} 
+
+In other words, $\mc{L}$ is defined to be ample if it, or a tensor power of it, specifies an embedding of $X$ into projective space.
+
+
+
+\begin{defn} Line bundles $\mc{L}_1$ and $\mc{L}_2$  on $X$ are \textbf{analytically equivalent} if there is a connected complex analytic space $T$, a line bundle $\mc{L}$ on $X \times T$, and points $t_1, t_2 \in T$ such that $$\mc{L} |_{X\times \{t_i\}} \simeq \mc{L}_i$$ for $i = 1, 2$. \end{defn}
+
+A line bundle $\mc{L}$ over $X$ is specified up to analytic equivalence by its first Chern class $c_1(\mc{L}) \in H^2(X; \Z)$. More precisely,
+
+\begin{thm*} 
+[\cite{bl} 2.5.3] Let $X$ be an abelian variety. For line bundles $\mc{L}_1$ and $\mc{L}_2$ over $X$, the following statements are equivalent: 
+\begin{enumerate} 
+\item $\mc{L}_1$ and $\mc{L}_2$ are analytically equivalent.
+%\item $\mc{L}_1 \otimes \mc{L}_2^{-1} \in \text{Pic}^0(X)$
+\item $c_1(\mc{L}_1) = c_1(\mc{L}_2)$
+%\item $\phi_{\mc{L}_1} = \phi_{\mc{L}_2}$
+\end{enumerate}
+\end{thm*}
+
+
+\begin{defn} The \textbf{first Chern class} of a line bundle $\mc{L}$ is the image of $\mc{L} \in \Pic(X) = H^1(\mc{O}_X^*)$ under the map $c_1$ on cohomology which arises as follows. Consider the exact sequence $$0 \to \Z \to \mc{O}_X \to \mc{O}_X^* \to 0$$ and its long cohomology sequence:
+%\to H^1(X, \Z) \to H^1(\mc{O}_X) \to 
+$$\cdots \to H^1(\mc{O}_X^*) \xrightarrow{c_1} H^2(X, \Z) \to \cdots$$ \end{defn} 
+
+\noindent We associate to every first Chern class an alternating form.
+
+\begin{thm*} [\cite{bl} 1.3.2 \& 2.1.2] $$\psi: H^2(X; \Z) \simeq \Alt^2(\Lambda, \Z)$$ 
+\end{thm*} 
+ 
+Let $S$ be the set of $c_1(\mc{L})$ where $\mc{L}$ ranges over all holomorphic line bundles on $X$. The image $\psi(S)$ is isomorphic to all Hermitian alternating forms.
+
+\begin{thm*} [\cite{bl} 2.1.6] Let $X:= V/\Lambda$ be an abelian variety. For an alternating form $E: V \times V \to \R$, the following conditions are equivalent: 
+
+\begin{enumerate} 
+\item There is a holomorphic line bundle $\mc{L}$ on $X$ such that $\psi(c_1(\mc{L}))= E$. 
+\item $E(\Lambda, \Lambda) \subseteq \Z$, and $$E(iv, iw) = E(v, w)$$
+\end{enumerate}
+\end{thm*} 
+
+ 
+Note that from each element $\Alt^2(\Lambda, \Z)$, we obtain via $\R$-linear extension an alternating form $\Alt^2(V, \R)$ (as in rational versus analytic representations, see [\cite{bl} 1.2.1]). We also have an isomorphism between real valued forms satisfying 2.1.6(2) and Hermitian forms.
+
+It is important to emphasize that not all forms satisfying 2.1.6(2) correspond to Chern classes of ample line bundles. Ampleness is stronger than holomorphicity, hence we need a stronger condition. 
 
 \begin{defn} 
-\begin{align*} 
-\Gamma_0(N) &:= \left\{ \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in SL_2(\Z) \text{ }  \Big| \text{ } \begin{pmatrix} a & b \\ c & d \end{pmatrix} \equiv  \begin{pmatrix} * & * \\ 0 & * \end{pmatrix} \mod N \right\} \\
-\Gamma_1(N) &:= \left\{ \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in SL_2(\Z) \text{ }  \Big| \text{ }  \begin{pmatrix} a & b \\ c & d \end{pmatrix} \equiv  \begin{pmatrix} 1 & * \\ 0 & 1 \end{pmatrix} \mod N \right\} \\
-\Gamma(N) &:= \left\{ \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in SL_2(\Z) \text{ }  \Big| \text{ }  \begin{pmatrix} a & b \\ c & d \end{pmatrix} \equiv  \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \mod N \right\}
-\end{align*}
- \end{defn} 
+A line bundle $\mc{L}$ on $X$ is called \textbf{positive} if $c_1(\mc{L})$ is represented by a positive-definite Hermitian form.
+\end{defn}
 
-% The automorphism groups of $X(N)$ were found in \cite{bwx} to be $PSL_2(\Z/N\Z)$ (when the genus is greater than 2). The case of all $X_1(N)$ was reportedly found in general in a print, but the second author cannot locate the answer nor a copy of this manuscript. 
-The automorphism groups of $X_0(N) := \mathfrak{h}^{+} / \Gamma_0(N)$ were calculated in \cite{km} except for $N=63$. The case of $X_0(63)$ was resolved 2 years later by Elkies in \cite{elkies} by two different proofs: a conceptual one that uses enumerative geometry and the modular structure, and an explicit one that exhibits the modular equations. Our method would work for any $N$, we exposit the case of $N=63$ due to its late blooming history.
+\begin{thm*} 
+Let $X$ be a smooth complex projective variety. A line bundle $\mc{L}$ on $X$ is ample if and only if it is positive.
+\end{thm*}
 
-%\begin{conjecture} \label{63conj}  All principal polarizations on a Jacobian $J$ coming from curves are found by the method discussed in section ~\ref{sec:find}.  In other words: if there are exactly $n$ curves such that $J \simeq \Jac(C_1) \simeq \Jac(C_n)$, where $C_i \nsimeq C_j$ when $i \neq j$, then the algorithm will find at least the canonical principal polarizations on $J$ associated to $C_1, ..., C_n$.\end{conjecture} 
 
-\begin{conjecture*} \label{63conj} The program \texttt{CullPB.m} finds all principal polarizations on the curves we consider. \end{conjecture*}
+This is how we ask the computer to find polarizations of an abelian variety $X$, which are steps 1 and 2 of the following section.
 
-If this conjecture is true, the following would be a radically different proof than that of Elkies, since we approach by computing the automorphism group of the Jacobian of $X_0(63)$. 
+However, there may be infinitely many polarizations. We are interested in a particular kind of polarization.
 
-\begin{thm*} $\Aut(X_0(63)) \simeq S_4 \times \Z/2\Z$ \end{thm*} 
+\begin{defn}  A polarization $c_1(\mc{L})$ of $X$ is called \textbf{principal} if $\mc{L}$ has only one section up to constants, i.e. $\dim H^0(X, \mc{L}) = 1$.  \end{defn} 
 
-\begin{proof} Note the following theorem:
+As a motivational theorem:
 
-\begin{lemma*} \cite{km} $\Aut(X_0(63))$ is either $A_4 \times \Z/2$ or $S_4 \times \Z/2\Z$. 
-\end{lemma*}
+\begin{thm*} [\cite{bl} 4.1.2] Every polarization is induced by a principal polarization via an isogeny. \end{thm*}
 
-Using the period matrix provided by Mascot, performed with 150 precisions, \texttt{autperio.sage} gives:
+By Narasimhan-Nori \cite{nn}, there are only finitely many principal polarizations on a variety $X$ which is irreducible and smooth. As a corollary, only finitely many curves may have the same Jacobian, because each non-isomorphic curve gives a non-isomorphic principal polarization on its Jacobian.
 
-\begin{lemma} $\Aut(X_0(63))$ is either $C_2^{\text{ }4}$ or $S_4 \times \Z/2\Z$.
-\end{lemma}
+\vspace{+5pt}
+\noindent We end this introduction to polarizations with a special kind of principal polarization. 
 
-Assuming our conjecture, these are all possible automorphism groups of $X_0(63)$. Therefore, it must be that $\Aut(X_0(63)) \simeq S_4 \times \Z/2\Z$. 
-\end{proof} 
+\begin{defn} \label{canpp} The \textbf{canonical principal polarization} of an abelian variety $A \simeq \Jac(C)$, isomorphic to the Jacobian of a specified curve $C$, is thought of as a symplectic form on $\Jac(C)$ induced by a form on $C$. More specicially, this principal polarization on $\Jac(C)$ comes from the intersection form $Q: H_1(C; \mathbb{Z}) \otimes H_1(C; \mathbb{Z}) \to\mathbb{Z}$. This is because $H^2(\Jac(C); \mathbb{Z}) \simeq \Hom(\bigwedge H_1(C; \mathbb{Z}); \mathbb{Z})$. \end{defn}
 
-\vspace{+10pt} 
-The period matrix used in our calculation of $\Aut(\Jac(X_0(63)), p_i)$ was computed by Nicolas Mascot using an alteration of his personal code.
 
-Mascot, in \cite{n}, discusses finding the period matrices for $X_1(N)$ by integrating cuspforms along modular symbols. His algorithm works for any compactified modular curve, but it works best when $N$ is square-free. In the non-squarefree case, the coefficients in the $q$-expansions of the cuspforms and the $j$-invariant do not converge as quickly, thus they require more digits of precision. 
+\subsection{Finding Principal Polarizations} 
+\label{sec:find}
+All of our code is available at \begin{center}\url{https://github.com/catherineray/aut-jac}.\end{center}
 
-In private correspondence, John Voight programmatically proved that $X_0(63)$ is not a cyclically branched cover of $\C\P^1.$ Given that the genus of the quotient $X_0(63),/H,$ where $H$ is a cyclic subgroup of $\Aut(X_0(63)),$ is equal to the dimension of the $H$-invariant differentials, he shows that the list of dimensions of the space of $H$-invariant differentials on $X_0(63)$ does not contain zero. 
+We begin with a representation of our abelian variety as $A := \C^g/\Pi\Z^{2g}$. Then $\Lambda$ is the associated lattice spanned by the columns of $\Pi$. Thus, we have a distinguished basis for the homology of $A$, corresponding to the columns of $\Pi$. 
+
+\vspace{+5pt}
+
+\textbf{Algorithm:} Compute many principal polarizations on a given abelian variety $A$.
+
+\textit{Input:} An abelian variety $A := \C^g/\Pi\Z^{2g}$, where $\Lambda$ is the associated lattice to the period matrix $\Pi$. \n
+$\text{}$ $\hspace{2mm}$\textit{Output:} Many principal polarizations on $A$.
+\begin{enumerate} 
+
+\item The \texttt{Magma} function \texttt{FindPolarizationBasis} determines all integral alternating pairings $E$ on the homology, i.e., $E\in \Alt^2(\C^g, \Z)$, for whose real extension we have:
+
+$$E (i v, i w) = E (v, w)$$
+This is a basis of alternating forms $\{E_i\}$.
+\item Check that $E$ is positive-definite.
+\item \texttt{CullPB.m} tries some small combinations and sees if $E_i$ actually gives a pairing with determinant 1 indicating that $E_i$ is a principal polarization. If so, it returns $E_i$. This gives us a set $\{E_k\}$ of integral pairings on the homology.
+\item For each $i$, we rewrite these pairings in a symplectic basis. That is, we find a basis of $\Lambda$ in which $$E_i = \begin{pmatrix} 0 & D \\ -D & 0 \end{pmatrix}$$ where $D = \text{diag}(d_1, ..., d_g)$ which we may do by the elementary divisor theorem (Section 3.1, \cite{bl}). 
+
+\end{enumerate} 
+
+This does nothing but modify the (homology) basis of $\Lambda$. Multiplying $\Pi$ on the right with this integral matrix, we get a new period matrix $Q$ whose columns span exactly the same lattice but for which the standard symplectic pairing $E$ is actually the Chern class of a line bundle. This is often called the Frobenius form of the period matrix $\Pi$.
 
 
 
@@ -372,7 +447,7 @@ In private correspondence, John Voight programmatically proved that $X_0(63)$ is
 
 %The first portion of this section is an English translation of the first two paragraphs of the Appendice \cite{Torelli}, with modifications for the reader's convenience. We exposit it here as it is used heavily in the next section.
 
-Let $k$ be a field, and let $X$ be a nice (i.e., smooth, projective and geometrically integral) curve over $k$ of genus $g > 1$.  Let $(\operatorname{Jac}(X),a)$ denote the Jacobian of $X$ together with $a$, the Jacobian's canonical principal polarization with respect to $X$, which is of degree 1.  Let $X'$ be another nice curve over $k.$ Any isomorphism $f: X \to X'$ defines by functoriality an isomorphism $f_J: (\Jac(X), a) \to (\Jac(X'), a')$. 
+Let $k$ be a field, and let $X$ be a nice (i.e., smooth, projective and geometrically integral) curve over $k$ of genus $g > 1$.  Let $(\operatorname{Jac}(X),a)$ denote the Jacobian of $X$ together with $a$, the Jacobian's canonical principal polarization with respect to $X$ [defn ~\ref{canpp}], which is of degree 1.  Let $X'$ be another nice curve over $k.$ Any isomorphism $f: X \to X'$ defines by functoriality an isomorphism $f_J: (\Jac(X), a) \to (\Jac(X'), a')$. 
 
 The isomorphism $f: X \to X'$ induces an isomorphism between the divisor groups $\text{Div}^i(X)$ and $\text{Div}^i(X')$ for every $i$. This is because these groups are defined as formal combinations of codimension 1 subvarieties, and, via the isomorphism $f$, we can pull back the inclusions of subvarieties of $X'$ to inclusions of subvarieties of $X$. Note that the image of $\text{Div}^{g-1}(X)$ under the Abel-Jacobi map determines the canonical principal polarization of $\Jac(X)$ with respect to $X$.
 
@@ -427,14 +502,10 @@ Let $X$ and $Y$ have the same Jacobian, and $V^{k}$ denote $\phi(\Div^k(Y))$. We
 
  In the case of hyperelliptic curves, $W^1 = \text{flip}(W^1)$, that is, they coincide as sets in $\Jac(X)$. For non-hyperelliptic curves, $W^1 \neq \text{flip}(W^1)$, hence we have the $\Z/2\Z$ factor. 
 
+\section{Programmatically Computing the Automorphism Group of 
+ Plane Curves and Abelian Varieties over $\mathbb{C}$}
 
-
-
- \section{Programmatically Computing the Automorphism Group of Plane Curves and Abelian Varieties over $\mathbb{C}$}
-
-\label{sec:computing}
-
-The subsections ~\ref{sec:autplane} and ~\ref{sec:autperio} of this section are copied from Section 4 of Bruin-Sijsling-Zotine \cite{numerical} with exposition and examples added for the reader's convenience. This sets us up to introduce the code for brute force calculating principal polarizations. We discuss the certification of numerical results in Section ~\ref{sec:cert}. All of our code is available at \begin{center}\url{https://github.com/catherineray/aut-jac}.\end{center}
+The first two subsections ~\ref{sec:autplane} and ~\ref{sec:autperio} of this section are copied from Section 4 of Bruin-Sijsling-Zotine \cite{numerical} with additional algorithms, exposition, and examples added for the reader's convenience. We discuss the certification of numerical results in Section ~\ref{sec:cert}, and the comparison between the cycles in simple and non-simple varieties in Section ~\ref{nonsimple}. All of our code is available at \begin{center}\url{https://github.com/catherineray/aut-jac}.\end{center}
 
 Let us examine abelian varieties represented as analytic groups $X := V/\Lambda$ and $X' := V'/\Lambda'$. They need not be Jacobians.
 
@@ -467,7 +538,7 @@ We work in the category of varieties equipped with principal polarizations, whic
 
 $$f: (X, c_1(\mc{L})) \to (Y, c_1(\mc{M}))$$
 
-such that $f^*(Y, c_1(\mc{M})) = (X, c_1(\mc{L}))$ (for isomorphisms).  We may represent polarizations as integral valued alternating forms. 
+\noindent such that $f^*(Y, c_1(\mc{M})) = (X, c_1(\mc{L}))$ (for isomorphisms).  We may represent polarizations as integral valued alternating forms. 
 
 \begin{defn} Let $a$ be a polarization of $X$. We call $\Aut(X, a)$ a \textbf{symplectic automorphism group} of $X$, as it respects the symplectic form $a$. 
 \end{defn}
@@ -599,8 +670,8 @@ Their method is then along the lines of the following.
 \item If such a $Y$ is found, and is non-fibral (Defn 3.1.2 \cite{smith}), then $\alpha$ is an actual endomorphism of $\Jac(X)$. If not, it isn't. This is because of the previously dicussed bijection between prime correspondences $X \leftarrow X \times X \to X$, and endomorphisms of $\Jac(X)$.
 \end{itemize}
 
-\subsubsection{From Simple to Non-simple}
-
+\subsection{From Simple to Non-simple}
+\label{nonsimple}
 While we are on the topic of correspondences, we wish to make a remark on how to use techniques for simple varieties to bound below the number of principal polarizations of non-simple varieties. Our program does not use this, but it is useful for context.
 
 Since every abelian variety is isogenous to a product of simple abelian varieties $$A \simeq A_1 \times ... \times A_k,$$ it is reasonable to ask how the numbers of principal polarizations on $A_i$ are related to that of $A$. 
@@ -616,109 +687,6 @@ Let $C$ and $D$ be abelian varieties. Given a line bundle on $C$ and on $D$, we 
 
 
 
-\subsection{Introduction to Polarizations: From Theory to Code}
-\label{sec:intropol}
-The notion of a polarization of an abelian variety has many faces. If a complex torus has a polarization, it is an abelian variety.
-
-\begin{defn} A \textbf{polarization} of a complex torus $X$ is an embedding $j: X \to \P^N$ for large enough $N$. \end{defn}
-
-
-We can understand this embedding $j$ as a map $$p \mapsto [a_1(p) : \cdots : a_{N-1}(p)],$$ where $a_i$ are a chosen generating set of global sections of a line bundle $\mc{L}$ on $X$. 
-
-\begin{defn} A line bundle $\mc{L}$ is defined to be \textbf{very ample} on $X$ if it defines a closed embedding into $\P^N$ for large enough $N$.
-\end{defn}
-
-\begin{defn} A line bundle is \textbf{ample} if a tensor power of the line bundle is very ample. Since the Chern class is additive, $c_1(\mc{L}^{\otimes k}) = kc_1(\mc{L})$, the ample bundle and its tensor power are equivalent datum. \end{defn} 
-
-In other words, $\mc{L}$ is defined to be ample if it, or a tensor power of it, specifies an embedding of $X$ into projective space.
-
-
-
-\begin{defn} Line bundles $\mc{L}_1$ and $\mc{L}_2$  on $X$ are \textbf{analytically equivalent} if there is a connected complex analytic space $T$, a line bundle $\mc{L}$ on $X \times T$, and points $t_1, t_2 \in T$ such that $$\mc{L} |_{X\times \{t_i\}} \simeq \mc{L}_i$$ for $i = 1, 2$. \end{defn}
-
-A line bundle $\mc{L}$ over $X$ is specified up to analytic equivalence by its first Chern class $c_1(\mc{L}) \in H^2(X; \Z)$. More precisely,
-
-\begin{thm*} 
-[\cite{bl} 2.5.3] Let $X$ be an abelian variety. For line bundles $\mc{L}_1$ and $\mc{L}_2$ over $X$, the following statements are equivalent: 
-\begin{enumerate} 
-\item $\mc{L}_1$ and $\mc{L}_2$ are analytically equivalent.
-%\item $\mc{L}_1 \otimes \mc{L}_2^{-1} \in \text{Pic}^0(X)$
-\item $c_1(\mc{L}_1) = c_1(\mc{L}_2)$
-%\item $\phi_{\mc{L}_1} = \phi_{\mc{L}_2}$
-\end{enumerate}
-\end{thm*}
-
-
-\begin{defn} The \textbf{first Chern class} of a line bundle $\mc{L}$ is the image of $\mc{L} \in \Pic(X) = H^1(\mc{O}_X^*)$ under the map $c_1$ on cohomology which arises as follows. Consider the exact sequence $$0 \to \Z \to \mc{O}_X \to \mc{O}_X^* \to 0$$ and its long cohomology sequence:
-%\to H^1(X, \Z) \to H^1(\mc{O}_X) \to 
-$$\cdots \to H^1(\mc{O}_X^*) \xrightarrow{c_1} H^2(X, \Z) \to \cdots$$ \end{defn} 
-
-\noindent We associate to every first Chern class an alternating form.
-
-\begin{thm*} [\cite{bl} 1.3.2 \& 2.1.2] $$\psi: H^2(X; \Z) \simeq \Alt^2(\Lambda, \Z)$$ 
-\end{thm*} 
- 
-Let $S$ be the set of $c_1(\mc{L})$ where $\mc{L}$ ranges over all holomorphic line bundles on $X$. The image $\psi(S)$ is isomorphic to all Hermitian alternating forms.
-
-\begin{thm*} [\cite{bl} 2.1.6] Let $X:= V/\Lambda$ be an abelian variety. For an alternating form $E: V \times V \to \R$, the following conditions are equivalent: 
-
-\begin{enumerate} 
-\item There is a holomorphic line bundle $\mc{L}$ on $X$ such that $\psi(c_1(\mc{L}))= E$. 
-\item $E(\Lambda, \Lambda) \subseteq \Z$, and $$E(iv, iw) = E(v, w)$$
-\end{enumerate}
-\end{thm*} 
-
- 
-Note that from each element $\Alt^2(\Lambda, \Z)$, we obtain via $\R$-linear extension an alternating form $\Alt^2(V, \R)$ (as in rational versus analytic representations, see [\cite{bl} 1.2.1]). We also have an isomorphism between real valued forms satisfying 2.1.6(2) and Hermitian forms.
-
-It is important to emphasize that not all forms satisfying 2.1.6(2) correspond to Chern classes of ample line bundles. Ampleness is stronger than holomorphicity, hence we need a stronger condition. 
-
-\begin{defn} 
-A line bundle $\mc{L}$ on $X$ is called \textbf{positive} if $c_1(\mc{L})$ is represented by a positive-definite Hermitian form.
-\end{defn}
-
-\begin{thm*} 
-Let $X$ be a smooth complex projective variety. A line bundle $\mc{L}$ on $X$ is ample if and only if it is positive.
-\end{thm*}
-
-
-This is how we ask the computer to find polarizations of an abelian variety $X$, which are steps 1 and 2 of the following section.
-
-However, there may be infinitely many polarizations. We are interested in a particular kind of polarization.
-
-\begin{defn}  A polarization $c_1(\mc{L})$ of $X$ is called \textbf{principal} if $\mc{L}$ has only one section up to constants, i.e. $\dim H^0(X, \mc{L}) = 1$.  \end{defn} 
-
-As a motivational theorem:
-
-\begin{thm*} [\cite{bl} 4.1.2] Every polarization is induced by a principal polarization via an isogeny. \end{thm*}
-
-By Narasimhan-Nori \cite{nn}, there are only finitely many principal polarizations on a variety $X$ which is irreducible and smooth. As a corollary, only finitely many curves may have the same Jacobian, because each non-isomorphic curve gives a non-isomorphic principal polarization on its Jacobian.
-
-
-\subsection{Finding Principal Polarizations} 
-\label{sec:find}
-We begin with a representation of our abelian variety as $A := \C^g/\Pi\Z^{2g}$. Then $\Lambda$ is the associated lattice spanned by the columns of $\Pi$. Thus, we have a distinguished basis for the homology of $A$, corresponding to the columns of $\Pi$. 
-
-\vspace{+5pt}
-
-\textbf{Algorithm:} Compute many principal polarizations on a given abelian variety $A$.
-
-\textit{Input:} An abelian variety $A := \C^g/\Pi\Z^{2g}$, where $\Lambda$ is the associated lattice to the period matrix $\Pi$. \n
-$\text{}$ $\hspace{2mm}$\textit{Output:} Many principal polarizations on $A$.
-\begin{enumerate} 
-
-\item The \texttt{Magma} function \texttt{FindPolarizationBasis} determines all integral alternating pairings $E$ on the homology, i.e., $E\in \Alt^2(\C^g, \Z)$, for whose real extension we have:
-
-$$E (i v, i w) = E (v, w)$$
-This is a basis of alternating forms $\{E_i\}$.
-\item Check that $E$ is positive-definite.
-\item \texttt{CullPB.m} tries some small combinations and sees if $E_i$ actually gives a pairing with determinant 1 indicating that $E_i$ is a principal polarization. If so, it returns $E_i$. This gives us a set $\{E_k\}$ of integral pairings on the homology.
-\item For each $i$, we rewrite these pairings in a symplectic basis. That is, we find a basis of $\Lambda$ in which $$E_i = \begin{pmatrix} 0 & D \\ -D & 0 \end{pmatrix}$$ where $D = \text{diag}(d_1, ..., d_g)$ which we may do by the elementary divisor theorem (Section 3.1, \cite{bl}). 
-
-\end{enumerate} 
-
-This does nothing but modify the (homology) basis of $\Lambda$. Multiplying $\Pi$ on the right with this integral matrix, we get a new period matrix $Q$ whose columns span exactly the same lattice but for which the standard symplectic pairing $E$ is actually the Chern class of a line bundle. This is often called the Frobenius form of the period matrix $\Pi$.
-
 
 \section{Studying Principal Polarizations via Automorphisms of the Jacobian}
 
@@ -727,7 +695,7 @@ This does nothing but modify the (homology) basis of $\Lambda$. Multiplying $\Pi
 
 Our program produces many auto-equivalent principal polarizations.  Note that auto-equivalence is a weaker notion of equivalence than analytic equivalence, as we will show in Section ~\ref{sec:questions}. 
 
-If the abelian variety is indeed a Jacobian, this method will in practice return at least enough polarizations to find the canonical principal polarization. It is an unsolved problem to find \textit{all} possible principal polarizations associated to a given abelian variety, called ``explicit Narasimhan-Nori."
+If the abelian variety is indeed a Jacobian, this method will in practice return at least enough polarizations to find a canonical principal polarization. It is an unsolved problem to find \textit{all} possible principal polarizations associated to a given abelian variety, called ``explicit Narasimhan-Nori."
 
 
 \subsection{Examples}
@@ -909,6 +877,53 @@ The counterexample to the above question arises by giving an example of a pair n
 
 We checked this question on the family of hyperelliptic cases of genus 2 from \cite{howe1} Theorem 1, where it is true. However, there is no reason to expect this to be true in general. Yet, we cannot disprove it easily. 
 
+\section*{Appendix: A Non-Cyclic Cover, The Modular Curve $X_0(63)$}
+
+\label{sec:modular}
+%Recall that $SL_2(\Z)$ acts transitively on the upper half plane $\mathfrak{h}$ by $\tau \mapsto \frac{a\tau + b}{c\tau + d}$. We quotient the upper half plane by subgroups $\Gamma$ of $SL_2(\Z)$ and metrize the quotient, however, this yields non-compact Riemann surfaces. To get a compact Riemann surface, we consider the extended upper half plane $\mathfrak{h}^{+} := \mathfrak{h} \cup \R \cup \{ \infty \}$ as a subset of $\C \P^1$.  
+
+We are most interested in quotients of the upper half plane $\mathfrak{h}^{+} := \mathfrak{h} \cup \R \cup \{ \infty \}$ by the following subgroups of $SL_2(\Z)$. These subgroups come up naturally in the study of modular forms associated to elliptic curves.
+
+\begin{defn} 
+\begin{align*} 
+\Gamma_0(N) &:= \left\{ \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in SL_2(\Z) \text{ }  \Big| \text{ } \begin{pmatrix} a & b \\ c & d \end{pmatrix} \equiv  \begin{pmatrix} * & * \\ 0 & * \end{pmatrix} \mod N \right\} \\
+\Gamma_1(N) &:= \left\{ \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in SL_2(\Z) \text{ }  \Big| \text{ }  \begin{pmatrix} a & b \\ c & d \end{pmatrix} \equiv  \begin{pmatrix} 1 & * \\ 0 & 1 \end{pmatrix} \mod N \right\} \\
+\Gamma(N) &:= \left\{ \begin{pmatrix} a & b \\ c & d \end{pmatrix} \in SL_2(\Z) \text{ }  \Big| \text{ }  \begin{pmatrix} a & b \\ c & d \end{pmatrix} \equiv  \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \mod N \right\}
+\end{align*}
+ \end{defn} 
+
+% The automorphism groups of $X(N)$ were found in \cite{bwx} to be $PSL_2(\Z/N\Z)$ (when the genus is greater than 2). The case of all $X_1(N)$ was reportedly found in general in a print, but the second author cannot locate the answer nor a copy of this manuscript. 
+The automorphism groups of $X_0(N) := \mathfrak{h}^{+} / \Gamma_0(N)$ were calculated in \cite{km} except for $N=63$. The case of $X_0(63)$ was resolved 2 years later by Elkies in \cite{elkies} by two different proofs: a conceptual one that uses enumerative geometry and the modular structure, and an explicit one that exhibits the modular equations. Our method would work for any $N$, we exposit the case of $N=63$ due to its late blooming history.
+
+%\begin{conjecture} \label{63conj}  All principal polarizations on a Jacobian $J$ coming from curves are found by the method discussed in section ~\ref{sec:find}.  In other words: if there are exactly $n$ curves such that $J \simeq \Jac(C_1) \simeq \Jac(C_n)$, where $C_i \nsimeq C_j$ when $i \neq j$, then the algorithm will find at least the canonical principal polarizations on $J$ associated to $C_1, ..., C_n$.\end{conjecture} 
+
+We wrote a program \texttt{CullPB.m} which finds prinicpal polarizations, discussed in Section ~\ref{sec:find}. Indeed, it searches for principal polarizations in a finite range, but in practice it has found all principal polarizations for previously known cases. 
+
+\begin{conjecture*} \label{63conj} The program \texttt{CullPB.m} finds all principal polarizations on the curves we consider. \end{conjecture*}
+
+If this conjecture is true, the following would be a radically different proof than that of Elkies, since we approach by computing the automorphism group of the Jacobian of $X_0(63)$. 
+
+\begin{thm*} $\Aut(X_0(63)) \simeq S_4 \times \Z/2\Z$ \end{thm*} 
+
+\begin{proof} Note the following theorem:
+
+\begin{lemma*} \cite{km} $\Aut(X_0(63))$ is either $A_4 \times \Z/2$ or $S_4 \times \Z/2\Z$. 
+\end{lemma*}
+
+Using the period matrix provided by Mascot, performed with 150 precisions, \texttt{autperio.sage} gives:
+
+\begin{lemma} $\Aut(X_0(63))$ is either $C_2^{\text{ }4}$ or $S_4 \times \Z/2\Z$.
+\end{lemma}
+
+Assuming our conjecture, these are all possible automorphism groups of $X_0(63)$. Therefore, it must be that $\Aut(X_0(63)) \simeq S_4 \times \Z/2\Z$. 
+\end{proof} 
+
+\vspace{+10pt} 
+The period matrix used in our calculation of $\Aut(\Jac(X_0(63)), p_i)$ was computed by Nicolas Mascot using an alteration of his personal code.
+
+Mascot, in \cite{n}, discusses finding the period matrices for $X_1(N)$ by integrating cuspforms along modular symbols. His algorithm works for any compactified modular curve, but it works best when $N$ is square-free. In the non-squarefree case, the coefficients in the $q$-expansions of the cuspforms and the $j$-invariant do not converge as quickly, thus they require more digits of precision. 
+
+In private correspondence, John Voight programmatically proved that $X_0(63)$ is not a cyclically branched cover of $\C\P^1.$ Given that the genus of the quotient $X_0(63),/H,$ where $H$ is a cyclic subgroup of $\Aut(X_0(63)),$ is equal to the dimension of the $H$-invariant differentials, he shows that the list of dimensions of the space of $H$-invariant differentials on $X_0(63)$ does not contain zero. 
 
 
 \begin{thebibliography}{20}
@@ -1013,7 +1028,7 @@ Vol. 62, Issue. 3, 2013, pp.451--476.
 M. S. Narasimhan, M. V. Nori,
 \textit{Polarisations on an abelian variety},
 Proceedings of the Indian Academy of Sciences,
-Vol. 90, 1951, pp.125--128.
+Vol. 90, 1981, pp.125--128.
 
 
 \bibitem{matti} 
