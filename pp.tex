@@ -153,22 +153,26 @@
 The Narasimhan-Nori conjecture asks for a closed formula for the number of non-isomorphic principal polarizations of any given abelian variety. In this paper, we introduce a new computer program that gives a lower bound on the number of principal polarizations on any given abelian variety. We show, for example, that the Jacobian of the genus four underlying curve of Schoen's I-WP minimal surface has at least 9 non-isomorphic principal polarizations. We also explore the Jacobians of Klein's quartic, Fermat's quartic, Bring's curve, the modular curve $X_0(63)$, and more.   
 \end{abstract}
 
+\tableofcontents
+
 \section{Introduction}
 
 
-Polarizations of varieties were introduced by Weil as an analogue of orientations of manifolds. There is a special kind of polarization called a principal polarization -- all polarizations are induced by these up to isogeny. The fact that an abelian variety admits only a finite number of isomorphism classes of principal polarizations was established by Narasimhan-Nori. In \cite{nn}, they pose the problem of finding a closed formula for the number of principal polarizations of any given abelian variety over any field, which is still unsolved. It is worth noting that abelian varieties with no principal polarizations are dense on the moduli stack of abelian varieties, and thus finding abelian varieties with many principal polarizations is a cause for celebration.
+Polarizations of abelian varieties were introduced by Weil as an analogue of orientations of manifolds. There is a special kind of polarization called a principal polarization -- all polarizations are induced by these up to isogeny. The fact that an abelian variety admits only a finite number of isomorphism classes of principal polarizations was established by Narasimhan-Nori. In \cite{nn}, they pose the problem of finding a closed formula for the number of principal polarizations of any given abelian variety over any field, which is still unsolved. It is worth noting that abelian varieties with no principal polarizations are dense on the moduli stack of abelian varieties, and thus finding abelian varieties with many principal polarizations is a cause for celebration. We denote by $\pi(X)$ the number of non-isomorphic principal polarizations on a variety $X.$
 
-There has been a lot of prior work on the Narasimhan-Nori conjecture, exposited in Section ~\ref{sec:prior}. In this paper, we introduce an entirely different method of finding different principal polarizations on Jacobians, exposited in Section ~\ref{sec:find}, which treats both simple and non-simple cases in characteristic 0. We use this to give lower bounds on the number of non-isomorphic principal polarizations. For example, we have the following result. 
+There has been a lot of prior work on the Narasimhan-Nori conjecture, exposited in Section ~\ref{sec:prior}. In this paper, we introduce an entirely different method of finding different principal polarizations on Jacobians, exposited in Section ~\ref{sec:find}, which treats both simple and non-simple cases in characteristic 0. We use this to give lower bounds on the number of non-isomorphic principal polarizations. Our method works as follows. For curves that are cyclic covers over $\C\bb{P}^1$, we can compute exact period matrices, exposited in Section ~\ref{sec:cyclicperiod}. Otherwise, we compute the period matrices numerically. Given any period matrix, we introduce new code to compute principal polarizations on the corresponding abelian variety.  Then, we implement a modification of the psuedocode of Bruin-Jeroen-Sijsling \cite{numerical} to compute, for each found principal polarization, the automorphism group of the given Jacobian which fixes that polarization. If the automorphism groups are different, then the principal polarizations are non-isomorphic. This gives us a lower bound on the number of different principal polarizations for a given Jacobian. %The fact that numerical computations with period matrices, which we use for surfaces which are not cyclically branched covers of $\C\P^1,$ give rigorous results relies on the brilliant work of Costa-Mascot-Sijsling-Voight (\cite{rigor} Prop 6.1.1), which we discuss in Section ~\ref{sec:cert}.
+
+For example, we have the following result. 
 
 \begin{theorem} \label{IWP} Let $\pi(X)$ denote the number of non-isomorphic principal polarizations on any given variety $X$. Let I-WP denote the underlying genus four curve of Schoen's I-WP minimal surface, and $\Jac(\text{I-WP})$ its Jacobian variety, then $$\pi(\Jac(\text{I-WP})) \geq 9.$$\end{theorem}
 
 This is a charming result, especially since the variety $\Jac(\text{I-WP})$ itself factors into a product of 4 elliptic curves\footnote{This is because $\text{End}(\Jac(\text{I-WP})) \simeq M_4(K)$, where $K$ is imaginary quadratic. Thus, $\Jac(\text{I-WP})$ is the product of elliptic curves with CM by $K$.}, so the remaining principal polarizations must come from interesting new cycles in the product of these elliptic curves. Other results found by applying our technique include $\pi(A)$ and $|\Aut(A)|$ of Klein's quartic, Fermat's quartic, Bring's curve, and the modular curve $X_0(63)$ (Table ~\ref{table:tablelabel}, Section ~\ref{sec:examples}).
 
-Our method works as follows. For curves that are cyclic covers over $\C\bb{P}^1$, we can compute exact period matrices, exposited in Section ~\ref{sec:cyclicperiod}. Otherwise, we compute the period matrices numerically. Given any period matrix, we introduce new code to compute principal polarizations on the corresponding abelian variety.  Then, we implement a modification of the psuedocode of Bruin-Jeroen-Sijsling \cite{numerical} to compute, for each found principal polarization, the automorphism group of the given Jacobian which fixes that polarization. If the automorphism groups are different, then the principal polarizations are non-isomorphic. This gives us a lower bound on the number of different principal polarizations for a given Jacobian. %The fact that numerical computations with period matrices, which we use for surfaces which are not cyclically branched covers of $\C\P^1,$ give rigorous results relies on the brilliant work of Costa-Mascot-Sijsling-Voight (\cite{rigor} Prop 6.1.1), which we discuss in Section ~\ref{sec:cert}.
-
 We demonstrate the power of our method with a variety of different period matrices. We exposit cyclic covers of $\C\P^1$ that allow us to compute exact period matrices. We also work with period matrices of modular curves, as codified by Mascot in a slight modification of \cite{n} toward computing Galois representations. These modular curves are not cyclically branched covers over $\C\P^1,$ and thus give us a completely disjoint collection of curves to which we apply our methods. Assuming that our program finds \textit{all} principal polarizations of any given abelian variety, we give a new proof of the automorphism group of $X_0(63)$, which was the only remaining unresolved automorphism group of a compact modular curve until 1990 \cite{elkies}.  
 
-\section{Prior Work}
+In Section ~\ref{sec:questions}, we also answer the following questions on Jacobians with multiple principal polarizations by providing counterexamples.
+
+\subsection{Prior Work}
 \label{sec:prior}
 Previous work toward the Narasimhan-Nori conjecture can be divided into the simple and non-simple cases. %An abelian variety is \textbf{simple} if it is not isogenous to a product of abelian varieties of lower dimension. 
 It can further be divided into characteristic 0 and characteristic $p$ cases. Our main goal is to understand cases of simple varieties in characteristic 0. 
@@ -177,12 +181,12 @@ In Theorem 1.5 \cite{several}, Lange establishes for simple varieties that $|\Au
 
 %\begin{remark} His bijection between sets is induced by considering an element in the Neron-Severi group of $A$, and representing such elements as endomorphisms of $A$ preserved under the Rosati involution with respect to a chosen polarization. Since this bijection is induced by a principal polarization, one must know that one exists to implement this theorem. \end{remark}
 
-In Theorem 3.1 \cite{several}, Lange further establishes bounds on $\pi(A)$ in terms of the class group of $\text{End}_{\Q}(A)$, if $\text{End}_{\Q}(A)$ is a \textit{totally real} number field $K$ (and thus the variety $A$ is simple). More recently, Lange treated the non-simple case of products of elliptic curves without complex multiplication in Theorem 3.5 \cite{newlange}. He did so by giving an interpretation of the number of principal polarizations in terms of class numbers of definite Hermitian forms.
+In Theorem 3.1 \cite{several}, Lange further establishes bounds on $\pi(A)$ in terms of the class group of $\text{End}_{\Q}(A)$, if $\text{End}_{\Q}(A)$ is a \textit{totally real} number field $K$ (and thus the variety $A$ is simple). More recently, Lange treated the non-simple case of products of elliptic curves without complex multiplication in Theorem 3.5 \cite{newlange}. He does so by giving an interpretation of the number of principal polarizations in terms of class numbers of definite Hermitian forms.
 
 %\begin{remark} The main idea of the proof of 3.5 is that the canonical principal polarization of X induces a bijection between P(X) and the set of equivalence classes of symmetric automorphisms of X. Via the analytic representation of X and a suitable choice of bases this set can be considered as a set of equivalence classes of Hermitian forms. \end{remark}
 
 
-Given an abelian variety $A$ and a curve $C$, an isomorphism $A \simeq \Jac(C)$ induces a polarization on $A$ called the canonical principal polarization [defn ~\ref{canpp}]. Note that this polarization does depend on the specified curve $C$. In particular, if $A \simeq \Jac(C) \simeq \Jac(C')$ is the Jacobian of multiple different nonisomorphic curves $C \not\simeq C'$, there can be several ``canonical" principal polarizations on a Jacobian.
+Given an abelian variety $A$ and a curve $C$, an isomorphism $A \simeq \Jac(C)$ induces a polarization on $A$ called the canonical principal polarization [Defn ~\ref{canpp}]. Note that this polarization does depend on the specified curve $C$. In particular, if $A \simeq \Jac(C) \simeq \Jac(C')$ is the Jacobian of multiple different non-isomorphic curves $C \not\simeq C'$, there can be several ``canonical" principal polarizations on a Jacobian.
 
 %The canonical principal polarization is a principal polarization on an abelian variety $A$, induced by the isomorphism $A \simeq \Jac(C)$ for a specified curve $C$ . It is very important to note that there is only a canonical principal polarization on $A$ if a curve $C$ is specified. If $C$ is not specified, there is no canonical choice -- knowing that $A$ is in the image of the functor $\Jac$ is not enough. More specifically,  Its canonicality only refers to the fact that the principal polarization on $A$ induced by a \textit{specified} curve $C$ is canonical.
 
@@ -191,7 +195,7 @@ All other previous works known to the authors on finding multiple principal pola
 This technique is again used by E. Howe \cite{howe1} and \cite{howe2} which gives examples of non-isomorphic genus two curves with the same \textit{simple} Jacobian. He finds such examples in characteristic $p$ through isogeny classes of abelian varieties which correspond to special Weil numbers, an application of the Honda-Tate method. 
 
 \section*{Acknowledgements} 
-Lee would like to thank Matthias Weber for his guidance at the beginning of this project. Ray would like to thank \texttt{Magma} and \texttt{Sage} contributors John Voight, Edgar Costa, Nicolas Mascot, and above all Jeroen Sijsling, who generously offered incredibly detailed and consistent help in computing the automorphism groups of Jacobians.  This material is based upon work supported by the National Science Foundation under Grant No. DMS-1440140 while Lee was in residence at the Mathematical Sciences Research Institute in Berkeley, California, during the Fall 2019 semester. Ray is partially supported the National Science Foundation GRFP under Grant Number DGE 1842165.
+The authors would like to thank \texttt{Magma} and \texttt{Sage} contributors John Voight, Edgar Costa, Nicolas Mascot, and above all Jeroen Sijsling, who generously offered incredibly detailed and consistent help in computing the automorphism groups of Jacobians. Lee would also like to thank Matthias Weber for his guidance at the beginning of this project. This material is based upon work supported by the National Science Foundation under Grant No. DMS-1440140 while Lee was in residence at the Mathematical Sciences Research Institute in Berkeley, California, during the Fall 2019 semester. Ray is partially supported the National Science Foundation GRFP under Grant Number DGE 1842165.
 
 
 \section{Objects Of Our Interest}
@@ -241,6 +245,8 @@ Our goal is to find other admissible cone metrics on the sphere that yield diffe
 \end{defn}
 
 Theorem 3.5, \cite{dthesis} proves that for $n = 3,$ there are exactly $g$ multipliers. In other words, one achieves a basis of holomorphic 1-forms via multipliers. We denote the multipliers by $a_i,$ hence the admissible cone angles are given by $$\frac{2\pi}{d}(a_1 d_1, a_1 d_2, a_1 d_3), \ldots , \frac{2\pi}{d}(a_g d_1, a_g d_2, a_g d_3).$$ 
+
+With admissible cone metrics, we can algebraically describe a curve by its plane curve model. For covers branched over three points, we choose $p_i = 0, 1, \infty$ (for covers over thrice punctured spheres) and describe it as $y^d = x^{d_1} (x-1)^{d_2}.$ Furthermore, given a curve, its plane curve model is not uniquely defined. The allowed choices of models is discussed in Section 3.2 of \cite{dthesis}. However, our codes do not differentiate the different plane curve models.
 
 \subsubsection*{Admissible cone metrics on $8 (1, 2, 5)$} Given branching indices $8 (1, 2, 5),$ multipliers 1, 2, and 5 give rise to cone metrics with cone angles $\frac{2 \pi}{8}(1, 2, 5),$ $\frac{2 \pi}{8}(2, 4, 2),$ and $\frac{2 \pi}{8}(5, 2, 1),$ respectively. These cone metrics yield a basis of holomorphic 1-forms with the following divisors: $$(\omega_1) = 4 \widetilde{p_3}, \qquad (\omega_2) = \widetilde{p_1} + \widetilde{p_2}_1 + \widetilde{p_2}_2 + \widetilde{p_3}, \qquad (\omega_3) = 4 \widetilde{p_1}.$$
 
@@ -674,7 +680,7 @@ Their method is then along the lines of the following.
 \label{nonsimple}
 While we are on the topic of correspondences, we wish to make a remark on how to use techniques for simple varieties to bound below the number of principal polarizations of non-simple varieties. Our program does not use this, but it is useful for context.
 
-Since every abelian variety is isogenous to a product of simple abelian varieties $$A \simeq A_1 \times ... \times A_k,$$ it is reasonable to ask how the numbers of principal polarizations on $A_i$ are related to that of $A$. 
+Since every abelian variety is isogenous to a product of simple abelian varieties $$A \simeq A_1 \times ... \times A_k,$$ it is reasonable to ask how $\pi(A_i)$ are related to $\pi(A).$
 
 Let's quickly establish some vocabulary to discuss this intuitively. Recall that we may also define a principal polarization on $A$ as an isogeny which is also an isomorphism between $A \to A^\vee$, where $A^\vee$ denotes the dual variety. Let $A$ and $B$ be arbitrary abelian varieties. Note that $\text{Corr}(A, B) \simeq \Hom(B, A^\vee)$, where we take a correspondence from $A$ to $B$ to be a line bundle $\mathcal{L}$ over the product $A \times B$ which is trivial when restricted to $A$ or $B$.
 
@@ -701,9 +707,9 @@ If the abelian variety is indeed a Jacobian, this method will in practice return
 \subsection{Examples}
 \label{sec:examples}
 
-With the exception of the modular curve $X_0(63)$, all curves on which we apply our method are cyclic covers over $\C\P^1.$ 
+With the exception of the modular curve $X_0(63)$ (Appendix), all curves on which we apply our method are cyclic covers over $\C\P^1.$ 
 
-Here we describe our examples in terms of their branching indices over $\C\P^1.$ For each case, we will show explicit flat structures that are induced from the branching indices. The flat structures give rise to holomorphic 1-forms that are used in computing period matrices. We will also describe each case via their plane curve models. In general, we choose $p_i = 0, 1, \infty$ (for covers over thrice punctured spheres) and describe each curve $d(d_1, d_2, d_3)$ (such that $d_1 + d_2 + d_3 = d$, discussed in Section ~\ref{sec: dthesis}) algebraically as $y^d = x^{d_1} (x-1)^{d_2}.$
+Here we describe our examples in terms of their branching indices over $\C\P^1.$% For each case, we will show explicit flat structures that are induced from the branching indices. The flat structures give rise to holomorphic 1-forms that are used in computing period matrices. We will also describe each case via their plane curve models. In general, we choose $p_i = 0, 1, \infty$ (for covers over thrice punctured spheres) and describe each curve $d(d_1, d_2, d_3)$ (such that $d_1 + d_2 + d_3 = d$, discussed in Section ~\ref{sec: dthesis}) algebraically as $y^d = x^{d_1} (x-1)^{d_2}.$
 
 The computation of the period matrices can be found in \url{https://github.com/catherineray/autjac-paper/blob/master/periodmatrices.pdf}. The general version of the period matrix is shown in Section~\ref{sec:cyclicperiod}.
 
@@ -749,7 +755,7 @@ $X_0(63)$ & 5 & 2 & $C_2^{\text{ }5}$ & 32 & [32,51] \\
 
 \begin{remark} Note that the University of Bristol's GroupNames database at the time of writing has groups up to order 500 with full names and structure description. In the cases where the order is greater than 500, we use the output of \texttt{StructureDescription(G);} \end{remark}
 
-Table ~\ref{table:plane} is the result of running \texttt{autplane}, whose algorithm is described in Section ~\ref{sec:autplane}. We use the results in this table together with Section ~\ref{sec:torelli} to understand the automorphism group of $\Jac(C)$ with respect to the principal polarization induced by the curve $C$, which we apply in Section ~\ref{sec:questions}. Given a curve, its plane curve model is not uniquely defined, the allowed choices of models is discussed in Section 3.2 of \cite{dthesis}.
+Table ~\ref{table:plane} is the result of running \texttt{autplane}, whose algorithm is described in Section ~\ref{sec:autplane}. We use the results in this table together with Section ~\ref{sec:torelli} to understand the automorphism group of $\Jac(C)$ with respect to the principal polarization induced by the curve $C$, which we apply in Section ~\ref{sec:questions}. 
 
 %Klein's curve 
 %Fermat's curve
@@ -857,13 +863,13 @@ We speak here of polarizations up to auto-equivalence and ask natural questions 
 
 We fix some notation. We call $\Aut(A, a_i)$ a symplectic automorphism group of $A$, as the automorphisms respect the principal polarization $a_i$, which is a symplectic form on $A$. Let $\theta_C$ be the canonical principal polarization of $\Jac(C)$ with respect to $C$.
 
-\begin{question} $\Aut(\Jac(C), \theta_C)$ will have the highest order of all symplectic automorphism groups of $\Jac(C)$. \end{question}
+\begin{question} $\Aut(\Jac(C), \theta_C)$ has the highest order of all symplectic automorphism groups of $\Jac(C)$. \end{question}
 
-\begin{answer} This is proven false by example $12(1,5,6)$, where $|\Aut(\Jac(12(1, 5, 6)), \theta_{12(1, 5, 6)})| = 24$, but $|\Aut(\Jac(12(1, 5, 6)), a_i)| = 32$ is achieved. It is more dramatically proven false by Schoen's I-WP Surface, where $|\Aut(\Jac(\text{I-WP}), \theta_{\text{I-WP}})| = 288$, but $|\Aut(\Jac(\text{I-WP}), a_i)|$ achieves $576$ and $864$. \end{answer}
+\begin{answer} This is proven false by $12(1,5,6)$, where $|\Aut(\Jac(12(1, 5, 6)), \theta_{12(1, 5, 6)})| = 24$, but $|\Aut(\Jac(12(1, 5, 6)), a_i)| = 32$ is achieved. It is more dramatically proven false by I-WP, where $|\Aut(\Jac(\text{I-WP}), \theta_{\text{I-WP}})| = 288$, but $|\Aut(\Jac(\text{I-WP}), a_i)|$ achieves $576$ and $864$. \end{answer}
 
 \begin{question} Principal polarizations $p_1$ and $p_2$ are auto-equivalent if and only if they are analytically equivalent. In other words, $$\Aut(X, p_1) \simeq \Aut(X, p_2) \Leftrightarrow p_1 = p_2.$$ \end{question}
 
-\begin{answer} The direction ($\Leftarrow$) is true because $\mc{L}$ and $\mc{M}$ are analytically equivalent if and only if $c_1(\mc{L}) = c_1(\mc{M})$ by [\cite{bl} 2.5.3]. The other direction ($\Rightarrow$) is false.  This is proven false by applying our method to the the following two \textit{non-isomorphic} curves with the same \textit{unpolarized} Jacobian from Theorem 1 of \cite{howe1}:
+\begin{answer} The direction ($\Leftarrow$) is true because $\mc{L}$ and $\mc{M}$ are analytically equivalent if and only if $c_1(\mc{L}) = c_1(\mc{M})$ by [\cite{bl} 2.5.3]. The other direction ($\Rightarrow$) is false.  This is proven false by applying our method to the following two \textit{non-isomorphic} curves with the same \textit{unpolarized} Jacobian from Theorem 1 of \cite{howe1}:
 \vspace{-2pt}
 $$X: 3y^2 = (2x^2- 2)(16x^4 + 28x^2 + 1)$$ 
 \vspace{-15pt}
@@ -871,7 +877,7 @@ $$X': -y^2 = (2x^2 + 2)(16x^4 + 12x^2 + 1)$$
 
 \noindent which both have $\Aut(\Jac(X), \theta_X)\simeq C_2 \times C_2 \simeq \Aut(\Jac(X'), \theta_{X'})$. \end{answer}
 
-The counterexample to the above question arises by giving an example of a pair non-isomorphic curves $X \nsimeq X'$ with the following two properties: $$\Jac(X) \simeq \Jac(X') \text{  and  }  \Aut(\Jac(X), \theta_X) \simeq \Aut(\Jac(X'), \theta_{X'}).$$ It is natural to ask if this phenomena occurs for \textit{all} pairs of curves with isomorphic unpolarized Jacobians, i.e., if the first property implies the second.
+The counterexample to the above question arises by giving an example of a pair non-isomorphic curves $X \nsimeq X'$ with the following two properties: $$\Jac(X) \simeq \Jac(X') \text{  and  }  \Aut(\Jac(X), \theta_X) \simeq \Aut(\Jac(X'), \theta_{X'}).$$ It is natural to ask if this phenomena occurs for \textit{all} pairs of curves with isomorphic unpolarized Jacobians. % i.e., if the first property implies the second.
 
 \begin{question} Let $C$ and $C'$ be any curves such that $\Jac(C) \simeq \Jac(C')$ as complex varieties, then $$\Aut(\Jac(C), \theta_C) \simeq \Aut(\Jac(C'), \theta_{C'}).$$  \end{question} 
 
