@@ -150,7 +150,7 @@
 \maketitle
 
 \begin{abstract} %Abelian varieties with several principal polarizations are incredibly rare. 
-The Narasimhan-Nori conjecture asks for a closed formula for the number of non-isomorphic principal polarizations of any given abelian variety. In this paper, we introduce a new algorithm that gives a lower bound on the number of non-isomorphic principal polarizations on any given abelian variety. We show, for example, that the Jacobian of the genus four underlying curve of Schoen's W minimal surface has at least 9 non-isomorphic principal polarizations. We also explore the Jacobians of Klein's quartic, Fermat's quartic, Bring's curve, and more.   
+The Narasimhan-Nori conjecture asks for a closed formula for the number of non-isomorphic principal polarizations of any given abelian variety. In this paper, we introduce a new algorithm that gives a lower bound on the number of non-isomorphic principal polarizations on any given abelian variety. We show, for example, that the Jacobian of the genus four underlying curve of Schoen's I-WP minimal surface has at least 9 non-isomorphic principal polarizations. We also explore the Jacobians of Klein's quartic, Fermat's quartic, Bring's curve, and more.   
 \end{abstract}
 
 \tableofcontents
@@ -165,9 +165,9 @@ There has been a lot of prior work on the Narasimhan-Nori conjecture, exposited 
 
 For example, our code yields the following result, further exposited in section ~\ref{sec:examples}. 
 
-\begin{theorem} \label{IWP} Let $\pi(X)$ denote the number of non-isomorphic principal polarizations on any given variety $X$. Let $W$ denote the underlying genus four curve of Schoen's W minimal surface, and $\Jac(W)$ its Jacobian variety, then $$\pi(\Jac(W)) \geq 9.$$\end{theorem}
+\begin{theorem} \label{IWP} Let $I-WP$ denote the underlying genus four curve of Schoen's I-WP minimal surface, $y^{12}=x(x-1)^4$ or equivalently $y^3=x(x^4-1),$ $\pi(I-WP)$ denote the number of non-isomorphic principal polarizations on $I-WP,$ and $\Jac(I-WP)$ its Jacobian variety, then $$\pi(\Jac(I-WP)) \geq 9.$$\end{theorem}
 
-This is a remarkable result, especially since the variety $\Jac(W)$ itself factors into a product of 4 elliptic curves\footnote{This is because $\text{End}(\Jac(W)) \otimes \Q \simeq M_4(K)$, where $K$ is imaginary quadratic. Thus, $\Jac(W)$ is isogenous to the product of elliptic curves with CM by $K$.}, so the remaining principal polarizations must come from interesting new cycles in the product of these elliptic curves. Other results found by applying our technique include $\pi(A)$ and $|\Aut(A)|$ of Klein's quartic, Fermat's quartic, and Bring's curve (Table ~\ref{table:tablelabel}, Section ~\ref{sec:examples}).
+This is a remarkable result, especially since the variety $\Jac(I-WP)$ itself factors into a product of 4 elliptic curves\footnote{This is because $\text{End}(\Jac(I-WP)) \otimes \Q \simeq M_4(K)$, where $K$ is imaginary quadratic. Thus, $\Jac(I-WP)$ is isogenous to the product of elliptic curves with CM by $K$.}, so the remaining principal polarizations must come from interesting new cycles in the product of these elliptic curves. Other results found by applying our technique include $\pi(A)$ and $|\Aut(A)|$ of Klein's quartic, Fermat's quartic, and Bring's curve (Table ~\ref{table:tablelabel}, Section ~\ref{sec:examples}).
 
 We exposit cyclic covers of $\C\P^1$ that allow us to compute exact period matrices for simplicity of exposition, our method also works for nonexact period matrices.
 
@@ -426,7 +426,7 @@ $12(1, 5, 6)$ & 3 & 3 & $D_6$  & 12 & [12, 4]\\ %12, ?
 Bring's curve & 4 & 2 & $C_2^{\text{ }2} \times D_4$ & 32 & [32, 46] \\
 & & & $C_2 \times S_5$ & 240 & [240, 189] \\ \hline %N 
 
- & 4 & 9 & $C_2^{\text{ }4}$ & 16 & [16, 14] \\
+I-WP & 4 & 9 & $C_2^{\text{ }4}$ & 16 & [16, 14] \\
  
 & & & $C_2^{\text{ } 2} \times C_6$  & 24  & [24, 15] \\
  
@@ -469,7 +469,7 @@ Table ~\ref{table:plane} is the result of running our program based on ~\cite{nu
   $8(1, 2, 5)$ (Fermat's quartic) & $y^8 - x(x-1)^2$ & 3 & $C_4^{\text{ }2} \rtimes S_3$ & 96 \\
   $\ast 12(1, 5, 6)$ &  $y^{12} - x(x-1)^5$ & 3 & $C_4 \times S_3$ & 24 \\
   $5(1, 2, 4, 3)$ (Bring's curve) & $y^5 - x (x - 1)^2 (x + 1)^3$ & 4 & $S_5$ & 120 \\ 
-  $12(1, 4, 7)$ (W) & $y^{12} - x(x-1)^4$ & 4 & $C_3 \times S_4$ & 72 \\ \hline
+  $12(1, 4, 7)$ (I-WP) & $y^{12} - x(x-1)^4$ & 4 & $C_3 \times S_4$ & 72 \\ \hline
 \end{tabular}
 \label{table:plane} 
 \caption*{An $\ast$ indicates that the curve is hyperelliptic}
@@ -561,7 +561,7 @@ We fix some notation. We call $\Aut(A, a_i)$ a symplectic automorphism group of 
 
 \begin{question} $\Aut(\Jac(C), \theta_C)$ has the highest order of all symplectic automorphism groups of $\Jac(C)$. \end{question}
 
-\begin{answer} This is proven false by $12(1,5,6)$, where $|\Aut(\Jac(12(1, 5, 6)), \theta_{12(1, 5, 6)})| = 24$, but $|\Aut(\Jac(12(1, 5, 6)), a_i)| = 32$ is achieved. It is more dramatically proven false by W, where $|\Aut(\Jac(\text{W}), \theta_{\text{W}})| = 288$, but $|\Aut(\Jac(\text{W}), a_i)|$ achieves $576$ and $864$. \end{answer}
+\begin{answer} This is proven false by $12(1,5,6)$, where $|\Aut(\Jac(12(1, 5, 6)), \theta_{12(1, 5, 6)})| = 24$, but $|\Aut(\Jac(12(1, 5, 6)), a_i)| = 32$ is achieved. It is more dramatically proven false by I-WP, where $|\Aut(\Jac(\text{I-WP}), \theta_{\text{I-WP}})| = 288$, but $|\Aut(\Jac(\text{I-WP}), a_i)|$ achieves $576$ and $864$. \end{answer}
 
 \begin{question} Principal polarizations $a_1$ and $a_2$ are auto-equivalent if and only if they are analytically equivalent. In other words, $$\Aut(X, a_1) \simeq \Aut(X, a_2) \Leftrightarrow a_1 = a_2.$$ \end{question}
 
