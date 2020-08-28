@@ -150,7 +150,7 @@
 \maketitle
 
 \begin{abstract} %Abelian varieties with several principal polarizations are incredibly rare. 
-The Narasimhan-Nori conjecture asks for a closed formula for the number of non-isomorphic principal polarizations of any given abelian variety. In this paper, we introduce a new algorithm that gives a lower bound on the number of non-isomorphic principal polarizations on any given abelian variety. We show, for example, that the Jacobian of the genus four underlying curve of Schoen's I-WP minimal surface has at least 9 non-isomorphic principal polarizations. We also explore the Jacobians of Klein's quartic, Fermat's quartic, Bring's curve, and more.   
+The Narasimhan-Nori conjecture asks for a closed formula for the number of non-isomorphic principal polarizations of any given abelian variety. In this paper, we introduce a new algorithm that gives a lower bound on the number of non-isomorphic principal polarizations on any given abelian variety. We show, for example, that the Jacobian of the genus four underlying curve of Schoen's W minimal surface has at least 9 non-isomorphic principal polarizations. We also explore the Jacobians of Klein's quartic, Fermat's quartic, Bring's curve, and more.   
 \end{abstract}
 
 \tableofcontents
@@ -158,16 +158,16 @@ The Narasimhan-Nori conjecture asks for a closed formula for the number of non-i
 \section{Introduction}
 
 
-Polarizations of abelian varieties were introduced by Weil as an analogue of orientations of manifolds. They are embeddings of abelian varieties into projective space. There is a special kind of polarization called a principal polarization -- all polarizations are induced by these up to isogeny. The fact that an abelian variety admits only a finite number of isomorphism classes of principal polarizations was established by Narasimhan-Nori. In \cite{nn}, they pose the problem of finding a closed formula for the number of principal polarizations of any given abelian variety over any field, which is still unsolved. 
+Polarizations of abelian varieties were introduced by Weil as an analogue of orientations of manifolds. They give rise to embeddings of abelian varieties into projective space. There is a special kind of polarization called a principal polarization -- all polarizations are induced by these up to isogeny over algebraically closed fields. The fact that an abelian variety admits only a finite number of isomorphism classes of principal polarizations was established by Narasimhan-Nori. In \cite{nn}, they pose the problem of finding a closed formula for the number of principal polarizations of any given abelian variety over any field, which is still unsolved. 
 
-There has been a lot of prior work on the Narasimhan-Nori conjecture, exposited in Section ~\ref{sec:prior}. In this paper, we introduce an entirely different method of finding different principal polarizations on Jacobians, exposited in Section ~\ref{sec:find}, which treats both simple and non-simple cases in characteristic 0. We use this to give lower bounds on the number of non-isomorphic principal polarizations. Our method works as follows. For curves that are cyclic covers over $\C\bb{P}^1$, we can compute exact period matrices, exposited in Section ~\ref{sec:cyclicperiod}. Given any period matrix, we introduce new code to compute principal polarizations on the corresponding abelian variety. Then, we implement a modification of the psuedocode of Bruin-Jeroen-Sijsling \cite{numerical} to compute, for each found principal polarization, the automorphism group of the given Jacobian which fixes that polarization. If the automorphism groups are different, then the principal polarizations are non-isomorphic. This gives us a lower bound on the number of different principal polarizations for a given Jacobian. We denote by $\pi(X)$ the number of non-isomorphic principal polarizations on a variety $X.$
+There has been a lot of prior work on the Narasimhan-Nori conjecture, exposited in Section ~\ref{sec:prior}. In this paper, we introduce an entirely different method of finding different principal polarizations on Jacobians, exposited in Section ~\ref{sec:find}, which treats both simple and non-simple cases in characteristic 0. We use this to give lower bounds on the number of non-isomorphic principal polarizations. Our method works as follows. For curves that are cyclic covers over $\C\bb{P}^1$, we can compute period matrices expressed as powers of the natural number $e$, exposited in Section ~\ref{sec:cyclicperiod}. Given any period matrix, we introduce new code to compute principal polarizations on the corresponding abelian variety. Then, we implement a modification of the psuedocode of Bruin-Sijsling-Zotine \cite{numerical} to compute, for each found principal polarization, the automorphism group of the given Jacobian which fixes that polarization. If the automorphism groups are different, then the principal polarizations are non-isomorphic. This gives us a lower bound on the number of different principal polarizations for a given Jacobian. 
 %The fact that numerical computations with period matrices, which we use for surfaces which are not cyclically branched covers of $\C\P^1,$ give rigorous results relies on the brilliant work of Costa-Mascot-Sijsling-Voight (\cite{rigor} Prop 6.1.1), which we discuss in Section ~\ref{sec:cert}.
 
-For example, our code yields the following result. 
+For example, our code yields the following result, further exposited in section ~\ref{sec:examples}. 
 
-\begin{theorem} \label{IWP} Let $\pi(X)$ denote the number of non-isomorphic principal polarizations on any given variety $X$. Let I-WP denote the underlying genus four curve of Schoen's I-WP minimal surface, and $\Jac(\text{I-WP})$ its Jacobian variety, then $$\pi(\Jac(\text{I-WP})) \geq 9.$$\end{theorem}
+\begin{theorem} \label{IWP} Let $\pi(X)$ denote the number of non-isomorphic principal polarizations on any given variety $X$. Let $W$ denote the underlying genus four curve of Schoen's W minimal surface, and $\Jac(W)$ its Jacobian variety, then $$\pi(\Jac(W)) \geq 9.$$\end{theorem}
 
-This is a remarkable result, especially since the variety $\Jac(\text{I-WP})$ itself factors into a product of 4 elliptic curves\footnote{This is because $\text{End}(\Jac(\text{I-WP})) \simeq M_4(K)$, where $K$ is imaginary quadratic. Thus, $\Jac(\text{I-WP})$ is the product of elliptic curves with CM by $K$.}, so the remaining principal polarizations must come from interesting new cycles in the product of these elliptic curves. Other results found by applying our technique include $\pi(A)$ and $|\Aut(A)|$ of Klein's quartic, Fermat's quartic, and Bring's curve (Table ~\ref{table:tablelabel}, Section ~\ref{sec:examples}).
+This is a remarkable result, especially since the variety $\Jac(W)$ itself factors into a product of 4 elliptic curves\footnote{This is because $\text{End}(\Jac(W)) \otimes \Q \simeq M_4(K)$, where $K$ is imaginary quadratic. Thus, $\Jac(W)$ is isogenous to the product of elliptic curves with CM by $K$.}, so the remaining principal polarizations must come from interesting new cycles in the product of these elliptic curves. Other results found by applying our technique include $\pi(A)$ and $|\Aut(A)|$ of Klein's quartic, Fermat's quartic, and Bring's curve (Table ~\ref{table:tablelabel}, Section ~\ref{sec:examples}).
 
 We exposit cyclic covers of $\C\P^1$ that allow us to compute exact period matrices for simplicity of exposition, our method also works for nonexact period matrices.
 
@@ -178,11 +178,11 @@ In Section ~\ref{sec:questions}, we also answer the following questions on Jacob
 Previous work toward the Narasimhan-Nori conjecture can be divided into the simple and non-simple cases. %An abelian variety is \textbf{simple} if it is not isogenous to a product of abelian varieties of lower dimension. 
 It can further be divided into characteristic 0 and characteristic $p$ cases. Our main goal is to understand cases of simple varieties in characteristic 0. 
 
-In Theorem 1.5 \cite{several}, Lange establishes for simple varieties that $|\Aut(A)| = \pi(A)$ with certain restriction conditions and equivalence relations. One could in principle compute $|\Aut(A)|$ by hand, however, it is computationally infeasible. 
+In Theorem 1.5 \cite{several}, Lange establishes for simple varieties that $\pi(A) = |\Aut^s(A)|$, where $\Aut^s(A)$ is the set $\Aut(A)$ with certain strict restriction conditions and equivalence relations. One could in principle compute $|\Aut^s(A)|$ by hand, however, it is computationally infeasible. 
 
 %\begin{remark} His bijection between sets is induced by considering an element in the Neron-Severi group of $A$, and representing such elements as endomorphisms of $A$ preserved under the Rosati involution with respect to a chosen polarization. Since this bijection is induced by a principal polarization, one must know that one exists to implement this theorem. \end{remark}
 
-In Theorem 3.1 \cite{several}, Lange further establishes bounds on $\pi(A)$ in terms of the class group of $\text{End}_{\Q}(A)$, if $\text{End}_{\Q}(A)$ is a totally real number field $K$ (and thus the variety $A$ is simple). More recently, Lange treated the non-simple case of products of elliptic curves without complex multiplication in Theorem 3.5 \cite{newlange}. He does so by giving an interpretation of the number of principal polarizations in terms of class numbers of definite Hermitian forms.
+In Theorem 3.1 \cite{several}, Lange further establishes bounds on $\pi(A)$ in terms of the class group of $\text{End}(A) \otimes \Q$, if $\text{End}(A) \otimes \Q$ is a totally real number field $K$ (and thus the variety $A$ is simple). More recently, Lange treated the non-simple case of products of elliptic curves without complex multiplication in Theorem 3.5 \cite{newlange}. He does so by giving an interpretation of the number of principal polarizations in terms of class numbers of definite Hermitian forms.
 
 %\begin{remark} The main idea of the proof of 3.5 is that the canonical principal polarization of X induces a bijection between P(X) and the set of equivalence classes of symmetric automorphisms of X. Via the analytic representation of X and a suitable choice of bases this set can be considered as a set of equivalence classes of Hermitian forms. \end{remark}
 
@@ -400,7 +400,7 @@ If the abelian variety is indeed a Jacobian, this method will in practice return
 \subsection{Certifying Heuristic Methods}
 \label{sec:cert}
 
-We must certify that numerically computed endomorphisms of a Jacobian are in fact endomorphisms of that Jacobian. If the entries of the period matrices are exact and algebraic over $\Q$, this extra certification is unnecessary. We need only check that putative endomorphisms are correct via a simple linear-algebraic verification. This amounts to given a period matrix $\Pi \in M_{g \times 2g}(\overline{\Q})$ associated to an abelian variety $C^g/\Lambda$, find
+We must certify that numerically computed endomorphisms of a Jacobian are in fact endomorphisms of that Jacobian. If the entries of the period matrices are exact and algebraic over $\Q$, this extra certification is unnecessary. We need only check that putative endomorphisms are correct via a simple linear-algebraic verification. This amounts to given a period matrix $\Pi \in M_{g \times 2g}(\overline{\Q})$ associated to an abelian variety $\C^g/\Lambda$, find
 $$M \Pi = \Pi R,$$
 where $R \in  M_{2g}(\overline{\Q})$ and $M \in M_{g}(\overline{\Q})$. We then know that $R$ is an endomorphism of $\Lambda$, and $M$ is a representation of the endomorphism of the abelian variety on $\C^g$, the tangent space around the origin.
 
@@ -425,7 +425,8 @@ $12(1, 5, 6)$ & 3 & 3 & $D_6$  & 12 & [12, 4]\\ %12, ?
 & & & $C_4 \times D_4$ & 32  & [32, 25] \\ \hline 
 Bring's curve & 4 & 2 & $C_2^{\text{ }2} \times D_4$ & 32 & [32, 46] \\
 & & & $C_2 \times S_5$ & 240 & [240, 189] \\ \hline %N 
-I-WP & 4 & 9 & $C_2^{\text{ }4}$ & 16 & [16, 14] \\
+
+ & 4 & 9 & $C_2^{\text{ }4}$ & 16 & [16, 14] \\
  
 & & & $C_2^{\text{ } 2} \times C_6$  & 24  & [24, 15] \\
  
@@ -456,7 +457,8 @@ Table ~\ref{table:plane} is the result of running our program based on ~\cite{nu
 %Fermat's curve
 %12(1,5,6)
 %Bring's curve y^5 = x^2(x+1)(x-1)^4, y^5 = x (x - 1)^2 (x + 1)^3
-%I-WP
+%
+
 
 \begin{table}[H]
 \caption{Plane Curve Automorphism Groups}
@@ -467,7 +469,7 @@ Table ~\ref{table:plane} is the result of running our program based on ~\cite{nu
   $8(1, 2, 5)$ (Fermat's quartic) & $y^8 - x(x-1)^2$ & 3 & $C_4^{\text{ }2} \rtimes S_3$ & 96 \\
   $\ast 12(1, 5, 6)$ &  $y^{12} - x(x-1)^5$ & 3 & $C_4 \times S_3$ & 24 \\
   $5(1, 2, 4, 3)$ (Bring's curve) & $y^5 - x (x - 1)^2 (x + 1)^3$ & 4 & $S_5$ & 120 \\ 
-  $12(1, 4, 7)$ (I-WP) & $y^{12} - x(x-1)^4$ & 4 & $C_3 \times S_4$ & 72 \\ \hline
+  $12(1, 4, 7)$ (W) & $y^{12} - x(x-1)^4$ & 4 & $C_3 \times S_4$ & 72 \\ \hline
 \end{tabular}
 \label{table:plane} 
 \caption*{An $\ast$ indicates that the curve is hyperelliptic}
@@ -532,8 +534,8 @@ Table ~\ref{table:plane} is the result of running our program based on ~\cite{nu
 %  \label{fig:1243}
 %\end{figure}
 
-%\subsubsection{Schoen's I-WP minimal surface}
-%Lastly, I-WP is another genus four non-hyperelliptic curve defined by 12(1,4,7). This covering presentation is due to Lee \cite{dthesis}, where it is shown that the underlying curve of Schoen's I-WP surface is equipped with cone metrics that are compatible with the twelvefold cyclic cover over $\C\P^1.$ Figure~\ref{fig:147} represents a holomorphic 1-form with one order-6 zero and a 1-form with six simple zeros.
+%\subsubsection{Schoen's W minimal surface}
+%Lastly, W is another genus four non-hyperelliptic curve defined by 12(1,4,7). This covering presentation is due to Lee \cite{dthesis}, where it is shown that the underlying curve of Schoen's W surface is equipped with cone metrics that are compatible with the twelvefold cyclic cover over $\C\P^1.$ Figure~\ref{fig:147} represents a holomorphic 1-form with one order-6 zero and a 1-form with six simple zeros.
 
 %\begin{figure}[htbp] 
 %\centering
@@ -545,7 +547,7 @@ Table ~\ref{table:plane} is the result of running our program based on ~\cite{nu
 %  \centering
 %  \includegraphics[width=3in]{figures/147_flat_2.pdf}
 %\end{minipage}
-%  \caption{Two different flat structures on Schoen's I-WP.}
+%  \caption{Two different flat structures on Schoen's W.}
 %  \label{fig:147}
 %\end{figure}
 
@@ -559,7 +561,7 @@ We fix some notation. We call $\Aut(A, a_i)$ a symplectic automorphism group of 
 
 \begin{question} $\Aut(\Jac(C), \theta_C)$ has the highest order of all symplectic automorphism groups of $\Jac(C)$. \end{question}
 
-\begin{answer} This is proven false by $12(1,5,6)$, where $|\Aut(\Jac(12(1, 5, 6)), \theta_{12(1, 5, 6)})| = 24$, but $|\Aut(\Jac(12(1, 5, 6)), a_i)| = 32$ is achieved. It is more dramatically proven false by I-WP, where $|\Aut(\Jac(\text{I-WP}), \theta_{\text{I-WP}})| = 288$, but $|\Aut(\Jac(\text{I-WP}), a_i)|$ achieves $576$ and $864$. \end{answer}
+\begin{answer} This is proven false by $12(1,5,6)$, where $|\Aut(\Jac(12(1, 5, 6)), \theta_{12(1, 5, 6)})| = 24$, but $|\Aut(\Jac(12(1, 5, 6)), a_i)| = 32$ is achieved. It is more dramatically proven false by W, where $|\Aut(\Jac(\text{W}), \theta_{\text{W}})| = 288$, but $|\Aut(\Jac(\text{W}), a_i)|$ achieves $576$ and $864$. \end{answer}
 
 \begin{question} Principal polarizations $a_1$ and $a_2$ are auto-equivalent if and only if they are analytically equivalent. In other words, $$\Aut(X, a_1) \simeq \Aut(X, a_2) \Leftrightarrow a_1 = a_2.$$ \end{question}
 
