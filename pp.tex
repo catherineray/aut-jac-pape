@@ -208,7 +208,7 @@ First, we discuss the topological construction of cyclic covers over $\mathbb{C}
 
 \begin{defn} We say that a curve $C$ is a $d$-fold cyclic cover over $\mathbb{C}\mathbb{P}^1$ if $C / (\Z/ d \Z) = \mathbb{C}\mathbb{P}^1.$ \end{defn}
 
-We construct such curves with the given data: let $p_i, \ldots , p_n \in \mathbb{C}\mathbb{P}^1$ be $n$ distinct points. Let $Y := \mathbb{C}\mathbb{P}^1 \backslash \{p_1, \ldots, p_n\}$ and let $\gamma_i$ be a branch cut from $p_i$ to some $q \in Y$ so that $\gamma_i$ are mutually disjoint. For each $i,$ assign $d_i \in \{1, \ldots, d - 1\}$ and call it the \textbf{branching index at} $p_i.$ Let $d$ be the degree of the covering map and use $j$ to label $Y_1, \ldots , Y_d.$ For each $i$ and $j,$ we identify the ``left side'' of $\gamma_i$ of $Y_j$ to the ``right side'' of $\gamma_i$ of $Y_{j + d_i \pmod d}.$ We denote such a covering $C$ by a $n$-tuple $d (d_1, \ldots , d_n).$
+We construct such curves with the given data: let $p_i, \ldots , p_n \in \mathbb{C}\mathbb{P}^1$ be $n$ distinct points. Let $Y := \mathbb{C}\mathbb{P}^1 \backslash \{p_1, \ldots, p_n\}$ and let $\gamma_i$ be a branch cut from $p_i$ to some $q \in Y$ so that $\gamma_i$ are mutually disjoint. For each $i,$ assign $d_i \in \{1, \ldots, d - 1\}$ and call it the \textbf{branching index at} $p_i.$ Let $d$ be the degree of the covering map and use $j$ to label $d$ copies of the $n$-punctured sphere $Y_1, \ldots , Y_d.$ Given an orientation on the sphere and on $\gamma_i,$ for each $i$ and $j,$ we identify the ``left side'' of $\gamma_i$ of $Y_j$ to the ``right side'' of $\gamma_i$ of $Y_{j + d_i \pmod d}.$ We denote such a covering $C$ by a $n$-tuple $d (d_1, \ldots , d_n).$
 
 \begin{remark} A covering $d (d_1, \ldots , d_n)$ is uniquely defined up to homeomorphism. That is, the construction only depends on $d_i$ and is independent of $p_i,$ $\gamma_i,$ and $q.$ We further assume that $\sum\limits_{i=1}^n d_i \equiv 0 \pmod d$ and $\gcd (d_1, \ldots, d_n) = 1.$ The former guarantees that the covering is closed and the latter guarantees that the covering is connected. Then one can compute the genus of the curve by Riemann-Hurwitz formula and $g(C) = \frac{d (n-2)}{2} + 1 - \frac{1}{2} \sum\limits_{i=1}^n \gcd(d,d_i).$ 
 \end{remark}
@@ -239,12 +239,12 @@ Specifically, the sum of cone angles on a genus zero curve is $2 \pi (n - 2).$ G
   \label{fig:125_flat}
 \end{figure}
 
-Our goal is to find other admissible cone metrics on the sphere that yield different translation structures (linearly independent 1-forms) on the same curve. We claim that the cone metric given by cone angles $\frac{2 \pi a_i}{d}$ where $a_i \equiv d_i \pmod d$ for all $i$ is admissible (Theorem 3.4, \cite{dthesis}). An easier way of finding admissible cone metrics is given by the following notion of multipliers.
+Our goal is to find other admissible cone metrics on the sphere that yield different translation structures (linearly independent 1-forms) on the same curve. We claim that the cone metric given by cone angles $\frac{2 \pi \alpha_i}{d}$ where $\alpha_i \equiv d_i \pmod d$ for all $i$ is admissible (Theorem 3.4, \cite{dthesis}). An easier way of finding admissible cone metrics is given by the following notion of multipliers.
 
-\begin{defn} Given branching indices $d (d_1, \ldots , d_n),$ we say $a \in \{1, \ldots, d - 1\}$ is a \textbf{multiplier} if the cone metric given by cone angles $\frac{2 \pi}{d} (a \cdot d_1 \pmod d, \ldots , a \cdot d_n \pmod d)$ is admissible. 
+\begin{defn} Given branching indices $d (d_1, \ldots , d_n),$ we say $\alpha \in \{1, \ldots, d - 1\}$ is a \textbf{multiplier} if the cone metric given by cone angles $\frac{2 \pi}{d} (\alpha \cdot d_1 \pmod d, \ldots , \alpha \cdot d_n \pmod d)$ is admissible. 
 \end{defn}
 
-Theorem 3.5, \cite{dthesis} proves that for $n = 3,$ there are exactly $g$ multipliers. In other words, one achieves a basis of holomorphic 1-forms via multipliers. We denote the multipliers by $a_i,$ hence the admissible cone angles are given by $$\frac{2\pi}{d}(a_1 d_1, a_1 d_2, a_1 d_3), \ldots , \frac{2\pi}{d}(a_g d_1, a_g d_2, a_g d_3).$$ 
+Theorem 3.5, \cite{dthesis} proves that for $n = 3,$ there are exactly $g$ multipliers. In other words, one achieves a basis of holomorphic 1-forms via multipliers. We denote the multipliers by $\alpha_i,$ hence the admissible cone angles are given by $$\frac{2\pi}{d}(\alpha_1 d_1, \alpha_1 d_2, \alpha_1 d_3), \ldots , \frac{2\pi}{d}(\alpha_g d_1, \alpha_g d_2, \alpha_g d_3).$$ 
 
 With admissible cone metrics, we can algebraically describe a curve by its plane curve model. For covers branched over three points, we choose $p_i = 0, 1, \infty$ and describe it as $y^d = x^{d_1} (x-1)^{d_2}.$ However, a plane curve model for a given curve is not uniquely defined. The allowed choices of models is discussed in Section 3.2 of \cite{dthesis}. However, our codes do not differentiate the different plane curve models.
 
@@ -278,7 +278,7 @@ $$\textrm{int}_1 = \begin{pmatrix} 0 & 1 & 1 & 0 & 0 & 0 \\
  0 & 0 & -1 & -1 & 0 & 1 \\
  0 & 0 & 0 & -1 & -1 & 0 \end{pmatrix}.$$
 
-Then the period matrix is computed as follows: 
+Then the period matrix of $8(1,2,5)$ is computed as follows: 
 $$\Pi_1 = \left(
 \begin{array}{cccccc}
  1 & e^{\frac{\pi i}{4}} & i & e^{\frac{3 \pi i}{4}} & -1 & e^{-\frac{3 \pi i}{4}} \\
@@ -288,17 +288,17 @@ $$\Pi_1 = \left(
 \right).$$
 
 
-In general, from cyclicity we get 
+In general, given a $d(d_1,d_2,d_3)$-covering, with $d_1=1,$ we get 
 
 $$\Pi = \left(
 \begin{array}{ccccc}
- 1 & e^{\frac{2 \alpha_1 \pi i}{d}} & e^{\frac{4 \alpha_1 \pi i}{d}} & \cdots & e^{\frac{2 (2 g - 1) \alpha_1 \pi i}{d}} \\
+ 1 & e^{\frac{2 \alpha_2 \pi i}{d}} & e^{\frac{4 \alpha_1 \pi i}{d}} & \cdots & e^{\frac{2 (2 g - 1) \alpha_1 \pi i}{d}} \\
  1 & e^{\frac{2 \alpha_2 \pi i}{d}} & e^{\frac{4 \alpha_2 \pi i}{d}} & \cdots & e^{\frac{2 (2 g - 1) \alpha_2 \pi i}{d}} \\
  \vdots\\
- 1 & e^{\frac{2 \alpha_g \pi i}{d}} & e^{\frac{4 \alpha_g \pi i}{d}} & \cdots & e^{\frac{2 (2 g - 1) \alpha_g \pi i}{d}} \\
+ 1 & e^{\frac{2 \alpha_2 \pi i}{d}} & e^{\frac{4 \alpha_g \pi i}{d}} & \cdots & e^{\frac{2 (2 g - 1) \alpha_g \pi i}{d}} \\
 \end{array}
 \right)$$
-where $\alpha_i$ are the multipliers.
+where $\alpha_i$ are the multipliers. The $(i,j)$-entry is a $e^{\frac{2\alpha_i d_1 \pi i}{d}}$-multiple of the previous column.
 
 
 
