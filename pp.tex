@@ -160,7 +160,7 @@ The Narasimhan-Nori conjecture asks for a closed formula for the number of non-i
 
 Polarizations of abelian varieties were introduced by Weil as an analogue of orientations of manifolds. They give rise to embeddings of abelian varieties into projective space. There is a special kind of polarization called a principal polarization -- all polarizations are induced by these up to isogeny over algebraically closed fields. The fact that an abelian variety admits only a finite number of isomorphism classes of principal polarizations was established by Narasimhan-Nori. In \cite{nn}, they pose the problem of finding a closed formula for the number of principal polarizations of any given abelian variety over any field, which is still unsolved. 
 
-There has been a lot of prior work on the Narasimhan-Nori conjecture, exposited in Section ~\ref{sec:prior}. In this paper, we introduce an entirely different method of finding different principal polarizations on Jacobians, exposited in Section ~\ref{sec:find}, which treats both simple and non-simple cases in characteristic 0. We use this to give lower bounds on the number of non-isomorphic principal polarizations. Our method works as follows. For curves that are cyclic covers over $\C\bb{P}^1$, we can compute period matrices expressed as powers of the natural number $e$, exposited in Section ~\ref{sec:cyclicperiod}. Given any period matrix, we introduce new code to compute principal polarizations on the corresponding abelian variety. Then, we implement a modification of the psuedocode of Bruin-Sijsling-Zotine \cite{numerical} to compute, for each found principal polarization, the automorphism group of the given Jacobian which fixes that polarization. If the automorphism groups are different, then the principal polarizations are non-isomorphic. This gives us a lower bound on the number of different principal polarizations for a given Jacobian. 
+There has been a lot of prior work on the Narasimhan-Nori conjecture, exposited in Section ~\ref{sec:prior}. In this paper, we introduce an entirely different method of finding different principal polarizations on Jacobians, exposited in Section ~\ref{sec:find}, which treats both simple and non-simple cases in characteristic 0. We use this to give lower bounds on the number of non-isomorphic principal polarizations. Our method works as follows. For curves that are cyclic covers over $\C\bb{P}^1$, we can compute period matrices expressed as powers of the natural number $e$, exposited in Section ~\ref{sec:cyclicperiod}. Given any period matrix, we introduce new code to compute principal polarizations on the corresponding abelian variety. Then, we implement a modification of the code sketch of Bruin-Sijsling-Zotine \cite{numerical} to compute, for each found principal polarization, the automorphism group of the given Jacobian which fixes that polarization. If the automorphism groups are different, then the principal polarizations are non-isomorphic. This gives us a lower bound on the number of different principal polarizations for a given Jacobian. 
 %The fact that numerical computations with period matrices, which we use for surfaces which are not cyclically branched covers of $\C\P^1,$ give rigorous results relies on the brilliant work of Costa-Mascot-Sijsling-Voight (\cite{rigor} Prop 6.1.1), which we discuss in Section ~\ref{sec:cert}.
 
 For example, our code yields the following result, further exposited in section ~\ref{sec:examples}. 
@@ -172,9 +172,9 @@ For example, our code yields the following result, further exposited in section 
 
 This is a remarkable result, especially since the variety $\Jac(I-WP)$ itself factors into a product of 4 elliptic curves\footnote{This is because $\text{End}(\Jac(I-WP)) \otimes \Q \simeq M_4(K)$, where $K$ is imaginary quadratic. Thus, $\Jac(I-WP)$ is isogenous to the product of elliptic curves with CM by $K$.}, so the remaining principal polarizations must come from interesting new cycles in the product of these elliptic curves. Other results found by applying our technique include $\pi(A)$ and $|\Aut(A)|$ of Klein's quartic, Fermat's quartic, and Bring's curve (Table ~\ref{table:tablelabel}, Section ~\ref{sec:examples}).
 
-We exposit cyclic covers of $\C\P^1$ that allow us to compute exact period matrices for simplicity of exposition, our method also works for nonexact period matrices.
+We exposit cyclic covers of $\C\P^1$ that allow us to compute exact period matrices for simplicity of exposition, our method also works for nonexact period matrices. By nonexact, we mean entries produced in an approximate decimal format, instead of an exact value as an algebraic integer.
 
-In Section ~\ref{sec:questions}, we also answer the following questions on Jacobians with multiple principal polarizations by providing counterexamples.
+In Section ~\ref{sec:questions}, we also answer some questions on Jacobians with multiple principal polarizations by providing counterexamples.
 
 \subsection{Prior Work}
 \label{sec:prior}
@@ -346,7 +346,7 @@ The notion of a polarization of an abelian variety has many faces. If a complex 
 \begin{defn} A \textbf{polarization} of a complex torus $X$ is an embedding $j: X \to \P^N$ for large enough $N$. \end{defn}
 
 
-We can understand this embedding $j$ as a map $$p \mapsto [a_1(p) : \cdots : a_{N-1}(p)],$$ where $a_i$ are a chosen generating set of global sections of a line bundle $\mc{L}$ on $X$. 
+We can understand this embedding $j$ as a map $$p \mapsto [a_1(p) : \cdots : a_{N-1}(p)],$$ where $a_i$ are a chosen generating set of global sections of a tensor power of a line bundle $\mc{L}$ on $X$.
 
 \begin{defn}  A polarization $c_1(\mc{L})$ of $X$ is called \textbf{principal} if $\mc{L}$ has only one section up to constants, i.e. $\dim H^0(X, \mc{L}) = 1$. Here, $c_1$ denotes the first chern class. \end{defn} 
 
@@ -380,8 +380,8 @@ $\text{}$ $\hspace{2mm}$\textit{Output:} Many principal polarizations on $A$.
 $$E (i v, i w) = E (v, w)$$
 This is a basis of alternating forms $\{E_i\}$. (For more context, see \cite{bl} 2.1.6.)
 \item Check that $E$ is positive-definite.
-\item Try some small combinations and sees if $E_i$ actually gives a pairing with determinant 1 indicating that $E_i$ is a principal polarization. If so, it returns $E_i$. This gives us a set $\{E_k\}$ of integral pairings on the homology.
-\item For each $i$, we rewrite these pairings in a symplectic basis. That is, we find a basis of $\Lambda$ in which $$E_i = \begin{pmatrix} 0 & D \\ -D & 0 \end{pmatrix}$$ where $D = \text{diag}(d_1, ..., d_g)$ which we may do by the elementary divisor theorem (Section 3.1, \cite{bl}). 
+\item Check that $E_i$ is a principal polarization by seeing if $E_i$ gives a pairing with determinant 1. Output only the principal polarizations $E_k$. This gives us a set $\{E_k\}$ of integral pairings on the homology.
+\item For each $k$, we rewrite these pairings in a symplectic basis. That is, we find a basis of $\Lambda$ in which $$E_k = \begin{pmatrix} 0 & D \\ -D & 0 \end{pmatrix}$$ where $D = \text{diag}(d_1, ..., d_g)$ which we may do by the elementary divisor theorem (Section 3.1, \cite{bl}). 
 
 \end{enumerate} 
 
@@ -389,7 +389,7 @@ This does nothing but modify the (homology) basis of $\Lambda$. Multiplying $\Pi
 
 \section{Studying Principal Polarizations via Automorphisms of the Jacobian}
 
-The algorithm we use for calculating the symplectic automorphism groups of curves comes from the psuedocode of Section 4 of \cite{numerical}. 
+The algorithm we use for calculating the symplectic automorphism groups of curves comes from the code sketch of Section 4 of \cite{numerical}. 
 
 \begin{defn} Let $a$ be a polarization of $X$. We call $\Aut(X, a)$ a \textbf{symplectic automorphism group} of $X$, as it respects the symplectic form $a$. 
 \end{defn}
@@ -557,7 +557,6 @@ Table ~\ref{table:plane} is the result of running our program based on ~\cite{nu
 \subsection{Questions and Answers on Abelian Varieties with Multiple Principal Polarizations}
 \label{sec:questions}
 
-
 We speak here of polarizations up to auto-equivalence and ask natural questions on Jacobians with multiple principal polarizations, answering all but one of the questions using methods developed in our paper.
 
 We fix some notation. We call $\Aut(A, a_i)$ a symplectic automorphism group of $A$, as the automorphisms respect the principal polarization $a_i$, which is a symplectic form on $A$. Let $\theta_C$ be the canonical principal polarization of $\Jac(C)$ with respect to $C$.
@@ -566,17 +565,17 @@ We fix some notation. We call $\Aut(A, a_i)$ a symplectic automorphism group of 
 
 \begin{answer} This is proven false by $12(1,5,6)$, where $|\Aut(\Jac(12(1, 5, 6)), \theta_{12(1, 5, 6)})| = 24$, but $|\Aut(\Jac(12(1, 5, 6)), a_i)| = 32$ is achieved. It is more dramatically proven false by I-WP, where $|\Aut(\Jac(\text{I-WP}), \theta_{\text{I-WP}})| = 288$, but $|\Aut(\Jac(\text{I-WP}), a_i)|$ achieves $576$ and $864$. \end{answer}
 
-\begin{question} Principal polarizations $a_1$ and $a_2$ are auto-equivalent if and only if they are analytically equivalent. In other words, $$\Aut(X, a_1) \simeq \Aut(X, a_2) \Leftrightarrow a_1 = a_2.$$ \end{question}
+\begin{question} Principal polarizations $a_1$ and $a_2$ are auto-equivalent if and only if they are analytically equivalent. In other words, $$\Aut(C, a_1) \simeq \Aut(C, a_2) \Leftrightarrow a_1 = a_2.$$ \end{question}
 
 \begin{answer} The direction ($\Leftarrow$) is true because $\mc{L}$ and $\mc{M}$ are analytically equivalent if and only if $c_1(\mc{L}) = c_1(\mc{M})$ by [\cite{bl} 2.5.3]. The other direction ($\Rightarrow$) is false.  This is proven false by applying our method to the following two \textit{non-isomorphic} curves with the same \textit{unpolarized} Jacobian from Theorem 1 of \cite{howe1}:
 \vspace{-2pt}
-$$X: 3y^2 = (2x^2- 2)(16x^4 + 28x^2 + 1)$$ 
+$$C: 3y^2 = (2x^2- 2)(16x^4 + 28x^2 + 1)$$ 
 \vspace{-15pt}
-$$X': -y^2 = (2x^2 + 2)(16x^4 + 12x^2 + 1)$$ 
+$$C': -y^2 = (2x^2 + 2)(16x^4 + 12x^2 + 1)$$ 
 
-\noindent which both have $\Aut(\Jac(X), \theta_X)\simeq C_2 \times C_2 \simeq \Aut(\Jac(X'), \theta_{X'})$. \end{answer}
+\noindent which both have $\Aut(\Jac(C), \theta_C)\simeq C_2 \times C_2 \simeq \Aut(\Jac(C'), \theta_{C'})$. \end{answer}
 
-The counterexample to the above question arises by giving an example of a pair non-isomorphic curves $X \nsimeq X'$ with the following two properties: $$\Jac(X) \simeq \Jac(X') \text{  and  }  \Aut(\Jac(X), \theta_X) \simeq \Aut(\Jac(X'), \theta_{X'}).$$ It is natural to ask if this phenomenon occurs for \textit{all} pairs of curves with isomorphic unpolarized Jacobians. % i.e., if the first property implies the second.
+The counterexample to the above question arises by giving an example of a pair non-isomorphic curves $C \nsimeq C'$ with the following two properties: $$\Jac(C) \simeq \Jac(C') \text{  and  }  \Aut(\Jac(C), \theta_C) \simeq \Aut(\Jac(C'), \theta_{C'}).$$ It is natural to ask if this phenomenon occurs for \textit{all} pairs of curves with isomorphic unpolarized Jacobians. % i.e., if the first property implies the second.
 
 \begin{question} Let $C$ and $C'$ be any curves such that $\Jac(C) \simeq \Jac(C')$ as complex varieties, then $$\Aut(\Jac(C), \theta_C) \simeq \Aut(\Jac(C'), \theta_{C'}).$$  \end{question} 
 
